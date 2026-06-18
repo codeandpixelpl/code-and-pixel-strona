@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sklepy — prototypy (4 kierunki)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700;800&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --deep-1: #0d1d3f;
+    --deep-3: #050d22;
+
+    /* Akademia Okocimskiego */
+    --g900: #0D3B1F;
+    --g500: #1E5630;
+    --gold: #C9A84C;
+    --gold3: #F0D68A;
+    --ao-ink: #1a2e1e;
+    --ao-muted: rgba(20,45,25,0.55);
+    --ao-border: rgba(30,86,48,0.12);
+    --cream: #f6f4ee;
+    --shadow-lg: 0 30px 60px -20px rgba(0,0,0,0.4);
+    --shadow-md: 0 12px 30px -10px rgba(0,0,0,0.18);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: linear-gradient(180deg, var(--deep-1) 0%, var(--deep-3) 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 60px 32px;
+  }
+  .page { max-width: 1280px; margin: 0 auto; }
+  .page__header { text-align: center; margin-bottom: 56px; }
+  .page__eyebrow { color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 16px; }
+  .page__title { font-size: 36px; font-weight: 800; margin: 0 0 12px; letter-spacing: -0.02em; }
+  .page__hint { color: rgba(255,255,255,0.6); font-size: 15px; margin: 0 auto; max-width: 720px; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 40px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  .proto { display: flex; flex-direction: column; gap: 16px; }
+  .proto__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .proto__num { color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 700; letter-spacing: 0.2em; }
+  .proto__title { font-size: 18px; font-weight: 700; margin: 0; }
+  .proto__desc { color: rgba(255,255,255,0.55); font-size: 13px; line-height: 1.5; margin: 0; }
+
+  /* ============================================================
+     SHARED CARD — replaces the red IMG placeholder entirely.
+     Default state = polished mini-shop preview. No hover needed.
+     ============================================================ */
+  .visual {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--cream);
+    box-shadow: var(--shadow-lg);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ao-ink);
+  }
+
+  /* ============================================================
+     PROTO 1 — QUIET LOOKBOOK
+     Clean 2×2 grid, generous white space, no chrome.
+     Hover: subtle scale on individual cards.
+     ============================================================ */
+  .p1 {
+    position: absolute; inset: 0;
+    background: #fff;
+    padding: 18px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 12px;
+    column-gap: 14px;
+  }
+  .p1__head {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: 2px;
+  }
+  .p1__eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .p1__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ao-ink);
+    letter-spacing: -0.01em;
+    margin-top: 1px;
+  }
+  .p1__link {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--ao-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .p1__link::after { content: ' →'; }
+
+  .p1__card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform .4s cubic-bezier(.2,.7,.3,1);
+  }
+  .p1__card:hover { transform: translateY(-2px); }
+  .p1__img {
+    position: relative;
+    flex: 1;
+    border-radius: 6px;
+    background: var(--cream) center/cover no-repeat;
+    overflow: hidden;
+  }
+  .p1__img--bluza { background-image: url('akademia-assets/01%20-%20Bluza/Bluza_01.png'); }
+  .p1__img--kurtka { background-image: url('akademia-assets/04%20-%20Kurtka/kurtka_01.png'); }
+  .p1__img--getry { background-image: url('akademia-assets/02%20-%20Getry/Getry_01.png'); }
+  .p1__img--skarpetki { background-image: url('akademia-assets/03%20-%20Skarpetki/Skarpetki_01.png'); }
+  .p1__name {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--ao-ink);
+    line-height: 1.2;
+    height: 10px;
+    overflow: hidden;
+  }
+  .p1__price {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--g500);
+    letter-spacing: 0.01em;
+  }
+
+  /* ============================================================
+     PROTO 2 — VIDEO HERO (full-bleed product video)
+     Default: video auto-plays on a slow loop, minimal overlay.
+     Most modern, most "this is a real shop".
+     ============================================================ */
+  .p2 {
+    position: absolute; inset: 0;
+    background: var(--g900);
+    overflow: hidden;
+  }
+  .p2__media {
+    position: absolute; inset: 0;
+  }
+  .p2__media-img {
+    position: absolute; inset: 0;
+    background: url('akademia-assets/04%20-%20Kurtka/kurtka_01.png') center/cover no-repeat;
+    transform: scale(1.02);
+    transition: opacity .4s;
+  }
+  .p2__media-video {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .p2__shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(13,59,31,0.2) 0%, rgba(13,59,31,0) 30%, rgba(13,59,31,0) 50%, rgba(13,59,31,0.85) 100%);
+  }
+  .p2__topline {
+    position: absolute;
+    top: 16px; left: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .p2__brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: var(--gold3);
+    text-transform: uppercase;
+  }
+  .p2__dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+  .p2__info {
+    position: absolute;
+    left: 18px; right: 18px; bottom: 16px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    color: white;
+  }
+  .p2__info-l {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .p2__meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--gold3);
+    text-transform: uppercase;
+  }
+  .p2__name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 60%;
+  }
+  .p2__price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .p2__price-old {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: line-through;
+  }
+  .p2__price-new {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  /* ============================================================
+     PROTO 3 — EDITORIAL (1 big + 2 stacked)
+     Asymmetric editorial layout — feels like a magazine spread.
+     ============================================================ */
+  .p3 {
+    position: absolute; inset: 0;
+    background: #fff;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1.45fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 10px;
+    column-gap: 12px;
+  }
+  .p3__head {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .p3__brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: var(--g500);
+    text-transform: uppercase;
+  }
+  .p3__brand span { color: var(--gold); }
+  .p3__nav {
+    display: flex;
+    gap: 10px;
+  }
+  .p3__nav-item {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--ao-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .p3__nav-item--active { color: var(--g500); }
+
+  .p3__hero {
+    grid-row: 2 / 4;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .p3__hero-img {
+    position: absolute; inset: 0;
+    background: url('akademia-assets/01%20-%20Bluza/Bluza_01.png') center/cover no-repeat;
+    transition: transform .6s cubic-bezier(.2,.7,.3,1);
+  }
+  .p3__hero:hover .p3__hero-img { transform: scale(1.03); }
+  .p3__hero-tag {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: var(--g500);
+    color: white;
+    font-size: 7px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .p3__hero-info {
+    position: absolute;
+    left: 10px; right: 10px; bottom: 10px;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+  .p3__hero-name {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .p3__hero-price {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--gold3);
+    margin-top: 2px;
+  }
+
+  .p3__side {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+  }
+  .p3__side-img {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    transition: transform .5s cubic-bezier(.2,.7,.3,1);
+  }
+  .p3__side:hover .p3__side-img { transform: scale(1.04); }
+  .p3__side--kurtka .p3__side-img { background-image: url('akademia-assets/04%20-%20Kurtka/kurtka_01.png'); }
+  .p3__side--getry .p3__side-img { background-image: url('akademia-assets/02%20-%20Getry/Getry_01.png'); }
+  .p3__side-info {
+    padding: 5px 7px 6px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+  }
+  .p3__side-name {
+    font-size: 7.5px;
+    font-weight: 600;
+    color: var(--ao-ink);
+    line-height: 1.1;
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .p3__side-price {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: var(--g500);
+    white-space: nowrap;
+  }
+
+  /* ============================================================
+     PROTO 4 — MARQUEE TAPE (calm, no chrome)
+     Just the moving products. Confident, minimal.
+     ============================================================ */
+  .p4 {
+    position: absolute; inset: 0;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0;
+    gap: 14px;
+  }
+  .p4__head {
+    padding: 0 18px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .p4__head-l {
+    display: flex;
+    flex-direction: column;
+  }
+  .p4__eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .p4__title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ao-ink);
+    letter-spacing: -0.02em;
+    margin-top: 2px;
+  }
+  .p4__link {
+    font-size: 8px;
+    font-weight: 600;
+    color: var(--ao-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .p4__link::after { content: ' →'; color: var(--g500); }
+  .p4__tape {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  }
+  .p4__track {
+    display: flex;
+    gap: 12px;
+    height: 100%;
+    width: max-content;
+    padding: 0 18px;
+    animation: slide 28s linear infinite;
+  }
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .p4:hover .p4__track { animation-play-state: paused; }
+  .p4__card {
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: transform .4s cubic-bezier(.2,.7,.3,1);
+  }
+  .p4__card:hover { transform: translateY(-3px); }
+  .p4__img {
+    aspect-ratio: 1;
+    border-radius: 6px;
+    background: var(--cream) center/cover no-repeat;
+  }
+  .p4__img--bluza { background-image: url('akademia-assets/01%20-%20Bluza/Bluza_01.png'); }
+  .p4__img--kurtka { background-image: url('akademia-assets/04%20-%20Kurtka/kurtka_01.png'); }
+  .p4__img--getry { background-image: url('akademia-assets/02%20-%20Getry/Getry_01.png'); }
+  .p4__img--skarpetki { background-image: url('akademia-assets/03%20-%20Skarpetki/Skarpetki_01.png'); }
+  .p4__img--spodenki { background-image: url('akademia-assets/05%20-%20Spodenki/spodenki_01.png'); }
+  .p4__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .p4__meta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 7px;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .p4__name {
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--ao-ink);
+    line-height: 1.2;
+    height: 11px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .p4__price {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--g500);
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="page__header">
+      <div class="page__eyebrow">Prototypy · Sklepy internetowe</div>
+      <h1 class="page__title">4 czyste kierunki — preview jak na nowoczesnych stronach</h1>
+      <p class="page__hint">Domyślnie widoczne od razu. Hover dodaje delikatne scale/parallax — bez chowanego placeholderu.</p>
+    </header>
+
+    <div class="grid">
+
+      <!-- =========== PROTO 1 — QUIET LOOKBOOK =========== -->
+      <div class="proto">
+        <div class="proto__head">
+          <span class="proto__num">PROTO 01</span>
+          <h2 class="proto__title">Quiet lookbook</h2>
+        </div>
+        <p class="proto__desc">Czyste 2×2, dużo białej przestrzeni, brak badge'ów. Vibe Aritzia/Mejuri — minimalizm. Hover: karta delikatnie się unosi.</p>
+        <div class="visual">
+          <div class="p1">
+            <div class="p1__head">
+              <div>
+                <div class="p1__eyebrow">Akademia Okocimskiego</div>
+                <div class="p1__title">Polecane produkty</div>
+              </div>
+              <span class="p1__link">Sklep</span>
+            </div>
+            <div class="p1__card">
+              <div class="p1__img p1__img--bluza"></div>
+              <div class="p1__name">Bluza Kangurka AO</div>
+              <div class="p1__price">229 zł</div>
+            </div>
+            <div class="p1__card">
+              <div class="p1__img p1__img--kurtka"></div>
+              <div class="p1__name">Kurtka Windbreaker</div>
+              <div class="p1__price">239 zł</div>
+            </div>
+            <div class="p1__card">
+              <div class="p1__img p1__img--getry"></div>
+              <div class="p1__name">Getry Meczowe</div>
+              <div class="p1__price">49 zł</div>
+            </div>
+            <div class="p1__card">
+              <div class="p1__img p1__img--skarpetki"></div>
+              <div class="p1__name">Skarpety Treningowe</div>
+              <div class="p1__price">29 zł</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========== PROTO 2 — VIDEO HERO =========== -->
+      <div class="proto">
+        <div class="proto__head">
+          <span class="proto__num">PROTO 02</span>
+          <h2 class="proto__title">Video hero</h2>
+        </div>
+        <p class="proto__desc">Pełnoekranowe wideo produktu zapętlone w tle. Minimalne info: nazwa + cena. Najbardziej "dzisiejsze" — jak case study Aesop/Lululemon.</p>
+        <div class="visual">
+          <div class="p2">
+            <div class="p2__media">
+              <div class="p2__media-img"></div>
+              <video class="p2__media-video" muted loop playsinline autoplay src="akademia-assets/04%20-%20Kurtka/kurtka_05%20_hover.mp4"></video>
+            </div>
+            <div class="p2__shade"></div>
+            <div class="p2__topline">
+              <span class="p2__dot"></span>
+              <span class="p2__brand">Akademia Okocimskiego</span>
+            </div>
+            <div class="p2__info">
+              <div class="p2__info-l">
+                <span class="p2__meta">Kurtki · Nowość</span>
+                <span class="p2__name">Kurtka Reprezentacyjna Windbreaker</span>
+              </div>
+              <div class="p2__price-block">
+                <span class="p2__price-old">319 zł</span>
+                <span class="p2__price-new">239 zł</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========== PROTO 3 — EDITORIAL =========== -->
+      <div class="proto">
+        <div class="proto__head">
+          <span class="proto__num">PROTO 03</span>
+          <h2 class="proto__title">Editorial</h2>
+        </div>
+        <p class="proto__desc">Asymetryczny layout — 1 duży + 2 boczne. Klimat magazynu. Hover: lekki zoom na zdjęciach (parallax-feel).</p>
+        <div class="visual">
+          <div class="p3">
+            <div class="p3__head">
+              <span class="p3__brand">Sklep <span>AO</span></span>
+              <div class="p3__nav">
+                <span class="p3__nav-item p3__nav-item--active">Bestsellery</span>
+                <span class="p3__nav-item">Bluzy</span>
+                <span class="p3__nav-item">Akcesoria</span>
+              </div>
+            </div>
+            <div class="p3__hero">
+              <div class="p3__hero-img"></div>
+              <span class="p3__hero-tag">Nowość</span>
+              <div class="p3__hero-info">
+                <div class="p3__hero-name">Bluza Kangurka AO</div>
+                <div class="p3__hero-price">229 zł</div>
+              </div>
+            </div>
+            <div class="p3__side p3__side--kurtka">
+              <div class="p3__side-img"></div>
+              <div class="p3__side-info">
+                <span class="p3__side-name">Kurtka Windbreaker</span>
+                <span class="p3__side-price">239 zł</span>
+              </div>
+            </div>
+            <div class="p3__side p3__side--getry">
+              <div class="p3__side-img"></div>
+              <div class="p3__side-info">
+                <span class="p3__side-name">Getry Meczowe</span>
+                <span class="p3__side-price">49 zł</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========== PROTO 4 — MARQUEE TAPE =========== -->
+      <div class="proto">
+        <div class="proto__head">
+          <span class="proto__num">PROTO 04</span>
+          <h2 class="proto__title">Marquee tape</h2>
+        </div>
+        <p class="proto__desc">Taśma produktów sunie poziomo bez końca. Po najechaniu pauzuje, karty unoszą się. Klimat Vercel customers row.</p>
+        <div class="visual">
+          <div class="p4">
+            <div class="p4__head">
+              <div class="p4__head-l">
+                <span class="p4__eyebrow">Bestsellery</span>
+                <span class="p4__title">Polecane Produkty</span>
+              </div>
+              <span class="p4__link">Wszystkie</span>
+            </div>
+            <div class="p4__tape">
+              <div class="p4__track">
+                <!-- set 1 -->
+                <div class="p4__card"><div class="p4__img p4__img--bluza"></div><div class="p4__info"><span class="p4__meta">Bluzy Tren.</span><span class="p4__name">Bluza Kangurka AO</span><span class="p4__price">229 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--kurtka"></div><div class="p4__info"><span class="p4__meta">Kurtki</span><span class="p4__name">Kurtka Windbreaker</span><span class="p4__price">239 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--getry"></div><div class="p4__info"><span class="p4__meta">Akcesoria</span><span class="p4__name">Getry Meczowe</span><span class="p4__price">49 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--skarpetki"></div><div class="p4__info"><span class="p4__meta">Akcesoria</span><span class="p4__name">Skarpety AO</span><span class="p4__price">29 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--spodenki"></div><div class="p4__info"><span class="p4__meta">Spodenki</span><span class="p4__name">Spodenki Treningowe</span><span class="p4__price">119 zł</span></div></div>
+                <!-- set 2 (loop) -->
+                <div class="p4__card"><div class="p4__img p4__img--bluza"></div><div class="p4__info"><span class="p4__meta">Bluzy Tren.</span><span class="p4__name">Bluza Kangurka AO</span><span class="p4__price">229 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--kurtka"></div><div class="p4__info"><span class="p4__meta">Kurtki</span><span class="p4__name">Kurtka Windbreaker</span><span class="p4__price">239 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--getry"></div><div class="p4__info"><span class="p4__meta">Akcesoria</span><span class="p4__name">Getry Meczowe</span><span class="p4__price">49 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--skarpetki"></div><div class="p4__info"><span class="p4__meta">Akcesoria</span><span class="p4__name">Skarpety AO</span><span class="p4__price">29 zł</span></div></div>
+                <div class="p4__card"><div class="p4__img p4__img--spodenki"></div><div class="p4__info"><span class="p4__meta">Spodenki</span><span class="p4__name">Spodenki Treningowe</span><span class="p4__price">119 zł</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

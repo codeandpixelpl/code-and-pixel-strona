@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor / tooling
+.claude/
+
+# Logs
+*.log
+
+# Stray symlink into another project — not part of this repo
+prototypes/akademia-assets

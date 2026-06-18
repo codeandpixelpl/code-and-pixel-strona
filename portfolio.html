@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Code&Pixel | Strony, sklepy, kampanie</title>
+  <meta name="description" content="Wybrane projekty Code & Pixel — strony internetowe, sklepy online i kampanie reklamowe dla firm z różnych branż." />
+  <meta name="theme-color" content="#0a1a3a" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-subpage">
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+      </a>
+      <nav class="nav" aria-label="Główna nawigacja">
+        <ul class="nav__list">
+          <li><a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a></li>
+          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Portfolio</a></li>
+          <li><a href="kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <a href="kontakt.html" class="btn btn--ghost btn--header">
+        Porozmawiajmy
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav>
+        <ul>
+          <li><a href="uslugi.html">Usługi</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a href="kontakt.html" class="btn btn--primary btn--block">Porozmawiajmy</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Ścieżka">
+          <a href="index.html">Start</a>
+          <span class="breadcrumb__sep">/</span>
+          <span class="breadcrumb__current">Portfolio</span>
+        </nav>
+
+        <span class="eyebrow eyebrow--light">
+          <span class="eyebrow__line"></span>
+          Nasze projekty
+          <span class="eyebrow__line"></span>
+        </span>
+        <h1 class="page-hero__title">
+          Realne projekty.<br /><em>Mierzalne efekty.</em>
+        </h1>
+        <p class="page-hero__subtitle">
+          Wybrane wdrożenia z ostatnich lat. Strony, sklepy i kampanie — każda z liczbami, które mówią same za siebie.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--deep">
+    <div class="container">
+
+      <div class="filter-chips" role="tablist" aria-label="Filtr projektów">
+        <button class="filter-chip filter-chip--active" data-filter="all" type="button">Wszystkie</button>
+        <button class="filter-chip" data-filter="strona" type="button">Strony</button>
+        <button class="filter-chip" data-filter="sklep" type="button">Sklepy</button>
+        <button class="filter-chip" data-filter="reklama" type="button">Reklamy</button>
+        <button class="filter-chip" data-filter="branding" type="button">Branding</button>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <a href="portfolio/sufity-led.html" class="portfolio-card" data-category="strona">
+          <div class="portfolio-card__media">
+            <img src="assets/images/case-sufity-led.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Strona internetowa</span>
+            <h3 class="portfolio-card__title">Sufity LED</h3>
+            <span class="portfolio-card__client">Branża wykończeniowa · 2025</span>
+          </div>
+        </a>
+
+        <a href="portfolio/miasteczko-witkowice.html" class="portfolio-card" data-category="strona">
+          <div class="portfolio-card__media">
+            <img src="assets/images/case-miasteczko.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Strona internetowa</span>
+            <h3 class="portfolio-card__title">Miasteczko Witkowice</h3>
+            <span class="portfolio-card__client">Senior living · 2025</span>
+          </div>
+        </a>
+
+        <a href="portfolio/tct-tools.html" class="portfolio-card" data-category="sklep">
+          <div class="portfolio-card__media">
+            <img src="assets/images/case-tct.jpg" alt="" onerror="this.remove()" />
+          </div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Sklep internetowy</span>
+            <h3 class="portfolio-card__title">TCT Tools</h3>
+            <span class="portfolio-card__client">Narzędzia · 2025</span>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio-card" data-category="sklep">
+          <div class="portfolio-card__media"></div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Sklep internetowy</span>
+            <h3 class="portfolio-card__title">UrbanStore</h3>
+            <span class="portfolio-card__client">Fashion e-commerce · 2025</span>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio-card" data-category="reklama">
+          <div class="portfolio-card__media"></div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Google Ads · Allegro ADS</span>
+            <h3 class="portfolio-card__title">ToolMax — kampania 360°</h3>
+            <span class="portfolio-card__client">Narzędzia · 2024–2025</span>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio-card" data-category="strona">
+          <div class="portfolio-card__media"></div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Strona korporacyjna</span>
+            <h3 class="portfolio-card__title">BuildPro Group</h3>
+            <span class="portfolio-card__client">Budownictwo · 2024</span>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio-card" data-category="reklama">
+          <div class="portfolio-card__media"></div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Google Ads</span>
+            <h3 class="portfolio-card__title">GreenLab — ROAS 5.2x</h3>
+            <span class="portfolio-card__client">Eko-kosmetyki · 2024</span>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio-card" data-category="branding">
+          <div class="portfolio-card__media"></div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Identyfikacja wizualna</span>
+            <h3 class="portfolio-card__title">Aurora Coffee</h3>
+            <span class="portfolio-card__client">Kawiarnia · 2024</span>
+          </div>
+        </a>
+
+        <a href="#" class="portfolio-card" data-category="strona branding">
+          <div class="portfolio-card__media"></div>
+          <span class="portfolio-card__arrow" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </span>
+          <div class="portfolio-card__overlay">
+            <span class="portfolio-card__tag">Strona + branding</span>
+            <h3 class="portfolio-card__title">Klinika Vita</h3>
+            <span class="portfolio-card__client">Medycyna estetyczna · 2024</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container cta-strip__inner">
+      <div>
+        <span class="eyebrow eyebrow--light">
+          <span class="eyebrow__line"></span>
+          Twój projekt
+        </span>
+        <h2 class="cta-strip__title">
+          Następne case studium<br />może być Twoje.
+        </h2>
+        <p class="cta-strip__desc">
+          Powiedz nam, co chcesz osiągnąć. My powiemy, jak — i ile to kosztuje.
+        </p>
+      </div>
+      <div class="cta-strip__actions">
+        <a href="kontakt.html" class="btn btn--primary btn--lg">
+          Zacznij od briefu
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="mailto:hello@codeandpixel.io" class="cta-strip__email">hello@codeandpixel.io</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+        <p class="footer__tagline">Agencja interaktywna. Strategia, design i technologia.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Stopka — nawigacja">
+        <a href="uslugi.html">Usługi</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+      <a href="kontakt.html" class="btn btn--ghost btn--sm">
+        Porozmawiajmy
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
