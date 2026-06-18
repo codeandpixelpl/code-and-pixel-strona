@@ -228,7 +228,6 @@
      The hand-off (last frame of 1 == first frame of 2 == "the dive") is
      timed to land on the "Zobacz, co tworzymy" (portfolio) section. */
   const scene = document.querySelector('.scene');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (scene) {
     const v1 = document.getElementById('sceneVideo1');
     const v2 = document.getElementById('sceneVideo2');
@@ -274,18 +273,15 @@
     // HAVE_NOTHING so the first scrub seek is instant (also helps mobile).
     const prime = (v) => { const p = v.play(); if (p && p.then) p.then(() => v.pause()).catch(() => {}); };
 
-    if (reduceMotion) {
-      v1.classList.add('scene__video--active');   // rest on the opening sky frame
-      prime(v1);
-    } else {
-      prime(v1);
-      prime(v2);
-      const refresh = () => { measure(); update(); };
-      [v1, v2].forEach((v) => ['loadedmetadata', 'canplay'].forEach((ev) => v.addEventListener(ev, refresh)));
-      refresh();   // measure + paint first frame right away (fallback durations until metadata)
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', refresh);
-      window.addEventListener('load', refresh);
-    }
+    // Scroll-scrubbing is coupled 1:1 to the user's own scroll — nothing moves
+    // unless they scroll — so it runs even when "reduce motion" is enabled.
+    prime(v1);
+    prime(v2);
+    const refresh = () => { measure(); update(); };
+    [v1, v2].forEach((v) => ['loadedmetadata', 'loadeddata', 'canplay'].forEach((ev) => v.addEventListener(ev, refresh)));
+    refresh();   // measure + paint first frame right away (fallback durations until metadata)
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', refresh);
+    window.addEventListener('load', refresh);
   }
 })();
