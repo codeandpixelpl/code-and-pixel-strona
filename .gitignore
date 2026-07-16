@@ -10,3 +10,4 @@
 
 # Stray symlink into another project — not part of this repo
 prototypes/akademia-assets
+.prototypes/
