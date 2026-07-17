@@ -2,6 +2,26 @@
 
 Multi-page strona agencji interaktywnej **Code & Pixel** (klient PROUP).
 
+## Stan projektu (2026-07-13)
+
+**Redesign wg briefu ukończony i zweryfikowany.** Historia prac i otwarte
+punkty (wymagające klienta): [docs/PLAN-PRACY.md](docs/PLAN-PRACY.md).
+UWAGA: przy każdej zmianie css/style.css lub js/main.js podbij wersję
+`?v=` w linkach wszystkich HTML (cache-busting).
+
+## Architektura
+
+**Przeczytaj PRZED dodaniem strony, sekcji lub zmianą nawigacji:**
+[docs/architecture.md](docs/architecture.md) — mapa serwisu (Mermaid), flow
+konfiguratora, tabela component reuse, poziomy głębi tła, plan zdarzeń
+analitycznych. Brief klienta: [brief.md](brief.md). Decyzje podjęte bez
+klienta (z listą [DO POTWIERDZENIA]): [docs/DECYZJE.md](docs/DECYZJE.md).
+
+Od 2026-07-13 projekt realizuje brief klienta: paleta Deep Navy `#071525` /
+Code Magenta `#D20A45` / Soft Mint `#9FD6C8`, 7 landingów usług w `uslugi/`,
+konfigurator 6-krokowy w kontakt.html, mega menu Budujemy / Napędzamy /
+Rozwijamy. W UI „portfolio" nazywa się **Realizacje** (pliki bez zmian).
+
 ## Stack
 
 - **Pure HTML/CSS/JS** (bez build stepa)
@@ -14,23 +34,50 @@ Multi-page strona agencji interaktywnej **Code & Pixel** (klient PROUP).
 
 ```
 code-and-pixel-strona/
-├── index.html              # Home — hero "Wypłyń z nami" + skrócone sekcje
-├── uslugi.html             # 4 usługi rozbudowane + proces + FAQ
-├── portfolio.html          # Grid z filtrem (Wszystkie/Strony/Sklepy/Reklamy/Branding)
-├── kontakt.html            # Pełny formularz + info + FAQ kontaktowe
-├── portfolio/              # Case studies — każdy projekt = osobna strona
-│   ├── sufity-led.html     # Strona wykończeniowa
-│   ├── miasteczko-witkowice.html  # Senior living
-│   └── tct-tools.html      # Sklep + Omnibus + Allegro ADS
-├── css/style.css           # ~1700 linii — motyw sky → wave → underwater + subpages
-├── js/main.js              # Mobile menu, slider, form, accordion, filter, active nav
-├── assets/
-│   ├── images/             # mockupy, awatary, meduza (do wygenerowania)
-│   └── icons/              # SVG logotypy klientów (do dostarczenia)
+├── index.html              # Home — 10 sekcji wg briefu (hero "Nadajemy cyfrowy kierunek…")
+├── uslugi.html             # Indeks usług: Budujemy / Napędzamy / Rozwijamy
+├── uslugi/                 # 7 landing pages usług (wspólny szablon briefu 5.1)
+│   ├── strony-internetowe.html    # WZORZEC szablonu landingu
+│   ├── sklepy-internetowe.html
+│   ├── crm-systemy.html
+│   ├── aplikacje-webowe.html
+│   ├── google-ads.html
+│   ├── allegro-ads.html
+│   └── opieka-rozwoj.html
+├── portfolio.html          # "Realizacje" (label w UI) — filtry wg briefu 6.1
+├── portfolio/              # Case studies (sufity-led, miasteczko-witkowice, tct-tools)
+├── o-nas.html              # Historia, model współpracy, filary
+├── wiedza.html             # Lista artykułów (6 kategorii)
+├── wiedza/                 # Artykuły (szablon: jak-wybrac-platforme-sklepu.html)
+├── kontakt.html            # KONFIGURATOR 6 kroków (wizard, brief 7.4)
+├── dziekujemy.html         # Thank you (redirect po submit)
+├── 404.html
+├── polityka-prywatnosci.html  # SZKIELET — wymaga weryfikacji prawnej
+├── css/style.css           # tokeny (paleta briefu) + legacy + sekcja "BRIEF 2026-07"
+├── js/main.js              # menu, wizard, analytics (dataLayer), filtry, slider, scene
+├── brief.md                # brief klienta (ekstrakt z docx)
 ├── docs/
-│   └── ASSETS.md           # lista grafik + prompty NanoBanana
+│   ├── architecture.md     # mapa serwisu Mermaid + component reuse
+│   ├── DECYZJE.md          # decyzje podjęte bez klienta [DO POTWIERDZENIA]
+│   └── ASSETS.md           # lista grafik + prompty
 └── CLAUDE.md               # ten plik
 ```
+
+## Konfigurator (kontakt.html)
+
+6 kroków: potrzeba → cel → zakres (pola zależne od usługi, `data-for-service`)
+→ budżet (dwie skale: projektowa / miesięczna Ads) → termin → dane + RODO.
+Preselekcja usługi: `kontakt.html?usluga=strona|sklep|crm|aplikacja|google-ads|allegro-ads|opieka`.
+**Submit**: `FORM_ENDPOINT` w [`js/main.js`](js/main.js) to placeholder — dopóki
+nie jest URL-em http, działa tryb demo (redirect na dziekujemy.html bez wysyłki).
+Przed produkcją podmień na endpoint Formspree/backend.
+
+## Analityka
+
+Zdarzenia (brief 8.3) pushowane do `window.dataLayer`: `cta_click`
+(`[data-cta]`), `service_open` / `case_study_open` / `contact_click`
+(`[data-analytics]`), `form_start` / `form_step` / `form_submit` (wizard).
+Snippet GA4/GTM: placeholder w `<head>` — ID dostarczy klient.
 
 ## Spójność cross-page
 
@@ -73,16 +120,7 @@ python3 -m http.server 8792 --directory "/Users/prouopstudio/Claude/01 - Projekt
 # → http://localhost:8792
 ```
 
-Przez preview launcher: nazwa **`code-and-pixel`** (port 8792).
-
-## Jak odpalić
-
-```bash
-python3 -m http.server 8792 --directory "/Users/prouopstudio/Claude/01 - Projekty/code-and-pixel-strona"
-# → http://localhost:8792
-```
-
-Albo przez preview launcher: nazwa **`code-and-pixel`** w `~/.claude/launch.json` (port 8792).
+Albo przez preview launcher: nazwa **`code-and-pixel`** w launch.json (port 8792).
 
 ## Co wymaga uzupełnienia
 
@@ -94,9 +132,8 @@ Do tego czasu placeholdery są wbudowane w CSS (gradient + "IMG" etykieta).
 
 ## Form submit
 
-Formularz robi `mailto:hello@codeandpixel.io` z prefilled subject + body.
-Do produkcji wymień na endpoint Formspree / własny backend w
-[`js/main.js`](js/main.js) → blok `Contact form`.
+Stary formularz mailto USUNIĘTY. Obowiązuje konfigurator (sekcja wyżej):
+endpoint w [`js/main.js`](js/main.js) → stała `FORM_ENDPOINT`.
 
 ## Responsywność
 

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jak wybrać platformę sklepu internetowego: SaaS, open source czy dedykowana | Code&Pixel</title>
+  <meta name="description" content="Poradnik wyboru platformy e-commerce: SaaS, open source czy rozwiązanie dedykowane. Porównanie kosztu całkowitego, integracji ERP i marketplace, SEO oraz skalowania." />
+  <meta name="theme-color" content="#071525" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/style.css?v=20260713-3" />
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body class="is-subpage">
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="logo" aria-label="Code & Pixel — strona główna">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <ul class="nav__list">
+          <li class="nav__item--has-mega">
+            <a href="../uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="../uslugi/strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="../uslugi/sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="../uslugi/crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="../uslugi/aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="../uslugi/google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="../uslugi/allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="../uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="../uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="../portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="../o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="../wiedza.html" class="nav__link nav__link--active" data-nav="wiedza">Wiedza</a></li>
+          <li><a href="../kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="../kontakt.html?usluga=sklep" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav>
+        <ul>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="../uslugi/strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="../uslugi/sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="../uslugi/crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="../uslugi/aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="../uslugi/google-ads.html">Google Ads</a></li>
+          <li><a href="../uslugi/allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="../uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="../portfolio.html">Realizacje</a></li>
+          <li><a href="../o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="../wiedza.html">Wiedza</a></li>
+          <li><a href="../kontakt.html">Kontakt</a></li>
+        </ul>
+        <a href="../kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO (brief 7.3) ========== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Ścieżka">
+          <a href="../index.html">Start</a>
+          <span class="breadcrumb__sep">/</span>
+          <a href="../wiedza.html">Wiedza</a>
+          <span class="breadcrumb__sep">/</span>
+          <span class="breadcrumb__current">Jak wybrać platformę sklepu internetowego</span>
+        </nav>
+
+        <span class="eyebrow eyebrow--light">
+          <span class="eyebrow__line"></span>
+          E-commerce
+          <span class="eyebrow__line"></span>
+        </span>
+        <h1 class="page-hero__title" style="font-size:clamp(32px,4.5vw,56px);">
+          Jak wybrać platformę sklepu internetowego
+        </h1>
+        <p class="page-hero__subtitle">
+          SaaS, open source czy rozwiązanie dedykowane? Wybór platformy to decyzja na lata, a&nbsp;migracja po drodze kosztuje więcej niż samo wdrożenie. Sprawdź, według jakich kryteriów porównać trzy drogi, zanim podpiszesz umowę.
+        </p>
+
+        <div class="article-meta" style="justify-content:center;color:rgba(255,255,255,0.65);">
+          <span>Zespół Code&amp;Pixel</span>
+          <span>Aktualizacja: 13.07.2026</span>
+          <span>9 min czytania</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TREŚĆ ========== -->
+  <div class="container">
+    <div class="article-layout">
+
+      <aside class="article-toc" aria-label="Spis treści">
+        <div class="article-toc__title">Spis treści</div>
+        <nav>
+          <a href="#trzy-drogi">Trzy drogi do własnego sklepu</a>
+          <a href="#koszt-calkowity">Koszt całkowity, nie cena wdrożenia</a>
+          <a href="#integracje">Integracje: ERP i&nbsp;marketplace</a>
+          <a href="#seo">SEO i&nbsp;szybkość działania</a>
+          <a href="#skalowanie">Skalowanie: co się dzieje, gdy sklep rośnie</a>
+          <a href="#kiedy-ktora-droga">Kiedy która droga ma sens</a>
+          <a href="#od-czego-zaczac">Od czego zacząć</a>
+        </nav>
+      </aside>
+
+      <article class="prose">
+        <p>
+          Platforma sklepu to fundament, na którym przez kolejne lata stanie cała sprzedaż online: katalog, płatności, logistyka, promocje i&nbsp;integracje. Zmiana fundamentu w&nbsp;trakcie działania firmy jest możliwa, ale zawsze oznacza migrację danych, ryzyko spadków widoczności w&nbsp;Google i&nbsp;tygodnie pracy zespołu. Dlatego warto poświęcić na tę decyzję więcej czasu niż na wybór szablonu graficznego.
+        </p>
+
+        <h2 id="trzy-drogi">Trzy drogi do własnego sklepu</h2>
+        <p>
+          W&nbsp;praktyce każda platforma e-commerce należy do jednej z&nbsp;trzech kategorii. Różnią się one nie tyle listą funkcji, ile tym, kto kontroluje kod, dane i&nbsp;tempo rozwoju.
+        </p>
+
+        <h3>SaaS: sklep w&nbsp;abonamencie</h3>
+        <p>
+          Platformy abonamentowe (np. Shoper, Shopify) dostarczają gotowe środowisko: hosting, aktualizacje, bezpieczeństwo i&nbsp;panel administracyjny są po stronie dostawcy. Start jest szybki, a&nbsp;koszt początkowy niski. W&nbsp;zamian akceptujesz ograniczenia: modyfikacje wykraczające poza dostępne aplikacje i&nbsp;ustawienia bywają niemożliwe, a&nbsp;dane sklepu żyją w&nbsp;infrastrukturze dostawcy, na jego warunkach.
+        </p>
+
+        <h3>Open source: własna instalacja</h3>
+        <p>
+          Rozwiązania otwarte (np. WooCommerce, PrestaShop) instalujesz na własnym hostingu. Kod jest dostępny, więc sklep można rozbudowywać bez pytania kogokolwiek o&nbsp;zgodę: nietypowy cennik, niestandardowy proces zakupowy, własne integracje. Ceną jest odpowiedzialność: aktualizacje, kopie zapasowe, wydajność i&nbsp;bezpieczeństwo wymagają stałej opieki technicznej, własnej lub zleconej.
+        </p>
+
+        <h3>Rozwiązanie dedykowane: sklep pisany pod firmę</h3>
+        <p>
+          Sklep dedykowany powstaje od podstaw pod konkretny model biznesowy. To najdroższa i&nbsp;najdłuższa droga, ale jedyna, która nie narzuca żadnych ram: logika B2B z&nbsp;indywidualnymi cennikami, konfiguratory produktów, głębokie powiązanie z&nbsp;systemami produkcji. Ma sens wtedy, gdy proces sprzedaży jest przewagą konkurencyjną, a&nbsp;nie tylko kanałem dystrybucji.
+        </p>
+
+        <h2 id="koszt-calkowity">Koszt całkowity, nie cena wdrożenia</h2>
+        <p>
+          Najczęstszy błąd przy porównywaniu ofert to patrzenie wyłącznie na koszt uruchomienia. Sklep generuje wydatki przez cały okres działania i&nbsp;to one decydują o&nbsp;opłacalności wyboru. Na koszt całkowity składają się co najmniej cztery pozycje:
+        </p>
+        <ul>
+          <li><strong>wdrożenie</strong>: projekt, konfiguracja lub development, migracja produktów i&nbsp;treści,</li>
+          <li><strong>utrzymanie</strong>: abonament lub hosting, aktualizacje, kopie zapasowe, certyfikaty, monitoring,</li>
+          <li><strong>prowizje i&nbsp;licencje</strong>: opłaty od transakcji, płatne aplikacje i&nbsp;moduły, których liczba rośnie wraz ze sklepem,</li>
+          <li><strong>rozwój</strong>: każda zmiana, której nie da się wyklikać w&nbsp;panelu, czyli praca programisty lub czekanie na roadmapę dostawcy.</li>
+        </ul>
+        <blockquote>
+          Platforma tania na starcie potrafi być najdroższa w&nbsp;trzecim roku, a&nbsp;droga na starcie najtańsza w&nbsp;piątym. Porównuj koszty w&nbsp;horyzoncie co najmniej trzech lat, nie w&nbsp;horyzoncie faktury za wdrożenie.
+        </blockquote>
+        <p>
+          Policz też koszt ograniczeń. Jeśli platforma nie obsłuży planowanej promocji albo integracji, tracisz nie opłatę za moduł, tylko przychód z&nbsp;funkcji, której nie ma.
+        </p>
+
+        <h2 id="integracje">Integracje: ERP i&nbsp;marketplace</h2>
+        <p>
+          Sklep rzadko działa w&nbsp;próżni. Zwykle musi rozmawiać z&nbsp;programem magazynowo-księgowym, z&nbsp;kurierami, z&nbsp;Allegro lub innym marketplace, a&nbsp;często także z&nbsp;systemem CRM. To właśnie integracje najczęściej przesądzają o&nbsp;wyborze platformy, bo ręczne przepisywanie stanów magazynowych i&nbsp;zamówień przestaje być wykonalne już przy kilkudziesięciu zamówieniach dziennie.
+        </p>
+        <p>
+          Przed decyzją spisz systemy, z&nbsp;którymi sklep ma się łączyć, i&nbsp;sprawdź dla każdego: czy istnieje gotowa, utrzymywana integracja, co dokładnie synchronizuje (produkty, stany, ceny, zamówienia, faktury), jak często oraz co się dzieje przy błędzie. Gotowa wtyczka, która synchronizuje tylko połowę potrzebnych danych, oznacza w&nbsp;praktyce pracę ręczną albo dopisywanie własnego łącznika.
+        </p>
+
+        <h2 id="seo">SEO i&nbsp;szybkość działania</h2>
+        <p>
+          Dla sklepu, który ma zdobywać klientów z&nbsp;wyszukiwarki, platforma wyznacza sufit możliwości SEO. Różnice widać w&nbsp;czterech obszarach:
+        </p>
+        <ol>
+          <li><strong>kontrola nad adresami URL i&nbsp;przekierowaniami</strong>: kluczowa przy migracji z&nbsp;istniejącego sklepu, żeby nie stracić wypracowanej widoczności,</li>
+          <li><strong>struktura kategorii i&nbsp;filtrów</strong>: czy filtrowane widoki da się indeksować świadomie, zamiast generować tysiące duplikatów,</li>
+          <li><strong>szybkość ładowania</strong>: na SaaS zależna od dostawcy, na open source i&nbsp;w&nbsp;rozwiązaniu dedykowanym od jakości wdrożenia i&nbsp;hostingu,</li>
+          <li><strong>dane strukturalne i&nbsp;treści</strong>: możliwość rozbudowy opisów kategorii, bloga i&nbsp;znaczników produktowych bez obchodzenia ograniczeń szablonu.</li>
+        </ol>
+        <p>
+          Żadna platforma nie pozycjonuje się sama. Ale zła platforma potrafi skutecznie zablokować pracę nad widocznością, niezależnie od budżetu na SEO.
+        </p>
+
+        <h2 id="skalowanie">Skalowanie: co się dzieje, gdy sklep rośnie</h2>
+        <p>
+          Sklep na 200 produktów i&nbsp;sklep na 40&nbsp;000 produktów to dwa różne systemy, nawet jeśli wyglądają identycznie. Wzrost oznacza więcej wariantów produktów, więcej jednoczesnych użytkowników w&nbsp;szczycie kampanii, kolejne kanały sprzedaży i&nbsp;kolejne integracje. Zanim wybierzesz platformę, odpowiedz na pytania:
+        </p>
+        <ul>
+          <li>Ile produktów i&nbsp;wariantów planujesz za dwa, trzy lata?</li>
+          <li>Czy dojdzie sprzedaż hurtowa lub B2B z&nbsp;osobnymi cennikami?</li>
+          <li>Czy planujesz ekspansję zagraniczną: języki, waluty, osobne magazyny?</li>
+          <li>Kto będzie rozwijał sklep: dostawca platformy, agencja czy własny zespół?</li>
+        </ul>
+        <p>
+          Jeśli odpowiedzi wskazują na szybki wzrost złożoności, elastyczność open source lub rozwiązania dedykowanego zacznie przeważać nad wygodą SaaS. Jeśli model sprzedaży jest prosty i&nbsp;taki pozostanie, dopłacanie za elastyczność, z&nbsp;której nie skorzystasz, nie ma uzasadnienia.
+        </p>
+
+        <h2 id="kiedy-ktora-droga">Kiedy która droga ma sens</h2>
+        <p>
+          Poniższe zestawienie porządkuje wcześniejsze kryteria. Traktuj je jako mapę kompromisów, nie ranking: każda kolumna wygrywa w&nbsp;innym scenariuszu.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Kryterium</th>
+              <th>SaaS</th>
+              <th>Open source</th>
+              <th>Dedykowany</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Koszt startu</td>
+              <td>niski</td>
+              <td>średni</td>
+              <td>wysoki</td>
+            </tr>
+            <tr>
+              <td>Koszt w&nbsp;dłuższym okresie</td>
+              <td>rosnący z&nbsp;abonamentem i&nbsp;aplikacjami</td>
+              <td>zależny od zakresu opieki</td>
+              <td>głównie rozwój i&nbsp;utrzymanie</td>
+            </tr>
+            <tr>
+              <td>Czas uruchomienia</td>
+              <td>dni lub tygodnie</td>
+              <td>tygodnie</td>
+              <td>miesiące</td>
+            </tr>
+            <tr>
+              <td>Nietypowe integracje</td>
+              <td>ograniczone przez API dostawcy</td>
+              <td>szerokie</td>
+              <td>pełna dowolność</td>
+            </tr>
+            <tr>
+              <td>Kontrola nad SEO</td>
+              <td>częściowa</td>
+              <td>duża</td>
+              <td>pełna</td>
+            </tr>
+            <tr>
+              <td>Odpowiedzialność techniczna</td>
+              <td>po stronie dostawcy</td>
+              <td>po Twojej stronie</td>
+              <td>po Twojej stronie</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          W&nbsp;skrócie: SaaS wybierz, gdy liczy się szybki start i&nbsp;prosty model sprzedaży, a&nbsp;zespół nie chce dotykać technologii. Open source, gdy potrzebujesz elastyczności, integracji z&nbsp;ERP i&nbsp;marketplace oraz pełnej kontroli nad SEO przy rozsądnym budżecie. Rozwiązanie dedykowane, gdy proces sprzedaży jest na tyle specyficzny, że gotowe platformy wymagałyby ciągłego obchodzenia ograniczeń.
+        </p>
+
+        <div class="callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div>
+            <strong>Praktyczna rada:</strong> zanim porównasz platformy, spisz 5 najbardziej nietypowych rzeczy w&nbsp;swoim modelu sprzedaży (rabaty, wysyłka, cenniki, obieg zamówienia). To one wykluczą część opcji szybciej niż jakakolwiek tabela funkcji, bo standardowy katalog i&nbsp;koszyk obsłuży każda platforma.
+          </div>
+        </div>
+
+        <h2 id="od-czego-zaczac">Od czego zacząć</h2>
+        <p>
+          Dobra decyzja platformowa zaczyna się od biznesu, nie od technologii. Kolejność, którą stosujemy w&nbsp;projektach:
+        </p>
+        <ol>
+          <li>Opisz model sprzedaży i&nbsp;jego nietypowe elementy.</li>
+          <li>Spisz wymagane integracje wraz z&nbsp;zakresem synchronizacji.</li>
+          <li>Określ skalę na 2 do 3 lat: produkty, rynki, kanały.</li>
+          <li>Policz koszt całkowity każdej opcji w&nbsp;tym horyzoncie.</li>
+          <li>Dopiero wtedy porównuj konkretne platformy w&nbsp;ramach wybranej drogi.</li>
+        </ol>
+        <p>
+          Jeśli po przejściu tej listy dwie drogi wciąż wyglądają podobnie, to dobry sygnał: wybór nie jest krytyczny i&nbsp;można bezpiecznie wybrać tańszą. Jeśli natomiast każda platforma z&nbsp;jednej kategorii wymaga obejść, odpowiedź jest już w&nbsp;wymaganiach.
+        </p>
+
+        <!-- Box autora -->
+        <div class="author-box">
+          <div class="author-box__avatar" aria-hidden="true">C&amp;P</div>
+          <div>
+            <strong>Zespół Code&amp;Pixel</strong>
+            <p style="font-size:14px;color:var(--ink-3);margin-top:4px;">Od 14 lat projektujemy i&nbsp;rozwijamy strony, sklepy oraz systemy dla firm. Piszemy o&nbsp;tym, co sprawdzamy w&nbsp;realnych wdrożeniach: od wyboru technologii po kampanie i&nbsp;analitykę.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- ========== POWIĄZANA USŁUGA I ARTYKUŁY ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Zobacz też<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Powiązana usługa i&nbsp;kolejne artykuły</h2>
+      </header>
+
+      <div class="related-grid">
+        <a href="../uslugi/sklepy-internetowe.html" class="related-card" data-analytics="service_open" data-service="sklepy-internetowe" data-source="article-related">
+          <span class="mono-label">Usługa</span>
+          <div class="related-card__title">Sklepy internetowe</div>
+          <p class="related-card__text">Wdrażamy sklepy z&nbsp;integracjami ERP i&nbsp;marketplace, gotowe do sprzedaży i&nbsp;rozwoju.</p>
+        </a>
+        <div class="related-card" style="cursor:default;">
+          <span class="mono-label">Analityka <span style="color:var(--brand);">// Wkrótce</span></span>
+          <div class="related-card__title">Jak mierzyć konwersje w&nbsp;GA4</div>
+          <p class="related-card__text">Konfiguracja zdarzeń kluczowych i&nbsp;błędy, przez które raporty rozjeżdżają się z&nbsp;rzeczywistością.</p>
+        </div>
+        <div class="related-card" style="cursor:default;">
+          <span class="mono-label">Google Ads <span style="color:var(--brand);">// Wkrótce</span></span>
+          <div class="related-card__title">Jaki budżet Google Ads na start</div>
+          <p class="related-card__text">Jak policzyć budżet testowy od marży i&nbsp;docelowego kosztu pozyskania klienta.</p>
+        </div>
+      </div>
+
+      <div class="portfolio__cta" style="margin-top:40px;text-align:center;">
+        <a href="../wiedza.html" class="btn btn--outline btn--sm" style="border-color:rgba(7,21,37,0.25);color:var(--ink-1);background:transparent;">
+          Wszystkie artykuły
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-strip">
+    <div class="container cta-strip__inner">
+      <div>
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Rozpocznij projekt</span>
+        <h2 class="cta-strip__title">Wybierasz platformę<br />dla swojego sklepu?</h2>
+        <p class="cta-strip__desc">Opowiedz nam o&nbsp;swoim modelu sprzedaży i&nbsp;integracjach. Podpowiemy, która droga ma sens w&nbsp;Twojej sytuacji, zanim zapadną kosztowne decyzje.</p>
+      </div>
+      <div class="cta-strip__actions">
+        <a href="../kontakt.html?usluga=sklep" class="btn btn--primary btn--lg" data-cta="article-bottom">
+          Skonsultuj swój sklep
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="mailto:hello@codeandpixel.io" class="cta-strip__email" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (brief 3.3) ========== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
+      </div>
+
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="../uslugi/strony-internetowe.html">Strony internetowe</a>
+        <a href="../uslugi/sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="../uslugi/crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="../uslugi/aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="../uslugi/google-ads.html">Google Ads</a>
+        <a href="../uslugi/allegro-ads.html">Allegro Ads</a>
+        <a href="../uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="../o-nas.html">O&nbsp;nas</a>
+        <a href="../portfolio.html">Realizacje</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="../wiedza.html">Wszystkie artykuły</a>
+        <a href="../wiedza.html#e-commerce">E-commerce</a>
+        <a href="../wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__legal">
+        <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="../polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="../polityka-prywatnosci.html#cookies">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="../kontakt.html?usluga=sklep" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Skonsultuj swój sklep</a>
+
+  <script src="../js/main.js?v=20260713-3"></script>
+</body>
+</html>

@@ -52,9 +52,25 @@
   .logo__word{position:absolute;top:0;left:0;width:180.6px;height:25.64px}
   .logo__tag{position:absolute;top:29.55px;left:49.8px;width:130.79px;height:13.72px}
 
-  .nav{display:flex;gap:30px}
+  .nav{display:flex;gap:30px;align-items:center}
   .nav a{font-weight:600;font-size:15px;letter-spacing:0.6px;text-transform:uppercase;color:var(--white);transition:opacity .2s}
-  .nav a:hover{opacity:.75}
+  .nav > a:hover{opacity:.75}
+  /* Dropdown Usługi */
+  .nav__item{position:relative}
+  .nav__toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+  .nav__toggle:hover{opacity:.75}
+  .nav__toggle svg{width:12px;height:12px;transition:transform .2s ease}
+  .nav__item:hover .nav__toggle svg,.nav__item:focus-within .nav__toggle svg{transform:rotate(180deg)}
+  .nav__item::after{content:"";position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+  .nav__drop{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+    min-width:248px;background:#fff;border:1px solid rgba(7,30,81,0.06);border-radius:16px;
+    box-shadow:0 24px 54px rgba(7,30,81,0.18);padding:8px;
+    opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30}
+  .nav__item:hover .nav__drop,.nav__item:focus-within .nav__drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav__drop a{display:block;padding:11px 15px;border-radius:10px;
+    font-family:'Inter',var(--ff);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;
+    color:#071e51;white-space:nowrap;transition:background .15s ease,color .15s ease}
+  .nav__drop a:hover{background:#f2f5fb;color:var(--accent);opacity:1}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
     font-family:var(--ff);font-weight:700;text-transform:uppercase;white-space:nowrap;border:none}
@@ -149,7 +165,7 @@
   .uchecks{margin-top:22px;display:flex;flex-direction:column;gap:12px}
   .uchecks li{display:flex;align-items:center;gap:12px;
     font-family:'Inter',var(--ff);font-weight:400;font-size:14px;line-height:21px;color:#071e51;opacity:.6}
-  .uchecks__box{width:22px;height:22px;flex:none;background:#e0e0e0;border:1px solid #b0b0b0;border-radius:11px}
+  .uchecks__box{width:21px;height:21px;flex:none;background:url('assets/nowy/check.svg') center/contain no-repeat}
   .utags{display:flex;gap:6px;margin-top:22px;margin-bottom:12px}
   .utag{background:#eef0f6;border-radius:900px;padding:10px 23px;
     font-family:var(--ff);font-weight:700;font-size:12px;line-height:19.2px;text-transform:uppercase;color:#071e51}
@@ -225,40 +241,69 @@
   .proc-btn.on .proc-btn__label{color:var(--accent)}
   .proc-btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
 
-  .proc-detail{margin-top:18px;background:#f5f6fb;border-radius:22px;padding:34px 38px;min-height:238px;
-    display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;animation:procIn .25s ease both}
+  .proc-detail{position:relative;overflow:hidden;margin-top:22px;background:#f5f6fb;border-radius:24px;
+    padding:40px 44px;min-height:308px;animation:procIn .25s ease both}
   @keyframes procIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .proc-detail h3{font-family:'Inter',var(--ff);font-weight:600;font-size:22px;letter-spacing:-0.2px;color:#071e51}
-  .proc-detail p{margin-top:10px;font-family:'Inter',var(--ff);font-size:14px;line-height:1.65;color:#071e51;opacity:.65;max-width:46ch}
-  .proc-detail h4{font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#071e51;opacity:.45;margin-bottom:12px}
-  .proc-detail ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-  .proc-detail li{display:flex;gap:10px;font-family:'Inter',var(--ff);font-size:13.5px;line-height:1.5;color:#071e51;opacity:.8}
-  .proc-detail li::before{content:"";flex:none;width:16px;height:16px;margin-top:1px;
-    background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
-    -webkit-mask:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') center/contain no-repeat;
-    mask:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') center/contain no-repeat}
-  .proc-detail__result{margin-top:18px;display:inline-flex;align-items:center;gap:10px;
-    background:#fff;border:1px solid rgba(67,115,229,0.25);border-radius:999px;padding:9px 18px;
-    font-family:'Inter',var(--ff);font-size:12.5px;font-weight:600;color:var(--accent)}
+  .proc-detail__grid{display:grid;grid-template-columns:0.82fr 1.18fr}
+  .proc-detail__left{padding-right:44px}
+  .proc-detail__right{padding-left:44px;border-left:1px solid rgba(7,30,81,0.09);
+    display:grid;grid-template-columns:1fr minmax(180px,290px);gap:30px;align-items:center}
+  .proc-detail__steps{align-self:center}
+  .proc-detail__etap{display:inline-block;margin-bottom:18px;padding:6px 14px;border-radius:999px;
+    font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);
+    background:#fff;border:1px solid rgba(67,115,229,0.2)}
+  .proc-detail h3{font-family:'Inter',var(--ff);font-weight:600;font-size:24px;letter-spacing:-0.3px;color:#071e51}
+  .proc-detail__left p{margin-top:12px;font-family:'Inter',var(--ff);font-size:14px;line-height:1.7;color:#071e51;opacity:.65;max-width:42ch}
+  .proc-detail h4{font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#071e51;opacity:.45;margin-bottom:16px}
+  .proc-detail ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .proc-detail li{display:flex;align-items:center;gap:12px;font-family:'Inter',var(--ff);font-size:14.5px;line-height:1.4;color:#071e51;font-weight:500}
+  .proc-detail li::before{content:"";flex:none;width:22px;height:22px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%234373e5'/%3E%3Cpath d='M7 12.4l3.1 3.1L17 8.8' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+  .proc-detail__result{margin-top:26px;display:inline-flex;align-items:center;gap:9px;
+    background:#fff;border:1px solid rgba(67,115,229,0.25);border-radius:999px;padding:11px 20px;
+    font-family:'Inter',var(--ff);font-size:13px;font-weight:600;color:var(--accent)}
+  .proc-detail__result svg{width:16px;height:16px;flex:none}
+  .proc-detail__ill{align-self:stretch;min-height:206px;
+    border-radius:18px;background:linear-gradient(150deg,#e7edf8 0%,#d2e0f4 100%);border:1px solid rgba(67,115,229,0.12);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .proc-detail__ill img{width:100%;height:100%;object-fit:cover}
+  .proc-detail__ill span{font-family:var(--ff);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8fa2c6}
+  @media (max-width:900px){
+    .proc-detail__grid{grid-template-columns:1fr}
+    .proc-detail__left{padding-right:0;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid rgba(7,30,81,0.09)}
+    .proc-detail__right{padding-left:0;border-left:none;grid-template-columns:1fr}
+    .proc-detail__ill{min-height:150px;margin-top:6px}
+  }
 
   /* ============ TECHNOLOGIE ============ */
   .tech{padding:70px 0;background:#fff}
   .tech .container{display:flex;flex-direction:column;align-items:center;text-align:center}
   .tech .usec-lead{max-width:560px;margin-top:16px}
-  .tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px;width:100%}
-  .tcell{display:flex;align-items:center;justify-content:center;gap:12px;height:96px;
-    background:#fff;border:1px solid rgba(7,30,81,0.08);border-radius:12px;
+  .tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;width:100%}
+  .tcell{display:flex;align-items:center;gap:20px;padding:22px 24px;
+    background:#fff;border:1px solid rgba(7,30,81,0.05);border-radius:18px;
+    box-shadow:0 10px 30px rgba(7,30,81,0.04);
     transition:transform .18s cubic-bezier(0.4,0,0.2,1),box-shadow .18s ease,border-color .18s ease}
-  .tcell:hover{transform:translateY(-2px);border-color:rgba(67,115,229,0.3);box-shadow:0 10px 24px rgba(7,30,81,0.07)}
-  .tcell__ico{width:44px;height:44px;border-radius:10px;flex:none;
-    background:linear-gradient(150deg,#eaf0fd 0%,#dbe6fb 100%);border:1px solid rgba(67,115,229,0.18)}
-  .tcell small{font-family:'Inter',var(--ff);font-weight:500;font-size:13px;color:#071e51;opacity:.8}
-  .tech__cta{display:flex;justify-content:center;margin-top:30px}
-  .btn-ghost-dark{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:999px;
-    font-family:'Inter',var(--ff);font-weight:600;font-size:13.5px;color:#071e51;
-    border:1px solid rgba(7,30,81,0.16);background:#fff;
-    transition:transform .18s ease,background .18s ease,border-color .18s ease}
-  .btn-ghost-dark:hover{transform:translateY(-2px);background:#f3f5fb;border-color:rgba(7,30,81,0.3)}
+  .tcell:hover{transform:translateY(-3px);border-color:rgba(67,115,229,0.22);box-shadow:0 18px 40px rgba(7,30,81,0.09)}
+  .tcell__ico{width:64px;height:64px;flex:none;border-radius:15px;
+    background:#fff;border:1px solid rgba(7,30,81,0.06);box-shadow:0 4px 14px rgba(7,30,81,0.06);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .tcell__ico img{width:100%;height:100%;object-fit:contain}
+  /* placeholder do czasu dostarczenia ikon */
+  .tcell__ico:empty::after,.tcell__ico:not(:has(img))::after{content:"";width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(150deg,#eaf0fd 0%,#cfddf7 100%)}
+  .tcell__txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .tcell__txt strong{font-family:'Inter',var(--ff);font-weight:700;font-size:14px;line-height:1.25;letter-spacing:-0.1px;color:#071e51}
+  .tcell__txt span{font-family:'Inter',var(--ff);font-weight:600;font-size:9.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent)}
+  .tech__cta{display:flex;justify-content:center;margin-top:44px}
+  .tech-cta-btn{display:inline-flex;align-items:center;gap:12px;padding:19px 40px;border-radius:999px;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:15px;letter-spacing:0.4px;color:#fff;
+    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow:0 12px 24px rgba(77,124,234,0.35);
+    transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+  .tech-cta-btn:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 18px 34px rgba(77,124,234,0.45)}
+  .tech-cta-btn svg{transition:transform .18s ease}
+  .tech-cta-btn:hover svg{transform:translateX(3px)}
 
   /* ============ OPINIE ============ */
   .opinie{padding:70px 0;background:#fff}
@@ -268,11 +313,9 @@
   .ttrack{display:flex;gap:20px}
   .testi{flex:1 0 0;min-width:300px;background:#f5f6fb;border-radius:22px;padding:25px;
     display:flex;flex-direction:column;min-height:258px}
-  .testi__quote{font-family:'Inter',var(--ff);font-weight:700;font-size:38px;line-height:1;color:#4373e5}
-  .testi__text{margin-top:14px;flex:1;font-family:'Inter',var(--ff);font-size:14px;line-height:1.6;color:#071e51;opacity:.75}
-  .testi__person{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(7,30,81,0.08)}
-  .testi__avatar{width:44px;height:44px;border-radius:50%;flex:none;
-    background:linear-gradient(150deg,#dbe6fb 0%,#b9cdf5 100%);border:1px solid rgba(67,115,229,0.2)}
+  .testi__quote{display:block;height:34px;font-family:Georgia,'Times New Roman','Playfair Display',serif;font-style:italic;font-weight:700;font-size:80px;line-height:1;color:#4373e5}
+  .testi__text{margin-top:6px;flex:1;font-family:'Inter',var(--ff);font-size:14px;line-height:1.6;color:#071e51;opacity:.75}
+  .testi__person{margin-top:18px;padding-top:16px;border-top:1px solid rgba(7,30,81,0.08)}
   .testi__person b{display:block;font-family:'Inter',var(--ff);font-weight:600;font-size:14px;color:#071e51}
   .testi__person span{font-family:'Inter',var(--ff);font-size:12px;color:#071e51;opacity:.5}
   .opinie__nav{display:flex;gap:10px;justify-content:center;margin-top:28px}
@@ -285,11 +328,9 @@
 
   /* ============ CTA BAND ============ */
   .ctaband-wrap{padding:70px 0;background:#fff}
-  .ctaband{background:#071e51;border-radius:24px;padding:56px 48px;
+  .ctaband{background:#071e51 url("assets/nowy/cta-bg.png") right center / cover no-repeat;border-radius:24px;padding:56px 48px;
     display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
     position:relative;overflow:hidden}
-  .ctaband::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;
-    background:radial-gradient(circle, rgba(77,124,234,0.25) 0%, transparent 70%);pointer-events:none}
   .ctaband__eyebrow{display:inline-flex;align-items:center;gap:12px;
     font-family:var(--ff);font-weight:700;font-size:12px;letter-spacing:3.84px;text-transform:uppercase;color:rgba(255,255,255,0.65)}
   .ctaband__eyebrow::before{content:"";width:34px;height:1px;background:rgba(255,255,255,0.35)}
@@ -386,10 +427,23 @@
       </a>
 
       <nav class="nav">
-        <a href="#uslugi">Usługi</a>
-        <a href="#realizacje">Realizacje</a>
-        <a href="#o-nas">O nas</a>
-        <a href="#wiedza">Wiedza</a>
+        <div class="nav__item">
+          <a href="#uslugi" class="nav__toggle" aria-haspopup="true" aria-expanded="false">Usługi
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav__drop" role="menu">
+            <a href="strony-internetowe-nowa.html" role="menuitem">Strony internetowe</a>
+            <a href="sklepy-internetowe-nowa.html" role="menuitem">Sklepy internetowe</a>
+            <a href="crm-systemy-nowa.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="aplikacje-webowe-nowa.html" role="menuitem">Aplikacje webowe</a>
+            <a href="google-ads-nowa.html" role="menuitem">Google Ads</a>
+            <a href="allegro-ads-nowa.html" role="menuitem">Allegro Ads</a>
+            <a href="opieka-rozwoj-nowa.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+          </div>
+        </div>
+        <a href="realizacje-nowa.html">Realizacje</a>
+        <a href="o-nas-nowa.html">O nas</a>
+        <a href="wiedza-nowa.html">Wiedza</a>
       </nav>
 
       <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
@@ -502,15 +556,15 @@
         <span class="utab__label">Aplikacje webowe</span>
       </button>
       <button class="utab" role="tab" aria-selected="false" style="flex-grow:130.797">
-        <span class="utab__ico"><img src="assets/nowy/tab-reklamy.png" alt="" /></span>
+        <span class="utab__ico"><img src="assets/nowy/tab-google.png" alt="" /></span>
         <span class="utab__label">Google Ads</span>
       </button>
       <button class="utab" role="tab" aria-selected="false" style="flex-grow:130.75">
-        <span class="utab__ico"><img src="assets/nowy/tab-reklamy.png" alt="" /></span>
+        <span class="utab__ico"><img src="assets/nowy/tab-allegro.png" alt="" /></span>
         <span class="utab__label">Allegro Ads</span>
       </button>
       <button class="utab" role="tab" aria-selected="false" style="flex-grow:153.359">
-        <span class="utab__ico"><img src="assets/nowy/tab-strony.png" alt="" /></span>
+        <span class="utab__ico"><img src="assets/nowy/tab-opieka.png" alt="" /></span>
         <span class="utab__label">Opieka i&nbsp;rozwój</span>
       </button>
     </div>
@@ -740,18 +794,18 @@
     <p class="usec-lead">Korzystamy z&nbsp;najlepszych narzędzi i&nbsp;współpracujemy z&nbsp;zaufanymi liderami, aby dostarczać rozwiązania najwyższej jakości.</p>
 
     <div class="tgrid">
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>Google Partner</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>Allegro Ads Partner</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>Meta Business Partner</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>Microsoft Cloud</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>Shopify</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>WordPress</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>Laravel</small></div>
-      <div class="tcell"><span class="tcell__ico" aria-hidden="true"></span><small>React</small></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-google.png" alt="" /></span><span class="tcell__txt"><strong>Google Partner</strong><span>Premier 2024</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-allegro.png" alt="" /></span><span class="tcell__txt"><strong>Allegro Ads Partner</strong><span>Certified Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-meta.png" alt="" /></span><span class="tcell__txt"><strong>Meta Business Partner</strong><span>Business Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-microsoft.png" alt="" /></span><span class="tcell__txt"><strong>Microsoft Cloud</strong><span>Solutions Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-shopify.png" alt="" /></span><span class="tcell__txt"><strong>Shopify</strong><span>Verified Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-wordpress.png" alt="" /></span><span class="tcell__txt"><strong>WordPress</strong><span>Expert</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-laravel.png" alt="" /></span><span class="tcell__txt"><strong>Laravel</strong><span>PHP Framework</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-react.png" alt="" /></span><span class="tcell__txt"><strong>React</strong><span>UI Library</span></span></div>
     </div>
 
     <div class="tech__cta">
-      <a href="#" class="btn-ghost-dark">Zobacz wszystkie technologie →</a>
+      <a href="#" class="tech-cta-btn">Zobacz wszystkie technologie <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
     </div>
   </div>
 </section>
@@ -769,7 +823,6 @@
           <span class="testi__quote" aria-hidden="true">&ldquo;</span>
           <p class="testi__text">Nowa strona nie tylko ładnie wygląda, ale przede wszystkim zaczęła realnie pozyskiwać klientów i&nbsp;zapytania ofertowe. Chcemy poszerzyć współpracę w&nbsp;kolejnym etapie.</p>
           <div class="testi__person">
-            <span class="testi__avatar" aria-hidden="true"></span>
             <div><b>Michał Skrt</b><span>Właściciel · Sufity LED</span></div>
           </div>
         </article>
@@ -777,7 +830,6 @@
           <span class="testi__quote" aria-hidden="true">&ldquo;</span>
           <p class="testi__text">Dzięki wdrożeniu sklepu internetowego nasza sprzedaż ruszyła do przodu, a&nbsp;cały proces jest przejrzysty i&nbsp;zorganizowany. Widać efekty i&nbsp;zaangażowanie na każdym etapie.</p>
           <div class="testi__person">
-            <span class="testi__avatar" aria-hidden="true"></span>
             <div><b>Anna Kwiatkowska</b><span>Marketing Manager · Miasteczko Witkowice</span></div>
           </div>
         </article>
@@ -785,7 +837,6 @@
           <span class="testi__quote" aria-hidden="true">&ldquo;</span>
           <p class="testi__text">CRM, który dla nas stworzyli, uporządkował cały proces obsługi klienta i&nbsp;dał pełen wgląd w&nbsp;dane. To realne narzędzie, które ułatwia codzienną pracę zespołu i&nbsp;menedżera.</p>
           <div class="testi__person">
-            <span class="testi__avatar" aria-hidden="true"></span>
             <div><b>Tomasz Wojciechowski</b><span>Dyrektor Operacyjny · TCT Tools</span></div>
           </div>
         </article>
@@ -826,10 +877,6 @@
           <img src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" style="width:155px;height:22px" />
         </a>
         <p>Interactive agency. Łączymy technologię, projektowanie i&nbsp;marketing, aby dostarczać rozwiązania, które realnie wspierają biznes.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook"></a>
-          <a href="#" aria-label="LinkedIn"></a>
-        </div>
       </div>
       <div>
         <h5>Oferta</h5>
@@ -991,12 +1038,24 @@
     function prender(i, focus){
       var d = DATA[i];
       pbox.style.animation = 'none'; void pbox.offsetWidth; pbox.style.animation = '';
+      var etap = ('0' + (i + 1)).slice(-2);
       pbox.innerHTML =
-        '<div><h3>' + d.t + '</h3><p>' + d.p + '</p>' +
-        '<span class="proc-detail__result">' + d.r + '</span></div>' +
-        '<div><h4>Co się dzieje w tym etapie</h4><ul>' +
-        d.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') +
-        '</ul></div>';
+        '<div class="proc-detail__grid">' +
+          '<div class="proc-detail__left">' +
+            '<span class="proc-detail__etap">Etap ' + etap + '</span>' +
+            '<h3>' + d.t + '</h3><p>' + d.p + '</p>' +
+            '<span class="proc-detail__result">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>' +
+              d.r + '</span>' +
+          '</div>' +
+          '<div class="proc-detail__right">' +
+            '<div class="proc-detail__steps">' +
+              '<h4>Co się dzieje w tym etapie</h4>' +
+              '<ul>' + d.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+            '</div>' +
+            '<div class="proc-detail__ill"><img src="assets/nowy/proc-ill-' + (i + 1) + '.png" alt="" /></div>' +
+          '</div>' +
+        '</div>';
       pbtns.forEach(function(b, j){
         var on = j === i;
         b.classList.toggle('on', on);

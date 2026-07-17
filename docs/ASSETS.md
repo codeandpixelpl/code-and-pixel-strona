@@ -213,3 +213,45 @@ Po dostarczeniu — wymień w `index.html` w sekcji `.logos__track` na `<img src
 - [ ] 6 × `client-*.svg` (logotypy w pasku logos)
 
 **Razem**: 11 rastrowych + 6 SVG.
+
+---
+
+## NOWE (brief 2026-07) — oceaniczna art direction
+
+Paleta obowiązująca w promptach: Deep Navy `#071525`, Ocean Navy `#0E2236`,
+Code Magenta `#D20A45`, Soft Mint `#9FD6C8`. Zakazy z briefu 2.2: zero
+pirackich motywów, kotwic, kół ratunkowych, tropikalnych raf, pocztówkowego
+błękitu i generycznych stocków.
+
+### `hero-key-visual` — warianty (hero / usługi / realizacje / CTA)
+
+Obecnie hero home obsługują wideo `assets/01.scrub.mp4` + `02.scrub.mp4`
+(scroll-scrub: powierzchnia → zanurzenie). Do wygenerowania statyczne
+warianty key visual na podstrony:
+
+```json
+{
+  "subject": "Abstract deep ocean scene seen from below the surface: volumetric light rays piercing dark navy water, faint digital data currents rendered as thin glowing lines and small luminous points drifting like a school of fish, subtle sonar circles fading into the depth",
+  "style": "cinematic 3D render, realistic-abstract, high-end tech brand aesthetic, controlled particle density, premium and calm",
+  "color_mood": "deep navy #071525 base, soft mint #9FD6C8 light accents, single subtle magenta #D20A45 glow point",
+  "constraints": ["no fish, no coral reefs, no boats, no anchors", "no text", "large calm areas for text overlay", "light comes from above the surface"],
+  "negative": "cartoon, postcard blue, tropical, stock photo look, cluttered composition",
+  "aspect_ratio": "16:9"
+}
+```
+
+Warianty: (a) hero podstron — ciemniejszy, spokojna strefa po lewej;
+(b) usługi — dodany motyw batymetrii; (c) realizacje — iluminowane
+prostokąty jak ekrany wynurzające się z toni; (d) CTA — świetlny szlak
+prowadzący ku powierzchni.
+
+### `og-image.jpg` — social share 1200×630
+
+Key visual + logo Code&Pixel w toni (logo dostarczy klient jako wektor).
+
+### Do dostarczenia przez klienta (nie generujemy)
+
+- Logo / znak marki (wektor) — do key visual "znak zanurzony w toni"
+- Oficjalne logotypy Google Partner + Allegro Ads Partner (brand book!)
+- Zdjęcia/screeny realizacji do case studies i galerii
+- Zdjęcia zespołu (opcjonalnie — decyzja: model pracy zamiast twarzy)

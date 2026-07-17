@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code&Pixel — Interactive Agency | Strony www, sklepy, Google Ads</title>
-  <meta name="description" content="Tworzymy rozwiązania, które nie toną w bylejakości. Strony internetowe, sklepy, Google Ads, Allegro ADS. 120+ projektów, 13 lat doświadczenia." />
-  <meta name="theme-color" content="#0a1a3a" />
+  <title>Code&Pixel — technologia i reklama na jednym kursie | Strony, sklepy, CRM, Google Ads</title>
+  <meta name="description" content="Projektujemy strony, sklepy, CRM-y i aplikacje webowe. Pozyskujemy klientów dzięki Google Ads i Allegro Ads. Od 14 lat łączymy technologię z mierzalną sprzedażą." />
+  <meta name="theme-color" content="#071525" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=20260715-1" />
+
+  <!-- GA4 / GTM: wklej snippet po otrzymaniu ID od klienta (patrz docs/DECYZJE.md pkt 11) -->
+  <script>window.dataLayer = window.dataLayer || [];</script>
 </head>
 <body class="has-scene">
 
@@ -30,20 +33,49 @@
   <!-- ========== HEADER ========== -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="#" class="logo" aria-label="Code & Pixel — strona główna">
+      <a href="index.html" class="logo" aria-label="Code & Pixel — strona główna">
         <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
       </a>
 
       <nav class="nav" aria-label="Główna nawigacja">
         <ul class="nav__list">
-          <li><a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a></li>
-          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Portfolio</a></li>
+          <li class="nav__item--has-mega">
+            <a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="uslugi/allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
           <li><a href="kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
         </ul>
       </nav>
 
-      <a href="kontakt.html" class="btn btn--ghost btn--header">
-        Porozmawiajmy
+      <a href="kontakt.html" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
         <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
 
@@ -55,16 +87,28 @@
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <nav>
         <ul>
-          <li><a href="uslugi.html">Usługi</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="uslugi/strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="uslugi/google-ads.html">Google Ads</a></li>
+          <li><a href="uslugi/allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="portfolio.html">Realizacje</a></li>
+          <li><a href="o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html">Wiedza</a></li>
           <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <a href="kontakt.html" class="btn btn--primary btn--block">Porozmawiajmy</a>
+        <a href="kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
       </nav>
     </div>
   </header>
 
-  <!-- ========== HERO ========== -->
+  <!-- ========== HERO (brief 4.1) ========== -->
   <section class="hero">
     <div class="hero__sky" aria-hidden="true">
       <div class="cloud cloud--1"></div>
@@ -76,192 +120,360 @@
     <div class="container hero__inner">
       <span class="eyebrow eyebrow--light">
         <span class="eyebrow__line"></span>
-        Interactive Agency
+        14 lat doświadczenia
         <span class="eyebrow__line"></span>
       </span>
 
       <h1 class="hero__title">
-        Wypłyń z nami<br />
-        <span class="hero__title--accent">w internecie</span>
+        Nadajemy cyfrowy kierunek<br />
+        <span class="hero__title--accent">Twojemu biznesowi.</span>
       </h1>
 
       <p class="hero__subtitle">
-        Tworzymy rozwiązania, które nie toną w bylejakości,<br />
-        tylko niosą tam, gdzie są klienci.
+        Projektujemy strony, sklepy, CRM-y i&nbsp;aplikacje webowe.<br />
+        Pozyskujemy klientów dzięki Google Ads i&nbsp;Allegro Ads.<br />
+        Od 14 lat łączymy technologię z&nbsp;mierzalną sprzedażą.
       </p>
 
-      <a href="kontakt.html" class="btn btn--primary btn--lg">
-        Rozpocznij projekt
-        <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+      <div class="hero__actions">
+        <a href="kontakt.html" class="btn btn--primary btn--lg" data-cta="hero-primary">
+          Opowiedz nam o&nbsp;projekcie
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="portfolio.html" class="btn btn--ghost btn--lg" data-cta="hero-secondary">
+          Zobacz realizacje
+        </a>
+      </div>
 
-      <div class="logos">
-        <div class="logos__track">
-          <div class="logos__item"><span class="logos__icon">W</span> Webflow</div>
-          <div class="logos__item"><span class="logos__icon">R</span> Relume</div>
-          <div class="logos__item"><span class="logos__icon">W</span> Webflow</div>
-          <div class="logos__item"><span class="logos__icon">R</span> Relume</div>
-          <div class="logos__item"><span class="logos__icon">W</span> Webflow</div>
-          <div class="logos__item"><span class="logos__icon">R</span> Relume</div>
-          <div class="logos__item" aria-hidden="true"><span class="logos__icon">W</span> Webflow</div>
-          <div class="logos__item" aria-hidden="true"><span class="logos__icon">R</span> Relume</div>
-          <div class="logos__item" aria-hidden="true"><span class="logos__icon">W</span> Webflow</div>
-          <div class="logos__item" aria-hidden="true"><span class="logos__icon">R</span> Relume</div>
-          <div class="logos__item" aria-hidden="true"><span class="logos__icon">W</span> Webflow</div>
-          <div class="logos__item" aria-hidden="true"><span class="logos__icon">R</span> Relume</div>
-        </div>
+      <div class="hero__points" aria-hidden="true">
+        <span class="hero__point">Strategia</span>
+        <span class="hero__point">Technologia</span>
+        <span class="hero__point">Wynik</span>
       </div>
     </div>
   </section>
 
-  <!-- ========== USŁUGI ========== -->
-  <section class="services" id="uslugi">
+  <!-- ========== PASEK ZAUFANIA (brief 4.2) ========== -->
+  <section class="trust-bar" aria-label="Doświadczenie i zakres">
+    <div class="container trust-bar__inner">
+      <span class="trust-bar__item">14 lat doświadczenia</span>
+      <span class="trust-bar__item"><span class="partner-badge">Google Partner</span></span>
+      <span class="trust-bar__item"><span class="partner-badge">Allegro Ads Partner</span></span>
+      <span class="trust-bar__item"><span class="mono-label">WWW</span></span>
+      <span class="trust-bar__item"><span class="mono-label">E-commerce</span></span>
+      <span class="trust-bar__item"><span class="mono-label">Aplikacje</span></span>
+      <span class="trust-bar__item"><span class="mono-label">CRM</span></span>
+      <span class="trust-bar__item"><span class="mono-label">Reklamy</span></span>
+    </div>
+  </section>
+
+  <!-- ========== DWA GŁÓWNE OBSZARY (brief 4.3) ========== -->
+  <section class="pillars">
     <div class="container">
-      <header class="section-head">
-        <span class="eyebrow">
-          <span class="eyebrow__line"></span>
-          Nasze usługi
-          <span class="eyebrow__line"></span>
-        </span>
-        <h2 class="section-head__title">Co budujemy</h2>
-        <p class="section-head__subtitle">
-          Tworzymy nowoczesne rozwiązania, które pomagają firmom<br />
-          rosnąć w internecie i osiągać realne wyniki.
+      <div class="pillars__grid">
+        <a href="uslugi.html#budujemy" class="pillar-card" data-analytics="service_open" data-service="produkty-cyfrowe" data-source="pillar">
+          <span class="pillar-card__num">01 / BUDUJEMY</span>
+          <h2 class="pillar-card__title">Tworzymy produkty cyfrowe</h2>
+          <p class="pillar-card__text">Strony, sklepy, CRM-y i&nbsp;aplikacje dopasowane do procesów oraz celów Twojej firmy.</p>
+          <span class="pillar-card__arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+          <span class="pillar-card__glow" aria-hidden="true"></span>
+        </a>
+        <a href="uslugi.html#napedzamy" class="pillar-card" data-analytics="service_open" data-service="pozyskiwanie-klientow" data-source="pillar">
+          <span class="pillar-card__num">02 / NAPĘDZAMY</span>
+          <h2 class="pillar-card__title">Pozyskujemy klientów</h2>
+          <p class="pillar-card__text">Google Ads i&nbsp;Allegro Ads nastawione na sprzedaż, rentowność i&nbsp;przejrzyste raportowanie.</p>
+          <span class="pillar-card__arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </span>
+          <span class="pillar-card__glow" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== USŁUGI (brief 4.4) ========== -->
+  <section class="services" id="uslugi" style="padding-top:0;">
+    <div class="container">
+      <header class="svc-head">
+        <div class="svc-head__left">
+          <span class="eyebrow eyebrow--start">Usługi</span>
+          <h2 class="svc-head__title">Od pomysłu <br />do wyniku.</h2>
+        </div>
+        <p class="svc-head__lead">
+          Nie kończymy na atrakcyjnym projekcie. Tworzymy rozwiązania, które pozyskują zapytania, sprzedają, automatyzują procesy albo dostarczają dane.
         </p>
       </header>
 
-      <div class="services__grid">
-        <article class="service-card">
-          <div class="service-card__body">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </div>
-            <h3 class="service-card__title">Strony<br />internetowe</h3>
-            <p class="service-card__desc">
-              Tworzymy responsywne, szybkie i bezpieczne strony WWW, które budują zaufanie i przyciągają klientów.
-            </p>
-            <a href="uslugi.html#strony" class="service-card__link">
-              Sprawdź
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-          <div class="service-card__visual">
-            <img src="assets/images/service-www.jpg" alt="Przykład strony internetowej" class="service-card__img" onerror="this.parentElement.classList.add('service-card__visual--placeholder');this.remove()" />
-          </div>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__body">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            </div>
-            <h3 class="service-card__title">Sklepy<br />internetowe</h3>
-            <p class="service-card__desc">
-              Projektujemy i wdrażamy sklepy online, które sprzedają — intuicyjne, szybkie i gotowe na rozwój.
-            </p>
-            <a href="uslugi.html#sklepy" class="service-card__link">
-              Sprawdź
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-          <div class="service-card__visual service-card__visual--red">
-            <img src="assets/images/service-sklep.jpg" alt="Przykład sklepu internetowego" class="service-card__img" onerror="this.parentElement.classList.add('service-card__visual--placeholder');this.remove()" />
-          </div>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__body">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            </div>
-            <h3 class="service-card__title">Reklamy<br />Google</h3>
-            <p class="service-card__desc">
-              Prowadzimy skuteczne kampanie Google Ads, które zwiększają widoczność i przynoszą wartościowy ruch.
-            </p>
-            <a href="uslugi.html#google" class="service-card__link">
-              Sprawdź
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-          <div class="service-card__visual">
-            <img src="assets/images/service-google.jpg" alt="Dashboard Google Ads" class="service-card__img" onerror="this.parentElement.classList.add('service-card__visual--placeholder');this.remove()" />
-          </div>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__body">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-            </div>
-            <h3 class="service-card__title">Allegro<br />ADS</h3>
-            <p class="service-card__desc">
-              Optymalizujemy kampanie Allegro ADS, aby skutecznie sprzedać i maksymalizować zwrot z inwestycji.
-            </p>
-            <a href="uslugi.html#allegro" class="service-card__link">
-              Sprawdź
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-          </div>
-          <div class="service-card__visual">
-            <img src="assets/images/service-allegro.jpg" alt="Wykres skuteczności Allegro ADS" class="service-card__img" onerror="this.parentElement.classList.add('service-card__visual--placeholder');this.remove()" />
-          </div>
-        </article>
+      <div class="svc-tabs" role="tablist" aria-label="Usługi Code&Pixel">
+        <button class="svc-tab svc-tab--active" id="svc-tab-0" role="tab" aria-selected="true" aria-controls="svc-panel-0" tabindex="0" data-svc-tab="0">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></span>
+          <span class="svc-tab__label">Strony internetowe</span>
+        </button>
+        <button class="svc-tab" id="svc-tab-1" role="tab" aria-selected="false" aria-controls="svc-panel-1" tabindex="-1" data-svc-tab="1">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.2 11a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg></span>
+          <span class="svc-tab__label">Sklepy internetowe</span>
+        </button>
+        <button class="svc-tab" id="svc-tab-2" role="tab" aria-selected="false" aria-controls="svc-panel-2" tabindex="-1" data-svc-tab="2">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.6a3.6 3.6 0 0 0-3.6-3.6H6.6A3.6 3.6 0 0 0 3 18.4V20"/><circle cx="9.3" cy="8" r="3.4"/><path d="M21 20v-1.6a3.6 3.6 0 0 0-2.7-3.5"/><path d="M15 4.6a3.4 3.4 0 0 1 0 6.6"/></svg></span>
+          <span class="svc-tab__label">CRM i systemy dla firm</span>
+        </button>
+        <button class="svc-tab" id="svc-tab-3" role="tab" aria-selected="false" aria-controls="svc-panel-3" tabindex="-1" data-svc-tab="3">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 7.5 12 12 3 7.5 12 3"/><polyline points="3 16.5 12 21 21 16.5"/><polyline points="3 12 12 16.5 21 12"/></svg></span>
+          <span class="svc-tab__label">Aplikacje webowe</span>
+        </button>
+        <button class="svc-tab" id="svc-tab-4" role="tab" aria-selected="false" aria-controls="svc-panel-4" tabindex="-1" data-svc-tab="4">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></span>
+          <span class="svc-tab__label">Google Ads</span>
+        </button>
+        <button class="svc-tab" id="svc-tab-5" role="tab" aria-selected="false" aria-controls="svc-panel-5" tabindex="-1" data-svc-tab="5">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3 3.5 7v12a1.8 1.8 0 0 0 1.8 1.8h13.4A1.8 1.8 0 0 0 20.5 19V7L18 3z"/><line x1="3.5" y1="7" x2="20.5" y2="7"/><path d="M15.5 10.5a3.5 3.5 0 0 1-7 0"/></svg></span>
+          <span class="svc-tab__label">Allegro Ads</span>
+        </button>
+        <button class="svc-tab" id="svc-tab-6" role="tab" aria-selected="false" aria-controls="svc-panel-6" tabindex="-1" data-svc-tab="6">
+          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 7 13.5 14.5 9.5 10.5 3 17"/><polyline points="16 7 21 7 21 12"/></svg></span>
+          <span class="svc-tab__label">Opieka i rozwój</span>
+        </button>
       </div>
 
-      <div class="stats">
-        <div class="stat">
-          <div class="stat__icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-          </div>
-          <div>
-            <div class="stat__number">120<span>+</span></div>
-            <div class="stat__label">PROJEKTÓW</div>
-            <div class="stat__sub">Zrealizowanych dla firm z różnych branż</div>
+      <div class="svc-panels">
+        <div class="svc-panel svc-panel--active" id="svc-panel-0" role="tabpanel" aria-labelledby="svc-tab-0">
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Nowoczesne strony, <br />które budują zaufanie <br />i&nbsp;konwertują.</h3>
+              <p class="svc-panel__desc">Projektujemy responsywne strony internetowe, które przyciągają uwagę, budują wiarygodność i&nbsp;skutecznie zamieniają odwiedzających w&nbsp;klientów.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Projekt UX/UI dopasowany do Twojej marki</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Optymalizacja SEO i&nbsp;szybkości ładowania</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Responsywność i&nbsp;dostępność</li>
+              </ul>
+              <div class="svc-panel__tags"><span>UX / UI</span><span>Responsywność</span><span>SEO</span></div>
+              <a href="uslugi/strony-internetowe.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="strony-internetowe" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twoja marka</strong><p>Nowoczesna strona, która pracuje na Twój sukces.</p><span class="svc-mock__btn">Skontaktuj się</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Szybkość</strong><p>Optymalizacja i&nbsp;wydajność na najwyższym poziomie.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Responsywność</strong><p>Świetny wygląd na każdym urządzeniu.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>SEO</strong><p>Lepsza widoczność i&nbsp;więcej ruchu organicznego.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># strony</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Jak przygotować stronę główną pod kampanię?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Zaproponowałem strukturę sekcji, copy i&nbsp;układ CTA pod kampanię Google Ads.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Strona-glowna-propozycja.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="stat">
-          <div class="stat__icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          </div>
-          <div>
-            <div class="stat__number">13<span>lat</span></div>
-            <div class="stat__label">DOŚWIADCZENIA</div>
-            <div class="stat__sub">Ponad dekada w tworzeniu skutecznych rozwiązań</div>
+        <div class="svc-panel" id="svc-panel-1" role="tabpanel" aria-labelledby="svc-tab-1" hidden>
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Sklepy, które sprzedają <br />i&nbsp;skalują się razem <br />z&nbsp;Twoim biznesem.</h3>
+              <p class="svc-panel__desc">Budujemy sklepy internetowe z&nbsp;wygodnym procesem zakupu i&nbsp;sprawnym zapleczem, gotowe na kampanie i&nbsp;wzrost sprzedaży.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Wygodny checkout i&nbsp;szybki proces zakupu</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Integracje płatności, wysyłek i&nbsp;systemów</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Zaplecze gotowe do skalowania</li>
+              </ul>
+              <div class="svc-panel__tags"><span>E-commerce</span><span>Płatności</span><span>Integracje</span></div>
+              <a href="uslugi/sklepy-internetowe.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="sklepy-internetowe" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój sklep</strong><p>Sprzedawaj więcej, z&nbsp;mniejszym wysiłkiem.</p><span class="svc-mock__btn">Kup teraz</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Konwersja</strong><p>Ścieżka zakupu bez zbędnych kroków.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Płatności</strong><p>BLIK, karty i&nbsp;raty w&nbsp;jednym miejscu.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Magazyn</strong><p>Stany i&nbsp;zamówienia pod kontrolą.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># sklep</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Jak podnieść konwersję w&nbsp;koszyku?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Uprościłem checkout do 2 kroków i&nbsp;dodałem podsumowanie z&nbsp;kosztem dostawy.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Checkout-audyt.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="stat">
-          <div class="stat__icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-          </div>
-          <div>
-            <div class="stat__number">4.2x</div>
-            <div class="stat__label">ROAS</div>
-            <div class="stat__sub">Średni zwrot z inwestycji w kampaniach reklamowych</div>
+        <div class="svc-panel" id="svc-panel-2" role="tabpanel" aria-labelledby="svc-tab-2" hidden>
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Systemy, które porządkują <br />dane i&nbsp;oszczędzają <br />czas zespołu.</h3>
+              <p class="svc-panel__desc">Tworzymy CRM-y i&nbsp;wewnętrzne systemy, które łączą dane w&nbsp;jednym miejscu i&nbsp;eliminują powtarzalną pracę ręczną.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Jedno źródło danych o&nbsp;klientach</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Automatyzacja powtarzalnych procesów</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Raporty i&nbsp;pulpity w&nbsp;czasie rzeczywistym</li>
+              </ul>
+              <div class="svc-panel__tags"><span>Automatyzacja</span><span>Raporty</span><span>Integracje</span></div>
+              <a href="uslugi/crm-systemy.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="crm-systemy" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój CRM</strong><p>Wszystkie dane i&nbsp;procesy w&nbsp;jednym pulpicie.</p><span class="svc-mock__btn">Zobacz pulpit</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Leady</strong><p>Historia kontaktu w&nbsp;jednym widoku.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Automatyzacje</strong><p>Mniej klikania, więcej wyników.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Raporty</strong><p>Decyzje oparte na danych.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># crm</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Da się zautomatyzować przypisywanie leadów?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Tak, ustawiłem reguły przypisania wg źródła i&nbsp;regionu.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Automatyzacja-leadow.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="stat">
-          <div class="stat__icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        <div class="svc-panel" id="svc-panel-3" role="tabpanel" aria-labelledby="svc-tab-3" hidden>
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Aplikacje webowe <br />skrojone pod Twój <br />model biznesowy.</h3>
+              <p class="svc-panel__desc">Projektujemy i&nbsp;wdrażamy produkty cyfrowe, od MVP po dojrzały produkt, gotowe na integracje i&nbsp;rozwój.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Architektura pod Twój model biznesowy</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Od MVP do dojrzałego produktu</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>API i&nbsp;integracje z&nbsp;systemami</li>
+              </ul>
+              <div class="svc-panel__tags"><span>MVP</span><span>API</span><span>Backend</span></div>
+              <a href="uslugi/aplikacje-webowe.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="aplikacje-webowe" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój produkt</strong><p>Od pomysłu do działającego MVP.</p><span class="svc-mock__btn">Uruchom demo</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>MVP</strong><p>Szybko na rynek, bez kompromisów.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>API</strong><p>Integracje z&nbsp;Twoimi systemami.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Skalowanie</strong><p>Architektura gotowa na wzrost.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># aplikacja</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Zdążymy z&nbsp;MVP na Q3?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Tak, rozbiłem zakres na 3 sprinty z&nbsp;działającą wersją co 2 tygodnie.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Roadmapa-MVP.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
           </div>
-          <div>
-            <div class="stat__number">98<span>%</span></div>
-            <div class="stat__label">SATYSFAKCJI</div>
-            <div class="stat__sub">Klientów, którzy polecili nas dalej</div>
+        </div>
+        <div class="svc-panel" id="svc-panel-4" role="tabpanel" aria-labelledby="svc-tab-4" hidden>
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Kampanie Google Ads <br />prowadzone na wynik, <br />nie na sam ruch.</h3>
+              <p class="svc-panel__desc">Prowadzimy kampanie nastawione na realne zapytania i&nbsp;sprzedaż, z&nbsp;kontrolą kosztu pozyskania klienta.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kampanie prowadzone na wynik</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kontrolowany koszt pozyskania</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Optymalizacja pod konwersję</li>
+              </ul>
+              <div class="svc-panel__tags"><span>Search</span><span>PMax</span><span>Remarketing</span></div>
+              <a href="uslugi/google-ads.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="google-ads" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twoja kampania</strong><p>Więcej zapytań przy niższym koszcie.</p><span class="svc-mock__btn">Zobacz wyniki</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Konwersje</strong><p>Optymalizacja pod realne zapytania.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Koszt</strong><p>Kontrola CPA i&nbsp;budżetu.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Zasięg</strong><p>Search, PMax i&nbsp;remarketing.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># google-ads</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Da się obniżyć koszt pozyskania?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Przeniosłem budżet na najlepsze frazy i&nbsp;odciąłem nietrafiony ruch.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Optymalizacja-kampanii.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="svc-panel" id="svc-panel-5" role="tabpanel" aria-labelledby="svc-tab-5" hidden>
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Allegro Ads, które <br />zwiększają sprzedaż bez <br />przepalania budżetu.</h3>
+              <p class="svc-panel__desc">Optymalizujemy widoczność ofert i&nbsp;kampanie na Allegro tak, aby sprzedaż była rentowna.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Lepsza widoczność ofert</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Rentowna sprzedaż, bez przepalania</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Optymalizacja kampanii i&nbsp;ofert</li>
+              </ul>
+              <div class="svc-panel__tags"><span>Kampanie</span><span>Oferty</span><span>Rentowność</span></div>
+              <a href="uslugi/allegro-ads.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="allegro-ads" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twoje oferty</strong><p>Wyżej w&nbsp;wynikach, wyżej w&nbsp;sprzedaży.</p><span class="svc-mock__btn">Sprawdź oferty</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Widoczność</strong><p>Oferty wyżej w&nbsp;wynikach.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Rentowność</strong><p>Sprzedaż z&nbsp;kontrolą marży.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Oferty</strong><p>Lepsze tytuły i&nbsp;zdjęcia.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># allegro-ads</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Które oferty promować w&nbsp;pierwszej kolejności?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Wybrałem 8 ofert z&nbsp;najlepszą marżą i&nbsp;konwersją.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Plan-kampanii-allegro.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="svc-panel" id="svc-panel-6" role="tabpanel" aria-labelledby="svc-tab-6" hidden>
+          <div class="svc-panel__grid">
+            <div class="svc-panel__body">
+              <h3 class="svc-panel__title">Opieka i&nbsp;rozwój, bo <br />technologia nie kończy się <br />w&nbsp;dniu publikacji.</h3>
+              <p class="svc-panel__desc">Zapewniamy utrzymanie, bezpieczeństwo i&nbsp;analitykę oraz kolejne wdrożenia, które rozwijają Twój produkt.</p>
+              <ul class="svc-checklist">
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Utrzymanie, hosting i&nbsp;bezpieczeństwo</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Monitoring i&nbsp;analityka</li>
+                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kolejne wdrożenia i&nbsp;rozwój</li>
+              </ul>
+              <div class="svc-panel__tags"><span>SLA</span><span>CRO</span><span>Monitoring</span></div>
+              <a href="uslugi/opieka-rozwoj.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="opieka-rozwoj" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+            <div class="svc-visual">
+              <div class="svc-mock" aria-hidden="true">
+                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
+                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój rozwój</strong><p>Stabilnie dziś, mocniej jutro.</p><span class="svc-mock__btn">Zobacz plan</span></div><div class="svc-mock__hero-img"></div></div>
+                <div class="svc-mock__cards">
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Utrzymanie</strong><p>Hosting, kopie i&nbsp;bezpieczeństwo.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Monitoring</strong><p>Czujność 24/7.</p></div>
+                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Rozwój</strong><p>Kolejne usprawnienia co miesiąc.</p></div>
+                </div>
+              </div>
+              <div class="svc-chat" aria-hidden="true">
+                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># opieka</em></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Jak zaplanujemy rozwój po starcie?</p></div></div>
+                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Ustawiłem miesięczny cykl usprawnień wg priorytetów z&nbsp;analityki.</p></div></div>
+                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Plan-rozwoju.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
+                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <p class="services__footnote">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        Stawiamy na jakość, transparentność i realne efekty.
-      </p>
     </div>
   </section>
 
-  <!-- ========== WAVE DIVIDER ========== -->
+  <!-- ========== WAVE DIVIDER — zanurzenie ========== -->
   <div class="wave-divider" aria-hidden="true">
     <svg class="wave-divider__svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
       <path class="wave-divider__back" d="M0,100 C240,40 480,160 720,100 C960,40 1200,160 1440,100 L1440,200 L0,200 Z"></path>
@@ -269,19 +481,19 @@
     </svg>
   </div>
 
-  <!-- ========== PORTFOLIO ========== -->
+  <!-- ========== WYBRANE REALIZACJE (brief 4.5) ========== -->
   <section class="portfolio" id="portfolio">
     <div class="container">
       <header class="section-head section-head--light">
         <span class="eyebrow eyebrow--light">
           <span class="eyebrow__line"></span>
-          Nasze projekty
+          Realizacje
           <span class="eyebrow__line"></span>
         </span>
-        <h2 class="section-head__title">Zobacz, co tworzymy</h2>
+        <h2 class="section-head__title">Projekty, które przynoszą efekty</h2>
         <p class="section-head__subtitle">
-          Realne projekty, wymierne efekty i zadowoleni klienci.<br />
-          Każdy projekt to nowe możliwości.
+          Dowód kompetencji zamiast obietnic: realne wdrożenia,<br />
+          technologie i&nbsp;zweryfikowane rezultaty.
         </p>
       </header>
 
@@ -294,9 +506,9 @@
             <span class="case__tag">Strona internetowa</span>
             <h3 class="case__title">Sufity LED</h3>
             <p class="case__desc">
-              Nowoczesna strona internetowa dla firmy z branży wykończeniowej. Przejrzysta prezentacja oferty i realizacji, która buduje zaufanie i przyciąga klientów.
+              Serwis leadowy dla firmy z&nbsp;branży wykończeniowej. Przejrzysta prezentacja oferty i&nbsp;realizacji, która buduje zaufanie i&nbsp;zamienia ruch w&nbsp;zapytania.
             </p>
-            <a href="portfolio/sufity-led.html" class="btn btn--outline btn--sm">
+            <a href="portfolio/sufity-led.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="sufity-led" data-case-category="strona">
               Zobacz projekt
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
@@ -307,8 +519,9 @@
           <div class="case__media case__media--full">
             <img src="assets/images/case-miasteczko.jpg" alt="Miasteczko Witkowice" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
             <div class="case__overlay">
+              <span class="case__tag case__tag--overlay">Strona internetowa</span>
               <h3 class="case__title case__title--overlay">Miasteczko<br />Witkowice</h3>
-              <a href="portfolio/miasteczko-witkowice.html" class="btn btn--outline btn--sm">
+              <a href="portfolio/miasteczko-witkowice.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="miasteczko-witkowice" data-case-category="strona">
                 Zobacz projekt
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
@@ -320,12 +533,12 @@
           <div class="case__media case__media--full">
             <img src="assets/images/case-tct.jpg" alt="TCT Tools — sklep internetowy" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
             <div class="case__overlay">
-              <span class="case__tag case__tag--overlay">Sklep internetowy</span>
+              <span class="case__tag case__tag--overlay">Sklep + Allegro Ads</span>
               <h3 class="case__title case__title--overlay">TCT Tools</h3>
               <p class="case__desc case__desc--overlay">
-                Sklep internetowy z narzędziami, zaprojektowany z myślą o wygodzie zakupów i maksymalizacji konwersji.
+                Sklep z&nbsp;narzędziami zaprojektowany pod wygodę zakupów i&nbsp;konwersję, wsparty kampaniami Allegro Ads.
               </p>
-              <a href="portfolio/tct-tools.html" class="btn btn--outline btn--sm">
+              <a href="portfolio/tct-tools.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="tct-tools" data-case-category="sklep">
                 Zobacz projekt
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
@@ -335,22 +548,144 @@
       </div>
 
       <div class="portfolio__cta">
-        <a href="portfolio.html" class="btn btn--ghost-light">
-          Zobacz wszystkie projekty
+        <a href="portfolio.html" class="btn btn--ghost-light" data-cta="home-portfolio">
+          Zobacz wszystkie realizacje
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ========== TESTIMONIAL ========== -->
+  <!-- ========== DLACZEGO CODE & PIXEL (brief 4.6) ========== -->
+  <section class="why">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">
+          <span class="eyebrow__line"></span>
+          Dlaczego Code &amp; Pixel
+          <span class="eyebrow__line"></span>
+        </span>
+        <h2 class="section-head__title">Inny model współpracy</h2>
+      </header>
+
+      <div class="why__grid">
+        <div class="why-item">
+          <div class="why-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18"></path></svg>
+          </div>
+          <h3 class="why-item__title">Jedna odpowiedzialność</h3>
+          <p class="why-item__text">Projekt, technologia i&nbsp;reklama prowadzone przez jeden zespół.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+          </div>
+          <h3 class="why-item__title">Myślenie biznesowe</h3>
+          <p class="why-item__text">Najpierw cel, proces i&nbsp;klient, dopiero potem narzędzie.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V10m6 10V4m6 16v-7"></path></svg>
+          </div>
+          <h3 class="why-item__title">Gotowe na rozwój</h3>
+          <p class="why-item__text">Architektura, którą można rozbudowywać o&nbsp;kolejne etapy.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 14h5"></path></svg>
+          </div>
+          <h3 class="why-item__title">Transparentna współpraca</h3>
+          <p class="why-item__text">Jasny zakres, etapy, raportowanie i&nbsp;dostęp do danych.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+          </div>
+          <h3 class="why-item__title">14 lat praktyki</h3>
+          <p class="why-item__text">Doświadczenie z&nbsp;realnych wdrożeń, nie z&nbsp;prezentacji.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCES WSPÓŁPRACY (brief 4.7) ========== -->
+  <section class="land-section land-section--surface" id="proces">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">
+          <span class="eyebrow__line"></span>
+          Proces współpracy
+          <span class="eyebrow__line"></span>
+        </span>
+        <h2 class="section-head__title">Wiesz, na jakim etapie jesteś</h2>
+        <p class="section-head__subtitle">
+          Pięć etapów, jasne zasady i&nbsp;zero niespodzianek po drodze.
+        </p>
+      </header>
+
+      <div class="process">
+        <div class="process-step">
+          <div class="process-step__num">1</div>
+          <h3 class="process-step__title">Rozpoznanie</h3>
+          <p class="process-step__desc">Cele, odbiorcy, konkurencja i&nbsp;procesy. <span class="depth-mark">Sonar</span></p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">2</div>
+          <h3 class="process-step__title">Wyznaczenie kursu</h3>
+          <p class="process-step__desc">Strategia, zakres, priorytety i&nbsp;harmonogram.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">3</div>
+          <h3 class="process-step__title">Budowa rozwiązania</h3>
+          <p class="process-step__desc">UX, projekt graficzny, development lub konfiguracja kampanii.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">4</div>
+          <h3 class="process-step__title">Uruchomienie</h3>
+          <p class="process-step__desc">Testy, publikacja, wdrożenie i&nbsp;przekazanie dostępu.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">5</div>
+          <h3 class="process-step__title">Rozwój</h3>
+          <p class="process-step__desc">Analiza danych, optymalizacja i&nbsp;kolejne etapy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TECHNOLOGIE I PARTNERSTWA (brief 4.8) ========== -->
+  <section class="tech">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow">
+          <span class="eyebrow__line"></span>
+          Technologie i&nbsp;partnerstwa
+          <span class="eyebrow__line"></span>
+        </span>
+        <h2 class="section-head__title">Sprawdzone narzędzia, świadome wybory</h2>
+      </header>
+
+      <div class="tech__wall">
+        <div class="tech-item"><span class="tech-item__tag">Partnerstwo</span><div>Google Partner<span class="tech-item__desc">Certyfikowany partner Google Ads</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">Partnerstwo</span><div>Allegro Ads Partner<span class="tech-item__desc">Oficjalny program partnerski Allegro</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">CMS</span><div>WordPress<span class="tech-item__desc">Strony firmowe i&nbsp;serwisy treściowe</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">E-commerce</span><div>WooCommerce<span class="tech-item__desc">Sklepy zintegrowane z&nbsp;marketplace</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">Backend</span><div>PHP / Laravel<span class="tech-item__desc">Systemy dedykowane i&nbsp;API</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">Frontend</span><div>JavaScript / React<span class="tech-item__desc">Interfejsy aplikacji webowych</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">Analityka</span><div>GA4 + GTM<span class="tech-item__desc">Pomiar konwersji i&nbsp;raportowanie</span></div></div>
+        <div class="tech-item"><span class="tech-item__tag">Integracje</span><div>REST API<span class="tech-item__desc">ERP, płatności, logistyka, marketplace</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OPINIE (brief 4.9) ========== -->
   <section class="testimonial">
     <div class="container testimonial__inner">
       <div class="testimonial__visual">
         <img src="assets/images/jellyfish.png" alt="" class="testimonial__jelly" onerror="this.parentElement.classList.add('testimonial__visual--placeholder'); this.style.display='none'" />
         <div class="testimonial__stat">
           <span class="testimonial__stat-num">+120<span>%</span></span>
-          <span class="testimonial__stat-label">Wyższe przychody<br />w pierwszym kwartale</span>
+          <span class="testimonial__stat-label">Wyższe przychody<br />w&nbsp;pierwszym kwartale</span>
         </div>
       </div>
 
@@ -360,13 +695,13 @@
           <div class="testimonial__slider" id="testimonialSlider">
           <blockquote class="testimonial__slide testimonial__slide--active">
             <p class="testimonial__text">
-              Nasz sklep generował o <strong>120% wyższe przychody</strong> w pierwszym kwartale. Ich wiedza na temat e-commerce jest niezrównana.
+              Nasz sklep generował o&nbsp;<strong>120% wyższe przychody</strong> w&nbsp;pierwszym kwartale. Ich wiedza na temat e-commerce jest niezrównana.
             </p>
             <footer class="testimonial__author">
               <div class="testimonial__avatar" aria-hidden="true">MN</div>
               <div>
                 <div class="testimonial__name">Marek Nowak</div>
-                <div class="testimonial__role">CEO, UrbanStore</div>
+                <div class="testimonial__role">CEO, UrbanStore · sklep internetowy</div>
               </div>
             </footer>
           </blockquote>
@@ -379,33 +714,20 @@
               <div class="testimonial__avatar" aria-hidden="true">AK</div>
               <div>
                 <div class="testimonial__name">Anna Kowalska</div>
-                <div class="testimonial__role">Marketing, BuildPro</div>
+                <div class="testimonial__role">Marketing, BuildPro · strona internetowa</div>
               </div>
             </footer>
           </blockquote>
 
           <blockquote class="testimonial__slide">
             <p class="testimonial__text">
-              Kampanie Google Ads zwróciły się <strong>w pierwszym miesiącu</strong>. ROAS na poziomie 5.2x — niesamowite.
+              Kampanie Google Ads zwróciły się <strong>w&nbsp;pierwszym miesiącu</strong>. ROAS na poziomie 5.2x, niesamowite.
             </p>
             <footer class="testimonial__author">
               <div class="testimonial__avatar" aria-hidden="true">TW</div>
               <div>
                 <div class="testimonial__name">Tomasz Wiśniewski</div>
-                <div class="testimonial__role">Founder, GreenLab</div>
-              </div>
-            </footer>
-          </blockquote>
-
-          <blockquote class="testimonial__slide">
-            <p class="testimonial__text">
-              Sklep i Allegro ADS w jednej ręce — wszystko spięte, wszystko działa. <strong>Najlepsza decyzja</strong> ostatnich lat.
-            </p>
-            <footer class="testimonial__author">
-              <div class="testimonial__avatar" aria-hidden="true">PL</div>
-              <div>
-                <div class="testimonial__name">Paweł Lewandowski</div>
-                <div class="testimonial__role">CEO, ToolMax</div>
+                <div class="testimonial__role">Founder, GreenLab · Google Ads</div>
               </div>
             </footer>
           </blockquote>
@@ -420,70 +742,99 @@
             <button class="testimonial__dot testimonial__dot--active" data-slide="0" aria-label="Opinia 1"></button>
             <button class="testimonial__dot" data-slide="1" aria-label="Opinia 2"></button>
             <button class="testimonial__dot" data-slide="2" aria-label="Opinia 3"></button>
-            <button class="testimonial__dot" data-slide="3" aria-label="Opinia 4"></button>
           </div>
           <button class="testimonial__arrow testimonial__arrow--next" aria-label="Następna opinia">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
-          <span class="testimonial__counter" id="testimonialCounter">01 / 04</span>
+          <span class="testimonial__counter" id="testimonialCounter">01 / 03</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CTA STRIP ========== -->
+  <!-- ========== CTA KOŃCOWE (brief 4.10) ========== -->
   <section class="cta-strip" id="kontakt">
     <div class="container cta-strip__inner">
       <div>
         <span class="eyebrow eyebrow--light">
           <span class="eyebrow__line"></span>
-          Kontakt
+          Rozpocznij projekt
         </span>
         <h2 class="cta-strip__title">
-          Masz projekt?<br />Porozmawiajmy.
+          Masz cel. Wyznaczmy<br />najlepszy cyfrowy kurs.
         </h2>
         <p class="cta-strip__desc">
-          Wstępna konsultacja jest bezpłatna. Odpowiadamy w ciągu 24 godzin.
+          Opowiedz nam, co chcesz zbudować albo poprawić. Wrócimy z&nbsp;pierwszymi rekomendacjami i&nbsp;propozycją kolejnych kroków.
         </p>
       </div>
 
       <div class="cta-strip__actions">
-        <a href="kontakt.html" class="btn btn--primary btn--lg">
-          Wypełnij formularz
+        <a href="kontakt.html" class="btn btn--primary btn--lg" data-cta="footer-strip-primary">
+          Umów konsultację
           <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="mailto:hello@codeandpixel.io" class="cta-strip__email">hello@codeandpixel.io</a>
+        <a href="kontakt.html" class="btn btn--ghost btn--lg" data-cta="footer-strip-secondary">Wyceń projekt</a>
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- ========== FOOTER (brief 3.3) ========== -->
   <footer class="footer">
-    <div class="container footer__inner">
+    <div class="container footer__grid">
       <div class="footer__brand">
         <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
-        <p class="footer__tagline">Agencja interaktywna. Strategia, design i technologia.</p>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
       </div>
 
-      <nav class="footer__nav" aria-label="Stopka — nawigacja">
-        <a href="uslugi.html">Usługi</a>
-        <a href="portfolio.html">Portfolio</a>
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="uslugi/strony-internetowe.html">Strony internetowe</a>
+        <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="uslugi/google-ads.html">Google Ads</a>
+        <a href="uslugi/allegro-ads.html">Allegro Ads</a>
+        <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="o-nas.html">O&nbsp;nas</a>
+        <a href="portfolio.html">Realizacje</a>
         <a href="kontakt.html">Kontakt</a>
       </nav>
 
-      <a href="kontakt.html" class="btn btn--ghost btn--sm">
-        Porozmawiajmy
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="wiedza.html">Wszystkie artykuły</a>
+        <a href="wiedza.html#e-commerce">E-commerce</a>
+        <a href="wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
     </div>
 
     <div class="footer__bottom">
-      <div class="container">
+      <div class="container footer__legal">
         <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="polityka-prywatnosci.html#cookies">Cookies</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <a href="kontakt.html" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Rozpocznij projekt</a>
+
+  <script src="js/main.js?v=20260715-1"></script>
 </body>
 </html>

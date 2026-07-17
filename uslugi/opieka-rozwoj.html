@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Opieka i rozwój stron, sklepów i aplikacji | Code&Pixel</title>
+  <meta name="description" content="Utrzymanie, bezpieczeństwo, aktualizacje i rozwój stron, sklepów oraz aplikacji: monitoring, SLA, optymalizacja konwersji i analityka w jednym zespole." />
+  <meta name="theme-color" content="#071525" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/style.css?v=20260713-3" />
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body class="is-subpage" data-service-page="opieka-rozwoj">
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="logo" aria-label="Code & Pixel — strona główna">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <ul class="nav__list">
+          <li class="nav__item--has-mega">
+            <a href="../uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="../uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="../portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="../o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="../wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
+          <li><a href="../kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="../kontakt.html?usluga=opieka" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav>
+        <ul>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="google-ads.html">Google Ads</a></li>
+          <li><a href="allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="../portfolio.html">Realizacje</a></li>
+          <li><a href="../o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="../wiedza.html">Wiedza</a></li>
+          <li><a href="../kontakt.html">Kontakt</a></li>
+        </ul>
+        <a href="../kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Ścieżka">
+          <a href="../index.html">Start</a>
+          <span class="breadcrumb__sep">/</span>
+          <a href="../uslugi.html">Usługi</a>
+          <span class="breadcrumb__sep">/</span>
+          <span class="breadcrumb__current">Opieka i&nbsp;rozwój</span>
+        </nav>
+
+        <span class="eyebrow eyebrow--light">
+          <span class="eyebrow__line"></span>
+          Rozwijamy
+          <span class="eyebrow__line"></span>
+        </span>
+        <h1 class="page-hero__title">
+          Technologia nie kończy się <em>w&nbsp;dniu publikacji.</em>
+        </h1>
+        <p class="page-hero__subtitle">
+          Utrzymujemy, zabezpieczamy i&nbsp;rozwijamy strony, sklepy i&nbsp;aplikacje. Ty zajmujesz się firmą, a&nbsp;my pilnujemy, żeby technologia działała i&nbsp;pracowała coraz lepiej.
+        </p>
+
+        <div class="hero__actions" style="justify-content:flex-start;">
+          <a href="../kontakt.html?usluga=opieka" class="btn btn--primary btn--lg" data-cta="landing-hero">
+            Zaplanuj opiekę
+            <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#zakres" class="btn btn--ghost btn--lg">Zobacz zakres</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DLA KOGO / KIEDY WARTO ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Dla kogo<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Kiedy warto do nas napisać</h2>
+      </header>
+
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.01</span>
+          <h3 class="scenario-card__title">Strona po wdrożeniu</h3>
+          <p class="scenario-card__text">Masz nową stronę i&nbsp;chcesz, żeby ktoś dbał o&nbsp;jej bezpieczeństwo, aktualizacje i&nbsp;rozwój.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.02</span>
+          <h3 class="scenario-card__title">Sklep z&nbsp;ruchem</h3>
+          <p class="scenario-card__text">Każda godzina przestoju kosztuje Cię sprzedaż, więc potrzebujesz monitoringu i&nbsp;szybkiej reakcji.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.03</span>
+          <h3 class="scenario-card__title">System kluczowy dla firmy</h3>
+          <p class="scenario-card__text">CRM lub aplikacja obsługuje codzienną pracę zespołu i&nbsp;musi mieć zapewnioną ciągłość działania.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.04</span>
+          <h3 class="scenario-card__title">Projekt od innej agencji</h3>
+          <p class="scenario-card__text">Poprzedni wykonawca zniknął albo współpraca się zakończyła. Przejmujemy projekt po audycie technicznym.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.05</span>
+          <h3 class="scenario-card__title">Rozwój bez etatu</h3>
+          <p class="scenario-card__text">Potrzebujesz zespołu do regularnych zmian i&nbsp;nowych funkcji, ale bez zatrudniania programisty na stałe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLEMY, KTÓRE ROZWIĄZUJEMY ========== -->
+  <section class="land-section land-section--deep">
+    <div class="container">
+      <header class="section-head section-head--light">
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Problemy<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Sytuacje, z&nbsp;którymi przychodzą do nas firmy</h2>
+      </header>
+
+      <div class="problem-list">
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Strona stoi bez aktualizacji od miesięcy, a&nbsp;z&nbsp;każdym tygodniem rośnie ryzyko awarii i&nbsp;włamania.
+        </div>
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
+          Każda drobna zmiana czeka tygodniami, bo nie ma komu jej wdrożyć albo nikt nie zna kodu.
+        </div>
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline></svg>
+          Ruch na stronie jest, ale konwersja stoi w&nbsp;miejscu i&nbsp;nikt systematycznie nad nią nie pracuje.
+        </div>
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4m0 4h.01"></path></svg>
+          O&nbsp;awarii dowiadujesz się od klientów, bo nikt nie monitoruje, czy wszystko działa.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ZAKRES USŁUGI ========== -->
+  <section class="land-section land-section--white" id="zakres">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Zakres<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Co obejmuje opieka i&nbsp;rozwój</h2>
+        <p class="section-head__subtitle">Zakres dopasowujemy do technologii i&nbsp;znaczenia projektu dla Twojego biznesu.</p>
+      </header>
+
+      <div class="scope-grid">
+        <div class="scope-item">Utrzymanie<span>Kopie zapasowe, hosting i&nbsp;bieżące prace, które utrzymują projekt w&nbsp;dobrej kondycji.</span></div>
+        <div class="scope-item">Bezpieczeństwo<span>Zabezpieczenia, certyfikaty i&nbsp;reagowanie na zagrożenia, zanim staną się problemem.</span></div>
+        <div class="scope-item">Aktualizacje<span>Regularne aktualizacje systemu, wtyczek i&nbsp;zależności, testowane przed wdrożeniem.</span></div>
+        <div class="scope-item">Rozwój funkcji<span>Nowe sekcje, moduły i&nbsp;integracje dokładane w&nbsp;miarę rozwoju firmy.</span></div>
+        <div class="scope-item">CRO<span>Optymalizacja konwersji: zmiany oparte na danych, które zwiększają liczbę zapytań i&nbsp;transakcji.</span></div>
+        <div class="scope-item">Analityka<span>Pomiar, raporty i&nbsp;wnioski, które pokazują, co działa, a&nbsp;co wymaga poprawy.</span></div>
+        <div class="scope-item">Monitoring i&nbsp;SLA<span>Stały nadzór nad dostępnością oraz gwarantowane czasy reakcji zapisane w&nbsp;umowie.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MODELE WSPÓŁPRACY ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Modele współpracy<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Trzy sposoby, w&nbsp;jakie możemy pracować</h2>
+        <p class="section-head__subtitle">Model dobieramy do skali projektu i&nbsp;tempa zmian w&nbsp;Twojej firmie.</p>
+      </header>
+
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-card__num">M.01</span>
+          <h3 class="scenario-card__title">Pakiet godzin</h3>
+          <p class="scenario-card__text">Pula godzin do wykorzystania na zmiany, poprawki i&nbsp;drobny rozwój. Dobre na start i&nbsp;przy nieregularnych potrzebach.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">M.02</span>
+          <h3 class="scenario-card__title">Stała opieka</h3>
+          <p class="scenario-card__text">Miesięczny abonament: utrzymanie, bezpieczeństwo, aktualizacje, monitoring i&nbsp;gwarantowane czasy reakcji.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">M.03</span>
+          <h3 class="scenario-card__title">Rozwój etapowy</h3>
+          <p class="scenario-card__text">Większe zmiany planowane w&nbsp;etapach: od analizy, przez wycenę, po wdrożenie kolejnych funkcji w&nbsp;ustalonym rytmie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OPIEKA VS OSOBNY PROJEKT ========== -->
+  <section class="land-section land-section--white">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Granice zakresu<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Co obejmuje opieka, a&nbsp;co jest osobnym projektem</h2>
+      </header>
+
+      <div class="compare">
+        <div class="compare__col compare__col--highlight">
+          <h3 class="compare__title">W&nbsp;ramach opieki</h3>
+          <ul class="compare__list">
+            <li>Aktualizacje systemu, wtyczek i&nbsp;zależności wraz z&nbsp;testami.</li>
+            <li>Kopie zapasowe, bezpieczeństwo i&nbsp;monitoring dostępności.</li>
+            <li>Drobne zmiany treści, sekcji i&nbsp;funkcji w&nbsp;ramach ustalonych godzin.</li>
+            <li>Optymalizacja szybkości, konwersji i&nbsp;raporty z&nbsp;analityki.</li>
+          </ul>
+        </div>
+        <div class="compare__col">
+          <h3 class="compare__title">Osobny projekt</h3>
+          <ul class="compare__list">
+            <li>Przebudowa całego serwisu albo redesign warstwy graficznej.</li>
+            <li>Nowe, duże moduły: sklep, strefa klienta, rozbudowana integracja.</li>
+            <li>Migracja na nową technologię lub nowy hosting z&nbsp;przeniesieniem danych.</li>
+            <li>Budowa nowej strony, aplikacji lub systemu od podstaw.</li>
+          </ul>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:32px;font-size:14.5px;color:var(--ink-3);">Granicę zakresu ustalamy jasno przed startem współpracy. Gdy potrzeba wykracza poza opiekę, dostajesz osobną wycenę przed rozpoczęciem prac.</p>
+    </div>
+  </section>
+
+  <!-- ========== JAK PRACUJEMY ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Jak pracujemy<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Proces objęcia projektu opieką</h2>
+      </header>
+
+      <div class="process">
+        <div class="process-step">
+          <div class="process-step__num">1</div>
+          <h3 class="process-step__title">Audyt techniczny</h3>
+          <p class="process-step__desc">Przegląd kodu, hostingu, bezpieczeństwa i&nbsp;analityki. Także projektów innych wykonawców.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">2</div>
+          <h3 class="process-step__title">Plan opieki</h3>
+          <p class="process-step__desc">Wybór modelu współpracy, zakres, priorytety i&nbsp;czasy reakcji zapisane w&nbsp;umowie.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">3</div>
+          <h3 class="process-step__title">Zabezpieczenie</h3>
+          <p class="process-step__desc">Kopie zapasowe, aktualizacje, monitoring i&nbsp;uporządkowanie dostępów na start.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">4</div>
+          <h3 class="process-step__title">Stały rytm prac</h3>
+          <p class="process-step__desc">Regularne aktualizacje, zmiany i&nbsp;rozwój funkcji zgodnie z&nbsp;ustalonymi priorytetami.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">5</div>
+          <h3 class="process-step__title">Raport i&nbsp;rekomendacje</h3>
+          <p class="process-step__desc">Cykliczne podsumowanie prac, wyników i&nbsp;propozycji rozwoju na kolejny okres.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== REALIZACJE Z KATEGORII ========== -->
+  <section class="land-section land-section--deep">
+    <div class="container">
+      <header class="section-head section-head--light">
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Realizacje<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Projekty, które budujemy i&nbsp;rozwijamy</h2>
+      </header>
+
+      <div class="portfolio__grid" style="height:auto;grid-template-rows:auto;">
+        <article class="case case--small">
+          <div class="case__media case__media--full">
+            <img src="../assets/images/case-sufity-led.jpg" alt="Sufity LED — strona internetowa" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
+            <div class="case__overlay">
+              <span class="case__tag case__tag--overlay">Strona internetowa</span>
+              <h3 class="case__title case__title--overlay">Sufity LED</h3>
+              <a href="../portfolio/sufity-led.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="sufity-led" data-case-category="strona">
+                Zobacz projekt
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+        <article class="case case--small">
+          <div class="case__media case__media--full">
+            <img src="../assets/images/case-tct.jpg" alt="TCT Tools — sklep internetowy" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
+            <div class="case__overlay">
+              <span class="case__tag case__tag--overlay">Sklep internetowy</span>
+              <h3 class="case__title case__title--overlay">TCT Tools</h3>
+              <a href="../portfolio/tct-tools.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="tct-tools" data-case-category="sklep">
+                Zobacz projekt
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>FAQ<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Pytania przed startem współpracy</h2>
+      </header>
+
+      <div class="faq">
+        <div class="faq__item">
+          <button class="faq__question">Czym różni się pakiet godzin od stałej opieki?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Pakiet godzin to pula do wykorzystania na konkretne zadania, dobra przy nieregularnych potrzebach. Stała opieka to abonament, w&nbsp;którym oprócz godzin na zmiany dostajesz monitoring, aktualizacje, kopie zapasowe i&nbsp;gwarantowane czasy reakcji. Jeśli projekt zarabia na firmę, zwykle rekomendujemy stałą opiekę.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Stronę robiła inna agencja. Czy możecie ją przejąć?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Tak, robimy to regularnie. Zaczynamy od audytu technicznego: sprawdzamy kod, hosting, bezpieczeństwo i&nbsp;dostępy. Po audycie wiesz, w&nbsp;jakim stanie jest projekt i&nbsp;co wymaga uporządkowania, zanim obejmiemy go opieką.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Jak szybko reagujecie na awarie?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Czasy reakcji zależą od wybranego modelu i&nbsp;są zapisane w&nbsp;umowie jako SLA. Dzięki monitoringowi o&nbsp;większości problemów wiemy wcześniej niż użytkownicy i&nbsp;często rozwiązujemy je, zanim ktokolwiek je zauważy.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Czy niewykorzystane godziny przepadają?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Zasady rozliczania godzin ustalamy jasno przed startem i&nbsp;zapisujemy w&nbsp;umowie, łącznie z&nbsp;tym, co dzieje się z&nbsp;niewykorzystaną pulą. Nie ma tu drobnego druku: wiesz, za co płacisz i&nbsp;co dostajesz w&nbsp;zamian.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Czy w&nbsp;ramach opieki mogę zamawiać nowe funkcje?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Tak, drobny rozwój mieści się w&nbsp;godzinach opieki. Większe zmiany, na przykład nowy moduł albo przebudowa serwisu, wyceniamy jako osobny projekt. Zawsze dostajesz wycenę przed rozpoczęciem prac.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA / FORMULARZ ========== -->
+  <section class="cta-strip">
+    <div class="container cta-strip__inner">
+      <div>
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Rozpocznij projekt</span>
+        <h2 class="cta-strip__title">Oddaj technologię w&nbsp;dobre ręce.</h2>
+        <p class="cta-strip__desc">W&nbsp;konfiguratorze zapytamy o&nbsp;obecną stronę lub system, technologię i&nbsp;zakres wsparcia. Wrócimy z&nbsp;rekomendacją modelu współpracy.</p>
+      </div>
+      <div class="cta-strip__actions">
+        <a href="../kontakt.html?usluga=opieka" class="btn btn--primary btn--lg" data-cta="landing-bottom">
+          Zaplanuj opiekę
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="mailto:hello@codeandpixel.io" class="cta-strip__email" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POWIĄZANE USŁUGI I ARTYKUŁY ========== -->
+  <section class="land-section land-section--white">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Zobacz też<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Powiązane usługi i&nbsp;wiedza</h2>
+      </header>
+
+      <div class="related-grid">
+        <a href="strony-internetowe.html" class="related-card" data-analytics="service_open" data-service="strony-internetowe" data-source="related">
+          <span class="mono-label">Usługa</span>
+          <div class="related-card__title">Strony internetowe</div>
+          <p class="related-card__text">Nowa strona zbudowana z&nbsp;myślą o&nbsp;dalszym rozwoju.</p>
+        </a>
+        <a href="google-ads.html" class="related-card" data-analytics="service_open" data-service="google-ads" data-source="related">
+          <span class="mono-label">Usługa</span>
+          <div class="related-card__title">Google Ads</div>
+          <p class="related-card__text">Kampanie, które napędzają ruch na dopracowaną stronę.</p>
+        </a>
+        <a href="../wiedza.html" class="related-card">
+          <span class="mono-label">Wiedza</span>
+          <div class="related-card__title">Rozwój i&nbsp;optymalizacja</div>
+          <p class="related-card__text">Artykuły o&nbsp;utrzymaniu, analityce i&nbsp;poprawianiu konwersji.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
+      </div>
+
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="strony-internetowe.html">Strony internetowe</a>
+        <a href="sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="google-ads.html">Google Ads</a>
+        <a href="allegro-ads.html">Allegro Ads</a>
+        <a href="opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="../o-nas.html">O&nbsp;nas</a>
+        <a href="../portfolio.html">Realizacje</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="../wiedza.html">Wszystkie artykuły</a>
+        <a href="../wiedza.html#e-commerce">E-commerce</a>
+        <a href="../wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__legal">
+        <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="../polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="../polityka-prywatnosci.html#cookies">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="../kontakt.html?usluga=opieka" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Rozpocznij projekt</a>
+
+  <script src="../js/main.js?v=20260713-3"></script>
+</body>
+</html>

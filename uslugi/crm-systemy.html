@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM i systemy dedykowane dla firm | Code&Pixel</title>
+  <meta name="description" content="Budujemy dedykowane systemy CRM, panele klienta i narzędzia do obiegu zleceń: analiza procesów, prototyp, MVP i rozwój etapami." />
+  <meta name="theme-color" content="#071525" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/style.css?v=20260713-3" />
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body class="is-subpage" data-service-page="crm-systemy">
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="logo" aria-label="Code & Pixel — strona główna">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <ul class="nav__list">
+          <li class="nav__item--has-mega">
+            <a href="../uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="../uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="../portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="../o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="../wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
+          <li><a href="../kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="../kontakt.html?usluga=crm" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav>
+        <ul>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="google-ads.html">Google Ads</a></li>
+          <li><a href="allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="../portfolio.html">Realizacje</a></li>
+          <li><a href="../o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="../wiedza.html">Wiedza</a></li>
+          <li><a href="../kontakt.html">Kontakt</a></li>
+        </ul>
+        <a href="../kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Ścieżka">
+          <a href="../index.html">Start</a>
+          <span class="breadcrumb__sep">/</span>
+          <a href="../uslugi.html">Usługi</a>
+          <span class="breadcrumb__sep">/</span>
+          <span class="breadcrumb__current">CRM i&nbsp;systemy dla firm</span>
+        </nav>
+
+        <span class="eyebrow eyebrow--light">
+          <span class="eyebrow__line"></span>
+          Budujemy
+          <span class="eyebrow__line"></span>
+        </span>
+        <h1 class="page-hero__title">
+          Systemy, które porządkują procesy <em>i&nbsp;uwalniają czas zespołu.</em>
+        </h1>
+        <p class="page-hero__subtitle">
+          Dedykowane CRM-y, panele klienta i&nbsp;narzędzia wewnętrzne, które zastępują arkusze i&nbsp;ręczne przepisywanie danych. Budujemy je etapami, zaczynając od analizy tego, jak naprawdę pracuje Twoja firma.
+        </p>
+
+        <div class="hero__actions" style="justify-content:flex-start;">
+          <a href="../kontakt.html?usluga=crm" class="btn btn--primary btn--lg" data-cta="landing-hero">
+            Wyceń swój system
+            <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#zakres" class="btn btn--ghost btn--lg">Zobacz zakres</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DLA KOGO / KIEDY WARTO ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Dla kogo<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Kiedy warto do nas napisać</h2>
+      </header>
+
+      <div class="scenario-grid">
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.01</span>
+          <h3 class="scenario-card__title">CRM sprzedażowy</h3>
+          <p class="scenario-card__text">Chcesz zbierać leady, historię kontaktów i&nbsp;statusy szans sprzedaży w&nbsp;jednym miejscu, zamiast w&nbsp;arkuszach i&nbsp;skrzynkach mailowych.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.02</span>
+          <h3 class="scenario-card__title">Panel klienta</h3>
+          <p class="scenario-card__text">Klienci pytają o&nbsp;statusy i&nbsp;dokumenty mailem. Panel daje im wgląd samodzielnie, o&nbsp;każdej porze, bez angażowania zespołu.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.03</span>
+          <h3 class="scenario-card__title">Obieg zleceń</h3>
+          <p class="scenario-card__text">Zlecenia przechodzą przez kilka osób i&nbsp;etapów, a&nbsp;nikt nie widzi, gdzie utknęły. System pilnuje przepływu i&nbsp;terminów.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.04</span>
+          <h3 class="scenario-card__title">Baza produktów</h3>
+          <p class="scenario-card__text">Dane o&nbsp;produktach żyją w&nbsp;wielu plikach. Potrzebujesz jednego źródła prawdy dla ofert, cenników i&nbsp;kanałów sprzedaży.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.05</span>
+          <h3 class="scenario-card__title">System raportowy</h3>
+          <p class="scenario-card__text">Raporty powstają ręcznie i&nbsp;za późno. Chcesz widzieć kluczowe liczby firmy na bieżąco, bez składania danych z&nbsp;kilku Exceli.</p>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-card__num">S.06</span>
+          <h3 class="scenario-card__title">Integracje</h3>
+          <p class="scenario-card__text">Twoje narzędzia nie wymieniają danych. Łączymy systemy tak, żeby informacje wpisywać raz, a&nbsp;nie trzy razy w&nbsp;trzech miejscach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROBLEMY, KTÓRE ROZWIĄZUJEMY ========== -->
+  <section class="land-section land-section--deep">
+    <div class="container">
+      <header class="section-head section-head--light">
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Problemy<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Sytuacje, z&nbsp;którymi przychodzą do nas firmy</h2>
+      </header>
+
+      <div class="problem-list">
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Wiedza o&nbsp;klientach i&nbsp;zleceniach siedzi w&nbsp;skrzynkach mailowych i&nbsp;prywatnych notatkach pracowników.
+        </div>
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 7v5l3 3"></path></svg>
+          Zespół traci godziny na ręczne przepisywanie danych między arkuszami i&nbsp;programami.
+        </div>
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+          Gotowe systemy wymuszają pracę pod swój schemat, zamiast wspierać proces, który działa w&nbsp;Twojej firmie.
+        </div>
+        <div class="problem-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline></svg>
+          Firma rośnie, ale rozproszone dane utrudniają decyzje i&nbsp;wdrażanie nowych osób.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ZAKRES USŁUGI ========== -->
+  <section class="land-section land-section--white" id="zakres">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Zakres<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Co obejmuje budowa systemu</h2>
+        <p class="section-head__subtitle">Zakres wynika z&nbsp;analizy procesów, nie z&nbsp;cennika. Budujemy tylko to, co realnie usprawnia pracę.</p>
+      </header>
+
+      <div class="scope-grid">
+        <div class="scope-item">Analiza procesów<span>Rozmowy z&nbsp;zespołem i&nbsp;mapowanie tego, jak firma naprawdę pracuje.</span></div>
+        <div class="scope-item">Architektura systemu<span>Model danych, moduły i&nbsp;plan integracji z&nbsp;obecnymi narzędziami.</span></div>
+        <div class="scope-item">UX paneli<span>Interfejsy zaprojektowane pod codzienną pracę, nie pod prezentację.</span></div>
+        <div class="scope-item">Development<span>Bezpieczny, udokumentowany kod przygotowany na rozbudowę.</span></div>
+        <div class="scope-item">Uprawnienia i&nbsp;bezpieczeństwo<span>Role użytkowników, historia zmian i&nbsp;ochrona danych firmowych.</span></div>
+        <div class="scope-item">Migracja danych<span>Przeniesienie danych z&nbsp;arkuszy i&nbsp;starych systemów, z&nbsp;porządkowaniem po drodze.</span></div>
+        <div class="scope-item">Integracje<span>Połączenia z&nbsp;księgowością, magazynem i&nbsp;innymi systemami przez API.</span></div>
+        <div class="scope-item">Wdrożenie zespołu<span>Szkolenie na realnych scenariuszach, żeby system wszedł do codziennego użycia.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== JAK POWSTAJE SYSTEM ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Jak pracujemy<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Jak powstaje system</h2>
+        <p class="section-head__subtitle">Etapami, z&nbsp;weryfikacją po każdej fazie. Zespół zaczyna pracować na systemie wcześnie, a&nbsp;kolejne moduły wynikają z&nbsp;realnego użycia.</p>
+      </header>
+
+      <div class="process">
+        <div class="process-step">
+          <div class="process-step__num">1</div>
+          <h3 class="process-step__title">Discovery</h3>
+          <p class="process-step__desc">Warsztat o&nbsp;celach, procesach i&nbsp;wąskich gardłach. Ustalamy, co system ma zmienić.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">2</div>
+          <h3 class="process-step__title">Mapa procesów</h3>
+          <p class="process-step__desc">Rozrysowujemy przepływ pracy i&nbsp;danych, zanim powstanie pierwszy ekran.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">3</div>
+          <h3 class="process-step__title">Prototyp</h3>
+          <p class="process-step__desc">Klikalne widoki kluczowych modułów do weryfikacji z&nbsp;zespołem przed developmentem.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">4</div>
+          <h3 class="process-step__title">MVP</h3>
+          <p class="process-step__desc">Pierwsza działająca wersja obejmuje najważniejszy proces i&nbsp;trafia do realnej pracy.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">5</div>
+          <h3 class="process-step__title">Wdrożenie</h3>
+          <p class="process-step__desc">Migracja danych, uprawnienia, szkolenie zespołu i&nbsp;start produkcyjny.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">6</div>
+          <h3 class="process-step__title">Rozwój</h3>
+          <p class="process-step__desc">Kolejne moduły i&nbsp;usprawnienia dokładamy etapami, na podstawie pracy na systemie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ZAMIAST REALIZACJI ========== -->
+  <section class="land-section land-section--deep">
+    <div class="container">
+      <header class="section-head section-head--light">
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Rozmowa<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Porozmawiajmy o&nbsp;Twoim procesie</h2>
+        <p class="section-head__subtitle">Systemy wewnętrzne rzadko można pokazać publicznie, bo pracują na danych firm. Opowiedz nam, jak działa Twój zespół, a&nbsp;na spotkaniu pokażemy podejście i&nbsp;to, co możemy uprościć.</p>
+      </header>
+      <div style="text-align:center;">
+        <a href="../kontakt.html?usluga=crm" class="btn btn--primary btn--lg" data-cta="landing-middle">
+          Umów rozmowę
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>FAQ<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Pytania przed startem projektu</h2>
+      </header>
+
+      <div class="faq">
+        <div class="faq__item">
+          <button class="faq__question">Gotowy CRM czy system dedykowany?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Jeśli gotowe narzędzie pokrywa Twój proces, wskażemy je wprost, bo to tańsza droga. System dedykowany ma sens, gdy proces jest nietypowy, integracje są kluczowe albo koszty licencji rosną razem z&nbsp;zespołem. Odpowiedź daje etap discovery.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Ile trwa budowa systemu?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Zależy od liczby modułów i&nbsp;integracji. Planujemy pracę tak, żeby pierwsza działająca wersja (MVP) obsłużyła najważniejszy proces możliwie wcześnie, a&nbsp;kolejne moduły dochodziły etapami. Harmonogram etapów dostajesz po discovery.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Co z&nbsp;danymi, które mamy w&nbsp;arkuszach?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Migracja danych jest częścią wdrożenia. Przenosimy dane z&nbsp;arkuszy i&nbsp;starych systemów, po drodze porządkując duplikaty i&nbsp;braki, żeby nowy system startował na czystej bazie.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Czy system będzie można rozbudowywać?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Tak, to założenie architektury od pierwszego dnia. Kod jest udokumentowany, a&nbsp;prawa do niego należą do Ciebie, więc rozwój nie jest uzależniony od jednego wykonawcy.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question">Kto zajmuje się systemem po wdrożeniu?<span class="faq__icon" aria-hidden="true"></span></button>
+          <div class="faq__answer"><p>Do wyboru: przekazujemy system Twojemu zespołowi IT z&nbsp;dokumentacją albo obejmujemy go stałą opieką w&nbsp;ramach usługi Opieka i&nbsp;rozwój: aktualizacje, kopie zapasowe, monitoring i&nbsp;kolejne usprawnienia.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA / FORMULARZ ========== -->
+  <section class="cta-strip">
+    <div class="container cta-strip__inner">
+      <div>
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Rozpocznij projekt</span>
+        <h2 class="cta-strip__title">Opowiedz nam o&nbsp;swoim procesie.</h2>
+        <p class="cta-strip__desc">W&nbsp;konfiguratorze zapytamy o&nbsp;proces, który chcesz uporządkować, obecne narzędzia, integracje i&nbsp;termin. Wrócimy z&nbsp;rekomendacjami.</p>
+      </div>
+      <div class="cta-strip__actions">
+        <a href="../kontakt.html?usluga=crm" class="btn btn--primary btn--lg" data-cta="landing-bottom">
+          Wyceń projekt
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="mailto:hello@codeandpixel.io" class="cta-strip__email" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POWIĄZANE USŁUGI I ARTYKUŁY ========== -->
+  <section class="land-section land-section--white">
+    <div class="container">
+      <header class="section-head">
+        <span class="eyebrow"><span class="eyebrow__line"></span>Zobacz też<span class="eyebrow__line"></span></span>
+        <h2 class="section-head__title">Powiązane usługi i&nbsp;wiedza</h2>
+      </header>
+
+      <div class="related-grid">
+        <a href="aplikacje-webowe.html" class="related-card" data-analytics="service_open" data-service="aplikacje-webowe" data-source="related">
+          <span class="mono-label">Usługa</span>
+          <div class="related-card__title">Aplikacje webowe</div>
+          <p class="related-card__text">Produkty cyfrowe budowane od MVP do pełnej skali.</p>
+        </a>
+        <a href="opieka-rozwoj.html" class="related-card" data-analytics="service_open" data-service="opieka-rozwoj" data-source="related">
+          <span class="mono-label">Usługa</span>
+          <div class="related-card__title">Opieka i&nbsp;rozwój</div>
+          <p class="related-card__text">Utrzymanie, bezpieczeństwo i&nbsp;rozwój systemu po wdrożeniu.</p>
+        </a>
+        <a href="../wiedza.html" class="related-card">
+          <span class="mono-label">Wiedza</span>
+          <div class="related-card__title">Procesy i&nbsp;automatyzacja</div>
+          <p class="related-card__text">Artykuły o&nbsp;porządkowaniu pracy i&nbsp;danych w&nbsp;firmach.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
+      </div>
+
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="strony-internetowe.html">Strony internetowe</a>
+        <a href="sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="google-ads.html">Google Ads</a>
+        <a href="allegro-ads.html">Allegro Ads</a>
+        <a href="opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="../o-nas.html">O&nbsp;nas</a>
+        <a href="../portfolio.html">Realizacje</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="../wiedza.html">Wszystkie artykuły</a>
+        <a href="../wiedza.html#e-commerce">E-commerce</a>
+        <a href="../wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__legal">
+        <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="../polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="../polityka-prywatnosci.html#cookies">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="../kontakt.html?usluga=crm" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Rozpocznij projekt</a>
+
+  <script src="../js/main.js?v=20260713-3"></script>
+</body>
+</html>

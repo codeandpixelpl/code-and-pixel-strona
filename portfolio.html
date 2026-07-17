@@ -3,45 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio — Code&Pixel | Strony, sklepy, kampanie</title>
-  <meta name="description" content="Wybrane projekty Code & Pixel — strony internetowe, sklepy online i kampanie reklamowe dla firm z różnych branż." />
+  <title>Realizacje | Code&Pixel: strony, sklepy, aplikacje i kampanie</title>
+  <meta name="description" content="Realizacje Code&Pixel: strony internetowe, sklepy online, aplikacje i kampanie reklamowe. Realne wdrożenia i zweryfikowane rezultaty." />
   <meta name="theme-color" content="#0a1a3a" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20260713-3" />
+  <script>window.dataLayer = window.dataLayer || [];</script>
 </head>
 <body class="is-subpage">
 
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo">
+      <a href="index.html" class="logo" aria-label="Code & Pixel — strona główna">
         <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
       </a>
+
       <nav class="nav" aria-label="Główna nawigacja">
         <ul class="nav__list">
-          <li><a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a></li>
-          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Portfolio</a></li>
+          <li class="nav__item--has-mega">
+            <a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="uslugi/allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
           <li><a href="kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
         </ul>
       </nav>
-      <a href="kontakt.html" class="btn btn--ghost btn--header">
-        Porozmawiajmy
+
+      <a href="kontakt.html" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
         <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
+
       <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
+
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <nav>
         <ul>
-          <li><a href="uslugi.html">Usługi</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="uslugi/strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="uslugi/google-ads.html">Google Ads</a></li>
+          <li><a href="uslugi/allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="portfolio.html">Realizacje</a></li>
+          <li><a href="o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html">Wiedza</a></li>
           <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <a href="kontakt.html" class="btn btn--primary btn--block">Porozmawiajmy</a>
+        <a href="kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
       </nav>
     </div>
   </header>
@@ -52,19 +98,19 @@
         <nav class="breadcrumb" aria-label="Ścieżka">
           <a href="index.html">Start</a>
           <span class="breadcrumb__sep">/</span>
-          <span class="breadcrumb__current">Portfolio</span>
+          <span class="breadcrumb__current">Realizacje</span>
         </nav>
 
         <span class="eyebrow eyebrow--light">
           <span class="eyebrow__line"></span>
-          Nasze projekty
+          Realizacje
           <span class="eyebrow__line"></span>
         </span>
         <h1 class="page-hero__title">
-          Realne projekty.<br /><em>Mierzalne efekty.</em>
+          Projekty, które<br /><em>przynoszą efekty.</em>
         </h1>
         <p class="page-hero__subtitle">
-          Wybrane wdrożenia z ostatnich lat. Strony, sklepy i kampanie — każda z liczbami, które mówią same za siebie.
+          Dowód kompetencji zamiast obietnic: realne wdrożenia, technologie i&nbsp;zweryfikowane rezultaty z&nbsp;kontekstem każdej liczby.
         </p>
       </div>
     </div>
@@ -75,15 +121,16 @@
 
       <div class="filter-chips" role="tablist" aria-label="Filtr projektów">
         <button class="filter-chip filter-chip--active" data-filter="all" type="button">Wszystkie</button>
-        <button class="filter-chip" data-filter="strona" type="button">Strony</button>
-        <button class="filter-chip" data-filter="sklep" type="button">Sklepy</button>
-        <button class="filter-chip" data-filter="reklama" type="button">Reklamy</button>
-        <button class="filter-chip" data-filter="branding" type="button">Branding</button>
+        <button class="filter-chip" data-filter="strona" type="button">Strony WWW</button>
+        <button class="filter-chip" data-filter="sklep" type="button">E-commerce</button>
+        <button class="filter-chip" data-filter="aplikacja" type="button">Aplikacje i&nbsp;CRM</button>
+        <button class="filter-chip" data-filter="google-ads" type="button">Google Ads</button>
+        <button class="filter-chip" data-filter="allegro-ads" type="button">Allegro Ads</button>
       </div>
 
       <div class="portfolio-grid">
 
-        <a href="portfolio/sufity-led.html" class="portfolio-card" data-category="strona">
+        <a href="portfolio/sufity-led.html" class="portfolio-card" data-category="strona" data-analytics="case_study_open" data-case="sufity-led" data-case-category="strona">
           <div class="portfolio-card__media">
             <img src="assets/images/case-sufity-led.jpg" alt="" onerror="this.remove()" />
           </div>
@@ -97,7 +144,7 @@
           </div>
         </a>
 
-        <a href="portfolio/miasteczko-witkowice.html" class="portfolio-card" data-category="strona">
+        <a href="portfolio/miasteczko-witkowice.html" class="portfolio-card" data-category="strona" data-analytics="case_study_open" data-case="miasteczko-witkowice" data-case-category="strona">
           <div class="portfolio-card__media">
             <img src="assets/images/case-miasteczko.jpg" alt="" onerror="this.remove()" />
           </div>
@@ -111,7 +158,7 @@
           </div>
         </a>
 
-        <a href="portfolio/tct-tools.html" class="portfolio-card" data-category="sklep">
+        <a href="portfolio/tct-tools.html" class="portfolio-card" data-category="sklep allegro-ads" data-analytics="case_study_open" data-case="tct-tools" data-case-category="sklep">
           <div class="portfolio-card__media">
             <img src="assets/images/case-tct.jpg" alt="" onerror="this.remove()" />
           </div>
@@ -125,79 +172,12 @@
           </div>
         </a>
 
-        <a href="#" class="portfolio-card" data-category="sklep">
-          <div class="portfolio-card__media"></div>
-          <span class="portfolio-card__arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </span>
-          <div class="portfolio-card__overlay">
-            <span class="portfolio-card__tag">Sklep internetowy</span>
-            <h3 class="portfolio-card__title">UrbanStore</h3>
-            <span class="portfolio-card__client">Fashion e-commerce · 2025</span>
-          </div>
-        </a>
-
-        <a href="#" class="portfolio-card" data-category="reklama">
-          <div class="portfolio-card__media"></div>
-          <span class="portfolio-card__arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </span>
-          <div class="portfolio-card__overlay">
-            <span class="portfolio-card__tag">Google Ads · Allegro ADS</span>
-            <h3 class="portfolio-card__title">ToolMax — kampania 360°</h3>
-            <span class="portfolio-card__client">Narzędzia · 2024–2025</span>
-          </div>
-        </a>
-
-        <a href="#" class="portfolio-card" data-category="strona">
-          <div class="portfolio-card__media"></div>
-          <span class="portfolio-card__arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </span>
-          <div class="portfolio-card__overlay">
-            <span class="portfolio-card__tag">Strona korporacyjna</span>
-            <h3 class="portfolio-card__title">BuildPro Group</h3>
-            <span class="portfolio-card__client">Budownictwo · 2024</span>
-          </div>
-        </a>
-
-        <a href="#" class="portfolio-card" data-category="reklama">
-          <div class="portfolio-card__media"></div>
-          <span class="portfolio-card__arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </span>
-          <div class="portfolio-card__overlay">
-            <span class="portfolio-card__tag">Google Ads</span>
-            <h3 class="portfolio-card__title">GreenLab — ROAS 5.2x</h3>
-            <span class="portfolio-card__client">Eko-kosmetyki · 2024</span>
-          </div>
-        </a>
-
-        <a href="#" class="portfolio-card" data-category="branding">
-          <div class="portfolio-card__media"></div>
-          <span class="portfolio-card__arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </span>
-          <div class="portfolio-card__overlay">
-            <span class="portfolio-card__tag">Identyfikacja wizualna</span>
-            <h3 class="portfolio-card__title">Aurora Coffee</h3>
-            <span class="portfolio-card__client">Kawiarnia · 2024</span>
-          </div>
-        </a>
-
-        <a href="#" class="portfolio-card" data-category="strona branding">
-          <div class="portfolio-card__media"></div>
-          <span class="portfolio-card__arrow" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-          </span>
-          <div class="portfolio-card__overlay">
-            <span class="portfolio-card__tag">Strona + branding</span>
-            <h3 class="portfolio-card__title">Klinika Vita</h3>
-            <span class="portfolio-card__client">Medycyna estetyczna · 2024</span>
-          </div>
-        </a>
-
       </div>
+
+      <p class="filter-empty" id="filterEmpty" hidden style="text-align:center;padding:48px 24px;color:rgba(255,255,255,0.65);font-size:15.5px;">
+        Nie mamy jeszcze opublikowanych realizacji w&nbsp;tej kategorii. Zmień filtr albo
+        <a href="kontakt.html" style="color:var(--mint);font-weight:700;">napisz do nas</a>, chętnie opowiemy o&nbsp;projektach, których nie możemy pokazać publicznie.
+      </p>
     </div>
   </section>
 
@@ -212,7 +192,7 @@
           Następne case studium<br />może być Twoje.
         </h2>
         <p class="cta-strip__desc">
-          Powiedz nam, co chcesz osiągnąć. My powiemy, jak — i ile to kosztuje.
+          Powiedz nam, co chcesz osiągnąć. My powiemy jak i&nbsp;ile to kosztuje.
         </p>
       </div>
       <div class="cta-strip__actions">
@@ -226,28 +206,61 @@
   </section>
 
   <footer class="footer">
-    <div class="container footer__inner">
+    <div class="container footer__grid">
       <div class="footer__brand">
         <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
-        <p class="footer__tagline">Agencja interaktywna. Strategia, design i technologia.</p>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
       </div>
-      <nav class="footer__nav" aria-label="Stopka — nawigacja">
-        <a href="uslugi.html">Usługi</a>
-        <a href="portfolio.html">Portfolio</a>
+
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="uslugi/strony-internetowe.html">Strony internetowe</a>
+        <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="uslugi/google-ads.html">Google Ads</a>
+        <a href="uslugi/allegro-ads.html">Allegro Ads</a>
+        <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="o-nas.html">O&nbsp;nas</a>
+        <a href="portfolio.html">Realizacje</a>
         <a href="kontakt.html">Kontakt</a>
       </nav>
-      <a href="kontakt.html" class="btn btn--ghost btn--sm">
-        Porozmawiajmy
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="wiedza.html">Wszystkie artykuły</a>
+        <a href="wiedza.html#e-commerce">E-commerce</a>
+        <a href="wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
     </div>
+
     <div class="footer__bottom">
-      <div class="container">
+      <div class="container footer__legal">
         <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="polityka-prywatnosci.html#cookies">Cookies</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <a href="kontakt.html" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Rozpocznij projekt</a>
+
+  <script src="js/main.js?v=20260713-3"></script>
 </body>
 </html>

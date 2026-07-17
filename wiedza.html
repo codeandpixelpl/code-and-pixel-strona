@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wiedza — poradniki o stronach, sklepach i kampaniach | Code&Pixel</title>
+  <meta name="description" content="Praktyczne artykuły zespołu Code&Pixel: wybór platformy sklepu, pomiar konwersji w GA4, budżety Google Ads. Wnioski z realnych wdrożeń, bez teorii dla teorii." />
+  <meta name="theme-color" content="#071525" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css?v=20260713-3" />
+  <script>window.dataLayer = window.dataLayer || [];</script>
+</head>
+<body class="is-subpage">
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="Code & Pixel — strona główna">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        <ul class="nav__list">
+          <li class="nav__item--has-mega">
+            <a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="uslugi/allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
+          <li><a href="kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <a href="kontakt.html" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
+        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav>
+        <ul>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="uslugi/strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="uslugi/google-ads.html">Google Ads</a></li>
+          <li><a href="uslugi/allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="portfolio.html">Realizacje</a></li>
+          <li><a href="o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html">Wiedza</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a href="kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========== HERO (brief 7.2) ========== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Ścieżka">
+          <a href="index.html">Start</a>
+          <span class="breadcrumb__sep">/</span>
+          <span class="breadcrumb__current">Wiedza</span>
+        </nav>
+
+        <span class="eyebrow eyebrow--light">
+          <span class="eyebrow__line"></span>
+          Wiedza
+          <span class="eyebrow__line"></span>
+        </span>
+        <h1 class="page-hero__title">
+          Piszemy o&nbsp;tym,<br /><em>co sami wdrażamy.</em>
+        </h1>
+        <p class="page-hero__subtitle">
+          Notatki z&nbsp;projektów: jak wybrać platformę sklepu, jak mierzyć konwersje, jak planować budżet kampanii. Konkretne decyzje i&nbsp;ich konsekwencje, bez teorii dla teorii.
+        </p>
+
+        <div class="filter-chips" aria-label="Kategorie artykułów" style="margin-top:40px;margin-bottom:0;">
+          <span class="filter-chip" id="strony-ux">Strony i&nbsp;UX</span>
+          <span class="filter-chip" id="e-commerce">E-commerce</span>
+          <span class="filter-chip" id="automatyzacja-crm">Automatyzacja i&nbsp;CRM</span>
+          <span class="filter-chip" id="google-ads">Google Ads</span>
+          <span class="filter-chip" id="allegro-ads">Allegro Ads</span>
+          <span class="filter-chip" id="analityka">Analityka</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LISTA ARTYKUŁÓW ========== -->
+  <section class="land-section land-section--surface">
+    <div class="container">
+      <div class="post-grid">
+
+        <a href="wiedza/jak-wybrac-platforme-sklepu.html" class="post-card post-card--featured">
+          <div class="post-card__cover" aria-hidden="true"></div>
+          <div class="post-card__body">
+            <span class="mono-label">E-commerce</span>
+            <h2 class="post-card__title">Jak wybrać platformę sklepu internetowego: SaaS, open source czy rozwiązanie dedykowane</h2>
+            <p class="post-card__excerpt">
+              Wybór platformy to decyzja na lata, a&nbsp;zmiana po drodze kosztuje więcej niż samo wdrożenie. Porównujemy trzy drogi według kosztu całkowitego, integracji z&nbsp;ERP i&nbsp;marketplace, SEO oraz możliwości skalowania. Z&nbsp;podpowiedzią, kiedy która ma sens.
+            </p>
+            <div class="post-card__meta">
+              <span>Zespół Code&amp;Pixel</span>
+              <span>Lipiec 2026</span>
+              <span>9 min czytania</span>
+            </div>
+          </div>
+        </a>
+
+        <article class="post-card">
+          <div class="post-card__cover" aria-hidden="true"></div>
+          <div class="post-card__body">
+            <span class="mono-label">Analityka <span style="color:var(--brand);">// Wkrótce</span></span>
+            <h2 class="post-card__title">Jak mierzyć konwersje w&nbsp;GA4, żeby raport mówił o&nbsp;sprzedaży, nie o&nbsp;ruchu</h2>
+            <p class="post-card__excerpt">
+              Konfiguracja zdarzeń kluczowych, rozróżnienie mikro- i&nbsp;makrokonwersji oraz najczęstsze błędy, przez które dane w&nbsp;GA4 nie zgadzają się z&nbsp;rzeczywistością.
+            </p>
+            <div class="post-card__meta">
+              <span>Zespół Code&amp;Pixel</span>
+              <span>Wkrótce</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card__cover" aria-hidden="true"></div>
+          <div class="post-card__body">
+            <span class="mono-label">Google Ads <span style="color:var(--brand);">// Wkrótce</span></span>
+            <h2 class="post-card__title">Jaki budżet Google Ads na start: jak go policzyć od marży, a&nbsp;nie od wyczucia</h2>
+            <p class="post-card__excerpt">
+              Prosty sposób wyliczenia budżetu testowego z&nbsp;marży i&nbsp;docelowego kosztu pozyskania. Plus sygnały, po których poznasz, że kampania jest gotowa na skalowanie.
+            </p>
+            <div class="post-card__meta">
+              <span>Zespół Code&amp;Pixel</span>
+              <span>Wkrótce</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="cta-strip">
+    <div class="container cta-strip__inner">
+      <div>
+        <span class="eyebrow eyebrow--light"><span class="eyebrow__line"></span>Rozpocznij projekt</span>
+        <h2 class="cta-strip__title">Wolisz rozmowę<br />niż lekturę?</h2>
+        <p class="cta-strip__desc">Opowiedz nam o&nbsp;swoim projekcie. Wrócimy z&nbsp;pierwszymi rekomendacjami i&nbsp;propozycją kolejnych kroków.</p>
+      </div>
+      <div class="cta-strip__actions">
+        <a href="kontakt.html" class="btn btn--primary btn--lg" data-cta="wiedza-bottom">
+          Opowiedz nam o&nbsp;projekcie
+          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="mailto:hello@codeandpixel.io" class="cta-strip__email" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (brief 3.3) ========== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
+      </div>
+
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="uslugi/strony-internetowe.html">Strony internetowe</a>
+        <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="uslugi/google-ads.html">Google Ads</a>
+        <a href="uslugi/allegro-ads.html">Allegro Ads</a>
+        <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="o-nas.html">O&nbsp;nas</a>
+        <a href="portfolio.html">Realizacje</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="wiedza.html">Wszystkie artykuły</a>
+        <a href="wiedza.html#e-commerce">E-commerce</a>
+        <a href="wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__legal">
+        <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="polityka-prywatnosci.html#cookies">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="kontakt.html" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Rozpocznij projekt</a>
+
+  <script src="js/main.js?v=20260713-3"></script>
+</body>
+</html>

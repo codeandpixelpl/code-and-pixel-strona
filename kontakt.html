@@ -3,318 +3,453 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt — Code&Pixel | Zacznij projekt</title>
-  <meta name="description" content="Porozmawiajmy o Twoim projekcie. Wstępna konsultacja jest bezpłatna, a odpowiadamy w ciągu 24 godzin." />
-  <meta name="theme-color" content="#0a1a3a" />
+  <title>Rozpocznij projekt | Code&Pixel</title>
+  <meta name="description" content="Opowiedz nam o projekcie w krótkim konfiguratorze: potrzeba, cel, zakres, budżet i termin. Wrócimy z pierwszymi rekomendacjami w ciągu 24 godzin." />
+  <meta name="theme-color" content="#071525" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css?v=20260713-3" />
+  <script>window.dataLayer = window.dataLayer || [];</script>
 </head>
 <body class="is-subpage">
 
+  <!-- ========== HEADER ========== -->
   <header class="header" id="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo">
+      <a href="index.html" class="logo" aria-label="Code & Pixel — strona główna">
         <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
       </a>
+
       <nav class="nav" aria-label="Główna nawigacja">
         <ul class="nav__list">
-          <li><a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a></li>
-          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Portfolio</a></li>
+          <li class="nav__item--has-mega">
+            <a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
+            <div class="nav__mega">
+              <div class="mega-group">
+                <div class="mega-group__title">Budujemy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
+                  <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
+                  <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
+                  <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Napędzamy sprzedaż</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
+                  <a href="uslugi/allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
+                </div>
+              </div>
+              <div class="mega-group">
+                <div class="mega-group__title">Rozwijamy</div>
+                <div class="mega-group__links">
+                  <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
+                  <a href="uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
+          <li><a href="o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
           <li><a href="kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
         </ul>
       </nav>
-      <a href="kontakt.html" class="btn btn--ghost btn--header">
-        Porozmawiajmy
+
+      <a href="kontakt.html" class="btn btn--ghost btn--header" data-cta="header">
+        Opowiedz nam o&nbsp;projekcie
         <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </a>
+
       <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
+
     <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
       <nav>
         <ul>
-          <li><a href="uslugi.html">Usługi</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
+          <li><a href="uslugi/strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a></li>
+          <li><a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
+          <li><a href="uslugi/google-ads.html">Google Ads</a></li>
+          <li><a href="uslugi/allegro-ads.html">Allegro Ads</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
+          <li><a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
+          <li><a href="portfolio.html">Realizacje</a></li>
+          <li><a href="o-nas.html">O&nbsp;nas</a></li>
+          <li><a href="wiedza.html">Wiedza</a></li>
           <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
-        <a href="kontakt.html" class="btn btn--primary btn--block">Porozmawiajmy</a>
+        <a href="kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
       </nav>
     </div>
   </header>
 
+  <!-- ========== HERO ========== -->
   <section class="page-hero">
     <div class="container">
       <div class="page-hero__inner">
         <nav class="breadcrumb" aria-label="Ścieżka">
           <a href="index.html">Start</a>
           <span class="breadcrumb__sep">/</span>
-          <span class="breadcrumb__current">Kontakt</span>
+          <span class="breadcrumb__current">Rozpocznij projekt</span>
         </nav>
 
         <span class="eyebrow eyebrow--light">
           <span class="eyebrow__line"></span>
-          Porozmawiajmy
+          Kontakt
           <span class="eyebrow__line"></span>
         </span>
         <h1 class="page-hero__title">
-          Zbudujmy<br /><em>razem</em>
+          Wyznaczmy <em>kurs</em> Twojego projektu
         </h1>
         <p class="page-hero__subtitle">
-          Wstępna konsultacja jest bezpłatna. Odpowiadamy w ciągu 24 godzin — w dni robocze zwykle szybciej.
+          Sześć krótkich pytań zamiast długiego formularza. Na końcu zostawiasz kontakt, a&nbsp;my wracamy z&nbsp;pierwszymi rekomendacjami w&nbsp;ciągu 24 godzin w&nbsp;dni robocze.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="section section--deep" style="padding-top: 60px;">
+  <!-- ========== KONFIGURATOR ========== -->
+  <section class="land-section land-section--surface">
     <div class="container">
-      <div class="contact-page__grid">
-
-        <form class="contact-page__form" id="contactForm" novalidate>
-          <div class="form__row">
-            <div class="form__group">
-              <label for="name">Imię i nazwisko <span aria-hidden="true">*</span></label>
-              <input type="text" id="name" name="name" placeholder="Jan Kowalski" required autocomplete="name" />
-            </div>
-            <div class="form__group">
-              <label for="company">Firma</label>
-              <input type="text" id="company" name="company" placeholder="Nazwa firmy" autocomplete="organization" />
-            </div>
+      <form class="wizard" id="wizard" novalidate>
+        <div class="wizard__progress">
+          <span class="wizard__progress-label" id="wizardProgressLabel">Krok 1 z&nbsp;6</span>
+          <div class="wizard__progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Postęp konfiguratora">
+            <div class="wizard__progress-fill" id="wizardProgressFill"></div>
           </div>
+        </div>
 
-          <div class="form__row">
-            <div class="form__group">
-              <label for="email">Email <span aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" />
+        <div class="wizard__body">
+          <!-- KROK 1: POTRZEBA -->
+          <fieldset class="wizard__step is-active" data-step="1">
+            <legend class="wizard__question">Czego potrzebuje Twoja firma?</legend>
+            <p class="wizard__hint">Wybierz obszar, który najlepiej opisuje projekt.</p>
+            <div class="wizard__options">
+              <div class="option-card"><input type="radio" name="usluga" value="strona" id="u-strona" /><label for="u-strona"><span class="option-card__dot"></span>Strona internetowa</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="sklep" id="u-sklep" /><label for="u-sklep"><span class="option-card__dot"></span>Sklep internetowy</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="crm" id="u-crm" /><label for="u-crm"><span class="option-card__dot"></span>CRM / system dla firmy</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="aplikacja" id="u-aplikacja" /><label for="u-aplikacja"><span class="option-card__dot"></span>Aplikacja webowa</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="google-ads" id="u-google" /><label for="u-google"><span class="option-card__dot"></span>Google Ads</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="allegro-ads" id="u-allegro" /><label for="u-allegro"><span class="option-card__dot"></span>Allegro Ads</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="opieka" id="u-opieka" /><label for="u-opieka"><span class="option-card__dot"></span>Opieka i&nbsp;rozwój</label></div>
+              <div class="option-card"><input type="radio" name="usluga" value="inne" id="u-inne" /><label for="u-inne"><span class="option-card__dot"></span>Coś innego</label></div>
             </div>
-            <div class="form__group">
-              <label for="phone">Telefon</label>
-              <input type="tel" id="phone" name="phone" placeholder="+48 ___ ___ ___" autocomplete="tel" />
+          </fieldset>
+
+          <!-- KROK 2: CEL -->
+          <fieldset class="wizard__step" data-step="2">
+            <legend class="wizard__question">Jaki jest główny cel?</legend>
+            <p class="wizard__hint">Jedna odpowiedź. To ona ustawia priorytety projektu.</p>
+            <div class="wizard__options">
+              <div class="option-card"><input type="radio" name="cel" value="wiecej-zapytan" id="c-zapytania" /><label for="c-zapytania"><span class="option-card__dot"></span>Więcej zapytań ofertowych</label></div>
+              <div class="option-card"><input type="radio" name="cel" value="sprzedaz" id="c-sprzedaz" /><label for="c-sprzedaz"><span class="option-card__dot"></span>Wzrost sprzedaży</label></div>
+              <div class="option-card"><input type="radio" name="cel" value="automatyzacja" id="c-automatyzacja" /><label for="c-automatyzacja"><span class="option-card__dot"></span>Automatyzacja procesów</label></div>
+              <div class="option-card"><input type="radio" name="cel" value="modernizacja" id="c-modernizacja" /><label for="c-modernizacja"><span class="option-card__dot"></span>Modernizacja obecnego rozwiązania</label></div>
+              <div class="option-card"><input type="radio" name="cel" value="nowy-produkt" id="c-produkt" /><label for="c-produkt"><span class="option-card__dot"></span>Start nowego produktu</label></div>
+              <div class="option-card"><input type="radio" name="cel" value="inne" id="c-inne" /><label for="c-inne"><span class="option-card__dot"></span>Inny cel</label></div>
             </div>
-          </div>
+          </fieldset>
 
-          <div class="form__row">
-            <div class="form__group">
-              <label for="service">Usługa</label>
-              <select id="service" name="service">
-                <option value="">Wybierz usługę</option>
-                <option value="strony">Strona internetowa</option>
-                <option value="sklep">Sklep internetowy</option>
-                <option value="google">Reklamy Google</option>
-                <option value="allegro">Allegro ADS</option>
-                <option value="all-in">Pakiet kompleksowy</option>
-                <option value="other">Inne / Nie wiem</option>
-              </select>
+          <!-- KROK 3: ZAKRES (zależny od usługi) -->
+          <fieldset class="wizard__step" data-step="3">
+            <legend class="wizard__question">Doprecyzujmy zakres</legend>
+            <p class="wizard__hint" id="scopeHint">Kilka szczegółów, które przyspieszą wycenę.</p>
+
+            <div class="wizard__scope" data-for-service="strona">
+              <div class="form__field">
+                <label class="form__label" for="s-strona-obecna">Adres obecnej strony (jeśli istnieje)</label>
+                <input type="url" class="form__input" id="s-strona-obecna" name="zakres_obecna_strona" placeholder="https://" />
+              </div>
+              <p class="form__label" style="margin-bottom:10px;">Orientacyjna liczba podstron</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_podstrony" value="do-5" id="s-p1" /><label for="s-p1"><span class="option-card__dot"></span>Do 5</label></div>
+                <div class="option-card"><input type="radio" name="zakres_podstrony" value="5-15" id="s-p2" /><label for="s-p2"><span class="option-card__dot"></span>5 do 15</label></div>
+                <div class="option-card"><input type="radio" name="zakres_podstrony" value="15-plus" id="s-p3" /><label for="s-p3"><span class="option-card__dot"></span>Ponad 15</label></div>
+                <div class="option-card"><input type="radio" name="zakres_podstrony" value="nie-wiem" id="s-p4" /><label for="s-p4"><span class="option-card__dot"></span>Jeszcze nie wiem</label></div>
+              </div>
+              <div class="form__field" style="margin-top:16px;">
+                <label class="form__label" for="s-strona-integracje">Języki i&nbsp;integracje (opcjonalnie)</label>
+                <input type="text" class="form__input" id="s-strona-integracje" name="zakres_integracje" placeholder="np. PL + EN, newsletter, mapa, kalendarz rezerwacji" />
+              </div>
             </div>
-            <div class="form__group">
-              <label for="budget">Budżet</label>
-              <select id="budget" name="budget">
-                <option value="">Wybierz zakres</option>
-                <option>do 5 000 zł</option>
-                <option>5 000 – 15 000 zł</option>
-                <option>15 000 – 50 000 zł</option>
-                <option>50 000 – 150 000 zł</option>
-                <option>powyżej 150 000 zł</option>
-                <option>Nie wiem — pomóżcie wycenić</option>
-              </select>
+
+            <div class="wizard__scope" data-for-service="sklep" hidden>
+              <p class="form__label" style="margin-bottom:10px;">Ile produktów będzie w&nbsp;sklepie?</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_produkty" value="do-100" id="s-s1" /><label for="s-s1"><span class="option-card__dot"></span>Do 100</label></div>
+                <div class="option-card"><input type="radio" name="zakres_produkty" value="100-1000" id="s-s2" /><label for="s-s2"><span class="option-card__dot"></span>100 do 1000</label></div>
+                <div class="option-card"><input type="radio" name="zakres_produkty" value="1000-plus" id="s-s3" /><label for="s-s3"><span class="option-card__dot"></span>Ponad 1000</label></div>
+                <div class="option-card"><input type="radio" name="zakres_produkty" value="nie-wiem" id="s-s4" /><label for="s-s4"><span class="option-card__dot"></span>Jeszcze nie wiem</label></div>
+              </div>
+              <p class="form__label" style="margin:16px 0 10px;">Sprzedaż na marketplace (Allegro, Amazon)?</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_marketplace" value="tak" id="s-m1" /><label for="s-m1"><span class="option-card__dot"></span>Tak, już sprzedaję</label></div>
+                <div class="option-card"><input type="radio" name="zakres_marketplace" value="planuje" id="s-m2" /><label for="s-m2"><span class="option-card__dot"></span>Planuję</label></div>
+                <div class="option-card"><input type="radio" name="zakres_marketplace" value="nie" id="s-m3" /><label for="s-m3"><span class="option-card__dot"></span>Nie</label></div>
+              </div>
+              <div class="form__field" style="margin-top:16px;">
+                <label class="form__label" for="s-sklep-integracje">Magazyn, ERP, płatności, logistyka (opcjonalnie)</label>
+                <input type="text" class="form__input" id="s-sklep-integracje" name="zakres_integracje" placeholder="np. Subiekt GT, PayU, InPost" />
+              </div>
             </div>
-          </div>
 
-          <div class="form__group">
-            <label for="deadline">Pożądany termin startu</label>
-            <select id="deadline" name="deadline">
-              <option value="">Wybierz</option>
-              <option>Jak najszybciej</option>
-              <option>W ciągu 30 dni</option>
-              <option>W ciągu kwartału</option>
-              <option>W tym roku</option>
-              <option>Nie spieszę się</option>
-            </select>
-          </div>
+            <div class="wizard__scope" data-for-service="crm" hidden>
+              <div class="form__field">
+                <label class="form__label" for="s-crm-proces">Jaki proces ma obsłużyć system?</label>
+                <textarea class="form__textarea" id="s-crm-proces" name="zakres_proces" rows="3" placeholder="np. obieg zleceń serwisowych od zgłoszenia do faktury"></textarea>
+              </div>
+              <p class="form__label" style="margin-bottom:10px;">Ilu użytkowników będzie pracować w&nbsp;systemie?</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_uzytkownicy" value="do-5" id="s-c1" /><label for="s-c1"><span class="option-card__dot"></span>Do 5</label></div>
+                <div class="option-card"><input type="radio" name="zakres_uzytkownicy" value="5-20" id="s-c2" /><label for="s-c2"><span class="option-card__dot"></span>5 do 20</label></div>
+                <div class="option-card"><input type="radio" name="zakres_uzytkownicy" value="20-plus" id="s-c3" /><label for="s-c3"><span class="option-card__dot"></span>Ponad 20</label></div>
+                <div class="option-card"><input type="radio" name="zakres_uzytkownicy" value="nie-wiem" id="s-c4" /><label for="s-c4"><span class="option-card__dot"></span>Jeszcze nie wiem</label></div>
+              </div>
+              <div class="form__field" style="margin-top:16px;">
+                <label class="form__label" for="s-crm-zrodla">Skąd system ma brać dane? (opcjonalnie)</label>
+                <input type="text" class="form__input" id="s-crm-zrodla" name="zakres_integracje" placeholder="np. Excel, e-mail, program księgowy, sklep" />
+              </div>
+            </div>
 
-          <div class="form__group">
-            <label for="message">Opowiedz nam o projekcie <span aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="6" placeholder="Czym się zajmujesz, co chcesz osiągnąć, czego potrzebujesz? Im więcej szczegółów, tym lepsza wycena." required></textarea>
-          </div>
+            <div class="wizard__scope" data-for-service="aplikacja" hidden>
+              <div class="form__field">
+                <label class="form__label" for="s-app-problem">Jaki problem rozwiązuje aplikacja i&nbsp;dla kogo?</label>
+                <textarea class="form__textarea" id="s-app-problem" name="zakres_proces" rows="3" placeholder="np. panel dla klientów firmy szkoleniowej do zapisów i płatności"></textarea>
+              </div>
+              <p class="form__label" style="margin-bottom:10px;">Na jakim etapie jest pomysł?</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_etap" value="pomysl" id="s-a1" /><label for="s-a1"><span class="option-card__dot"></span>Pomysł do omówienia</label></div>
+                <div class="option-card"><input type="radio" name="zakres_etap" value="specyfikacja" id="s-a2" /><label for="s-a2"><span class="option-card__dot"></span>Mam specyfikację</label></div>
+                <div class="option-card"><input type="radio" name="zakres_etap" value="mvp" id="s-a3" /><label for="s-a3"><span class="option-card__dot"></span>Działa MVP, chcę rozwijać</label></div>
+              </div>
+            </div>
 
-          <label class="consent">
-            <input type="checkbox" id="consent" name="consent" required />
-            <span>
-              Zapoznałem/am się z <a href="#" target="_blank">polityką prywatności</a> i wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie. Administratorem danych jest Code & Pixel.
-            </span>
-          </label>
+            <div class="wizard__scope" data-for-service="google-ads" hidden>
+              <div class="form__field">
+                <label class="form__label" for="s-ga-strona">Adres strony lub sklepu</label>
+                <input type="url" class="form__input" id="s-ga-strona" name="zakres_obecna_strona" placeholder="https://" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="s-ga-branza">Branża i&nbsp;obszar działania</label>
+                <input type="text" class="form__input" id="s-ga-branza" name="zakres_branza" placeholder="np. usługi remontowe, cała Polska" />
+              </div>
+              <p class="form__label" style="margin-bottom:10px;">Czy kampanie były już prowadzone?</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_kampanie" value="prowadzimy" id="s-g1" /><label for="s-g1"><span class="option-card__dot"></span>Tak, trwają</label></div>
+                <div class="option-card"><input type="radio" name="zakres_kampanie" value="byly" id="s-g2" /><label for="s-g2"><span class="option-card__dot"></span>Były, wstrzymane</label></div>
+                <div class="option-card"><input type="radio" name="zakres_kampanie" value="nie" id="s-g3" /><label for="s-g3"><span class="option-card__dot"></span>Nigdy</label></div>
+              </div>
+            </div>
 
-          <button type="submit" class="btn btn--primary btn--lg">
-            Wyślij wiadomość
-            <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <div class="wizard__scope" data-for-service="allegro-ads" hidden>
+              <div class="form__field">
+                <label class="form__label" for="s-al-kategorie">Kategorie i&nbsp;liczba ofert na Allegro</label>
+                <input type="text" class="form__input" id="s-al-kategorie" name="zakres_branza" placeholder="np. narzędzia, ok. 300 ofert" />
+              </div>
+              <p class="form__label" style="margin-bottom:10px;">Czy Allegro Ads było już używane?</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_kampanie" value="prowadzimy" id="s-l1" /><label for="s-l1"><span class="option-card__dot"></span>Tak, trwa</label></div>
+                <div class="option-card"><input type="radio" name="zakres_kampanie" value="byly" id="s-l2" /><label for="s-l2"><span class="option-card__dot"></span>Było, wstrzymane</label></div>
+                <div class="option-card"><input type="radio" name="zakres_kampanie" value="nie" id="s-l3" /><label for="s-l3"><span class="option-card__dot"></span>Nigdy</label></div>
+              </div>
+            </div>
+
+            <div class="wizard__scope" data-for-service="opieka" hidden>
+              <div class="form__field">
+                <label class="form__label" for="s-op-adres">Adres strony lub systemu</label>
+                <input type="url" class="form__input" id="s-op-adres" name="zakres_obecna_strona" placeholder="https://" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="s-op-problem">Co obecnie najbardziej doskwiera?</label>
+                <textarea class="form__textarea" id="s-op-problem" name="zakres_proces" rows="3" placeholder="np. brak aktualizacji, wolne działanie, brak osoby technicznej"></textarea>
+              </div>
+              <p class="form__label" style="margin-bottom:10px;">Oczekiwany tryb wsparcia</p>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="zakres_tryb" value="pakiet-godzin" id="s-o1" /><label for="s-o1"><span class="option-card__dot"></span>Pakiet godzin</label></div>
+                <div class="option-card"><input type="radio" name="zakres_tryb" value="stala-opieka" id="s-o2" /><label for="s-o2"><span class="option-card__dot"></span>Stała opieka</label></div>
+                <div class="option-card"><input type="radio" name="zakres_tryb" value="rozwoj" id="s-o3" /><label for="s-o3"><span class="option-card__dot"></span>Rozwój etapowy</label></div>
+              </div>
+            </div>
+
+            <div class="wizard__scope" data-for-service="inne" hidden>
+              <div class="form__field">
+                <label class="form__label" for="s-inne-opis">Opisz krótko, czego potrzebujesz</label>
+                <textarea class="form__textarea" id="s-inne-opis" name="zakres_proces" rows="4" placeholder="Kilka zdań wystarczy. Szczegóły omówimy na rozmowie."></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- KROK 4: BUDŻET -->
+          <fieldset class="wizard__step" data-step="4">
+            <legend class="wizard__question">Jaki budżet zakładasz?</legend>
+            <p class="wizard__hint">Pytamy, żeby zaproponować zakres, który realnie zmieści się w&nbsp;Twoich możliwościach. Widełki wystarczą.</p>
+
+            <div class="wizard__budget" data-budget-scale="projekt">
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="budzet" value="do-10k" id="b-1" /><label for="b-1"><span class="option-card__dot"></span>Do 10 tys. zł</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="10-25k" id="b-2" /><label for="b-2"><span class="option-card__dot"></span>10 do 25 tys. zł</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="25-60k" id="b-3" /><label for="b-3"><span class="option-card__dot"></span>25 do 60 tys. zł</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="60-120k" id="b-4" /><label for="b-4"><span class="option-card__dot"></span>60 do 120 tys. zł</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="120k-plus" id="b-5" /><label for="b-5"><span class="option-card__dot"></span>Ponad 120 tys. zł</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="rekomendacja" id="b-6" /><label for="b-6"><span class="option-card__dot"></span>Potrzebuję rekomendacji</label></div>
+              </div>
+            </div>
+
+            <div class="wizard__budget" data-budget-scale="ads" hidden>
+              <div class="wizard__options">
+                <div class="option-card"><input type="radio" name="budzet" value="ads-do-3k" id="b-a1" /><label for="b-a1"><span class="option-card__dot"></span>Do 3 tys. zł / mies.</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="ads-3-10k" id="b-a2" /><label for="b-a2"><span class="option-card__dot"></span>3 do 10 tys. zł / mies.</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="ads-10-30k" id="b-a3" /><label for="b-a3"><span class="option-card__dot"></span>10 do 30 tys. zł / mies.</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="ads-30k-plus" id="b-a4" /><label for="b-a4"><span class="option-card__dot"></span>Ponad 30 tys. zł / mies.</label></div>
+                <div class="option-card"><input type="radio" name="budzet" value="rekomendacja" id="b-a5" /><label for="b-a5"><span class="option-card__dot"></span>Potrzebuję rekomendacji</label></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- KROK 5: TERMIN -->
+          <fieldset class="wizard__step" data-step="5">
+            <legend class="wizard__question">Kiedy projekt ma wystartować?</legend>
+            <p class="wizard__hint">Termin pomaga nam zaplanować zespół i&nbsp;kolejność prac.</p>
+            <div class="wizard__options">
+              <div class="option-card"><input type="radio" name="termin" value="asap" id="t-1" /><label for="t-1"><span class="option-card__dot"></span>Jak najszybciej</label></div>
+              <div class="option-card"><input type="radio" name="termin" value="1-3m" id="t-2" /><label for="t-2"><span class="option-card__dot"></span>1 do 3 miesięcy</label></div>
+              <div class="option-card"><input type="radio" name="termin" value="3-6m" id="t-3" /><label for="t-3"><span class="option-card__dot"></span>3 do 6 miesięcy</label></div>
+              <div class="option-card"><input type="radio" name="termin" value="pozniej" id="t-4" /><label for="t-4"><span class="option-card__dot"></span>Później</label></div>
+              <div class="option-card"><input type="radio" name="termin" value="elastycznie" id="t-5" /><label for="t-5"><span class="option-card__dot"></span>Elastycznie</label></div>
+            </div>
+          </fieldset>
+
+          <!-- KROK 6: DANE -->
+          <fieldset class="wizard__step" data-step="6">
+            <legend class="wizard__question">Zostaw kontakt</legend>
+            <p class="wizard__hint">Odpowiadamy w&nbsp;ciągu 24 godzin w&nbsp;dni robocze.</p>
+
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="name">Imię *</label>
+                <input type="text" class="form__input" id="name" name="name" autocomplete="given-name" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="company">Firma</label>
+                <input type="text" class="form__input" id="company" name="company" autocomplete="organization" />
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="email">E-mail *</label>
+                <input type="email" class="form__input" id="email" name="email" autocomplete="email" required />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="phone">Telefon (opcjonalnie)</label>
+                <input type="tel" class="form__input" id="phone" name="phone" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="message">Wiadomość (opcjonalnie)</label>
+              <textarea class="form__textarea" id="message" name="message" rows="4" placeholder="Wszystko, co pomoże nam lepiej zrozumieć projekt."></textarea>
+            </div>
+            <div class="form__field">
+              <label class="wizard__file" id="fileLabel" for="attachment">
+                <input type="file" id="attachment" name="attachment" accept=".pdf,.doc,.docx,.zip,.png,.jpg,.jpeg" />
+                <span id="fileLabelText">Dodaj brief lub plik (opcjonalnie, max 10 MB: PDF, DOC, ZIP, PNG, JPG)</span>
+              </label>
+            </div>
+            <div class="consent">
+              <input type="checkbox" id="consent" name="consent" required />
+              <label for="consent">Wyrażam zgodę na kontakt w&nbsp;sprawie mojego zapytania. Szczegóły przetwarzania danych w&nbsp;<a href="polityka-prywatnosci.html" target="_blank" rel="noopener">polityce prywatności</a>. *</label>
+            </div>
+          </fieldset>
+
+          <p class="wizard__error" id="wizardError" role="alert"></p>
+        </div>
+
+        <div class="wizard__nav">
+          <button type="button" class="wizard__back" id="wizardBack" hidden>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Wstecz
           </button>
+          <button type="button" class="btn btn--primary" id="wizardNext">
+            Dalej
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
 
-          <p class="form__status" id="formStatus" role="status" aria-live="polite" style="color: var(--ink-3);"></p>
-        </form>
-
-        <aside class="contact-info-card">
-          <h2 class="contact-info-card__title">Kontakt bezpośredni</h2>
-          <ul class="contact__list">
-            <li class="contact__item">
-              <div class="contact__icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              </div>
-              <div>
-                <div class="contact__label">Email</div>
-                <a href="mailto:hello@codeandpixel.io" class="contact__value">hello@codeandpixel.io</a>
-              </div>
-            </li>
-
-            <li class="contact__item">
-              <div class="contact__icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </div>
-              <div>
-                <div class="contact__label">Telefon</div>
-                <a href="tel:+48123456789" class="contact__value">+48 123 456 789</a>
-              </div>
-            </li>
-
-            <li class="contact__item">
-              <div class="contact__icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <div>
-                <div class="contact__label">Godziny</div>
-                <div class="contact__value">Pon – Pt, 9:00 – 17:00 CET</div>
-              </div>
-            </li>
-
-            <li class="contact__item">
-              <div class="contact__icon" aria-hidden="true">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </div>
-              <div>
-                <div class="contact__label">Adres</div>
-                <div class="contact__value">Polska, zdalnie / hybrydowo</div>
-              </div>
-            </li>
-          </ul>
-
-          <div class="contact-info-card__social" aria-label="Social media">
-            <a href="#" aria-label="LinkedIn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
-            </a>
-            <a href="#" aria-label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="#" aria-label="Behance">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029h3.168zm-7.686-4h4.965c-.105-1.547-1.136-2.219-2.477-2.219-1.466 0-2.277.768-2.488 2.219zm-9.574 6.988h-6.466v-15.988h6.953c5.476.081 5.58 5.444 2.72 6.906 3.461 1.26 3.577 8.082-3.207 9.082zm-3.466-9.589h3.584c2.508 0 2.906-3-.312-3h-3.272v3zm3.391 3h-3.391v3.5h3.341c3.055 0 2.868-3.5.05-3.5z"></path></svg>
-            </a>
-          </div>
-        </aside>
+      <div style="max-width:760px;margin:32px auto 0;text-align:center;font-size:14.5px;color:var(--ink-3);">
+        Wolisz napisać bezpośrednio?
+        <a href="mailto:hello@codeandpixel.io" style="color:var(--brand);font-weight:700;" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span style="margin:0 6px;">·</span>
+        <span>[telefon do uzupełnienia]</span>
       </div>
     </div>
   </section>
 
-  <!-- FAQ kontaktowe -->
-  <section class="section section--light">
-    <div class="container">
-      <header class="section-head">
-        <span class="eyebrow">
-          <span class="eyebrow__line"></span>
-          Zanim wyślesz
-          <span class="eyebrow__line"></span>
-        </span>
-        <h2 class="section-head__title">Zacznij od tych odpowiedzi</h2>
-      </header>
-
-      <div class="faq">
-        <div class="faq__item">
-          <button class="faq__question" type="button">
-            Co dzieje się po wysłaniu formularza?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer">
-            <div class="faq__answer-inner">
-              W ciągu 24h dostajesz odpowiedź od jednego z założycieli — Grzegorza albo Patryka. Proponujemy 30-minutową rozmowę (Google Meet) lub od razu wstępną wycenę, jeśli zakres jest jasny. Bez zobowiązań.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" type="button">
-            Czy konsultacja jest płatna?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer">
-            <div class="faq__answer-inner">
-              Pierwsza rozmowa — do 60 minut — jest bezpłatna. Dotyczy to też wstępnej wyceny i prostego audytu istniejącej strony lub kampanii. Płatne są dopiero pogłębione audyty (od 1 500 zł netto) lub warsztaty strategiczne.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" type="button">
-            Mam tylko pomysł — bez briefu, bez tekstów. Pomożecie?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer">
-            <div class="faq__answer-inner">
-              Tak — to nawet częstszy scenariusz niż gotowy brief. Pierwszy etap projektu to zawsze warsztat odkrywczy, w którym my zadajemy pytania, a Ty odpowiadasz. Efektem jest jednostronicowy brief, który staje się punktem odniesienia dla całego projektu.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" type="button">
-            Pracujemy zdalnie czy spotykamy się?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer">
-            <div class="faq__answer-inner">
-              Domyślnie — zdalnie, na Google Meet i Slacku. Spotykamy się też u klienta, jeśli projekt tego wymaga (np. fotografia produktowa, większe warsztaty). Bazujemy w Polsce, ale obsługujemy klientów z całej Europy.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" type="button">
-            Jaka jest minimalna kwota projektu?
-            <span class="faq__icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq__answer">
-            <div class="faq__answer-inner">
-              5 000 zł netto. Poniżej tej kwoty po prostu nie zmieścimy się z procesem (brief, design, dwie rundy poprawek, wdrożenie, testy, gwarancja). Jeśli Twój budżet jest niższy — polecimy zaufanych freelancerów.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
-    <div class="container footer__inner">
+    <div class="container footer__grid">
       <div class="footer__brand">
         <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
-        <p class="footer__tagline">Agencja interaktywna. Strategia, design i technologia.</p>
+        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
+        <div class="footer__badges">
+          <span class="partner-badge">Google Partner</span>
+          <span class="partner-badge">Allegro Ads Partner</span>
+        </div>
       </div>
-      <nav class="footer__nav" aria-label="Stopka — nawigacja">
-        <a href="uslugi.html">Usługi</a>
-        <a href="portfolio.html">Portfolio</a>
+
+      <nav class="footer__col" aria-label="Stopka — usługi">
+        <div class="footer__col-title">Usługi</div>
+        <a href="uslugi/strony-internetowe.html">Strony internetowe</a>
+        <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a>
+        <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a>
+        <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a>
+        <a href="uslugi/google-ads.html">Google Ads</a>
+        <a href="uslugi/allegro-ads.html">Allegro Ads</a>
+        <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Stopka — firma">
+        <div class="footer__col-title">Firma</div>
+        <a href="o-nas.html">O&nbsp;nas</a>
+        <a href="portfolio.html">Realizacje</a>
         <a href="kontakt.html">Kontakt</a>
       </nav>
-      <a href="kontakt.html" class="btn btn--ghost btn--sm">
-        Porozmawiajmy
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
+
+      <nav class="footer__col" aria-label="Stopka — wiedza">
+        <div class="footer__col-title">Wiedza</div>
+        <a href="wiedza.html">Wszystkie artykuły</a>
+        <a href="wiedza.html#e-commerce">E-commerce</a>
+        <a href="wiedza.html#google-ads">Google Ads</a>
+      </nav>
+
+      <div class="footer__col">
+        <div class="footer__col-title">Kontakt</div>
+        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
+        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
+        <span class="footer__contact-line">[adres do uzupełnienia]</span>
+        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      </div>
     </div>
+
     <div class="footer__bottom">
-      <div class="container">
+      <div class="container footer__legal">
         <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+        <a href="polityka-prywatnosci.html#cookies">Cookies</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260713-3"></script>
 </body>
 </html>
