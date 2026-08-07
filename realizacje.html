@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CRM i systemy dla firm — Code&amp;Pixel</title>
+<title>Realizacje — Code&amp;Pixel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -504,6 +504,25 @@
   @media (max-width:560px){
     .aud-grid,.zt-grid,.rel-grid,.scope-grid{grid-template-columns:1fr}
   }
+
+  /* Realizacje — filtry + karty */
+  .fchips{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+  .fchip{font-family:'Inter',var(--ff);font-weight:600;font-size:13px;color:#071e51;opacity:.72;padding:10px 20px;border-radius:999px;border:1px solid rgba(7,30,81,0.12);background:#fff;cursor:pointer;transition:background .16s ease,opacity .16s ease,color .16s ease,border-color .16s ease}
+  .fchip:hover{background:#f3f5fb;opacity:1}
+  .fchip--on{background:linear-gradient(165deg,var(--accent-1),var(--accent-2));color:#fff;border-color:transparent;opacity:1}
+  .fchip:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+  .rlz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+  .rlz-card{background:#f5f6fb;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
+  .rlz-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(7,30,81,0.09)}
+  .rlz-card[hidden]{display:none}
+  .rlz-card__media{aspect-ratio:16/11;background:linear-gradient(158deg,#e4ecf9 0%,#cdddf4 100%)}
+  .rlz-card__body{padding:22px 24px 26px}
+  .rlz-card__tag{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+  .rlz-card__title{margin-top:8px;font-family:'Inter',var(--ff);font-weight:600;font-size:21px;color:#071e51}
+  .rlz-card__client{margin-top:6px;font-family:'Inter',var(--ff);font-size:12.5px;color:#071e51;opacity:.55}
+  .rlz-card__link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:'Inter',var(--ff);font-weight:600;font-size:13.5px;color:var(--accent)}
+  @media (max-width:900px){.rlz-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.rlz-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -514,7 +533,7 @@
   <!-- ============ HEADER ============ -->
   <header class="header">
     <div class="container header__inner">
-      <a href="index-nowy.html" class="logo" aria-label="Code&amp;Pixel">
+      <a href="index.html" class="logo" aria-label="Code&amp;Pixel">
         <img class="logo__icon" src="assets/nowy/logo-icon.svg" alt="" />
         <span class="logo__lockup">
           <img class="logo__word" src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
@@ -528,18 +547,18 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
           <div class="nav__drop" role="menu">
-            <a href="strony-internetowe-nowa.html" role="menuitem">Strony internetowe</a>
-            <a href="sklepy-internetowe-nowa.html" role="menuitem">Sklepy internetowe</a>
-            <a href="crm-systemy-nowa.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
-            <a href="aplikacje-webowe-nowa.html" role="menuitem">Aplikacje webowe</a>
-            <a href="google-ads-nowa.html" role="menuitem">Google Ads</a>
-            <a href="allegro-ads-nowa.html" role="menuitem">Allegro Ads</a>
-            <a href="opieka-rozwoj-nowa.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+            <a href="strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="google-ads.html" role="menuitem">Google Ads</a>
+            <a href="allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
           </div>
         </div>
-        <a href="realizacje-nowa.html">Realizacje</a>
-        <a href="o-nas-nowa.html">O nas</a>
-        <a href="wiedza-nowa.html">Wiedza</a>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="wiedza.html">Wiedza</a>
       </nav>
 
       <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
@@ -547,91 +566,50 @@
   </header>
 
       <!-- HERO -->
-  <div class="svc-crumb"><div class="container"><nav><a href="index-nowy.html">Start</a> / <a href="#">Usługi</a> / <span class="cur">CRM i systemy dla firm</span></nav></div></div>
+  <div class="svc-crumb"><div class="container"><nav><a href="index.html">Start</a> / <span class="cur">Realizacje</span></nav></div></div>
   <section class="hero hero--svc"><div class="container hero__inner">
-      <span class="hero__eyebrow">Budujemy</span>
-      <h1 class="hero__title">Systemy, które porządkują procesy i&nbsp;uwalniają czas zespołu.</h1>
-      <p class="hero__lead">Dedykowane CRM-y, panele klienta i&nbsp;narzędzia wewnętrzne, które zastępują arkusze i&nbsp;ręczne przepisywanie danych. Budujemy je etapami, zaczynając od analizy tego, jak naprawdę pracuje Twoja firma.</p>
-      <div class="hero__actions"><a href="#kontakt" class="btn btn--grad">Wyceń swój system</a><a href="#zakres" class="btn btn--outline">Zobacz zakres</a></div>
+      <span class="hero__eyebrow">Realizacje</span>
+      <h1 class="hero__title">Projekty, które przynoszą efekty.</h1>
+      <p class="hero__lead">Dowód kompetencji zamiast obietnic: realne wdrożenia, technologie i&nbsp;zweryfikowane rezultaty z&nbsp;kontekstem każdej liczby.</p>
   </div></section>
 </div>
 
+<!-- REALIZACJE -->
 <section class="svc-sec"><div class="container">
-    <header class="usec-head" ><div><span class="usec-eyebrow">Dla kogo</span><h2 class="usec-title usec-title--wrap">Kiedy warto do nas napisać</h2></div></header>
-    <div class="aud-grid">
-      <article class="aud"><span class="aud__num">S.01</span><h3 class="aud__title">CRM sprzedażowy</h3><p class="aud__desc">Chcesz zbierać leady, historię kontaktów i&nbsp;statusy szans sprzedaży w&nbsp;jednym miejscu, zamiast w&nbsp;arkuszach i&nbsp;skrzynkach mailowych.</p></article>
-      <article class="aud"><span class="aud__num">S.02</span><h3 class="aud__title">Panel klienta</h3><p class="aud__desc">Klienci pytają o&nbsp;statusy i&nbsp;dokumenty mailem. Panel daje im wgląd samodzielnie, o&nbsp;każdej porze, bez angażowania zespołu.</p></article>
-      <article class="aud"><span class="aud__num">S.03</span><h3 class="aud__title">Obieg zleceń</h3><p class="aud__desc">Zlecenia przechodzą przez kilka osób i&nbsp;etapów, a&nbsp;nikt nie widzi, gdzie utknęły. System pilnuje przepływu i&nbsp;terminów.</p></article>
-      <article class="aud"><span class="aud__num">S.04</span><h3 class="aud__title">Baza produktów</h3><p class="aud__desc">Dane o&nbsp;produktach żyją w&nbsp;wielu plikach. Potrzebujesz jednego źródła prawdy dla ofert, cenników i&nbsp;kanałów sprzedaży.</p></article>
-      <article class="aud"><span class="aud__num">S.05</span><h3 class="aud__title">System raportowy</h3><p class="aud__desc">Raporty powstają ręcznie i&nbsp;za późno. Chcesz widzieć kluczowe liczby firmy na bieżąco, bez składania danych z&nbsp;kilku Exceli.</p></article>
-      <article class="aud"><span class="aud__num">S.06</span><h3 class="aud__title">Integracje</h3><p class="aud__desc">Twoje narzędzia nie wymieniają danych. Łączymy systemy tak, żeby informacje wpisywać raz, a&nbsp;nie trzy razy w&nbsp;trzech miejscach.</p></article>
+    <header class="usec-head"><div><span class="usec-eyebrow">Realizacje</span><h2 class="usec-title usec-title--wrap">Wybrane wdrożenia</h2></div><p class="usec-lead">Filtruj po rodzaju projektu, żeby zobaczyć realizacje z&nbsp;interesującego Cię obszaru.</p></header>
+
+    <div class="fchips" role="tablist" aria-label="Filtr realizacji">
+      <button class="fchip fchip--on" data-filter="all">Wszystkie</button>
+      <button class="fchip" data-filter="strona">Strony WWW</button>
+      <button class="fchip" data-filter="sklep">E-commerce</button>
+      <button class="fchip" data-filter="crm">Aplikacje i&nbsp;CRM</button>
+      <button class="fchip" data-filter="google-ads">Google Ads</button>
+      <button class="fchip" data-filter="allegro-ads">Allegro Ads</button>
+    </div>
+
+    <div class="rlz-grid">
+      <a href="portfolio/sufity-led.html" class="rlz-card" data-cat="strona">
+        <div class="rlz-card__media"></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Sufity LED</h3><span class="rlz-card__client">Branża wykończeniowa · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
+      <a href="portfolio/miasteczko-witkowice.html" class="rlz-card" data-cat="strona">
+        <div class="rlz-card__media"></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Miasteczko Witkowice</h3><span class="rlz-card__client">Senior living · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
+      <a href="portfolio/tct-tools.html" class="rlz-card" data-cat="sklep allegro-ads">
+        <div class="rlz-card__media"></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Sklep internetowy</span><h3 class="rlz-card__title">TCT Tools</h3><span class="rlz-card__client">Narzędzia · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
     </div>
   </div></section>
 
-<section class="svc-sec"><div class="container">
-    <header class="usec-head" ><div><span class="usec-eyebrow">Problemy</span><h2 class="usec-title usec-title--wrap">Sytuacje, z&nbsp;którymi przychodzą do nas firmy</h2></div></header>
-    <div class="prob-grid">
-      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Wiedza o&nbsp;klientach i&nbsp;zleceniach siedzi w&nbsp;skrzynkach mailowych i&nbsp;prywatnych notatkach pracowników.</p></div>
-      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Zespół traci godziny na ręczne przepisywanie danych między arkuszami i&nbsp;programami.</p></div>
-      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Gotowe systemy wymuszają pracę pod swój schemat, zamiast wspierać proces, który działa w&nbsp;Twojej firmie.</p></div>
-      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Firma rośnie, ale rozproszone dane utrudniają decyzje i&nbsp;wdrażanie nowych osób.</p></div>
-    </div>
-  </div></section>
-
-<section class="svc-sec" id="zakres"><div class="container">
-    <header class="usec-head"><div><span class="usec-eyebrow">Zakres</span><h2 class="usec-title usec-title--wrap">Co obejmuje budowa systemu</h2></div><p class="usec-lead">Zakres wynika z&nbsp;analizy procesów, nie z&nbsp;cennika. Budujemy tylko to, co realnie usprawnia pracę.</p></header>
-    <div class="scope-grid">
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Analiza procesów</h3><p class="scope__desc">Rozmowy z&nbsp;zespołem i&nbsp;mapowanie tego, jak firma naprawdę pracuje.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Architektura systemu</h3><p class="scope__desc">Model danych, moduły i&nbsp;plan integracji z&nbsp;obecnymi narzędziami.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">UX paneli</h3><p class="scope__desc">Interfejsy zaprojektowane pod codzienną pracę, nie pod prezentację.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Development</h3><p class="scope__desc">Bezpieczny, udokumentowany kod przygotowany na rozbudowę.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Uprawnienia i&nbsp;bezpieczeństwo</h3><p class="scope__desc">Role użytkowników, historia zmian i&nbsp;ochrona danych firmowych.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Migracja danych</h3><p class="scope__desc">Przeniesienie danych z&nbsp;arkuszy i&nbsp;starych systemów, z&nbsp;porządkowaniem po drodze.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Integracje</h3><p class="scope__desc">Połączenia z&nbsp;księgowością, magazynem i&nbsp;innymi systemami przez API.</p></div>
-      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Wdrożenie zespołu</h3><p class="scope__desc">Szkolenie na realnych scenariuszach, żeby system wszedł do codziennego użycia.</p></div>
-    </div>
-  </div></section>
-
-<section class="svc-sec"><div class="container">
-    <header class="usec-head" ><div><span class="usec-eyebrow">Jak pracujemy</span><h2 class="usec-title usec-title--wrap">Jak powstaje system</h2></div></header>
-    <div class="svcproc"><span class="svcproc__line" aria-hidden="true"></span>
-      <div class="svcproc__grid">
-        <div class="svcstep"><span class="svcstep__dot">1</span><h3 class="svcstep__title">Discovery</h3><p class="svcstep__desc">Warsztat o&nbsp;celach, procesach i&nbsp;wąskich gardłach. Ustalamy, co system ma zmienić.</p></div>
-        <div class="svcstep"><span class="svcstep__dot">2</span><h3 class="svcstep__title">Mapa procesów</h3><p class="svcstep__desc">Rozrysowujemy przepływ pracy i&nbsp;danych, zanim powstanie pierwszy ekran.</p></div>
-        <div class="svcstep"><span class="svcstep__dot">3</span><h3 class="svcstep__title">Prototyp</h3><p class="svcstep__desc">Klikalne widoki kluczowych modułów do weryfikacji z&nbsp;zespołem przed developmentem.</p></div>
-        <div class="svcstep"><span class="svcstep__dot">4</span><h3 class="svcstep__title">MVP</h3><p class="svcstep__desc">Pierwsza działająca wersja obejmuje najważniejszy proces i&nbsp;trafia do realnej pracy.</p></div>
-        <div class="svcstep"><span class="svcstep__dot">5</span><h3 class="svcstep__title">Wdrożenie</h3><p class="svcstep__desc">Migracja danych, uprawnienia, szkolenie zespołu i&nbsp;start produkcyjny.</p></div>
-        <div class="svcstep"><span class="svcstep__dot">6</span><h3 class="svcstep__title">Rozwój</h3><p class="svcstep__desc">Kolejne moduły i&nbsp;usprawnienia dokładamy etapami, na podstawie pracy na systemie.</p></div>
-      </div>
-    </div>
-  </div></section>
-
-<section class="svc-sec" style="text-align:center"><div class="container" style="display:flex;flex-direction:column;align-items:center">
-    <header class="usec-head" style="text-align:center;align-items:center" ><div><span class="usec-eyebrow">Rozmowa</span><h2 class="usec-title usec-title--wrap">Porozmawiajmy o&nbsp;Twoim procesie</h2></div></header>
-    <p class="usec-lead" style="max-width:640px;margin:16px auto 0;text-align:center">Systemy wewnętrzne rzadko można pokazać publicznie, bo pracują na danych firm. Opowiedz nam, jak działa Twój zespół, a&nbsp;na spotkaniu pokażemy podejście i&nbsp;to, co możemy uprościć.</p>
-  </div></section>
-
-<section class="svc-sec"><div class="container">
-    <header class="usec-head" ><div><span class="usec-eyebrow">FAQ</span><h2 class="usec-title usec-title--wrap">Pytania przed startem projektu</h2></div></header>
-    <div class="faq">
-      <div class="faq__item open"><button class="faq__q">Gotowy CRM czy system dedykowany?<span class="faq__ic"></span></button><div class="faq__a">Jeśli gotowe narzędzie pokrywa Twój proces, wskażemy je wprost, bo to tańsza droga. System dedykowany ma sens, gdy proces jest nietypowy, integracje są kluczowe albo koszty licencji rosną razem z&nbsp;zespołem. Odpowiedź daje etap discovery.</div></div>
-      <div class="faq__item"><button class="faq__q">Ile trwa budowa systemu?<span class="faq__ic"></span></button><div class="faq__a">Zależy od liczby modułów i&nbsp;integracji. Planujemy pracę tak, żeby pierwsza działająca wersja (MVP) obsłużyła najważniejszy proces możliwie wcześnie, a&nbsp;kolejne moduły dochodziły etapami. Harmonogram etapów dostajesz po discovery.</div></div>
-      <div class="faq__item"><button class="faq__q">Co z&nbsp;danymi, które mamy w&nbsp;arkuszach?<span class="faq__ic"></span></button><div class="faq__a">Migracja danych jest częścią wdrożenia. Przenosimy dane z&nbsp;arkuszy i&nbsp;starych systemów, po drodze porządkując duplikaty i&nbsp;braki, żeby nowy system startował na czystej bazie.</div></div>
-      <div class="faq__item"><button class="faq__q">Czy system będzie można rozbudowywać?<span class="faq__ic"></span></button><div class="faq__a">Tak, to założenie architektury od pierwszego dnia. Kod jest udokumentowany, a&nbsp;prawa do niego należą do Ciebie, więc rozwój nie jest uzależniony od jednego wykonawcy.</div></div>
-      <div class="faq__item"><button class="faq__q">Kto zajmuje się systemem po wdrożeniu?<span class="faq__ic"></span></button><div class="faq__a">Do wyboru: przekazujemy system Twojemu zespołowi IT z&nbsp;dokumentacją albo obejmujemy go stałą opieką w&nbsp;ramach usługi Opieka i&nbsp;rozwój: aktualizacje, kopie zapasowe, monitoring i&nbsp;kolejne usprawnienia.</div></div>
-    </div>
-  </div></section>
-
-<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband"><div class="ctaband__txt"><span class="ctaband__eyebrow">Rozpocznij projekt</span><h2 class="ctaband__title">Opowiedz nam o&nbsp;swoim procesie.</h2><p class="ctaband__desc">W&nbsp;konfiguratorze zapytamy o&nbsp;proces, który chcesz uporządkować, obecne narzędzia, integracje i&nbsp;termin. Wrócimy z&nbsp;rekomendacjami.</p></div><div class="ctaband__btns"><a href="#" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div></div></div></section>
-
-<section class="svc-sec"><div class="container">
-    <header class="usec-head" ><div><span class="usec-eyebrow">Zobacz też</span><h2 class="usec-title usec-title--wrap">Powiązane usługi i&nbsp;wiedza</h2></div></header>
-    <div class="zt-grid">
-      <article class="zt"><span class="zt__kind">Usługa</span><h3 class="zt__title">Aplikacje webowe</h3><p class="zt__desc">Produkty cyfrowe budowane od MVP do pełnej skali.</p><a href="aplikacje-webowe-nowa.html" class="zt__link">Dowiedz się więcej →</a></article>
-      <article class="zt"><span class="zt__kind">Usługa</span><h3 class="zt__title">Opieka i&nbsp;rozwój</h3><p class="zt__desc">Utrzymanie, bezpieczeństwo i&nbsp;rozwój systemu po wdrożeniu.</p><a href="opieka-rozwoj-nowa.html" class="zt__link">Dowiedz się więcej →</a></article>
-      <article class="zt"><span class="zt__kind">Wiedza</span><h3 class="zt__title">Procesy i&nbsp;automatyzacja</h3><p class="zt__desc">Artykuły o&nbsp;porządkowaniu pracy i&nbsp;danych w&nbsp;firmach.</p><a href="../wiedza.html" class="zt__link">Dowiedz się więcej →</a></article>
-    </div>
-  </div></section>
+<!-- CTA BAND -->
+<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband">
+  <div class="ctaband__txt"><span class="ctaband__eyebrow">Rozpocznij projekt</span>
+    <h2 class="ctaband__title">Następne case studium może być Twoje.</h2>
+    <p class="ctaband__desc">Powiedz nam, co chcesz osiągnąć. My powiemy jak i&nbsp;ile to kosztuje.</p></div>
+  <div class="ctaband__btns"><a href="kontakt.html" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div>
+</div></div></section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -681,9 +659,21 @@
   </div>
 </footer>
 <script>
-  document.querySelectorAll('.faq__q').forEach(function(q){
-    q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
-  });
+  (function(){
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.fchip'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.rlz-card'));
+    chips.forEach(function(c){
+      c.addEventListener('click', function(){
+        chips.forEach(function(x){ x.classList.remove('fchip--on'); });
+        c.classList.add('fchip--on');
+        var f = c.getAttribute('data-filter');
+        cards.forEach(function(card){
+          var cats = card.getAttribute('data-cat').split(' ');
+          card.hidden = !(f === 'all' || cats.indexOf(f) >= 0);
+        });
+      });
+    });
+  })();
 </script>
 
 </body>

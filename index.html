@@ -1,840 +1,1107 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code&Pixel — technologia i reklama na jednym kursie | Strony, sklepy, CRM, Google Ads</title>
-  <meta name="description" content="Projektujemy strony, sklepy, CRM-y i aplikacje webowe. Pozyskujemy klientów dzięki Google Ads i Allegro Ads. Od 14 lat łączymy technologię z mierzalną sprzedażą." />
-  <meta name="theme-color" content="#071525" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Code&amp;Pixel — nowa wersja (Figma)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* Akcent — niebieski gradient z Figmy */
+    --accent-1:#2c5fd8;
+    --accent-2:#4d7cea;
+    --accent:#3b6ae8;
+    --accent-glow:rgba(77,124,234,0.35);
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+    /* Neutrale (dopracujemy per sekcja z Figmy) */
+    --ink-1:#0b1b3a;
+    --ink-2:#3b4a63;
+    --ink-3:#66738c;
+    --white:#ffffff;
+    --page:#ffffff;
 
-  <link rel="stylesheet" href="css/style.css?v=20260715-1" />
+    --ff:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --container:1180px;
+  }
 
-  <!-- GA4 / GTM: wklej snippet po otrzymaniu ID od klienta (patrz docs/DECYZJE.md pkt 11) -->
-  <script>window.dataLayer = window.dataLayer || [];</script>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--ff);color:var(--ink-1);background:var(--page);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  ul{list-style:none}
+
+  .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+
+  /* ============ TOP (sky) ============ */
+  .top{position:relative;isolation:isolate;overflow:hidden}
+  .top__sky{position:absolute;inset:0;z-index:-2;
+    background:url("assets/nowy/hero-sky.jpg") center top / cover no-repeat;}
+  .top__fade{position:absolute;left:0;right:0;bottom:0;height:280px;z-index:-1;
+    background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, var(--page) 100%);}
+
+  /* ============ HEADER ============ */
+  .header{position:relative;z-index:10;padding:16.5px 0}
+  .header__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+
+  .logo{display:flex;align-items:center;gap:15px}
+  .logo__icon{width:66px;height:40.5px;flex:none}
+  .logo__lockup{position:relative;width:180.6px;height:43.3px;flex:none}
+  .logo__word{position:absolute;top:0;left:0;width:180.6px;height:25.64px}
+  .logo__tag{position:absolute;top:29.55px;left:49.8px;width:130.79px;height:13.72px}
+
+  .nav{display:flex;gap:30px;align-items:center}
+  .nav a{font-weight:600;font-size:15px;letter-spacing:0.6px;text-transform:uppercase;color:var(--white);transition:opacity .2s}
+  .nav > a:hover{opacity:.75}
+  /* Dropdown Usługi */
+  .nav__item{position:relative}
+  .nav__toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+  .nav__toggle:hover{opacity:.75}
+  .nav__toggle svg{width:12px;height:12px;transition:transform .2s ease}
+  .nav__item:hover .nav__toggle svg,.nav__item:focus-within .nav__toggle svg{transform:rotate(180deg)}
+  .nav__item::after{content:"";position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+  .nav__drop{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+    min-width:248px;background:#fff;border:1px solid rgba(7,30,81,0.06);border-radius:16px;
+    box-shadow:0 24px 54px rgba(7,30,81,0.18);padding:8px;
+    opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30}
+  .nav__item:hover .nav__drop,.nav__item:focus-within .nav__drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav__drop a{display:block;padding:11px 15px;border-radius:10px;
+    font-family:'Inter',var(--ff);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;
+    color:#071e51;white-space:nowrap;transition:background .15s ease,color .15s ease}
+  .nav__drop a:hover{background:#f2f5fb;color:var(--accent);opacity:1}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    font-family:var(--ff);font-weight:700;text-transform:uppercase;white-space:nowrap;border:none}
+  .btn--grad{color:var(--white);background:linear-gradient(168deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow:0 10px 17px var(--accent-glow)}
+  .btn--outline{color:var(--white);background:transparent;border:1px solid var(--white);
+    box-shadow:0 12px 40px var(--accent-glow)}
+
+  .header__cta{border-radius:999px;padding:17px 32.5px;font-size:13px;letter-spacing:0.77px;
+    border:1.7px solid rgba(255,255,255,0)}
+
+  /* ============ HERO ============ */
+  .hero{padding:80px 0 60px;position:relative;z-index:1}
+  .hero__inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .hero__eyebrow{display:inline-flex;align-items:center;background:rgba(255,255,255,0.13);
+    border-radius:900px;padding:10px 23px;
+    font-size:12px;font-weight:700;letter-spacing:3.84px;text-transform:uppercase;color:var(--white);white-space:nowrap}
+  .hero__title{margin-top:22px;max-width:820px;
+    font-size:clamp(40px,5.55vw,80.36px);font-weight:800;line-height:1.2;letter-spacing:-0.035em;color:var(--white)}
+  .hero__lead{margin-top:20px;max-width:836px;
+    font-size:clamp(17px,1.5vw,21.7px);font-weight:400;line-height:1.59;color:var(--white);opacity:.6}
+  .hero__actions{display:flex;gap:14px;justify-content:center;margin-top:30px}
+  .hero__actions .btn{border-radius:999px;font-size:15px;letter-spacing:0.9px}
+  .hero__actions .btn--grad{padding:20px 38px;border:2px solid rgba(255,255,255,0);box-shadow:0 12px 20px var(--accent-glow)}
+  .hero__actions .btn--outline{padding:19px 37px}
+
+  /* ============ TRUST BAR ============ */
+  .trust{position:relative;z-index:1;padding-top:10px}
+  .trust__row{display:flex;gap:6.512px;align-items:center;justify-content:center;flex-wrap:nowrap;
+    width:1180px;max-width:100%;margin:0 auto}
+  .trust__logo{width:136.1px;height:80.7px;overflow:hidden;position:relative;flex:none}
+  .trust__logo img{position:absolute;left:0;top:-24.53%;width:100%;height:168.66%;object-fit:contain}
+  .trust__item{width:136.1px;height:80.7px;display:flex;flex-direction:column;align-items:center;flex:none}
+  .trust__ico{width:100%;aspect-ratio:1254 / 607.5;overflow:hidden;position:relative}
+  .trust__ico img{position:absolute;left:0;top:-30.02%;width:100%;height:206.42%;object-fit:contain}
+  .trust__label{font-family:'Inter',var(--ff);font-weight:500;font-size:10.5px;line-height:1.2;letter-spacing:-0.1px;color:#071e51;text-align:center}
+  .trust__div{width:0;flex:none;position:relative;align-self:center}
+  .trust__div::before{content:"";position:absolute;left:0;top:-32px;width:1px;height:63.9px;
+    background:linear-gradient(to bottom, rgba(7,30,81,0) 0%, rgba(7,30,81,0.14) 22%, rgba(7,30,81,0.14) 78%, rgba(7,30,81,0) 100%)}
+
+  /* ============ FEATURE CARDS ============ */
+  .features{padding:70px 0}
+  .fcards{display:flex;gap:24px;align-items:stretch;width:1180px;max-width:100%;margin:0 auto}
+  .fcard{flex:1 0 0;min-width:0;border-radius:19px;padding:10px;
+    background:rgba(233,239,250,0.55);
+    border:1px solid rgba(255,255,255,0.95);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    box-shadow:0 18px 40px rgba(7,30,81,0.06)}
+  .fcard__inner{position:relative;overflow:hidden;border-radius:12px;height:535px;padding:28px;
+    display:flex;flex-direction:column;justify-content:space-between}
+  .fcard--white .fcard__inner{background:#ffffff}
+  .fcard--tint .fcard__inner{background:#f2f5fb;border:1px solid #ffffff;padding:29px}
+  .fcard__head{position:relative;z-index:2;padding-top:12px;display:flex;flex-direction:column;gap:21px;align-items:flex-start}
+  .fcard__title{font-family:'Inter',var(--ff);font-weight:500;font-size:41px;line-height:1.2;letter-spacing:-0.415px;color:#071e51;max-width:322.58px}
+  .fcard__desc{font-family:'Inter',var(--ff);font-weight:400;font-size:14px;line-height:21px;color:#071e51;opacity:.6}
+  .fcard--white .fcard__desc{max-width:244px}
+  .fcard--tint .fcard__desc{max-width:227px}
+  .fbtn{position:relative;z-index:2;align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:14px;letter-spacing:0.56px;text-transform:uppercase;color:#fff;
+    padding:20px 30px;border-radius:900px;white-space:nowrap;
+    background:linear-gradient(166deg, var(--accent-1) 0%, var(--accent-2) 100%)}
+  .fcard__ill{position:absolute;top:-34.54px;left:228.06px;width:341.908px;height:661.974px;overflow:hidden;pointer-events:none;z-index:1}
+  .fcard__ill img{position:absolute;top:-0.29%;left:-45.73%;width:194.75%;height:100.59%;max-width:none}
+  .fcard__ill2{position:absolute;top:-114.63px;left:-1px;width:703.253px;height:703.253px;pointer-events:none;z-index:1}
+  .fcard__ill2 img{width:100%;height:100%;object-fit:cover}
+
+  /* ============ USŁUGI (taby) ============ */
+  .uslugi{padding:70px 0;background:#ffffff}
+  .usec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px}
+  .usec-eyebrow{display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--ff);font-weight:700;font-size:12px;letter-spacing:3.84px;text-transform:uppercase;color:#071e51}
+  .usec-eyebrow::before{content:"";width:34px;height:1px;background:#071e51}
+  .usec-title{margin-top:16px;font-family:'Inter',var(--ff);font-weight:500;font-size:41px;line-height:1.2;letter-spacing:-0.415px;color:#071e51;white-space:nowrap}
+  .usec-lead{max-width:420px;font-family:'Inter',var(--ff);font-weight:400;font-size:14px;line-height:21px;color:#071e51;opacity:.6}
+
+  .utabs{display:flex;gap:10px;height:60px;padding:10px;margin-top:40px;
+    background:#f3f3f9;border-radius:19px;overflow:hidden}
+  .utab{flex:0 0 0;min-width:0;height:100%;display:flex;align-items:center;justify-content:center;gap:9px;
+    padding:11px 14px;border:none;background:transparent;border-radius:8px;cursor:pointer;
+    font-family:var(--ff)}
+  .utab__ico{width:30.896px;height:28px;flex:none;position:relative;overflow:hidden}
+  .utab__ico img{position:absolute;top:-30.02%;left:-43.53%;width:187.07%;height:206.42%;max-width:none}
+  .utab__label{font-family:'Inter',var(--ff);font-weight:500;font-size:10.519px;line-height:1.2;letter-spacing:-0.1065px;color:#071e51;white-space:nowrap}
+  .utab--on{background:#ffffff;border-radius:11px;gap:10px;padding:10px 23px;box-shadow:0 4px 12px rgba(7,30,81,0.06)}
+
+  .upanel{display:grid;grid-template-columns:501.297fr 612.703fr;min-height:464.344px;margin-top:22px;
+    background:rgba(255,255,255,0.13);border:1px solid rgba(7,30,81,0.06);border-radius:12px;overflow:hidden}
+  .upanel__body{padding:40px 38px;display:flex;flex-direction:column;align-items:flex-start}
+  .upanel__title{font-family:'Inter',var(--ff);font-weight:500;font-size:31px;line-height:1.2;letter-spacing:-0.415px;color:#071e51;max-width:426px}
+  .upanel__desc{margin-top:14px;max-width:350px;font-family:'Inter',var(--ff);font-weight:400;font-size:14px;line-height:21px;color:#071e51;opacity:.6}
+  .uchecks{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+  .uchecks li{display:flex;align-items:center;gap:12px;
+    font-family:'Inter',var(--ff);font-weight:400;font-size:14px;line-height:21px;color:#071e51;opacity:.6}
+  .uchecks__box{width:21px;height:21px;flex:none;background:url('assets/nowy/check.svg') center/contain no-repeat}
+  .utags{display:flex;gap:6px;margin-top:22px;margin-bottom:12px}
+  .utag{background:#eef0f6;border-radius:900px;padding:10px 23px;
+    font-family:var(--ff);font-weight:700;font-size:12px;line-height:19.2px;text-transform:uppercase;color:#071e51}
+  .utag--wide{letter-spacing:3.84px}
+  .upanel__btn{margin-top:26px;display:inline-flex;align-items:center;justify-content:center;
+    padding:16.924px 25.387px;border-radius:761px;color:#fff;white-space:nowrap;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.847px;line-height:16.5px;letter-spacing:0.4739px;text-transform:uppercase;
+    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%)}
+  .upanel__visual{position:relative;overflow:hidden}
+  .upanel__visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .upanel[hidden]{display:none}
+  .upanel{animation:upanelIn .28s cubic-bezier(0.4,0,0.2,1) both}
+  @keyframes upanelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* Placeholder wizualu (zakładki bez mockupu w Figmie) */
+  .upanel__ph{position:relative;overflow:hidden;background:#f5f6fb;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+  .upanel__ph-ico{width:230px;aspect-ratio:1254 / 607.5;position:relative;overflow:hidden}
+  .upanel__ph-ico img{position:absolute;left:0;top:-30.02%;width:100%;height:206.42%;max-width:none}
+  .upanel__ph-label{font-family:'Inter',var(--ff);font-weight:500;font-size:10.519px;letter-spacing:-0.1065px;color:#071e51;opacity:.35;text-transform:uppercase}
+
+  /* ============ REALIZACJE (karuzela) ============ */
+  .realizacje{padding:70px 0;background:#ffffff}
+  .real-viewport{margin-top:46.177px;
+    overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .real-viewport::-webkit-scrollbar{display:none}
+  .real-track{display:flex;gap:36.94px;padding-left:max(32px, calc(50% - 612px));padding-right:max(32px, calc(50% - 590px));width:max-content}
+  .real-card{flex:0 0 667.26px;height:461.77px;background:#f5f6fb;border-radius:22.352px}
+  .real-viewport{cursor:grab}
+  .real-viewport.is-dragging{cursor:grabbing;scroll-behavior:auto}
+  .real-viewport.is-dragging .real-card{pointer-events:none}
+
+  /* Pasek przewijania zamiast kropek */
+  .real-scrollbar{display:flex;justify-content:center;padding-top:28px}
+  .real-scrollbar__track{position:relative;width:280px;height:5px;border-radius:2.5px;
+    background:#e7eaf5;cursor:pointer;touch-action:none}
+  .real-scrollbar__thumb{position:absolute;top:0;left:0;height:100%;border-radius:2.5px;
+    background:#4373e5;min-width:24px}
+  .real-scrollbar__track:hover .real-scrollbar__thumb,
+  .real-scrollbar__track.is-dragging .real-scrollbar__thumb{background:var(--accent-1)}
+  .real-cta{display:flex;justify-content:center;padding-top:26px}
+
+  /* ============ HOVERY — przyciski i taby ============ */
+  .btn,.fbtn,.upanel__btn{transition:transform .18s cubic-bezier(0.4,0,0.2,1),box-shadow .18s cubic-bezier(0.4,0,0.2,1),filter .18s ease,background-color .18s ease}
+  .btn--grad:hover,.fbtn:hover,.upanel__btn:hover{transform:translateY(-2px);filter:brightness(1.07);
+    box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+  .btn--grad:active,.fbtn:active,.upanel__btn:active{transform:translateY(0);filter:brightness(0.98);box-shadow:0 8px 14px rgba(77,124,234,0.3)}
+  .btn--outline:hover{transform:translateY(-2px);background:rgba(255,255,255,0.14)}
+  .btn--outline:active{transform:translateY(0)}
+  .btn:focus-visible,.fbtn:focus-visible,.upanel__btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+
+  .utab{transition:background .16s ease,box-shadow .16s ease}
+  .utab:not(.utab--on):hover{background:#e9ecf6}
+  .utab:not(.utab--on):hover .utab__label{color:#071e51}
+  .utab--on:hover{box-shadow:0 6px 16px rgba(7,30,81,0.1)}
+  .utab:focus-visible{outline:2px solid var(--accent-2);outline-offset:-2px}
+
+  /* ============ PROCES (stepper interaktywny + glow) ============ */
+  .proces{padding:70px 0;background:#fff}
+  .proc-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:44px;position:relative}
+  .proc-steps::before{content:"";position:absolute;top:21px;left:10%;right:10%;height:2px;border-radius:1px;
+    background:linear-gradient(90deg, rgba(67,115,229,0.08), rgba(67,115,229,0.3) 50%, rgba(67,115,229,0.08))}
+  .proc-btn{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;
+    padding:0 8px 14px;border:none;background:transparent;border-radius:12px;cursor:pointer;
+    font-family:'Inter',var(--ff);transition:background .16s ease}
+  .proc-btn:hover{background:#f3f5fb}
+  .proc-btn__dot{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:13px;color:#071e51;background:#fff;border:2px solid rgba(7,30,81,0.14);
+    position:relative;z-index:1;transition:all .18s ease}
+  .proc-btn__label{font-weight:600;font-size:14px;color:#071e51;text-align:center}
+  .proc-btn.on .proc-btn__dot{background:radial-gradient(circle at 35% 35%, #7d9cee, var(--accent-1) 75%);
+    border-color:transparent;color:#fff;box-shadow:0 0 0 6px rgba(67,115,229,0.12), 0 8px 24px rgba(67,115,229,0.45)}
+  .proc-btn.on .proc-btn__label{color:var(--accent)}
+  .proc-btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+
+  .proc-detail{position:relative;overflow:hidden;margin-top:22px;background:#f5f6fb;border-radius:24px;
+    padding:40px 44px;min-height:308px;animation:procIn .25s ease both}
+  @keyframes procIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .proc-detail__grid{display:grid;grid-template-columns:0.82fr 1.18fr}
+  .proc-detail__left{padding-right:44px}
+  .proc-detail__right{padding-left:44px;border-left:1px solid rgba(7,30,81,0.09);
+    display:grid;grid-template-columns:1fr minmax(180px,290px);gap:30px;align-items:center}
+  .proc-detail__steps{align-self:center}
+  .proc-detail__etap{display:inline-block;margin-bottom:18px;padding:6px 14px;border-radius:999px;
+    font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);
+    background:#fff;border:1px solid rgba(67,115,229,0.2)}
+  .proc-detail h3{font-family:'Inter',var(--ff);font-weight:600;font-size:24px;letter-spacing:-0.3px;color:#071e51}
+  .proc-detail__left p{margin-top:12px;font-family:'Inter',var(--ff);font-size:14px;line-height:1.7;color:#071e51;opacity:.65;max-width:42ch}
+  .proc-detail h4{font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#071e51;opacity:.45;margin-bottom:16px}
+  .proc-detail ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .proc-detail li{display:flex;align-items:center;gap:12px;font-family:'Inter',var(--ff);font-size:14.5px;line-height:1.4;color:#071e51;font-weight:500}
+  .proc-detail li::before{content:"";flex:none;width:22px;height:22px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='12' fill='%234373e5'/%3E%3Cpath d='M7 12.4l3.1 3.1L17 8.8' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+  .proc-detail__result{margin-top:26px;display:inline-flex;align-items:center;gap:9px;
+    background:#fff;border:1px solid rgba(67,115,229,0.25);border-radius:999px;padding:11px 20px;
+    font-family:'Inter',var(--ff);font-size:13px;font-weight:600;color:var(--accent)}
+  .proc-detail__result svg{width:16px;height:16px;flex:none}
+  .proc-detail__ill{align-self:stretch;min-height:206px;
+    border-radius:18px;background:linear-gradient(150deg,#e7edf8 0%,#d2e0f4 100%);border:1px solid rgba(67,115,229,0.12);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .proc-detail__ill img{width:100%;height:100%;object-fit:cover}
+  .proc-detail__ill span{font-family:var(--ff);font-weight:600;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8fa2c6}
+  @media (max-width:900px){
+    .proc-detail__grid{grid-template-columns:1fr}
+    .proc-detail__left{padding-right:0;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid rgba(7,30,81,0.09)}
+    .proc-detail__right{padding-left:0;border-left:none;grid-template-columns:1fr}
+    .proc-detail__ill{min-height:150px;margin-top:6px}
+  }
+
+  /* ============ TECHNOLOGIE ============ */
+  .tech{padding:70px 0;background:#fff}
+  .tech .container{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .tech .usec-lead{max-width:560px;margin-top:16px}
+  .tgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:44px;width:100%}
+  .tcell{display:flex;align-items:center;gap:20px;padding:22px 24px;
+    background:#fff;border:1px solid rgba(7,30,81,0.05);border-radius:18px;
+    box-shadow:0 10px 30px rgba(7,30,81,0.04);
+    transition:transform .18s cubic-bezier(0.4,0,0.2,1),box-shadow .18s ease,border-color .18s ease}
+  .tcell:hover{transform:translateY(-3px);border-color:rgba(67,115,229,0.22);box-shadow:0 18px 40px rgba(7,30,81,0.09)}
+  .tcell__ico{width:64px;height:64px;flex:none;border-radius:15px;
+    background:#fff;border:1px solid rgba(7,30,81,0.06);box-shadow:0 4px 14px rgba(7,30,81,0.06);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .tcell__ico img{width:100%;height:100%;object-fit:contain}
+  /* placeholder do czasu dostarczenia ikon */
+  .tcell__ico:empty::after,.tcell__ico:not(:has(img))::after{content:"";width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(150deg,#eaf0fd 0%,#cfddf7 100%)}
+  .tcell__txt{display:flex;flex-direction:column;gap:4px;min-width:0}
+  .tcell__txt strong{font-family:'Inter',var(--ff);font-weight:700;font-size:14px;line-height:1.25;letter-spacing:-0.1px;color:#071e51}
+  .tcell__txt span{font-family:'Inter',var(--ff);font-weight:600;font-size:9.5px;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent)}
+  .tech__cta{display:flex;justify-content:center;margin-top:44px}
+  .tech-cta-btn{display:inline-flex;align-items:center;gap:12px;padding:19px 40px;border-radius:999px;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:15px;letter-spacing:0.4px;color:#fff;
+    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow:0 12px 24px rgba(77,124,234,0.35);
+    transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+  .tech-cta-btn:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 18px 34px rgba(77,124,234,0.45)}
+  .tech-cta-btn svg{transition:transform .18s ease}
+  .tech-cta-btn:hover svg{transform:translateX(3px)}
+
+  /* ============ OPINIE ============ */
+  .opinie{padding:70px 0;background:#fff}
+  .opinie .usec-lead{max-width:560px;margin-top:16px}
+  .tviewport{margin-top:40px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tviewport::-webkit-scrollbar{display:none}
+  .ttrack{display:flex;gap:20px}
+  .testi{flex:1 0 0;min-width:300px;background:#f5f6fb;border-radius:22px;padding:25px;
+    display:flex;flex-direction:column;min-height:258px}
+  .testi__quote{display:block;height:34px;font-family:Georgia,'Times New Roman','Playfair Display',serif;font-style:italic;font-weight:700;font-size:80px;line-height:1;color:#4373e5}
+  .testi__text{margin-top:6px;flex:1;font-family:'Inter',var(--ff);font-size:14px;line-height:1.6;color:#071e51;opacity:.75}
+  .testi__person{margin-top:18px;padding-top:16px;border-top:1px solid rgba(7,30,81,0.08)}
+  .testi__person b{display:block;font-family:'Inter',var(--ff);font-weight:600;font-size:14px;color:#071e51}
+  .testi__person span{font-family:'Inter',var(--ff);font-size:12px;color:#071e51;opacity:.5}
+  .opinie__nav{display:flex;gap:10px;justify-content:center;margin-top:28px}
+  .oarrow{width:40px;height:40px;border-radius:50%;border:1px solid rgba(7,30,81,0.16);background:#fff;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;color:#071e51;font-size:20px;line-height:1;
+    font-family:'Inter',var(--ff);
+    transition:background .16s ease,transform .16s ease,opacity .16s ease}
+  .oarrow:hover{background:#f3f5fb;transform:translateY(-2px)}
+  .oarrow[disabled]{opacity:.3;pointer-events:none}
+
+  /* ============ CTA BAND ============ */
+  .ctaband-wrap{padding:70px 0;background:#fff}
+  .ctaband{background:#071e51 url("assets/nowy/cta-bg.png") right center / cover no-repeat;border-radius:24px;padding:56px 48px;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
+    position:relative;overflow:hidden}
+  .ctaband__eyebrow{display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--ff);font-weight:700;font-size:12px;letter-spacing:3.84px;text-transform:uppercase;color:rgba(255,255,255,0.65)}
+  .ctaband__eyebrow::before{content:"";width:34px;height:1px;background:rgba(255,255,255,0.35)}
+  .ctaband__title{margin-top:14px;max-width:460px;font-family:'Inter',var(--ff);font-weight:500;font-size:34px;line-height:1.2;letter-spacing:-0.4px;color:#fff}
+  .ctaband__desc{margin-top:14px;max-width:520px;font-family:'Inter',var(--ff);font-size:14px;line-height:21px;color:rgba(255,255,255,0.6)}
+  .ctaband__btns{display:flex;gap:14px;flex-shrink:0;position:relative;z-index:1}
+  .ctaband .upanel__btn{margin-top:0}
+  .btn-outline-light{display:inline-flex;align-items:center;justify-content:center;padding:16.9px 25.4px;border-radius:761px;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.847px;letter-spacing:0.4739px;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,0.4);background:transparent;
+    transition:transform .18s ease,background .18s ease,border-color .18s ease}
+  .btn-outline-light:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.7)}
+
+  /* ============ FOOTER ============ */
+  .footer{margin-top:70px;background:#071e51;color:#fff;padding:60px 0 30px}
+  .footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+  .footer__logo{display:flex;align-items:center;gap:12px}
+  .footer__logo img{height:34px;width:auto}
+  .footer__brand p{margin-top:16px;max-width:280px;font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.55)}
+  .footer__social{display:flex;gap:12px;margin-top:20px}
+  .footer__social a{width:44px;height:44px;border-radius:10px;display:inline-flex;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+    transition:background .16s ease,transform .16s ease}
+  .footer__social a:hover{background:rgba(255,255,255,0.16);transform:translateY(-2px)}
+  .footer h5{font-family:'Inter',var(--ff);font-weight:600;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px}
+  .footer ul li{margin-bottom:10px}
+  .footer ul a{font-family:'Inter',var(--ff);font-size:13px;color:rgba(255,255,255,0.7);transition:color .16s ease}
+  .footer ul a:hover{color:#fff}
+  .footer__contact p{font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:8px}
+  .footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1);
+    font-family:'Inter',var(--ff);font-size:12px;color:rgba(255,255,255,0.4)}
+
+  @media (max-width:1180px){
+    .trust__row{flex-wrap:wrap;width:auto;max-width:1116px;padding:0 32px;gap:10px 18px}
+    .trust__div{display:none}
+    .utabs{overflow-x:auto;scrollbar-width:none}
+    .utabs::-webkit-scrollbar{display:none}
+    .utab{flex:0 0 auto}
+    .real-track{padding-left:32px}
+  }
+  @media (max-width:760px){
+    .real-card{flex-basis:86vw;height:auto;aspect-ratio:667 / 462}
+  }
+  @media (max-width:1024px){
+    .tgrid{grid-template-columns:repeat(2,1fr)}
+    .footer__grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:900px){
+    .proc-steps{grid-template-columns:repeat(5,minmax(96px,1fr));overflow-x:auto;scrollbar-width:none}
+    .proc-steps::-webkit-scrollbar{display:none}
+    .proc-detail{grid-template-columns:1fr;gap:22px;padding:24px}
+  }
+  @media (max-width:820px){
+    .fcards{flex-direction:column}
+    .usec-head{flex-direction:column;align-items:flex-start;gap:16px}
+    .usec-title{white-space:normal}
+    .upanel{grid-template-columns:1fr;height:auto}
+    .upanel__visual{height:340px}
+    .ctaband{flex-direction:column;align-items:flex-start}
+    .testi{min-width:82vw}
+  }
+  @media (max-width:560px){
+    .tgrid{grid-template-columns:1fr}
+    .footer__grid{grid-template-columns:1fr}
+  }
+  @media (max-width:1180px){
+    .fcards{width:auto;padding:0 32px}
+  }
+  @media (max-width:820px){
+    .fcards{flex-direction:column}
+  }
+  @media (max-width:900px){
+    .nav{display:none}
+    .hero__title{font-size:clamp(34px,7vw,54px)}
+  }
+</style>
 </head>
-<body class="has-scene">
+<body>
 
-  <!-- ========== IMMERSIVE SCROLL VIDEO BACKGROUND ========== -->
-  <div class="scene" aria-hidden="true">
-    <video class="scene__video scene__video--active" id="sceneVideo1"
-           muted playsinline preload="auto" poster="assets/poster.jpg">
-      <source src="assets/01.scrub.mp4" type="video/mp4" />
-    </video>
-    <video class="scene__video" id="sceneVideo2"
-           muted playsinline preload="auto">
-      <source src="assets/02.scrub.mp4" type="video/mp4" />
-    </video>
-  </div>
+<div class="top">
+  <div class="top__sky" aria-hidden="true"></div>
+  <div class="top__fade" aria-hidden="true"></div>
 
-  <!-- ========== HEADER ========== -->
-  <header class="header" id="header">
+  <!-- ============ HEADER ============ -->
+  <header class="header">
     <div class="container header__inner">
-      <a href="index.html" class="logo" aria-label="Code & Pixel — strona główna">
-        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
+      <a href="#" class="logo" aria-label="Code&amp;Pixel">
+        <img class="logo__icon" src="assets/nowy/logo-icon.svg" alt="" />
+        <span class="logo__lockup">
+          <img class="logo__word" src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
+          <img class="logo__tag" src="assets/nowy/logo-tag.svg" alt="" />
+        </span>
       </a>
 
-      <nav class="nav" aria-label="Główna nawigacja">
-        <ul class="nav__list">
-          <li class="nav__item--has-mega">
-            <a href="uslugi.html" class="nav__link" data-nav="uslugi">Usługi</a>
-            <div class="nav__mega">
-              <div class="mega-group">
-                <div class="mega-group__title">Budujemy</div>
-                <div class="mega-group__links">
-                  <a href="uslugi/strony-internetowe.html">Strony internetowe<span>Wizerunek i&nbsp;zapytania</span></a>
-                  <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe<span>Sprzedaż gotowa na rozwój</span></a>
-                  <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy dla firm<span>Porządek w&nbsp;procesach</span></a>
-                  <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe<span>Produkty na miarę</span></a>
-                </div>
-              </div>
-              <div class="mega-group">
-                <div class="mega-group__title">Napędzamy sprzedaż</div>
-                <div class="mega-group__links">
-                  <a href="uslugi/google-ads.html">Google Ads<span>Kampanie na wynik</span></a>
-                  <a href="uslugi/allegro-ads.html">Allegro Ads<span>Rentowna sprzedaż</span></a>
-                </div>
-              </div>
-              <div class="mega-group">
-                <div class="mega-group__title">Rozwijamy</div>
-                <div class="mega-group__links">
-                  <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój<span>Utrzymanie i&nbsp;optymalizacja</span></a>
-                  <a href="uslugi.html">Wszystkie usługi<span>Pełny zakres kompetencji</span></a>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li><a href="portfolio.html" class="nav__link" data-nav="portfolio">Realizacje</a></li>
-          <li><a href="o-nas.html" class="nav__link" data-nav="o-nas">O&nbsp;nas</a></li>
-          <li><a href="wiedza.html" class="nav__link" data-nav="wiedza">Wiedza</a></li>
-          <li><a href="kontakt.html" class="nav__link" data-nav="kontakt">Kontakt</a></li>
-        </ul>
+      <nav class="nav">
+        <div class="nav__item">
+          <a href="#uslugi" class="nav__toggle" aria-haspopup="true" aria-expanded="false">Usługi
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav__drop" role="menu">
+            <a href="strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="google-ads.html" role="menuitem">Google Ads</a>
+            <a href="allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+          </div>
+        </div>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="wiedza.html">Wiedza</a>
       </nav>
 
-      <a href="kontakt.html" class="btn btn--ghost btn--header" data-cta="header">
-        Opowiedz nam o&nbsp;projekcie
-        <svg class="btn__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </a>
-
-      <button class="hamburger" id="hamburger" aria-label="Otwórz menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <nav>
-        <ul>
-          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Budujemy</span></li>
-          <li><a href="uslugi/strony-internetowe.html">Strony internetowe</a></li>
-          <li><a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a></li>
-          <li><a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a></li>
-          <li><a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a></li>
-          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Napędzamy sprzedaż</span></li>
-          <li><a href="uslugi/google-ads.html">Google Ads</a></li>
-          <li><a href="uslugi/allegro-ads.html">Allegro Ads</a></li>
-          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Rozwijamy</span></li>
-          <li><a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
-          <li><span class="mono-label" style="display:block;padding:8px 0 2px;">Firma</span></li>
-          <li><a href="portfolio.html">Realizacje</a></li>
-          <li><a href="o-nas.html">O&nbsp;nas</a></li>
-          <li><a href="wiedza.html">Wiedza</a></li>
-          <li><a href="kontakt.html">Kontakt</a></li>
-        </ul>
-        <a href="kontakt.html" class="btn btn--primary btn--block" data-cta="mobile-menu">Opowiedz nam o&nbsp;projekcie</a>
-      </nav>
+      <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
     </div>
   </header>
 
-  <!-- ========== HERO (brief 4.1) ========== -->
+  <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero__sky" aria-hidden="true">
-      <div class="cloud cloud--1"></div>
-      <div class="cloud cloud--2"></div>
-      <div class="cloud cloud--3"></div>
-      <div class="cloud cloud--4"></div>
-    </div>
-
     <div class="container hero__inner">
-      <span class="eyebrow eyebrow--light">
-        <span class="eyebrow__line"></span>
-        14 lat doświadczenia
-        <span class="eyebrow__line"></span>
-      </span>
-
-      <h1 class="hero__title">
-        Nadajemy cyfrowy kierunek<br />
-        <span class="hero__title--accent">Twojemu biznesowi.</span>
-      </h1>
-
-      <p class="hero__subtitle">
-        Projektujemy strony, sklepy, CRM-y i&nbsp;aplikacje webowe.<br />
-        Pozyskujemy klientów dzięki Google Ads i&nbsp;Allegro Ads.<br />
-        Od 14 lat łączymy technologię z&nbsp;mierzalną sprzedażą.
-      </p>
-
+      <span class="hero__eyebrow">14 lat doświadczenia</span>
+      <h1 class="hero__title">Nadajemy kierunek Twojemu biznesowi.</h1>
+      <p class="hero__lead">Projektujemy strony, sklepy, CRM-y i&nbsp;aplikacje webowe. Pozyskujemy klientów dzięki Google Ads i&nbsp;Allegro Ads. Od&nbsp;14 lat łączymy technologię z&nbsp;mierzalną sprzedażą.</p>
       <div class="hero__actions">
-        <a href="kontakt.html" class="btn btn--primary btn--lg" data-cta="hero-primary">
-          Opowiedz nam o&nbsp;projekcie
-          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="portfolio.html" class="btn btn--ghost btn--lg" data-cta="hero-secondary">
-          Zobacz realizacje
-        </a>
-      </div>
-
-      <div class="hero__points" aria-hidden="true">
-        <span class="hero__point">Strategia</span>
-        <span class="hero__point">Technologia</span>
-        <span class="hero__point">Wynik</span>
+        <a href="#kontakt" class="btn btn--grad">Rozpocznij projekt</a>
+        <a href="#realizacje" class="btn btn--outline">Zobacz realizacje</a>
       </div>
     </div>
   </section>
 
-  <!-- ========== PASEK ZAUFANIA (brief 4.2) ========== -->
-  <section class="trust-bar" aria-label="Doświadczenie i zakres">
-    <div class="container trust-bar__inner">
-      <span class="trust-bar__item">14 lat doświadczenia</span>
-      <span class="trust-bar__item"><span class="partner-badge">Google Partner</span></span>
-      <span class="trust-bar__item"><span class="partner-badge">Allegro Ads Partner</span></span>
-      <span class="trust-bar__item"><span class="mono-label">WWW</span></span>
-      <span class="trust-bar__item"><span class="mono-label">E-commerce</span></span>
-      <span class="trust-bar__item"><span class="mono-label">Aplikacje</span></span>
-      <span class="trust-bar__item"><span class="mono-label">CRM</span></span>
-      <span class="trust-bar__item"><span class="mono-label">Reklamy</span></span>
-    </div>
-  </section>
-
-  <!-- ========== DWA GŁÓWNE OBSZARY (brief 4.3) ========== -->
-  <section class="pillars">
-    <div class="container">
-      <div class="pillars__grid">
-        <a href="uslugi.html#budujemy" class="pillar-card" data-analytics="service_open" data-service="produkty-cyfrowe" data-source="pillar">
-          <span class="pillar-card__num">01 / BUDUJEMY</span>
-          <h2 class="pillar-card__title">Tworzymy produkty cyfrowe</h2>
-          <p class="pillar-card__text">Strony, sklepy, CRM-y i&nbsp;aplikacje dopasowane do procesów oraz celów Twojej firmy.</p>
-          <span class="pillar-card__arrow" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-          <span class="pillar-card__glow" aria-hidden="true"></span>
-        </a>
-        <a href="uslugi.html#napedzamy" class="pillar-card" data-analytics="service_open" data-service="pozyskiwanie-klientow" data-source="pillar">
-          <span class="pillar-card__num">02 / NAPĘDZAMY</span>
-          <h2 class="pillar-card__title">Pozyskujemy klientów</h2>
-          <p class="pillar-card__text">Google Ads i&nbsp;Allegro Ads nastawione na sprzedaż, rentowność i&nbsp;przejrzyste raportowanie.</p>
-          <span class="pillar-card__arrow" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </span>
-          <span class="pillar-card__glow" aria-hidden="true"></span>
-        </a>
+  <!-- ============ TRUST BAR ============ -->
+  <section class="trust" aria-label="Kompetencje i partnerstwa">
+    <div class="trust__row">
+      <div class="trust__logo"><img src="assets/nowy/trust-14lat.png" alt="14 lat doświadczenia" /></div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__logo"><img src="assets/nowy/trust-google.png" alt="Google Partner" /></div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__logo"><img src="assets/nowy/trust-allegro.png" alt="Allegro Ads Partner" /></div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__item">
+        <span class="trust__ico"><img src="assets/nowy/ico-www.png" alt="" /></span>
+        <span class="trust__label">WWW</span>
+      </div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__item">
+        <span class="trust__ico"><img src="assets/nowy/ico-ecommerce.png" alt="" /></span>
+        <span class="trust__label">E-commerce</span>
+      </div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__item">
+        <span class="trust__ico"><img src="assets/nowy/ico-aplikacje.png" alt="" /></span>
+        <span class="trust__label">Aplikacje</span>
+      </div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__item">
+        <span class="trust__ico"><img src="assets/nowy/ico-crm.png" alt="" /></span>
+        <span class="trust__label">CRM</span>
+      </div>
+      <span class="trust__div" aria-hidden="true"></span>
+      <div class="trust__item">
+        <span class="trust__ico"><img src="assets/nowy/ico-reklamy.png" alt="" /></span>
+        <span class="trust__label">Reklamy</span>
       </div>
     </div>
   </section>
+</div>
 
-  <!-- ========== USŁUGI (brief 4.4) ========== -->
-  <section class="services" id="uslugi" style="padding-top:0;">
-    <div class="container">
-      <header class="svc-head">
-        <div class="svc-head__left">
-          <span class="eyebrow eyebrow--start">Usługi</span>
-          <h2 class="svc-head__title">Od pomysłu <br />do wyniku.</h2>
+<!-- ============ FEATURE CARDS ============ -->
+<section class="features">
+  <div class="fcards">
+    <article class="fcard fcard--white">
+      <div class="fcard__inner">
+        <div class="fcard__head">
+          <h2 class="fcard__title">Tworzymy produkty cyfrowe</h2>
+          <p class="fcard__desc">Strony, sklepy, CRM-y i&nbsp;aplikacje dopasowane do procesów oraz celów Twojej firmy.</p>
         </div>
-        <p class="svc-head__lead">
-          Nie kończymy na atrakcyjnym projekcie. Tworzymy rozwiązania, które pozyskują zapytania, sprzedają, automatyzują procesy albo dostarczają dane.
-        </p>
-      </header>
-
-      <div class="svc-tabs" role="tablist" aria-label="Usługi Code&Pixel">
-        <button class="svc-tab svc-tab--active" id="svc-tab-0" role="tab" aria-selected="true" aria-controls="svc-panel-0" tabindex="0" data-svc-tab="0">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></span>
-          <span class="svc-tab__label">Strony internetowe</span>
-        </button>
-        <button class="svc-tab" id="svc-tab-1" role="tab" aria-selected="false" aria-controls="svc-panel-1" tabindex="-1" data-svc-tab="1">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.2 11a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.3L21 7H6"/></svg></span>
-          <span class="svc-tab__label">Sklepy internetowe</span>
-        </button>
-        <button class="svc-tab" id="svc-tab-2" role="tab" aria-selected="false" aria-controls="svc-panel-2" tabindex="-1" data-svc-tab="2">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.6a3.6 3.6 0 0 0-3.6-3.6H6.6A3.6 3.6 0 0 0 3 18.4V20"/><circle cx="9.3" cy="8" r="3.4"/><path d="M21 20v-1.6a3.6 3.6 0 0 0-2.7-3.5"/><path d="M15 4.6a3.4 3.4 0 0 1 0 6.6"/></svg></span>
-          <span class="svc-tab__label">CRM i systemy dla firm</span>
-        </button>
-        <button class="svc-tab" id="svc-tab-3" role="tab" aria-selected="false" aria-controls="svc-panel-3" tabindex="-1" data-svc-tab="3">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 3 21 7.5 12 12 3 7.5 12 3"/><polyline points="3 16.5 12 21 21 16.5"/><polyline points="3 12 12 16.5 21 12"/></svg></span>
-          <span class="svc-tab__label">Aplikacje webowe</span>
-        </button>
-        <button class="svc-tab" id="svc-tab-4" role="tab" aria-selected="false" aria-controls="svc-panel-4" tabindex="-1" data-svc-tab="4">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></span>
-          <span class="svc-tab__label">Google Ads</span>
-        </button>
-        <button class="svc-tab" id="svc-tab-5" role="tab" aria-selected="false" aria-controls="svc-panel-5" tabindex="-1" data-svc-tab="5">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3 3.5 7v12a1.8 1.8 0 0 0 1.8 1.8h13.4A1.8 1.8 0 0 0 20.5 19V7L18 3z"/><line x1="3.5" y1="7" x2="20.5" y2="7"/><path d="M15.5 10.5a3.5 3.5 0 0 1-7 0"/></svg></span>
-          <span class="svc-tab__label">Allegro Ads</span>
-        </button>
-        <button class="svc-tab" id="svc-tab-6" role="tab" aria-selected="false" aria-controls="svc-panel-6" tabindex="-1" data-svc-tab="6">
-          <span class="svc-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 7 13.5 14.5 9.5 10.5 3 17"/><polyline points="16 7 21 7 21 12"/></svg></span>
-          <span class="svc-tab__label">Opieka i rozwój</span>
-        </button>
+        <a href="#" class="fbtn">Zobacz, jak działamy</a>
+        <span class="fcard__ill" aria-hidden="true"><img src="assets/nowy/card-produkty.png" alt="" /></span>
       </div>
+    </article>
 
-      <div class="svc-panels">
-        <div class="svc-panel svc-panel--active" id="svc-panel-0" role="tabpanel" aria-labelledby="svc-tab-0">
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Nowoczesne strony, <br />które budują zaufanie <br />i&nbsp;konwertują.</h3>
-              <p class="svc-panel__desc">Projektujemy responsywne strony internetowe, które przyciągają uwagę, budują wiarygodność i&nbsp;skutecznie zamieniają odwiedzających w&nbsp;klientów.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Projekt UX/UI dopasowany do Twojej marki</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Optymalizacja SEO i&nbsp;szybkości ładowania</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Responsywność i&nbsp;dostępność</li>
-              </ul>
-              <div class="svc-panel__tags"><span>UX / UI</span><span>Responsywność</span><span>SEO</span></div>
-              <a href="uslugi/strony-internetowe.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="strony-internetowe" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twoja marka</strong><p>Nowoczesna strona, która pracuje na Twój sukces.</p><span class="svc-mock__btn">Skontaktuj się</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Szybkość</strong><p>Optymalizacja i&nbsp;wydajność na najwyższym poziomie.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Responsywność</strong><p>Świetny wygląd na każdym urządzeniu.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>SEO</strong><p>Lepsza widoczność i&nbsp;więcej ruchu organicznego.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># strony</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Jak przygotować stronę główną pod kampanię?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Zaproponowałem strukturę sekcji, copy i&nbsp;układ CTA pod kampanię Google Ads.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Strona-glowna-propozycja.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
+    <article class="fcard fcard--tint">
+      <div class="fcard__inner">
+        <span class="fcard__ill2" aria-hidden="true"><img src="assets/nowy/card-klienci.png" alt="" /></span>
+        <div class="fcard__head">
+          <h2 class="fcard__title">Pozyskujemy klientów</h2>
+          <p class="fcard__desc">Google Ads i&nbsp;Allegro Ads nastawione na sprzedaż, rentowność i&nbsp;przejrzyste raportowanie.</p>
         </div>
-        <div class="svc-panel" id="svc-panel-1" role="tabpanel" aria-labelledby="svc-tab-1" hidden>
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Sklepy, które sprzedają <br />i&nbsp;skalują się razem <br />z&nbsp;Twoim biznesem.</h3>
-              <p class="svc-panel__desc">Budujemy sklepy internetowe z&nbsp;wygodnym procesem zakupu i&nbsp;sprawnym zapleczem, gotowe na kampanie i&nbsp;wzrost sprzedaży.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Wygodny checkout i&nbsp;szybki proces zakupu</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Integracje płatności, wysyłek i&nbsp;systemów</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Zaplecze gotowe do skalowania</li>
-              </ul>
-              <div class="svc-panel__tags"><span>E-commerce</span><span>Płatności</span><span>Integracje</span></div>
-              <a href="uslugi/sklepy-internetowe.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="sklepy-internetowe" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój sklep</strong><p>Sprzedawaj więcej, z&nbsp;mniejszym wysiłkiem.</p><span class="svc-mock__btn">Kup teraz</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Konwersja</strong><p>Ścieżka zakupu bez zbędnych kroków.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Płatności</strong><p>BLIK, karty i&nbsp;raty w&nbsp;jednym miejscu.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Magazyn</strong><p>Stany i&nbsp;zamówienia pod kontrolą.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># sklep</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Jak podnieść konwersję w&nbsp;koszyku?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Uprościłem checkout do 2 kroków i&nbsp;dodałem podsumowanie z&nbsp;kosztem dostawy.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Checkout-audyt.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
+        <a href="#" class="fbtn">Dowiedz się więcej</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ USŁUGI (taby) ============ -->
+<section class="uslugi" id="uslugi">
+  <div class="container">
+    <header class="usec-head">
+      <div class="usec-head__left">
+        <span class="usec-eyebrow">Usługi</span>
+        <h2 class="usec-title">Od pomysłu do wyniku.</h2>
+      </div>
+      <p class="usec-lead">Nie koncentrujemy się na atrakcyjnym projekcie. Tworzymy rozwiązania, które pozyskują zapytania, sprzedaż, automatyzują procesy albo dostarczają dane.</p>
+    </header>
+
+    <div class="utabs" role="tablist" aria-label="Usługi">
+      <button class="utab utab--on" role="tab" aria-selected="true" style="flex-grow:176.547">
+        <span class="utab__ico"><img src="assets/nowy/tab-strony.png" alt="" /></span>
+        <span class="utab__label">Strony internetowe</span>
+      </button>
+      <button class="utab" role="tab" aria-selected="false" style="flex-grow:177.516">
+        <span class="utab__ico"><img src="assets/nowy/tab-sklepy.png" alt="" /></span>
+        <span class="utab__label">Sklepy internetowe</span>
+      </button>
+      <button class="utab" role="tab" aria-selected="false" style="flex-grow:199.094">
+        <span class="utab__ico"><img src="assets/nowy/tab-crm.png" alt="" /></span>
+        <span class="utab__label">CRM i&nbsp;systemy dla firm</span>
+      </button>
+      <button class="utab" role="tab" aria-selected="false" style="flex-grow:170.328">
+        <span class="utab__ico"><img src="assets/nowy/tab-aplikacje.png" alt="" /></span>
+        <span class="utab__label">Aplikacje webowe</span>
+      </button>
+      <button class="utab" role="tab" aria-selected="false" style="flex-grow:130.797">
+        <span class="utab__ico"><img src="assets/nowy/tab-google.png" alt="" /></span>
+        <span class="utab__label">Google Ads</span>
+      </button>
+      <button class="utab" role="tab" aria-selected="false" style="flex-grow:130.75">
+        <span class="utab__ico"><img src="assets/nowy/tab-allegro.png" alt="" /></span>
+        <span class="utab__label">Allegro Ads</span>
+      </button>
+      <button class="utab" role="tab" aria-selected="false" style="flex-grow:153.359">
+        <span class="utab__ico"><img src="assets/nowy/tab-opieka.png" alt="" /></span>
+        <span class="utab__label">Opieka i&nbsp;rozwój</span>
+      </button>
+    </div>
+
+    <!-- Panel 1: Strony internetowe (1:1 z Figmy) -->
+    <div class="upanel" data-panel="0">
+      <div class="upanel__body">
+        <h3 class="upanel__title">Nowoczesne strony, które budują zaufanie i&nbsp;konwertują.</h3>
+        <p class="upanel__desc">Projektujemy responsywne strony internetowe, które przyciągają uwagę, budują wiarygodność i&nbsp;skutecznie zamieniają odwiedzających w&nbsp;klientów.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>Projekt UX/UI dopasowany do Twojej marki</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Optymalizacja SEO i&nbsp;szybkości ładowania</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Responsywność i&nbsp;dostępność</li>
+        </ul>
+        <div class="utags">
+          <span class="utag utag--wide">UX/UI</span>
+          <span class="utag">Responsywność</span>
+          <span class="utag">SEO</span>
         </div>
-        <div class="svc-panel" id="svc-panel-2" role="tabpanel" aria-labelledby="svc-tab-2" hidden>
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Systemy, które porządkują <br />dane i&nbsp;oszczędzają <br />czas zespołu.</h3>
-              <p class="svc-panel__desc">Tworzymy CRM-y i&nbsp;wewnętrzne systemy, które łączą dane w&nbsp;jednym miejscu i&nbsp;eliminują powtarzalną pracę ręczną.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Jedno źródło danych o&nbsp;klientach</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Automatyzacja powtarzalnych procesów</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Raporty i&nbsp;pulpity w&nbsp;czasie rzeczywistym</li>
-              </ul>
-              <div class="svc-panel__tags"><span>Automatyzacja</span><span>Raporty</span><span>Integracje</span></div>
-              <a href="uslugi/crm-systemy.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="crm-systemy" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój CRM</strong><p>Wszystkie dane i&nbsp;procesy w&nbsp;jednym pulpicie.</p><span class="svc-mock__btn">Zobacz pulpit</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Leady</strong><p>Historia kontaktu w&nbsp;jednym widoku.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Automatyzacje</strong><p>Mniej klikania, więcej wyników.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Raporty</strong><p>Decyzje oparte na danych.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># crm</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Da się zautomatyzować przypisywanie leadów?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Tak, ustawiłem reguły przypisania wg źródła i&nbsp;regionu.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Automatyzacja-leadow.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="svc-panel" id="svc-panel-3" role="tabpanel" aria-labelledby="svc-tab-3" hidden>
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Aplikacje webowe <br />skrojone pod Twój <br />model biznesowy.</h3>
-              <p class="svc-panel__desc">Projektujemy i&nbsp;wdrażamy produkty cyfrowe, od MVP po dojrzały produkt, gotowe na integracje i&nbsp;rozwój.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Architektura pod Twój model biznesowy</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Od MVP do dojrzałego produktu</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>API i&nbsp;integracje z&nbsp;systemami</li>
-              </ul>
-              <div class="svc-panel__tags"><span>MVP</span><span>API</span><span>Backend</span></div>
-              <a href="uslugi/aplikacje-webowe.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="aplikacje-webowe" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój produkt</strong><p>Od pomysłu do działającego MVP.</p><span class="svc-mock__btn">Uruchom demo</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>MVP</strong><p>Szybko na rynek, bez kompromisów.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>API</strong><p>Integracje z&nbsp;Twoimi systemami.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Skalowanie</strong><p>Architektura gotowa na wzrost.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># aplikacja</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Zdążymy z&nbsp;MVP na Q3?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Tak, rozbiłem zakres na 3 sprinty z&nbsp;działającą wersją co 2 tygodnie.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Roadmapa-MVP.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="svc-panel" id="svc-panel-4" role="tabpanel" aria-labelledby="svc-tab-4" hidden>
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Kampanie Google Ads <br />prowadzone na wynik, <br />nie na sam ruch.</h3>
-              <p class="svc-panel__desc">Prowadzimy kampanie nastawione na realne zapytania i&nbsp;sprzedaż, z&nbsp;kontrolą kosztu pozyskania klienta.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kampanie prowadzone na wynik</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kontrolowany koszt pozyskania</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Optymalizacja pod konwersję</li>
-              </ul>
-              <div class="svc-panel__tags"><span>Search</span><span>PMax</span><span>Remarketing</span></div>
-              <a href="uslugi/google-ads.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="google-ads" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twoja kampania</strong><p>Więcej zapytań przy niższym koszcie.</p><span class="svc-mock__btn">Zobacz wyniki</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Konwersje</strong><p>Optymalizacja pod realne zapytania.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Koszt</strong><p>Kontrola CPA i&nbsp;budżetu.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Zasięg</strong><p>Search, PMax i&nbsp;remarketing.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># google-ads</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Da się obniżyć koszt pozyskania?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Przeniosłem budżet na najlepsze frazy i&nbsp;odciąłem nietrafiony ruch.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Optymalizacja-kampanii.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="svc-panel" id="svc-panel-5" role="tabpanel" aria-labelledby="svc-tab-5" hidden>
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Allegro Ads, które <br />zwiększają sprzedaż bez <br />przepalania budżetu.</h3>
-              <p class="svc-panel__desc">Optymalizujemy widoczność ofert i&nbsp;kampanie na Allegro tak, aby sprzedaż była rentowna.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Lepsza widoczność ofert</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Rentowna sprzedaż, bez przepalania</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Optymalizacja kampanii i&nbsp;ofert</li>
-              </ul>
-              <div class="svc-panel__tags"><span>Kampanie</span><span>Oferty</span><span>Rentowność</span></div>
-              <a href="uslugi/allegro-ads.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="allegro-ads" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twoje oferty</strong><p>Wyżej w&nbsp;wynikach, wyżej w&nbsp;sprzedaży.</p><span class="svc-mock__btn">Sprawdź oferty</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Widoczność</strong><p>Oferty wyżej w&nbsp;wynikach.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Rentowność</strong><p>Sprzedaż z&nbsp;kontrolą marży.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Oferty</strong><p>Lepsze tytuły i&nbsp;zdjęcia.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># allegro-ads</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Które oferty promować w&nbsp;pierwszej kolejności?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Wybrałem 8 ofert z&nbsp;najlepszą marżą i&nbsp;konwersją.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Plan-kampanii-allegro.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="svc-panel" id="svc-panel-6" role="tabpanel" aria-labelledby="svc-tab-6" hidden>
-          <div class="svc-panel__grid">
-            <div class="svc-panel__body">
-              <h3 class="svc-panel__title">Opieka i&nbsp;rozwój, bo <br />technologia nie kończy się <br />w&nbsp;dniu publikacji.</h3>
-              <p class="svc-panel__desc">Zapewniamy utrzymanie, bezpieczeństwo i&nbsp;analitykę oraz kolejne wdrożenia, które rozwijają Twój produkt.</p>
-              <ul class="svc-checklist">
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Utrzymanie, hosting i&nbsp;bezpieczeństwo</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Monitoring i&nbsp;analityka</li>
-                <li><span class="svc-checklist__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>Kolejne wdrożenia i&nbsp;rozwój</li>
-              </ul>
-              <div class="svc-panel__tags"><span>SLA</span><span>CRO</span><span>Monitoring</span></div>
-              <a href="uslugi/opieka-rozwoj.html" class="btn btn--primary svc-panel__cta" data-analytics="service_open" data-service="opieka-rozwoj" data-source="home-tabs">Dowiedz się więcej <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-            </div>
-            <div class="svc-visual">
-              <div class="svc-mock" aria-hidden="true">
-                <div class="svc-mock__bar"><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__dot"></span><span class="svc-mock__nav">O nas &nbsp; Oferta &nbsp; Realizacje &nbsp; Kontakt</span></div>
-                <div class="svc-mock__hero"><div class="svc-mock__hero-txt"><strong>Twój rozwój</strong><p>Stabilnie dziś, mocniej jutro.</p><span class="svc-mock__btn">Zobacz plan</span></div><div class="svc-mock__hero-img"></div></div>
-                <div class="svc-mock__cards">
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Utrzymanie</strong><p>Hosting, kopie i&nbsp;bezpieczeństwo.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Monitoring</strong><p>Czujność 24/7.</p></div>
-                  <div class="svc-mock__card"><span class="svc-mock__cardico"></span><strong>Rozwój</strong><p>Kolejne usprawnienia co miesiąc.</p></div>
-                </div>
-              </div>
-              <div class="svc-chat" aria-hidden="true">
-                <div class="svc-chat__head"><span class="svc-chat__logo">A</span><div class="svc-chat__meta"><strong>Adapt</strong><em># opieka</em></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--user"></span><div><strong>Ashley</strong><p>Jak zaplanujemy rozwój po starcie?</p></div></div>
-                <div class="svc-chat__msg"><span class="svc-chat__av svc-chat__av--bot">A</span><div><strong>Adapt</strong><p>Ustawiłem miesięczny cykl usprawnień wg priorytetów z&nbsp;analityki.</p></div></div>
-                <div class="svc-chat__file"><span class="svc-chat__fileico"></span><em>Plan-rozwoju.pdf</em><span class="svc-chat__dl">Pobierz</span></div>
-                <div class="svc-chat__input"><span>Napisz wiadomość…</span><span class="svc-chat__send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__visual">
+        <img src="assets/nowy/uslugi-mockup.png" alt="Podgląd panelu Adapt — Lepsze decyzje dzięki danym" />
       </div>
     </div>
-  </section>
 
-  <!-- ========== WAVE DIVIDER — zanurzenie ========== -->
-  <div class="wave-divider" aria-hidden="true">
-    <svg class="wave-divider__svg" viewBox="0 0 1440 200" preserveAspectRatio="none">
-      <path class="wave-divider__back" d="M0,100 C240,40 480,160 720,100 C960,40 1200,160 1440,100 L1440,200 L0,200 Z"></path>
-      <path class="wave-divider__front" d="M0,120 C240,60 480,180 720,120 C960,60 1200,180 1440,120 L1440,200 L0,200 Z"></path>
-    </svg>
+    <!-- Panel 2: Sklepy internetowe (brief 5.3) -->
+    <div class="upanel" data-panel="1" hidden>
+      <div class="upanel__body">
+        <h3 class="upanel__title">Sklep internetowy gotowy do sprzedaży i&nbsp;rozwoju.</h3>
+        <p class="upanel__desc">Budujemy sklepy, w&nbsp;których wygodnie się kupuje i&nbsp;którymi sprawnie się zarządza. Integracje i&nbsp;architektura gotowe na skalowanie sprzedaży.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>Wygodny proces zakupu i&nbsp;UX koszyka</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Płatności, dostawy i&nbsp;integracje ERP/marketplace</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>SEO, analityka i&nbsp;automatyzacje</li>
+        </ul>
+        <div class="utags">
+          <span class="utag">E-commerce</span>
+          <span class="utag">Integracje</span>
+          <span class="utag">Płatności</span>
+        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__ph" aria-hidden="true">
+        <span class="upanel__ph-ico"><img src="assets/nowy/tab-sklepy.png" alt="" /></span>
+        <span class="upanel__ph-label">Wizualizacja — placeholder</span>
+      </div>
+    </div>
+
+    <!-- Panel 3: CRM i systemy dla firm (brief 5.4) -->
+    <div class="upanel" data-panel="2" hidden>
+      <div class="upanel__body">
+        <h3 class="upanel__title">Systemy, które porządkują procesy i&nbsp;uwalniają czas zespołu.</h3>
+        <p class="upanel__desc">Jedno źródło danych o&nbsp;klientach i&nbsp;procesach zamiast rozproszonych arkuszy. Mniej pracy ręcznej, pełna kontrola i&nbsp;raportowanie.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>CRM sprzedażowy, panel klienta, obieg zleceń</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Automatyzacja powtarzalnych procesów</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Raporty i&nbsp;kontrola w&nbsp;czasie rzeczywistym</li>
+        </ul>
+        <div class="utags">
+          <span class="utag">CRM</span>
+          <span class="utag">Automatyzacja</span>
+          <span class="utag">Raporty</span>
+        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__ph" aria-hidden="true">
+        <span class="upanel__ph-ico"><img src="assets/nowy/tab-crm.png" alt="" /></span>
+        <span class="upanel__ph-label">Wizualizacja — placeholder</span>
+      </div>
+    </div>
+
+    <!-- Panel 4: Aplikacje webowe (brief 5.5) -->
+    <div class="upanel" data-panel="3" hidden>
+      <div class="upanel__body">
+        <h3 class="upanel__title">Aplikacje webowe dopasowane do Twojego modelu biznesowego.</h3>
+        <p class="upanel__desc">Produkt cyfrowy, który obsługuje klientów, automatyzuje pracę albo otwiera nowe źródło przychodu. Od&nbsp;discovery po utrzymanie.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>Od&nbsp;MVP do dojrzałego produktu</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Architektura, frontend, backend i&nbsp;API</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Testy, hosting i&nbsp;utrzymanie</li>
+        </ul>
+        <div class="utags">
+          <span class="utag">MVP</span>
+          <span class="utag">API</span>
+          <span class="utag">Backend</span>
+        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__ph" aria-hidden="true">
+        <span class="upanel__ph-ico"><img src="assets/nowy/tab-aplikacje.png" alt="" /></span>
+        <span class="upanel__ph-label">Wizualizacja — placeholder</span>
+      </div>
+    </div>
+
+    <!-- Panel 5: Google Ads (brief 5.6) -->
+    <div class="upanel" data-panel="4" hidden>
+      <div class="upanel__body">
+        <h3 class="upanel__title">Google Ads prowadzone na wynik, nie na sam ruch.</h3>
+        <p class="upanel__desc">Kampanie nastawione na wartościowe zapytania i&nbsp;sprzedaż przy kontrolowanym koszcie pozyskania. Prowadzone przez zespół Google Partner.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>Kampanie Search, Performance Max i&nbsp;remarketing</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Pomiar konwersji, CPA i&nbsp;ROAS</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Optymalizacja i&nbsp;przejrzyste raporty</li>
+        </ul>
+        <div class="utags">
+          <span class="utag">Search</span>
+          <span class="utag">PMax</span>
+          <span class="utag">Remarketing</span>
+        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__ph" aria-hidden="true">
+        <span class="upanel__ph-ico"><img src="assets/nowy/tab-reklamy.png" alt="" /></span>
+        <span class="upanel__ph-label">Wizualizacja — placeholder</span>
+      </div>
+    </div>
+
+    <!-- Panel 6: Allegro Ads (brief 5.7) -->
+    <div class="upanel" data-panel="5" hidden>
+      <div class="upanel__body">
+        <h3 class="upanel__title">Lepsza widoczność ofert i&nbsp;rentowna sprzedaż na Allegro.</h3>
+        <p class="upanel__desc">Skuteczne wykorzystanie budżetu reklamowego i&nbsp;lepsza ekspozycja ofert. Optymalizujemy pod rentowność, nie sam obrót.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>Audyt konta i&nbsp;struktura ofert</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Dobór produktów i&nbsp;analiza rentowności</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Kampanie i&nbsp;przejrzyste raportowanie</li>
+        </ul>
+        <div class="utags">
+          <span class="utag">Kampanie</span>
+          <span class="utag">Oferty</span>
+          <span class="utag">Rentowność</span>
+        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__ph" aria-hidden="true">
+        <span class="upanel__ph-ico"><img src="assets/nowy/tab-reklamy.png" alt="" /></span>
+        <span class="upanel__ph-label">Wizualizacja — placeholder</span>
+      </div>
+    </div>
+
+    <!-- Panel 7: Opieka i rozwój (brief 5.8) -->
+    <div class="upanel" data-panel="6" hidden>
+      <div class="upanel__body">
+        <h3 class="upanel__title">Technologia nie kończy się w&nbsp;dniu publikacji.</h3>
+        <p class="upanel__desc">Utrzymanie, bezpieczeństwo i&nbsp;rozwój w&nbsp;jednym miejscu. Pakiet godzin, stała opieka albo rozwój etapowy — zależnie od potrzeb.</p>
+        <ul class="uchecks">
+          <li><span class="uchecks__box" aria-hidden="true"></span>Utrzymanie, aktualizacje i&nbsp;bezpieczeństwo</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Monitoring, analityka i&nbsp;SLA</li>
+          <li><span class="uchecks__box" aria-hidden="true"></span>Rozwój funkcji i&nbsp;optymalizacja konwersji</li>
+        </ul>
+        <div class="utags">
+          <span class="utag">SLA</span>
+          <span class="utag">Monitoring</span>
+          <span class="utag">CRO</span>
+        </div>
+        <a href="#" class="upanel__btn">Dowiedz się więcej</a>
+      </div>
+      <div class="upanel__ph" aria-hidden="true">
+        <span class="upanel__ph-ico"><img src="assets/nowy/tab-strony.png" alt="" /></span>
+        <span class="upanel__ph-label">Wizualizacja — placeholder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REALIZACJE (karuzela) ============ -->
+<section class="realizacje" id="realizacje">
+  <div class="container">
+    <header class="usec-head">
+      <div class="usec-head__left">
+        <span class="usec-eyebrow">Realizacje</span>
+        <h2 class="usec-title">Projekty, które<br />przynoszą efekty</h2>
+      </div>
+      <p class="usec-lead">Każdy projekt to odpowiedź na realny problem biznesowy. Zobacz, jak łączymy formę z&nbsp;celem i&nbsp;pomagamy klientom osiągać wyniki.</p>
+    </header>
   </div>
 
-  <!-- ========== WYBRANE REALIZACJE (brief 4.5) ========== -->
-  <section class="portfolio" id="portfolio">
-    <div class="container">
-      <header class="section-head section-head--light">
-        <span class="eyebrow eyebrow--light">
-          <span class="eyebrow__line"></span>
-          Realizacje
-          <span class="eyebrow__line"></span>
-        </span>
-        <h2 class="section-head__title">Projekty, które przynoszą efekty</h2>
-        <p class="section-head__subtitle">
-          Dowód kompetencji zamiast obietnic: realne wdrożenia,<br />
-          technologie i&nbsp;zweryfikowane rezultaty.
-        </p>
-      </header>
+  <div class="real-viewport" id="real-viewport">
+    <div class="real-track">
+      <div class="real-card" aria-hidden="true"></div>
+      <div class="real-card" aria-hidden="true"></div>
+      <div class="real-card" aria-hidden="true"></div>
+    </div>
+  </div>
 
-      <div class="portfolio__grid">
-        <article class="case case--large">
-          <div class="case__media">
-            <img src="assets/images/case-sufity-led.jpg" alt="Sufity LED — strona internetowa" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
-          </div>
-          <div class="case__body">
-            <span class="case__tag">Strona internetowa</span>
-            <h3 class="case__title">Sufity LED</h3>
-            <p class="case__desc">
-              Serwis leadowy dla firmy z&nbsp;branży wykończeniowej. Przejrzysta prezentacja oferty i&nbsp;realizacji, która buduje zaufanie i&nbsp;zamienia ruch w&nbsp;zapytania.
-            </p>
-            <a href="portfolio/sufity-led.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="sufity-led" data-case-category="strona">
-              Zobacz projekt
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
+  <div class="container">
+    <div class="real-scrollbar">
+      <div class="real-scrollbar__track" role="scrollbar" aria-controls="real-viewport" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+        <span class="real-scrollbar__thumb"></span>
+      </div>
+    </div>
+    <div class="real-cta">
+      <a href="#" class="upanel__btn">Zobacz wszystkie realizacje</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCES ============ -->
+<section class="proces" id="proces">
+  <div class="container">
+    <header class="usec-head">
+      <div class="usec-head__left">
+        <span class="usec-eyebrow">Proces</span>
+        <h2 class="usec-title">Jak wygląda<br />nasza współpraca</h2>
+      </div>
+      <p class="usec-lead">Przejrzysty proces, jasne zasady i&nbsp;stała komunikacja na każdym etapie projektu.</p>
+    </header>
+
+    <div class="proc-steps" role="tablist" aria-label="Etapy współpracy">
+      <button class="proc-btn on" role="tab" aria-selected="true" data-proc="0"><span class="proc-btn__dot">01</span><span class="proc-btn__label">Rozpoznanie</span></button>
+      <button class="proc-btn" role="tab" aria-selected="false" data-proc="1"><span class="proc-btn__dot">02</span><span class="proc-btn__label">Wyznaczenie kursu</span></button>
+      <button class="proc-btn" role="tab" aria-selected="false" data-proc="2"><span class="proc-btn__dot">03</span><span class="proc-btn__label">Budowa rozwiązania</span></button>
+      <button class="proc-btn" role="tab" aria-selected="false" data-proc="3"><span class="proc-btn__dot">04</span><span class="proc-btn__label">Uruchomienie</span></button>
+      <button class="proc-btn" role="tab" aria-selected="false" data-proc="4"><span class="proc-btn__dot">05</span><span class="proc-btn__label">Rozwój</span></button>
+    </div>
+
+    <div class="proc-detail" id="proc-detail"></div>
+  </div>
+</section>
+
+<!-- ============ TECHNOLOGIE ============ -->
+<section class="tech" id="technologie">
+  <div class="container">
+    <span class="usec-eyebrow">Technologie / Partnerstwa</span>
+    <h2 class="usec-title" style="margin-top:16px">Technologie, którym ufamy</h2>
+    <p class="usec-lead">Korzystamy z&nbsp;najlepszych narzędzi i&nbsp;współpracujemy z&nbsp;zaufanymi liderami, aby dostarczać rozwiązania najwyższej jakości.</p>
+
+    <div class="tgrid">
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-google.png" alt="" /></span><span class="tcell__txt"><strong>Google Partner</strong><span>Premier 2024</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-allegro.png" alt="" /></span><span class="tcell__txt"><strong>Allegro Ads Partner</strong><span>Certified Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-meta.png" alt="" /></span><span class="tcell__txt"><strong>Meta Business Partner</strong><span>Business Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-microsoft.png" alt="" /></span><span class="tcell__txt"><strong>Microsoft Cloud</strong><span>Solutions Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-shopify.png" alt="" /></span><span class="tcell__txt"><strong>Shopify</strong><span>Verified Partner</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-wordpress.png" alt="" /></span><span class="tcell__txt"><strong>WordPress</strong><span>Expert</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-laravel.png" alt="" /></span><span class="tcell__txt"><strong>Laravel</strong><span>PHP Framework</span></span></div>
+      <div class="tcell"><span class="tcell__ico" aria-hidden="true"><img src="assets/nowy/tech-react.png" alt="" /></span><span class="tcell__txt"><strong>React</strong><span>UI Library</span></span></div>
+    </div>
+
+    <div class="tech__cta">
+      <a href="#" class="tech-cta-btn">Zobacz wszystkie technologie <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OPINIE ============ -->
+<section class="opinie" id="opinie">
+  <div class="container">
+    <span class="usec-eyebrow">Opinie klientów</span>
+    <h2 class="usec-title" style="margin-top:16px">Co mówią o&nbsp;nas klienci</h2>
+    <p class="usec-lead">Zbudowana współpraca i&nbsp;realne efekty są dla nas najlepszym potwierdzeniem, że warto nam zaufać.</p>
+
+    <div class="tviewport" id="opinie-viewport">
+      <div class="ttrack">
+        <article class="testi">
+          <span class="testi__quote" aria-hidden="true">&ldquo;</span>
+          <p class="testi__text">Nowa strona nie tylko ładnie wygląda, ale przede wszystkim zaczęła realnie pozyskiwać klientów i&nbsp;zapytania ofertowe. Chcemy poszerzyć współpracę w&nbsp;kolejnym etapie.</p>
+          <div class="testi__person">
+            <div><b>Michał Skrt</b><span>Właściciel · Sufity LED</span></div>
           </div>
         </article>
-
-        <article class="case case--small">
-          <div class="case__media case__media--full">
-            <img src="assets/images/case-miasteczko.jpg" alt="Miasteczko Witkowice" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
-            <div class="case__overlay">
-              <span class="case__tag case__tag--overlay">Strona internetowa</span>
-              <h3 class="case__title case__title--overlay">Miasteczko<br />Witkowice</h3>
-              <a href="portfolio/miasteczko-witkowice.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="miasteczko-witkowice" data-case-category="strona">
-                Zobacz projekt
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
+        <article class="testi">
+          <span class="testi__quote" aria-hidden="true">&ldquo;</span>
+          <p class="testi__text">Dzięki wdrożeniu sklepu internetowego nasza sprzedaż ruszyła do przodu, a&nbsp;cały proces jest przejrzysty i&nbsp;zorganizowany. Widać efekty i&nbsp;zaangażowanie na każdym etapie.</p>
+          <div class="testi__person">
+            <div><b>Anna Kwiatkowska</b><span>Marketing Manager · Miasteczko Witkowice</span></div>
           </div>
         </article>
-
-        <article class="case case--small">
-          <div class="case__media case__media--full">
-            <img src="assets/images/case-tct.jpg" alt="TCT Tools — sklep internetowy" onerror="this.parentElement.classList.add('case__media--placeholder');this.remove()" />
-            <div class="case__overlay">
-              <span class="case__tag case__tag--overlay">Sklep + Allegro Ads</span>
-              <h3 class="case__title case__title--overlay">TCT Tools</h3>
-              <p class="case__desc case__desc--overlay">
-                Sklep z&nbsp;narzędziami zaprojektowany pod wygodę zakupów i&nbsp;konwersję, wsparty kampaniami Allegro Ads.
-              </p>
-              <a href="portfolio/tct-tools.html" class="btn btn--outline btn--sm" data-analytics="case_study_open" data-case="tct-tools" data-case-category="sklep">
-                Zobacz projekt
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
+        <article class="testi">
+          <span class="testi__quote" aria-hidden="true">&ldquo;</span>
+          <p class="testi__text">CRM, który dla nas stworzyli, uporządkował cały proces obsługi klienta i&nbsp;dał pełen wgląd w&nbsp;dane. To realne narzędzie, które ułatwia codzienną pracę zespołu i&nbsp;menedżera.</p>
+          <div class="testi__person">
+            <div><b>Tomasz Wojciechowski</b><span>Dyrektor Operacyjny · TCT Tools</span></div>
           </div>
         </article>
       </div>
+    </div>
 
-      <div class="portfolio__cta">
-        <a href="portfolio.html" class="btn btn--ghost-light" data-cta="home-portfolio">
-          Zobacz wszystkie realizacje
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
+    <div class="opinie__nav">
+      <button class="oarrow" data-dir="-1" aria-label="Poprzednia opinia">‹</button>
+      <button class="oarrow" data-dir="1" aria-label="Następna opinia">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="ctaband-wrap" id="kontakt">
+  <div class="container">
+    <div class="ctaband">
+      <div class="ctaband__txt">
+        <span class="ctaband__eyebrow">Porozmawiajmy</span>
+        <h2 class="ctaband__title">Masz cel. Wyznaczmy najlepszy cyfrowy kurs.</h2>
+        <p class="ctaband__desc">Opowiedz nam, co chcesz osiągnąć albo z&nbsp;jakim problemem się mierzysz. Wspólnie zaplanujemy najlepszą drogę do celu.</p>
+      </div>
+      <div class="ctaband__btns">
+        <a href="#" class="upanel__btn">Umów konsultację</a>
+        <a href="#" class="btn-outline-light">Wyślij projekt</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ========== DLACZEGO CODE & PIXEL (brief 4.6) ========== -->
-  <section class="why">
-    <div class="container">
-      <header class="section-head">
-        <span class="eyebrow">
-          <span class="eyebrow__line"></span>
-          Dlaczego Code &amp; Pixel
-          <span class="eyebrow__line"></span>
-        </span>
-        <h2 class="section-head__title">Inny model współpracy</h2>
-      </header>
-
-      <div class="why__grid">
-        <div class="why-item">
-          <div class="why-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18M3 12h18"></path></svg>
-          </div>
-          <h3 class="why-item__title">Jedna odpowiedzialność</h3>
-          <p class="why-item__text">Projekt, technologia i&nbsp;reklama prowadzone przez jeden zespół.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>
-          </div>
-          <h3 class="why-item__title">Myślenie biznesowe</h3>
-          <p class="why-item__text">Najpierw cel, proces i&nbsp;klient, dopiero potem narzędzie.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16M6 20V10m6 10V4m6 16v-7"></path></svg>
-          </div>
-          <h3 class="why-item__title">Gotowe na rozwój</h3>
-          <p class="why-item__text">Architektura, którą można rozbudowywać o&nbsp;kolejne etapy.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 14h5"></path></svg>
-          </div>
-          <h3 class="why-item__title">Transparentna współpraca</h3>
-          <p class="why-item__text">Jasny zakres, etapy, raportowanie i&nbsp;dostęp do danych.</p>
-        </div>
-        <div class="why-item">
-          <div class="why-item__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
-          </div>
-          <h3 class="why-item__title">14 lat praktyki</h3>
-          <p class="why-item__text">Doświadczenie z&nbsp;realnych wdrożeń, nie z&nbsp;prezentacji.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== PROCES WSPÓŁPRACY (brief 4.7) ========== -->
-  <section class="land-section land-section--surface" id="proces">
-    <div class="container">
-      <header class="section-head">
-        <span class="eyebrow">
-          <span class="eyebrow__line"></span>
-          Proces współpracy
-          <span class="eyebrow__line"></span>
-        </span>
-        <h2 class="section-head__title">Wiesz, na jakim etapie jesteś</h2>
-        <p class="section-head__subtitle">
-          Pięć etapów, jasne zasady i&nbsp;zero niespodzianek po drodze.
-        </p>
-      </header>
-
-      <div class="process">
-        <div class="process-step">
-          <div class="process-step__num">1</div>
-          <h3 class="process-step__title">Rozpoznanie</h3>
-          <p class="process-step__desc">Cele, odbiorcy, konkurencja i&nbsp;procesy. <span class="depth-mark">Sonar</span></p>
-        </div>
-        <div class="process-step">
-          <div class="process-step__num">2</div>
-          <h3 class="process-step__title">Wyznaczenie kursu</h3>
-          <p class="process-step__desc">Strategia, zakres, priorytety i&nbsp;harmonogram.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-step__num">3</div>
-          <h3 class="process-step__title">Budowa rozwiązania</h3>
-          <p class="process-step__desc">UX, projekt graficzny, development lub konfiguracja kampanii.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-step__num">4</div>
-          <h3 class="process-step__title">Uruchomienie</h3>
-          <p class="process-step__desc">Testy, publikacja, wdrożenie i&nbsp;przekazanie dostępu.</p>
-        </div>
-        <div class="process-step">
-          <div class="process-step__num">5</div>
-          <h3 class="process-step__title">Rozwój</h3>
-          <p class="process-step__desc">Analiza danych, optymalizacja i&nbsp;kolejne etapy.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== TECHNOLOGIE I PARTNERSTWA (brief 4.8) ========== -->
-  <section class="tech">
-    <div class="container">
-      <header class="section-head">
-        <span class="eyebrow">
-          <span class="eyebrow__line"></span>
-          Technologie i&nbsp;partnerstwa
-          <span class="eyebrow__line"></span>
-        </span>
-        <h2 class="section-head__title">Sprawdzone narzędzia, świadome wybory</h2>
-      </header>
-
-      <div class="tech__wall">
-        <div class="tech-item"><span class="tech-item__tag">Partnerstwo</span><div>Google Partner<span class="tech-item__desc">Certyfikowany partner Google Ads</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">Partnerstwo</span><div>Allegro Ads Partner<span class="tech-item__desc">Oficjalny program partnerski Allegro</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">CMS</span><div>WordPress<span class="tech-item__desc">Strony firmowe i&nbsp;serwisy treściowe</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">E-commerce</span><div>WooCommerce<span class="tech-item__desc">Sklepy zintegrowane z&nbsp;marketplace</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">Backend</span><div>PHP / Laravel<span class="tech-item__desc">Systemy dedykowane i&nbsp;API</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">Frontend</span><div>JavaScript / React<span class="tech-item__desc">Interfejsy aplikacji webowych</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">Analityka</span><div>GA4 + GTM<span class="tech-item__desc">Pomiar konwersji i&nbsp;raportowanie</span></div></div>
-        <div class="tech-item"><span class="tech-item__tag">Integracje</span><div>REST API<span class="tech-item__desc">ERP, płatności, logistyka, marketplace</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== OPINIE (brief 4.9) ========== -->
-  <section class="testimonial">
-    <div class="container testimonial__inner">
-      <div class="testimonial__visual">
-        <img src="assets/images/jellyfish.png" alt="" class="testimonial__jelly" onerror="this.parentElement.classList.add('testimonial__visual--placeholder'); this.style.display='none'" />
-        <div class="testimonial__stat">
-          <span class="testimonial__stat-num">+120<span>%</span></span>
-          <span class="testimonial__stat-label">Wyższe przychody<br />w&nbsp;pierwszym kwartale</span>
-        </div>
-      </div>
-
-      <div class="testimonial__content">
-        <div class="testimonial__card">
-          <div class="testimonial__quote-mark" aria-hidden="true">"</div>
-          <div class="testimonial__slider" id="testimonialSlider">
-          <blockquote class="testimonial__slide testimonial__slide--active">
-            <p class="testimonial__text">
-              Nasz sklep generował o&nbsp;<strong>120% wyższe przychody</strong> w&nbsp;pierwszym kwartale. Ich wiedza na temat e-commerce jest niezrównana.
-            </p>
-            <footer class="testimonial__author">
-              <div class="testimonial__avatar" aria-hidden="true">MN</div>
-              <div>
-                <div class="testimonial__name">Marek Nowak</div>
-                <div class="testimonial__role">CEO, UrbanStore · sklep internetowy</div>
-              </div>
-            </footer>
-          </blockquote>
-
-          <blockquote class="testimonial__slide">
-            <p class="testimonial__text">
-              Strona, którą zbudowali, generuje nam <strong>3x więcej leadów</strong> niż poprzednia. Profesjonalizm na każdym kroku.
-            </p>
-            <footer class="testimonial__author">
-              <div class="testimonial__avatar" aria-hidden="true">AK</div>
-              <div>
-                <div class="testimonial__name">Anna Kowalska</div>
-                <div class="testimonial__role">Marketing, BuildPro · strona internetowa</div>
-              </div>
-            </footer>
-          </blockquote>
-
-          <blockquote class="testimonial__slide">
-            <p class="testimonial__text">
-              Kampanie Google Ads zwróciły się <strong>w&nbsp;pierwszym miesiącu</strong>. ROAS na poziomie 5.2x, niesamowite.
-            </p>
-            <footer class="testimonial__author">
-              <div class="testimonial__avatar" aria-hidden="true">TW</div>
-              <div>
-                <div class="testimonial__name">Tomasz Wiśniewski</div>
-                <div class="testimonial__role">Founder, GreenLab · Google Ads</div>
-              </div>
-            </footer>
-          </blockquote>
-          </div>
-        </div>
-
-        <div class="testimonial__controls">
-          <button class="testimonial__arrow testimonial__arrow--prev" aria-label="Poprzednia opinia">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-          <div class="testimonial__dots" id="testimonialDots">
-            <button class="testimonial__dot testimonial__dot--active" data-slide="0" aria-label="Opinia 1"></button>
-            <button class="testimonial__dot" data-slide="1" aria-label="Opinia 2"></button>
-            <button class="testimonial__dot" data-slide="2" aria-label="Opinia 3"></button>
-          </div>
-          <button class="testimonial__arrow testimonial__arrow--next" aria-label="Następna opinia">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-          <span class="testimonial__counter" id="testimonialCounter">01 / 03</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== CTA KOŃCOWE (brief 4.10) ========== -->
-  <section class="cta-strip" id="kontakt">
-    <div class="container cta-strip__inner">
-      <div>
-        <span class="eyebrow eyebrow--light">
-          <span class="eyebrow__line"></span>
-          Rozpocznij projekt
-        </span>
-        <h2 class="cta-strip__title">
-          Masz cel. Wyznaczmy<br />najlepszy cyfrowy kurs.
-        </h2>
-        <p class="cta-strip__desc">
-          Opowiedz nam, co chcesz zbudować albo poprawić. Wrócimy z&nbsp;pierwszymi rekomendacjami i&nbsp;propozycją kolejnych kroków.
-        </p>
-      </div>
-
-      <div class="cta-strip__actions">
-        <a href="kontakt.html" class="btn btn--primary btn--lg" data-cta="footer-strip-primary">
-          Umów konsultację
-          <svg class="btn__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-        <a href="kontakt.html" class="btn btn--ghost btn--lg" data-cta="footer-strip-secondary">Wyceń projekt</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER (brief 3.3) ========== -->
-  <footer class="footer">
-    <div class="container footer__grid">
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
       <div class="footer__brand">
-        <span class="logo__text">Code<span class="logo__amp">&amp;</span>Pixel</span>
-        <p class="footer__tagline">Projektujemy i&nbsp;rozwijamy cyfrowe narzędzia, które pozyskują klientów, automatyzują sprzedaż i&nbsp;wspierają rozwój firm.</p>
-        <div class="footer__badges">
-          <span class="partner-badge">Google Partner</span>
-          <span class="partner-badge">Allegro Ads Partner</span>
-        </div>
+        <a href="#" class="footer__logo" aria-label="Code&amp;Pixel">
+          <img src="assets/nowy/logo-icon.svg" alt="" style="width:56px;height:34px" />
+          <img src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" style="width:155px;height:22px" />
+        </a>
+        <p>Interactive agency. Łączymy technologię, projektowanie i&nbsp;marketing, aby dostarczać rozwiązania, które realnie wspierają biznes.</p>
       </div>
-
-      <nav class="footer__col" aria-label="Stopka — usługi">
-        <div class="footer__col-title">Usługi</div>
-        <a href="uslugi/strony-internetowe.html">Strony internetowe</a>
-        <a href="uslugi/sklepy-internetowe.html">Sklepy internetowe</a>
-        <a href="uslugi/crm-systemy.html">CRM i&nbsp;systemy</a>
-        <a href="uslugi/aplikacje-webowe.html">Aplikacje webowe</a>
-        <a href="uslugi/google-ads.html">Google Ads</a>
-        <a href="uslugi/allegro-ads.html">Allegro Ads</a>
-        <a href="uslugi/opieka-rozwoj.html">Opieka i&nbsp;rozwój</a>
-      </nav>
-
-      <nav class="footer__col" aria-label="Stopka — firma">
-        <div class="footer__col-title">Firma</div>
-        <a href="o-nas.html">O&nbsp;nas</a>
-        <a href="portfolio.html">Realizacje</a>
-        <a href="kontakt.html">Kontakt</a>
-      </nav>
-
-      <nav class="footer__col" aria-label="Stopka — wiedza">
-        <div class="footer__col-title">Wiedza</div>
-        <a href="wiedza.html">Wszystkie artykuły</a>
-        <a href="wiedza.html#e-commerce">E-commerce</a>
-        <a href="wiedza.html#google-ads">Google Ads</a>
-      </nav>
-
-      <div class="footer__col">
-        <div class="footer__col-title">Kontakt</div>
-        <a href="mailto:hello@codeandpixel.io" data-analytics="contact_click" data-channel="email">hello@codeandpixel.io</a>
-        <span class="footer__contact-line">[telefon do uzupełnienia]</span>
-        <span class="footer__contact-line">[adres do uzupełnienia]</span>
-        <span class="footer__contact-line">NIP: [do uzupełnienia]</span>
+      <div>
+        <h5>Oferta</h5>
+        <ul>
+          <li><a href="#">Strony internetowe</a></li>
+          <li><a href="#">Sklepy internetowe</a></li>
+          <li><a href="#">CRM dla firm</a></li>
+          <li><a href="#">Aplikacje</a></li>
+          <li><a href="#">Google Ads</a></li>
+          <li><a href="#">Allegro Ads</a></li>
+          <li><a href="#">Opieka i&nbsp;rozwój</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>O nas</h5>
+        <ul>
+          <li><a href="#">O firmie</a></li>
+          <li><a href="#">Proces</a></li>
+          <li><a href="#">Technologie</a></li>
+          <li><a href="#">Wiedza / Blog</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h5>Kontakt</h5>
+        <p>Code&amp;Pixel Sp. z&nbsp;o.o.</p>
+        <p>ul. Przykładowa 1<br />32-800 Brzesko</p>
+        <p>+48 000 000 000</p>
+        <p>kontakt@codeandpixel.pl</p>
       </div>
     </div>
-
     <div class="footer__bottom">
-      <div class="container footer__legal">
-        <p>&copy; <span id="year">2026</span> Code&amp;Pixel. Wszystkie prawa zastrzeżone.</p>
-        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
-        <a href="polityka-prywatnosci.html#cookies">Cookies</a>
-      </div>
+      <span>© 2010–2024 Code&amp;Pixel. Wszelkie prawa zastrzeżone.</span>
+      <span>Nadajemy cyfrowy kierunek Twojemu biznesowi.</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <a href="kontakt.html" class="sticky-cta" id="stickyCta" data-cta="sticky-mobile">Rozpocznij projekt</a>
+<script>
+  (function(){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.utab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.upanel'));
 
-  <script src="js/main.js?v=20260715-1"></script>
+    function activate(i, focus){
+      tabs.forEach(function(x, j){
+        var on = j === i;
+        x.classList.toggle('utab--on', on);
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        if (panels[j]) panels[j].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+    }
+
+    tabs.forEach(function(t, i){
+      t.setAttribute('aria-controls', 'upanel-' + i);
+      if (panels[i]) { panels[i].id = 'upanel-' + i; panels[i].setAttribute('role','tabpanel'); }
+      t.addEventListener('click', function(){ activate(i, false); });
+      t.addEventListener('keydown', function(e){
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') n = 0;
+        else if (e.key === 'End') n = tabs.length - 1;
+        if (n !== null) { e.preventDefault(); activate(n, true); }
+      });
+    });
+  })();
+
+  /* ===== Realizacje — karuzela: drag + pasek przewijania ===== */
+  (function(){
+    var vp = document.getElementById('real-viewport');
+    var track = document.querySelector('.real-scrollbar__track');
+    var thumb = document.querySelector('.real-scrollbar__thumb');
+    if (!vp || !track || !thumb) return;
+
+    var maxScroll = function(){ return Math.max(1, vp.scrollWidth - vp.clientWidth); };
+
+    /* pasek odzwierciedla scroll */
+    function sync(){
+      var ratio = vp.clientWidth / vp.scrollWidth;
+      var thumbW = Math.max(24, Math.round(track.clientWidth * ratio));
+      var x = (vp.scrollLeft / maxScroll()) * (track.clientWidth - thumbW);
+      thumb.style.width = thumbW + 'px';
+      thumb.style.transform = 'translateX(' + x + 'px)';
+      track.setAttribute('aria-valuenow', Math.round((vp.scrollLeft / maxScroll()) * 100));
+    }
+    vp.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+
+    /* drag kart myszą */
+    var dragging = false, startX = 0, startLeft = 0, moved = false;
+    vp.addEventListener('pointerdown', function(e){
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      dragging = true; moved = false;
+      startX = e.clientX; startLeft = vp.scrollLeft;
+      vp.classList.add('is-dragging');
+      try { vp.setPointerCapture(e.pointerId); } catch(_) {}
+    });
+    vp.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      vp.scrollLeft = startLeft - dx;
+    });
+    ['pointerup','pointercancel'].forEach(function(ev){
+      vp.addEventListener(ev, function(){ dragging = false; vp.classList.remove('is-dragging'); });
+    });
+    vp.addEventListener('click', function(e){ if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    /* przeciąganie / klik na pasku */
+    var tDrag = false;
+    function trackScrollTo(clientX){
+      var r = track.getBoundingClientRect();
+      var thumbW = thumb.offsetWidth;
+      var pos = Math.min(Math.max(clientX - r.left - thumbW / 2, 0), r.width - thumbW);
+      vp.scrollLeft = (pos / (r.width - thumbW)) * maxScroll();
+    }
+    track.addEventListener('pointerdown', function(e){
+      tDrag = true; track.classList.add('is-dragging');
+      trackScrollTo(e.clientX);
+      try { track.setPointerCapture(e.pointerId); } catch(_) {}
+    });
+    track.addEventListener('pointermove', function(e){ if (tDrag) trackScrollTo(e.clientX); });
+    ['pointerup','pointercancel'].forEach(function(ev){
+      track.addEventListener(ev, function(){ tDrag = false; track.classList.remove('is-dragging'); });
+    });
+    track.addEventListener('keydown', function(e){
+      var step = 300;
+      if (e.key === 'ArrowRight') { vp.scrollLeft += step; e.preventDefault(); }
+      else if (e.key === 'ArrowLeft') { vp.scrollLeft -= step; e.preventDefault(); }
+    });
+  })();
+
+  /* ===== Proces — stepper interaktywny ===== */
+  (function(){
+    var DATA = [
+      {t:"Rozpoznanie", p:"Poznajemy Twój biznes, cele, odbiorców i otoczenie rynkowe. Zanim cokolwiek zaprojektujemy, chcemy zrozumieć, na czym naprawdę zarabiasz i co ma się zmienić.",
+       items:["Warsztat startowy i brief","Analiza konkurencji i rynku","Audyt obecnej strony, sklepu lub procesu","Określenie grup odbiorców"],
+       r:"Efekt: wspólne zrozumienie celu"},
+      {t:"Wyznaczenie kursu", p:"Ustalamy strategię, zakres prac, priorytety i harmonogram. Wiesz, co dostaniesz, kiedy i po czym poznamy, że działa.",
+       items:["Strategia i architektura rozwiązania","Zakres prac i wycena","Harmonogram z kamieniami milowymi","Kryteria sukcesu i plan pomiaru"],
+       r:"Efekt: plan projektu i kryteria sukcesu"},
+      {t:"Budowa rozwiązania", p:"UX, projekt graficzny, development lub konfiguracja kampanii. Pracujemy etapami i regularnie pokazujemy postępy, nie znikamy na tygodnie.",
+       items:["UX i projekt graficzny","Development lub konfiguracja kampanii","Cotygodniowe podsumowania postępów","Testy wewnętrzne na bieżąco"],
+       r:"Efekt: działające rozwiązanie"},
+      {t:"Uruchomienie", p:"Testy, publikacja, wdrożenie i przekazanie dostępów. Start jest kontrolowany, a Ty dostajesz wszystko, czego potrzebujesz do samodzielnej pracy.",
+       items:["Testy end-to-end i poprawki","Publikacja w środowisku produkcyjnym","Szkolenie z obsługi","Przekazanie dostępów i dokumentacji"],
+       r:"Efekt: bezpieczny start"},
+      {t:"Rozwój", p:"Analiza danych, optymalizacja i kolejne etapy. Technologia nie kończy się w dniu publikacji, dlatego patrzymy na wyniki i planujemy następne kroki.",
+       items:["Analityka i raportowanie","Optymalizacja konwersji","Kolejne wdrożenia i funkcje","Stała opieka techniczna"],
+       r:"Efekt: rosnące wyniki"}
+    ];
+    var pbtns = Array.prototype.slice.call(document.querySelectorAll('.proc-btn'));
+    var pbox = document.getElementById('proc-detail');
+    if (!pbtns.length || !pbox) return;
+
+    function prender(i, focus){
+      var d = DATA[i];
+      pbox.style.animation = 'none'; void pbox.offsetWidth; pbox.style.animation = '';
+      var etap = ('0' + (i + 1)).slice(-2);
+      pbox.innerHTML =
+        '<div class="proc-detail__grid">' +
+          '<div class="proc-detail__left">' +
+            '<span class="proc-detail__etap">Etap ' + etap + '</span>' +
+            '<h3>' + d.t + '</h3><p>' + d.p + '</p>' +
+            '<span class="proc-detail__result">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>' +
+              d.r + '</span>' +
+          '</div>' +
+          '<div class="proc-detail__right">' +
+            '<div class="proc-detail__steps">' +
+              '<h4>Co się dzieje w tym etapie</h4>' +
+              '<ul>' + d.items.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+            '</div>' +
+            '<div class="proc-detail__ill"><img src="assets/nowy/proc-ill-' + (i + 1) + '.png" alt="" /></div>' +
+          '</div>' +
+        '</div>';
+      pbtns.forEach(function(b, j){
+        var on = j === i;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.tabIndex = on ? 0 : -1;
+      });
+      if (focus) pbtns[i].focus();
+    }
+    pbtns.forEach(function(b, i){
+      b.addEventListener('click', function(){ prender(i, false); });
+      b.addEventListener('keydown', function(e){
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % pbtns.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + pbtns.length) % pbtns.length;
+        else if (e.key === 'Home') n = 0;
+        else if (e.key === 'End') n = pbtns.length - 1;
+        if (n !== null) { e.preventDefault(); prender(n, true); }
+      });
+    });
+    prender(0, false);
+  })();
+
+  /* ===== Opinie — strzałki przewijania ===== */
+  (function(){
+    var vp = document.getElementById('opinie-viewport');
+    if (!vp) return;
+    var arrows = Array.prototype.slice.call(document.querySelectorAll('.oarrow'));
+    function update(){
+      var max = vp.scrollWidth - vp.clientWidth;
+      arrows.forEach(function(a){
+        var dir = parseInt(a.dataset.dir, 10);
+        a.disabled = max <= 1 || (dir < 0 ? vp.scrollLeft <= 1 : vp.scrollLeft >= max - 1);
+      });
+    }
+    arrows.forEach(function(a){
+      a.addEventListener('click', function(){
+        var card = vp.querySelector('.testi');
+        var step = card ? card.getBoundingClientRect().width + 20 : 380;
+        vp.scrollBy({ left: parseInt(a.dataset.dir, 10) * step, behavior: 'smooth' });
+      });
+    });
+    vp.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+
 </body>
 </html>

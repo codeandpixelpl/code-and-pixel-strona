@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Realizacje — Code&amp;Pixel</title>
+<title>Google Ads — Code&amp;Pixel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -504,25 +504,6 @@
   @media (max-width:560px){
     .aud-grid,.zt-grid,.rel-grid,.scope-grid{grid-template-columns:1fr}
   }
-
-  /* Realizacje — filtry + karty */
-  .fchips{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
-  .fchip{font-family:'Inter',var(--ff);font-weight:600;font-size:13px;color:#071e51;opacity:.72;padding:10px 20px;border-radius:999px;border:1px solid rgba(7,30,81,0.12);background:#fff;cursor:pointer;transition:background .16s ease,opacity .16s ease,color .16s ease,border-color .16s ease}
-  .fchip:hover{background:#f3f5fb;opacity:1}
-  .fchip--on{background:linear-gradient(165deg,var(--accent-1),var(--accent-2));color:#fff;border-color:transparent;opacity:1}
-  .fchip:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
-  .rlz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
-  .rlz-card{background:#f5f6fb;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
-  .rlz-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(7,30,81,0.09)}
-  .rlz-card[hidden]{display:none}
-  .rlz-card__media{aspect-ratio:16/11;background:linear-gradient(158deg,#e4ecf9 0%,#cdddf4 100%)}
-  .rlz-card__body{padding:22px 24px 26px}
-  .rlz-card__tag{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-  .rlz-card__title{margin-top:8px;font-family:'Inter',var(--ff);font-weight:600;font-size:21px;color:#071e51}
-  .rlz-card__client{margin-top:6px;font-family:'Inter',var(--ff);font-size:12.5px;color:#071e51;opacity:.55}
-  .rlz-card__link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:'Inter',var(--ff);font-weight:600;font-size:13.5px;color:var(--accent)}
-  @media (max-width:900px){.rlz-grid{grid-template-columns:1fr 1fr}}
-  @media (max-width:600px){.rlz-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -533,7 +514,7 @@
   <!-- ============ HEADER ============ -->
   <header class="header">
     <div class="container header__inner">
-      <a href="index-nowy.html" class="logo" aria-label="Code&amp;Pixel">
+      <a href="index.html" class="logo" aria-label="Code&amp;Pixel">
         <img class="logo__icon" src="assets/nowy/logo-icon.svg" alt="" />
         <span class="logo__lockup">
           <img class="logo__word" src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
@@ -547,18 +528,18 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
           <div class="nav__drop" role="menu">
-            <a href="strony-internetowe-nowa.html" role="menuitem">Strony internetowe</a>
-            <a href="sklepy-internetowe-nowa.html" role="menuitem">Sklepy internetowe</a>
-            <a href="crm-systemy-nowa.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
-            <a href="aplikacje-webowe-nowa.html" role="menuitem">Aplikacje webowe</a>
-            <a href="google-ads-nowa.html" role="menuitem">Google Ads</a>
-            <a href="allegro-ads-nowa.html" role="menuitem">Allegro Ads</a>
-            <a href="opieka-rozwoj-nowa.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+            <a href="strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="google-ads.html" role="menuitem">Google Ads</a>
+            <a href="allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
           </div>
         </div>
-        <a href="realizacje-nowa.html">Realizacje</a>
-        <a href="o-nas-nowa.html">O nas</a>
-        <a href="wiedza-nowa.html">Wiedza</a>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="wiedza.html">Wiedza</a>
       </nav>
 
       <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
@@ -566,50 +547,99 @@
   </header>
 
       <!-- HERO -->
-  <div class="svc-crumb"><div class="container"><nav><a href="index-nowy.html">Start</a> / <span class="cur">Realizacje</span></nav></div></div>
+  <div class="svc-crumb"><div class="container"><nav><a href="index.html">Start</a> / <a href="#">Usługi</a> / <span class="cur">Google Ads</span></nav></div></div>
   <section class="hero hero--svc"><div class="container hero__inner">
-      <span class="hero__eyebrow">Realizacje</span>
-      <h1 class="hero__title">Projekty, które przynoszą efekty.</h1>
-      <p class="hero__lead">Dowód kompetencji zamiast obietnic: realne wdrożenia, technologie i&nbsp;zweryfikowane rezultaty z&nbsp;kontekstem każdej liczby.</p>
+      <span class="hero__eyebrow">Napędzamy sprzedaż</span>
+      <h1 class="hero__title">Google Ads prowadzone na wynik, nie na sam ruch.</h1>
+      <p class="hero__lead">Planujemy, uruchamiamy i&nbsp;optymalizujemy kampanie, które mają przynosić zapytania i&nbsp;sprzedaż. Budżet traktujemy jak własny: z&nbsp;pomiarem konwersji od pierwszego dnia i&nbsp;pełną przejrzystością kosztów.</p>
+      <div class="hero__actions"><a href="#kontakt" class="btn btn--grad">Wyceń kampanię</a><a href="#zakres" class="btn btn--outline">Zobacz zakres</a></div>
   </div></section>
 </div>
 
-<!-- REALIZACJE -->
 <section class="svc-sec"><div class="container">
-    <header class="usec-head"><div><span class="usec-eyebrow">Realizacje</span><h2 class="usec-title usec-title--wrap">Wybrane wdrożenia</h2></div><p class="usec-lead">Filtruj po rodzaju projektu, żeby zobaczyć realizacje z&nbsp;interesującego Cię obszaru.</p></header>
-
-    <div class="fchips" role="tablist" aria-label="Filtr realizacji">
-      <button class="fchip fchip--on" data-filter="all">Wszystkie</button>
-      <button class="fchip" data-filter="strona">Strony WWW</button>
-      <button class="fchip" data-filter="sklep">E-commerce</button>
-      <button class="fchip" data-filter="crm">Aplikacje i&nbsp;CRM</button>
-      <button class="fchip" data-filter="google-ads">Google Ads</button>
-      <button class="fchip" data-filter="allegro-ads">Allegro Ads</button>
-    </div>
-
-    <div class="rlz-grid">
-      <a href="portfolio/sufity-led.html" class="rlz-card" data-cat="strona">
-        <div class="rlz-card__media"></div>
-        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Sufity LED</h3><span class="rlz-card__client">Branża wykończeniowa · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>
-      </a>
-      <a href="portfolio/miasteczko-witkowice.html" class="rlz-card" data-cat="strona">
-        <div class="rlz-card__media"></div>
-        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Miasteczko Witkowice</h3><span class="rlz-card__client">Senior living · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>
-      </a>
-      <a href="portfolio/tct-tools.html" class="rlz-card" data-cat="sklep allegro-ads">
-        <div class="rlz-card__media"></div>
-        <div class="rlz-card__body"><span class="rlz-card__tag">Sklep internetowy</span><h3 class="rlz-card__title">TCT Tools</h3><span class="rlz-card__client">Narzędzia · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>
-      </a>
+    <header class="usec-head" ><div><span class="usec-eyebrow">Dla kogo</span><h2 class="usec-title usec-title--wrap">Kiedy warto do nas napisać</h2></div></header>
+    <div class="aud-grid">
+      <article class="aud"><span class="aud__num">S.01</span><h3 class="aud__title">Sklep internetowy</h3><p class="aud__desc">Chcesz skalować sprzedaż i&nbsp;potrzebujesz kampanii produktowych, które pilnują opłacalności, nie tylko obrotu.</p></article>
+      <article class="aud"><span class="aud__num">S.02</span><h3 class="aud__title">Firma usługowa</h3><p class="aud__desc">Zależy Ci na zapytaniach od klientów, którzy właśnie szukają Twojej usługi w&nbsp;Google.</p></article>
+      <article class="aud"><span class="aud__num">S.03</span><h3 class="aud__title">B2B i&nbsp;producenci</h3><p class="aud__desc">Pozyskujesz leady o&nbsp;dłuższym cyklu decyzyjnym i&nbsp;potrzebujesz kampanii mierzonych jakością zapytań.</p></article>
+      <article class="aud"><span class="aud__num">S.04</span><h3 class="aud__title">Rynek lokalny</h3><p class="aud__desc">Działasz na konkretnym obszarze i&nbsp;chcesz docierać do klientów z&nbsp;okolicy, bez przepłacania za resztę kraju.</p></article>
+      <article class="aud"><span class="aud__num">S.05</span><h3 class="aud__title">Przejęcie kampanii</h3><p class="aud__desc">Kampanie już działają, ale nie znasz ich realnych wyników. Zaczynamy od audytu i&nbsp;uporządkowania pomiaru.</p></article>
     </div>
   </div></section>
 
-<!-- CTA BAND -->
-<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband">
-  <div class="ctaband__txt"><span class="ctaband__eyebrow">Rozpocznij projekt</span>
-    <h2 class="ctaband__title">Następne case studium może być Twoje.</h2>
-    <p class="ctaband__desc">Powiedz nam, co chcesz osiągnąć. My powiemy jak i&nbsp;ile to kosztuje.</p></div>
-  <div class="ctaband__btns"><a href="kontakt-nowa.html" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div>
-</div></div></section>
+<section class="svc-sec"><div class="container">
+    <header class="usec-head" ><div><span class="usec-eyebrow">Problemy</span><h2 class="usec-title usec-title--wrap">Sytuacje, z&nbsp;którymi przychodzą do nas firmy</h2></div></header>
+    <div class="prob-grid">
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Budżet się wydaje, a&nbsp;sprzedaży nie widać. Masz poczucie, że pieniądze na reklamę po prostu się przepalają.</p></div>
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Dostajesz raporty pełne kliknięć i&nbsp;wyświetleń, z&nbsp;których nie wynika, czy kampanie w&nbsp;ogóle się opłacają.</p></div>
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Ruch na stronie rośnie, ale liczba zapytań i&nbsp;transakcji stoi w&nbsp;miejscu.</p></div>
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Nikt nie skonfigurował pomiaru konwersji, więc decyzje o&nbsp;budżecie zapadają w&nbsp;ciemno.</p></div>
+    </div>
+  </div></section>
+
+<section class="svc-sec" id="zakres"><div class="container">
+    <header class="usec-head"><div><span class="usec-eyebrow">Zakres</span><h2 class="usec-title usec-title--wrap">Co obejmuje prowadzenie Google Ads</h2></div><p class="usec-lead">Zakres dopasowujemy do celu, branży i&nbsp;skali budżetu, bez sztywnych pakietów.</p></header>
+    <div class="scope-grid">
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Audyt</h3><p class="scope__desc">Przegląd konta, dotychczasowych kampanii i&nbsp;strony, na którą kierujemy ruch.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Strategia</h3><p class="scope__desc">Cele, grupy odbiorców, dobór typów kampanii i&nbsp;plan budżetu.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Konfiguracja pomiaru</h3><p class="scope__desc">Konwersje, analityka i&nbsp;wartości transakcji zliczane poprawnie od startu.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Kampanie Search</h3><p class="scope__desc">Reklamy w&nbsp;wyszukiwarce dla osób, które aktywnie szukają Twojej oferty.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Performance Max</h3><p class="scope__desc">Kampanie produktowe i&nbsp;zasięgowe w&nbsp;całym ekosystemie Google.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Remarketing</h3><p class="scope__desc">Powrót do osób, które znają markę, ale nie dokończyły zakupu lub kontaktu.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Optymalizacja</h3><p class="scope__desc">Stała praca nad stawkami, słowami kluczowymi, reklamami i&nbsp;budżetem.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Raporty</h3><p class="scope__desc">Czytelne zestawienia: co wydaliśmy, co przyniosło efekt i&nbsp;co robimy dalej.</p></div>
+    </div>
+  </div></section>
+
+<section class="svc-sec"><div class="container">
+    <header class="usec-head"><div><span class="usec-eyebrow">Co mierzymy</span><h2 class="usec-title usec-title--wrap">Rozliczamy kampanie z&nbsp;efektów, nie z&nbsp;kliknięć</h2></div><p class="usec-lead">Każdą decyzję o&nbsp;budżecie opieramy na czterech wskaźnikach, które widzisz w&nbsp;każdym raporcie.</p></header>
+    <div class="aud-grid">
+      <article class="aud"><span class="aud__num">M.01</span><h3 class="aud__title">Konwersje</h3><p class="aud__desc">Liczba zapytań, transakcji lub innych działań, na których naprawdę Ci zależy.</p></article>
+      <article class="aud"><span class="aud__num">M.02</span><h3 class="aud__title">Koszt pozyskania</h3><p class="aud__desc">Ile płacisz za jedno zapytanie lub jedną transakcję i&nbsp;jak ten koszt zmienia się w&nbsp;czasie.</p></article>
+      <article class="aud"><span class="aud__num">M.03</span><h3 class="aud__title">Wartość sprzedaży</h3><p class="aud__desc">Przychód, który kampanie realnie wygenerowały, a&nbsp;nie tylko ruch, który sprowadziły.</p></article>
+      <article class="aud"><span class="aud__num">M.04</span><h3 class="aud__title">ROAS</h3><p class="aud__desc">Zwrot z&nbsp;wydatków na reklamę: ile złotych przychodu przynosi każda złotówka budżetu.</p></article>
+    </div>
+  </div></section>
+
+<section class="svc-sec"><div class="container">
+    <header class="usec-head" ><div><span class="usec-eyebrow">Jak pracujemy</span><h2 class="usec-title usec-title--wrap">Proces prowadzenia kampanii</h2></div></header>
+    <div class="svcproc"><span class="svcproc__line" aria-hidden="true"></span>
+      <div class="svcproc__grid">
+        <div class="svcstep"><span class="svcstep__dot">1</span><h3 class="svcstep__title">Audyt i&nbsp;cele</h3><p class="svcstep__desc">Analiza konta, konkurencji i&nbsp;strony. Ustalamy, co ma być efektem kampanii.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">2</span><h3 class="svcstep__title">Strategia</h3><p class="svcstep__desc">Dobór typów kampanii, struktura konta i&nbsp;plan budżetu dopasowany do celu.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">3</span><h3 class="svcstep__title">Pomiar i&nbsp;start</h3><p class="svcstep__desc">Konfiguracja konwersji i&nbsp;analityki, przygotowanie reklam i&nbsp;uruchomienie kampanii.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">4</span><h3 class="svcstep__title">Optymalizacja</h3><p class="svcstep__desc">Stała praca nad wynikami: stawki, słowa kluczowe, reklamy i&nbsp;podział budżetu.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">5</span><h3 class="svcstep__title">Raport i&nbsp;rekomendacje</h3><p class="svcstep__desc">Regularne raporty z&nbsp;wnioskami i&nbsp;planem działań na kolejny okres.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+<section class="svc-sec" style="text-align:center"><div class="container" style="display:flex;flex-direction:column;align-items:center">
+    <header class="usec-head" style="text-align:center;align-items:center" ><div><span class="usec-eyebrow">Realizacje</span><h2 class="usec-title usec-title--wrap">Wyniki, które można sprawdzić</h2></div></header>
+    <p class="usec-lead" style="max-width:640px;margin:16px auto 0;text-align:center">Wyniki kampanii publikujemy wyłącznie za zgodą klientów, zawsze z&nbsp;kontekstem: okresem, punktem odniesienia i&nbsp;celem. Konkretne liczby z&nbsp;prowadzonych kont: [do uzupełnienia po akceptacji klienta].</p>
+  </div></section>
+
+<section class="svc-sec"><div class="container">
+    <header class="usec-head" ><div><span class="usec-eyebrow">FAQ</span><h2 class="usec-title usec-title--wrap">Pytania przed startem kampanii</h2></div></header>
+    <div class="faq">
+      <div class="faq__item open"><button class="faq__q">Wydawałem już na reklamy i&nbsp;budżet się przepalał. Czym to się różni?<span class="faq__ic"></span></button><div class="faq__a">Najczęstszą przyczyną przepalonego budżetu jest brak poprawnego pomiaru konwersji. Zanim wydamy pierwszą złotówkę, konfigurujemy pomiar, ustalamy limity i&nbsp;definiujemy, co uznajemy za efekt. Budżet skalujemy dopiero wtedy, gdy dane pokazują, że kampania na siebie zarabia.</div></div>
+      <div class="faq__item"><button class="faq__q">Czy będę widzieć, na co dokładnie idzie budżet?<span class="faq__ic"></span></button><div class="faq__a">Tak. Konto Google Ads należy do Ciebie i&nbsp;masz do niego pełny dostęp przez cały czas współpracy. W&nbsp;raportach pokazujemy wydatki, konwersje, koszt pozyskania i&nbsp;wartość sprzedaży, bez ukrywania czegokolwiek za ogólnikami.</div></div>
+      <div class="faq__item"><button class="faq__q">Jaki budżet reklamowy jest potrzebny na start?<span class="faq__ic"></span></button><div class="faq__a">To zależy od branży, konkurencji i&nbsp;celu kampanii. Zamiast podawać jedną kwotę dla wszystkich, po audycie rekomendujemy przedział budżetu, który daje kampaniom realną szansę na wynik. Jeśli budżet jest zbyt mały, żeby miało to sens, powiemy o&nbsp;tym wprost.</div></div>
+      <div class="faq__item"><button class="faq__q">Kiedy zobaczę pierwsze efekty?<span class="faq__ic"></span></button><div class="faq__a">Pierwsze dane spływają od razu po starcie, ale wiarygodne wnioski wymagają kilku tygodni zbierania statystyk. Optymalizacja to proces ciągły: z&nbsp;każdym cyklem raportowym kampanie powinny pracować lepiej, a&nbsp;kierunek zmian widzisz w&nbsp;raportach.</div></div>
+      <div class="faq__item"><button class="faq__q">Do kogo należy konto i&nbsp;co się stanie po zakończeniu współpracy?<span class="faq__ic"></span></button><div class="faq__a">Konto reklamowe, historia kampanii i&nbsp;dane pomiarowe są Twoją własnością. Po zakończeniu współpracy wszystko zostaje u&nbsp;Ciebie, razem z&nbsp;dokumentacją ustawień.</div></div>
+    </div>
+  </div></section>
+
+<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband"><div class="ctaband__txt"><span class="ctaband__eyebrow">Rozpocznij projekt</span><h2 class="ctaband__title">Sprawdźmy potencjał Twoich kampanii.</h2><p class="ctaband__desc">W&nbsp;konfiguratorze zapytamy o&nbsp;cel, dotychczasowe działania reklamowe i&nbsp;budżet. Wrócimy z&nbsp;rekomendacjami po audycie.</p></div><div class="ctaband__btns"><a href="#" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div></div></div></section>
+
+<section class="svc-sec"><div class="container">
+    <header class="usec-head" ><div><span class="usec-eyebrow">Zobacz też</span><h2 class="usec-title usec-title--wrap">Powiązane usługi i&nbsp;wiedza</h2></div></header>
+    <div class="zt-grid">
+      <article class="zt"><span class="zt__kind">Usługa</span><h3 class="zt__title">Allegro Ads</h3><p class="zt__desc">Rentowna sprzedaż i&nbsp;lepsza widoczność ofert na Allegro.</p><a href="allegro-ads.html" class="zt__link">Dowiedz się więcej →</a></article>
+      <article class="zt"><span class="zt__kind">Usługa</span><h3 class="zt__title">Strony internetowe</h3><p class="zt__desc">Strona, która zamienia ruch z&nbsp;kampanii w&nbsp;zapytania.</p><a href="strony-internetowe.html" class="zt__link">Dowiedz się więcej →</a></article>
+      <article class="zt"><span class="zt__kind">Wiedza</span><h3 class="zt__title">Google Ads</h3><p class="zt__desc">Artykuły o&nbsp;kampaniach, pomiarze i&nbsp;optymalizacji budżetu.</p><a href="../wiedza.html#google-ads" class="zt__link">Dowiedz się więcej →</a></article>
+    </div>
+  </div></section>
 
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
@@ -659,21 +689,9 @@
   </div>
 </footer>
 <script>
-  (function(){
-    var chips = Array.prototype.slice.call(document.querySelectorAll('.fchip'));
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.rlz-card'));
-    chips.forEach(function(c){
-      c.addEventListener('click', function(){
-        chips.forEach(function(x){ x.classList.remove('fchip--on'); });
-        c.classList.add('fchip--on');
-        var f = c.getAttribute('data-filter');
-        cards.forEach(function(card){
-          var cats = card.getAttribute('data-cat').split(' ');
-          card.hidden = !(f === 'all' || cats.indexOf(f) >= 0);
-        });
-      });
-    });
-  })();
+  document.querySelectorAll('.faq__q').forEach(function(q){
+    q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
+  });
 </script>
 
 </body>

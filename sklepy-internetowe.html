@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kontakt — opowiedz nam o projekcie | Code&amp;Pixel</title>
-<meta name="description" content="Skontaktuj się z Code&Pixel. Opisz swój projekt, a wrócimy z pierwszymi rekomendacjami i propozycją kolejnych kroków. E-mail, telefon i formularz kontaktowy." />
-<meta name="theme-color" content="#071e51" />
+<title>Sklepy internetowe — Code&amp;Pixel</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -54,9 +52,9 @@
   .logo__word{position:absolute;top:0;left:0;width:180.6px;height:25.64px}
   .logo__tag{position:absolute;top:29.55px;left:49.8px;width:130.79px;height:13.72px}
 
-  .nav{display:flex;gap:30px}
+  .nav{display:flex;gap:30px;align-items:center}
   .nav a{font-weight:600;font-size:15px;letter-spacing:0.6px;text-transform:uppercase;color:var(--white);transition:opacity .2s}
-  .nav a:hover{opacity:.75}
+  .nav > a:hover{opacity:.75}
   /* Dropdown Usługi */
   .nav__item{position:relative}
   .nav__toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
@@ -303,11 +301,9 @@
 
   /* ============ CTA BAND ============ */
   .ctaband-wrap{padding:70px 0;background:#fff}
-  .ctaband{background:#071e51;border-radius:24px;padding:56px 48px;
+  .ctaband{background:#071e51 url("assets/nowy/cta-bg.png") right center / cover no-repeat;border-radius:24px;padding:56px 48px;
     display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;
     position:relative;overflow:hidden}
-  .ctaband::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;
-    background:radial-gradient(circle, rgba(77,124,234,0.25) 0%, transparent 70%);pointer-events:none}
   .ctaband__eyebrow{display:inline-flex;align-items:center;gap:12px;
     font-family:var(--ff);font-weight:700;font-size:12px;letter-spacing:3.84px;text-transform:uppercase;color:rgba(255,255,255,0.65)}
   .ctaband__eyebrow::before{content:"";width:34px;height:1px;background:rgba(255,255,255,0.35)}
@@ -508,94 +504,6 @@
   @media (max-width:560px){
     .aud-grid,.zt-grid,.rel-grid,.scope-grid{grid-template-columns:1fr}
   }
-
-  /* ===== PODSTRONA: KONTAKT ===== */
-  .ct-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:28px;margin-top:8px;align-items:start}
-
-  /* Formularz */
-  .ct-form-card{background:#fff;border:1px solid rgba(7,30,81,0.08);border-radius:24px;
-    padding:38px 40px;box-shadow:0 18px 44px rgba(7,30,81,0.06)}
-  .ct-form-card h2{font-family:'Inter',var(--ff);font-weight:600;font-size:24px;letter-spacing:-0.2px;color:#071e51}
-  .ct-form-card p.ct-form-sub{margin-top:8px;font-family:'Inter',var(--ff);font-size:14px;line-height:1.55;color:#071e51;opacity:.6}
-  .ct-form{margin-top:26px;display:flex;flex-direction:column;gap:18px}
-  .ct-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  .field{display:flex;flex-direction:column;gap:8px}
-  .field__label{font-family:'Inter',var(--ff);font-weight:600;font-size:13px;color:#071e51}
-  .field__label .req{color:var(--accent)}
-  .field__input,.field__select,.field__textarea{width:100%;font-family:'Inter',var(--ff);font-size:14px;color:#071e51;
-    background:#f7f8fc;border:1px solid rgba(7,30,81,0.10);border-radius:12px;padding:14px 16px;
-    transition:border-color .16s ease,background .16s ease,box-shadow .16s ease}
-  .field__input::placeholder,.field__textarea::placeholder{color:#071e51;opacity:.38}
-  .field__textarea{resize:vertical;min-height:130px;line-height:1.55}
-  .field__select{appearance:none;-webkit-appearance:none;cursor:pointer;
-    background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23071e51" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>');
-    background-repeat:no-repeat;background-position:right 15px center;background-size:18px;padding-right:44px}
-  .field__input:focus,.field__select:focus,.field__textarea:focus{outline:none;background:#fff;
-    border-color:var(--accent);box-shadow:0 0 0 4px rgba(67,115,229,0.12)}
-
-  .consent{display:flex;gap:12px;align-items:flex-start}
-  .consent input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;margin-top:1px;cursor:pointer;
-    background:#f7f8fc;border:1px solid rgba(7,30,81,0.22);border-radius:7px;transition:background .16s ease,border-color .16s ease}
-  .consent input:checked{background:linear-gradient(150deg,var(--accent-1),var(--accent-2)) center/16px no-repeat,
-    var(--accent);border-color:transparent;
-    background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>')}
-  .consent input:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
-  .consent label{font-family:'Inter',var(--ff);font-size:12.5px;line-height:1.55;color:#071e51;opacity:.66}
-  .consent label a{color:var(--accent);text-decoration:underline}
-
-  .ct-submit{align-self:flex-start;border:none;cursor:pointer;margin-top:4px;
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    padding:18px 40px;border-radius:900px;color:#fff;white-space:nowrap;
-    font-family:'Inter',var(--ff);font-weight:700;font-size:14px;letter-spacing:0.5px;text-transform:uppercase;
-    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%);
-    box-shadow:0 12px 24px rgba(77,124,234,0.35);
-    transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
-  .ct-submit:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 18px 34px rgba(77,124,234,0.45)}
-  .ct-submit:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
-
-  .ct-note{font-family:'Inter',var(--ff);font-size:12px;line-height:1.5;color:#071e51;opacity:.45}
-  .ct-ok{display:none;margin-top:4px;padding:16px 18px;border-radius:12px;
-    background:rgba(67,115,229,0.08);border:1px solid rgba(67,115,229,0.25);
-    font-family:'Inter',var(--ff);font-size:13.5px;line-height:1.55;color:#071e51}
-  .ct-ok.show{display:block}
-  .ct-ok b{color:var(--accent)}
-
-  /* Panel boczny */
-  .ct-aside{display:flex;flex-direction:column;gap:22px}
-  .ct-card{background:#071e51;border-radius:24px;padding:34px 34px;color:#fff;position:relative;overflow:hidden}
-  .ct-card::after{content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;
-    background:radial-gradient(circle, rgba(77,124,234,0.30) 0%, transparent 70%);pointer-events:none}
-  .ct-card h3{font-family:'Inter',var(--ff);font-weight:600;font-size:19px;color:#fff;position:relative;z-index:1}
-  .ct-list{margin-top:22px;display:flex;flex-direction:column;gap:20px;position:relative;z-index:1}
-  .ct-item{display:flex;gap:14px;align-items:flex-start}
-  .ct-item__ico{flex:none;width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
-    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);color:#9fc0ff}
-  .ct-item__ico svg{width:20px;height:20px}
-  .ct-item__k{display:block;font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
-  .ct-item__v{display:block;margin-top:3px;font-family:'Inter',var(--ff);font-size:15px;color:#fff}
-  .ct-item__v a{color:#fff;transition:color .16s ease}
-  .ct-item__v a:hover{color:#9fc0ff}
-  .ct-item__v small{display:block;font-size:12.5px;color:rgba(255,255,255,0.55);margin-top:2px}
-
-  .ct-steps{background:#f5f6fb;border-radius:24px;padding:30px 32px}
-  .ct-steps h3{font-family:'Inter',var(--ff);font-weight:600;font-size:17px;color:#071e51}
-  .ct-steps ol{list-style:none;counter-reset:s;margin-top:18px;display:flex;flex-direction:column;gap:16px}
-  .ct-steps li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;
-    font-family:'Inter',var(--ff);font-size:13.5px;line-height:1.5;color:#071e51;opacity:.8}
-  .ct-steps li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;
-    background:radial-gradient(circle at 35% 35%,#7d9cee,var(--accent-1) 75%);opacity:1;
-    box-shadow:0 6px 16px rgba(67,115,229,0.35)}
-
-  @media (max-width:960px){
-    .ct-grid{grid-template-columns:1fr;gap:24px}
-    .ct-form-card{padding:32px 28px}
-  }
-  @media (max-width:560px){
-    .ct-row{grid-template-columns:1fr}
-  }
-  .svc-top .header .nav__drop a{color:#071e51}
-  .svc-top .header .nav__drop a:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -604,7 +512,7 @@
   <!-- ============ HEADER ============ -->
   <header class="header">
     <div class="container header__inner">
-      <a href="index-nowy.html" class="logo" aria-label="Code&amp;Pixel">
+      <a href="index.html" class="logo" aria-label="Code&amp;Pixel">
         <img class="logo__icon" src="assets/nowy/logo-icon.svg" alt="" />
         <span class="logo__lockup">
           <img class="logo__word" src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
@@ -612,156 +520,186 @@
         </span>
       </a>
 
-      <nav class="nav">
+<nav class="nav">
         <div class="nav__item">
           <a href="#uslugi" class="nav__toggle" aria-haspopup="true" aria-expanded="false">Usługi
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </a>
           <div class="nav__drop" role="menu">
-            <a href="strony-internetowe-nowa.html" role="menuitem">Strony internetowe</a>
-            <a href="sklepy-internetowe-nowa.html" role="menuitem">Sklepy internetowe</a>
-            <a href="crm-systemy-nowa.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
-            <a href="aplikacje-webowe-nowa.html" role="menuitem">Aplikacje webowe</a>
-            <a href="google-ads-nowa.html" role="menuitem">Google Ads</a>
-            <a href="allegro-ads-nowa.html" role="menuitem">Allegro Ads</a>
-            <a href="opieka-rozwoj-nowa.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+            <a href="strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="google-ads.html" role="menuitem">Google Ads</a>
+            <a href="allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
           </div>
         </div>
-        <a href="realizacje-nowa.html">Realizacje</a>
-        <a href="o-nas-nowa.html">O nas</a>
-        <a href="wiedza-nowa.html">Wiedza</a>
+        <a href="realizacje.html">Realizacje</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="wiedza.html">Wiedza</a>
       </nav>
 
-      <a href="kontakt-nowa.html" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
+      <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
     </div>
   </header>
 
-  <!-- ============ HERO (kontakt) ============ -->
-  <div class="svc-crumb"><div class="container"><nav><a href="index-nowy.html">Start</a> / <span class="cur">Kontakt</span></nav></div></div>
+      <!-- ============ HERO (usługa) ============ -->
+  <div class="svc-crumb"><div class="container"><nav><a href="index.html">Start</a> / <a href="#">Usługi</a> / <span class="cur">Sklepy internetowe</span></nav></div></div>
   <section class="hero hero--svc">
     <div class="container hero__inner">
-      <span class="hero__eyebrow">Porozmawiajmy</span>
-      <h1 class="hero__title">Opowiedz nam o&nbsp;swoim projekcie.</h1>
-      <p class="hero__lead">Napisz, co chcesz osiągnąć albo z&nbsp;jakim problemem się mierzysz. Wrócimy z&nbsp;pierwszymi rekomendacjami i&nbsp;propozycją kolejnych kroków, zwykle w&nbsp;ciągu jednego dnia roboczego.</p>
+      <span class="hero__eyebrow">Budujemy</span>
+      <h1 class="hero__title">Sklep internetowy gotowy do sprzedaży i&nbsp;rozwoju.</h1>
+      <p class="hero__lead">Projektujemy sklepy, w&nbsp;których dobrze się kupuje i&nbsp;które wygodnie się prowadzi: od UX koszyka, przez płatności i&nbsp;dostawy, po integracje z&nbsp;ERP i&nbsp;marketplace.</p>
+      <div class="hero__actions">
+        <a href="#kontakt" class="btn btn--grad">Wyceń swój sklep</a>
+        <a href="#zakres" class="btn btn--outline">Zobacz zakres</a>
+      </div>
     </div>
   </section>
 </div>
 
-<!-- ============ FORMULARZ + KONTAKT ============ -->
+<!-- DLA KOGO -->
 <section class="svc-sec">
   <div class="container">
-    <div class="ct-grid">
-
-      <!-- Formularz -->
-      <div class="ct-form-card">
-        <h2>Napisz do nas</h2>
-        <p class="ct-form-sub">Im więcej napiszesz o&nbsp;celu i&nbsp;kontekście, tym trafniejsze będą nasze pierwsze rekomendacje.</p>
-
-        <form class="ct-form" id="ctForm" novalidate>
-          <div class="ct-row">
-            <div class="field">
-              <label class="field__label" for="f-name">Imię i&nbsp;nazwisko <span class="req">*</span></label>
-              <input class="field__input" type="text" id="f-name" name="name" placeholder="Jan Kowalski" required />
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-company">Firma</label>
-              <input class="field__input" type="text" id="f-company" name="company" placeholder="Nazwa firmy" />
-            </div>
-          </div>
-
-          <div class="ct-row">
-            <div class="field">
-              <label class="field__label" for="f-email">E-mail <span class="req">*</span></label>
-              <input class="field__input" type="email" id="f-email" name="email" placeholder="jan@firma.pl" required />
-            </div>
-            <div class="field">
-              <label class="field__label" for="f-phone">Telefon</label>
-              <input class="field__input" type="tel" id="f-phone" name="phone" placeholder="+48 600 000 000" />
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="f-service">Czego dotyczy projekt?</label>
-            <select class="field__select" id="f-service" name="service">
-              <option value="">Wybierz obszar</option>
-              <option value="strona">Strona internetowa</option>
-              <option value="sklep">Sklep internetowy</option>
-              <option value="crm">CRM / system dla firmy</option>
-              <option value="aplikacja">Aplikacja webowa</option>
-              <option value="google-ads">Google Ads</option>
-              <option value="allegro-ads">Allegro Ads</option>
-              <option value="opieka">Opieka i rozwój</option>
-              <option value="inne">Coś innego</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label class="field__label" for="f-message">Twoja wiadomość <span class="req">*</span></label>
-            <textarea class="field__textarea" id="f-message" name="message" placeholder="Opisz krótko, co chcesz osiągnąć, co Cię blokuje i na kiedy potrzebujesz efektu." required></textarea>
-          </div>
-
-          <div class="consent">
-            <input type="checkbox" id="f-rodo" name="rodo" required />
-            <label for="f-rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu obsługi zapytania, zgodnie z&nbsp;<a href="polityka-prywatnosci.html">polityką prywatności</a>. <span class="req">*</span></label>
-          </div>
-
-          <button type="submit" class="ct-submit">Wyślij zapytanie
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-
-          <p class="ct-note">Pola oznaczone <span style="color:var(--accent)">*</span> są wymagane. Twoje dane trafiają wyłącznie do naszego zespołu i&nbsp;nie są przekazywane dalej.</p>
-
-          <div class="ct-ok" id="ctOk" role="status" aria-live="polite">
-            <b>Dziękujemy!</b> Wiadomość została przygotowana do wysłania. Wrócimy z&nbsp;odpowiedzią zwykle w&nbsp;ciągu jednego dnia roboczego.
-          </div>
-        </form>
-      </div>
-
-      <!-- Panel boczny -->
-      <aside class="ct-aside">
-        <div class="ct-card">
-          <h3>Dane kontaktowe</h3>
-          <div class="ct-list">
-            <div class="ct-item">
-              <span class="ct-item__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
-              <div><span class="ct-item__k">E-mail</span><span class="ct-item__v"><a href="mailto:hello@codeandpixel.io">hello@codeandpixel.io</a></span></div>
-            </div>
-            <div class="ct-item">
-              <span class="ct-item__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-              <div><span class="ct-item__k">Telefon</span><span class="ct-item__v"><a href="tel:+48000000000">+48 000 000 000</a><small>pon.–pt., 9:00–17:00</small></span></div>
-            </div>
-            <div class="ct-item">
-              <span class="ct-item__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-              <div><span class="ct-item__k">Adres</span><span class="ct-item__v">Code&amp;Pixel Sp. z&nbsp;o.o.<small>ul. Przykładowa 1, 32-800 Brzesko</small><small>NIP: 000-000-00-00</small></span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ct-steps">
-          <h3>Co dzieje się dalej?</h3>
-          <ol>
-            <li>Czytamy Twoje zgłoszenie i&nbsp;doprecyzowujemy szczegóły, jeśli trzeba.</li>
-            <li>Wracamy z&nbsp;pierwszymi rekomendacjami i&nbsp;propozycją zakresu.</li>
-            <li>Umawiamy krótką rozmowę i&nbsp;ustalamy plan oraz wycenę.</li>
-          </ol>
-        </div>
-      </aside>
-
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">Dla kogo</span><h2 class="usec-title usec-title--wrap">Kiedy warto do nas napisać</h2></div>
+    </header>
+    <div class="aud-grid">
+      <article class="aud"><span class="aud__num">S.01</span><h3 class="aud__title">Nowy sklep</h3><p class="aud__desc">Startujesz ze sprzedażą online i&nbsp;potrzebujesz sklepu zaprojektowanego pod Twój asortyment, logistykę i&nbsp;model obsługi zamówień.</p></article>
+      <article class="aud"><span class="aud__num">S.02</span><h3 class="aud__title">Migracja</h3><p class="aud__desc">Obecna platforma ogranicza rozwój. Planujesz przenosiny bez utraty danych, pozycji w&nbsp;wyszukiwarce i&nbsp;ciągłości sprzedaży.</p></article>
+      <article class="aud"><span class="aud__num">S.03</span><h3 class="aud__title">Redesign</h3><p class="aud__desc">Sklep sprzedaje, ale wygląd i&nbsp;UX odstają od marki, a&nbsp;ścieżka zakupowa gubi klientów po drodze do płatności.</p></article>
+      <article class="aud"><span class="aud__num">S.04</span><h3 class="aud__title">Integracje</h3><p class="aud__desc">Chcesz połączyć sklep z&nbsp;ERP, magazynem, kurierami albo marketplace, żeby ograniczyć ręczną pracę przy zamówieniach.</p></article>
+      <article class="aud"><span class="aud__num">S.05</span><h3 class="aud__title">Optymalizacja konwersji</h3><p class="aud__desc">Ruch jest, sprzedaż nie rośnie. Potrzebujesz audytu ścieżki zakupowej i&nbsp;zmian opartych o&nbsp;dane, nie o&nbsp;przeczucia.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
+<!-- PROBLEMY -->
 <section class="svc-sec">
   <div class="container">
     <header class="usec-head">
-      <div><span class="usec-eyebrow">FAQ</span><h2 class="usec-title usec-title--wrap">Zanim napiszesz</h2></div>
+      <div><span class="usec-eyebrow">Problemy</span><h2 class="usec-title usec-title--wrap">Sytuacje, z&nbsp;którymi<br>przychodzą do nas sklepy</h2></div>
+    </header>
+    <div class="prob-grid">
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Klienci dodają produkty do koszyka, ale porzucają zakup przed płatnością.</p></div>
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Obsługa zamówień wymaga ręcznego przepisywania danych między sklepem, magazynem i&nbsp;fakturowaniem.</p></div>
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Platforma zwalnia przy większym ruchu, a&nbsp;każda promocja to ryzyko awarii w&nbsp;najgorszym momencie.</p></div>
+      <div class="prob"><span class="prob__mark" aria-hidden="true"></span><p>Sprzedajesz też na Allegro i&nbsp;w&nbsp;innych kanałach, a&nbsp;stany magazynowe przestają się zgadzać.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ZAKRES -->
+<section class="svc-sec" id="zakres">
+  <div class="container">
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">Zakres</span><h2 class="usec-title usec-title--wrap">Co obejmuje projekt sklepu</h2></div>
+      <p class="usec-lead">Zakres dopasowujemy do asortymentu, skali sprzedaży i&nbsp;planów rozwoju, bez sztywnych pakietów.</p>
+    </header>
+    <div class="scope-grid">
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">UX koszyka</h3><p class="scope__desc">Ścieżka zakupowa bez tarcia, od karty produktu po potwierdzenie.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Płatności</h3><p class="scope__desc">Szybkie metody płatności dopasowane do przyzwyczajeń klientów.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Dostawy</h3><p class="scope__desc">Integracje z&nbsp;kurierami i&nbsp;punktami odbioru oraz czytelne koszty.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Produkty</h3><p class="scope__desc">Struktura katalogu, warianty, filtry i&nbsp;wygodna edycja oferty.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">SEO</h3><p class="scope__desc">Architektura kategorii i&nbsp;dane strukturalne pod widoczność w&nbsp;Google.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Analityka</h3><p class="scope__desc">Pomiar sprzedaży, źródeł ruchu i&nbsp;zachowań zakupowych od startu.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Automatyzacje</h3><p class="scope__desc">Statusy zamówień, e-maile transakcyjne i&nbsp;ratowanie porzuconych koszyków.</p></div>
+      <div class="scope"><span class="scope__ico"></span><h3 class="scope__title">Integracje ERP i&nbsp;marketplace</h3><p class="scope__desc">Synchronizacja stanów, cen i&nbsp;zamówień z&nbsp;systemami firmy.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNDAMENTY -->
+<section class="svc-sec">
+  <div class="container">
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">Fundamenty</span><h2 class="usec-title usec-title--wrap">Proces zakupowy, zaplecze i&nbsp;dane</h2></div>
+      <p class="usec-lead">Dobry sklep to więcej niż witryna. Dbamy o&nbsp;trzy warstwy, które razem decydują o&nbsp;sprzedaży.</p>
+    </header>
+    <div class="aud-grid">
+      <article class="aud"><span class="aud__num">E.01</span><h3 class="aud__title">Proces zakupowy</h3><p class="aud__desc">Projektujemy ścieżkę od wejścia do potwierdzenia zamówienia: czytelne karty produktów, prosty koszyk i&nbsp;checkout bez zbędnych pól.</p></article>
+      <article class="aud"><span class="aud__num">E.02</span><h3 class="aud__title">Zaplecze sklepu</h3><p class="aud__desc">Panel, w&nbsp;którym obsługa zamówień, zwrotów i&nbsp;oferty nie wymaga instrukcji. Mniej klikania, mniej błędów, szybsza wysyłka.</p></article>
+      <article class="aud"><span class="aud__num">E.03</span><h3 class="aud__title">Dane i&nbsp;decyzje</h3><p class="aud__desc">Sklep mierzy sprzedaż, źródła ruchu i&nbsp;porzucone koszyki, więc decyzje o&nbsp;rozwoju podejmujesz na podstawie liczb, nie intuicji.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCES -->
+<section class="svc-sec">
+  <div class="container">
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">Jak pracujemy</span><h2 class="usec-title usec-title--wrap">Proces projektu sklepu</h2></div>
+    </header>
+    <div class="svcproc">
+      <span class="svcproc__line" aria-hidden="true"></span>
+      <div class="svcproc__grid">
+        <div class="svcstep"><span class="svcstep__dot">1</span><h3 class="svcstep__title">Rozpoznanie</h3><p class="svcstep__desc">Asortyment, logistyka, konkurencja i&nbsp;cele sprzedażowe sklepu.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">2</span><h3 class="svcstep__title">Architektura sklepu</h3><p class="svcstep__desc">Struktura kategorii, ścieżka zakupowa i&nbsp;plan integracji.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">3</span><h3 class="svcstep__title">Projekt graficzny</h3><p class="svcstep__desc">UX/UI kart produktów, koszyka i&nbsp;checkoutu, desktop i&nbsp;mobile.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">4</span><h3 class="svcstep__title">Wdrożenie i&nbsp;integracje</h3><p class="svcstep__desc">Development, płatności, dostawy, ERP i&nbsp;testy zamówień.</p></div>
+        <div class="svcstep"><span class="svcstep__dot">5</span><h3 class="svcstep__title">Start i&nbsp;optymalizacja</h3><p class="svcstep__desc">Publikacja, analityka sprzedaży i&nbsp;plan rozwoju konwersji.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REALIZACJE -->
+<section class="svc-sec" id="realizacje">
+  <div class="container">
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">Realizacje</span><h2 class="usec-title usec-title--wrap">Sklepy, które już sprzedają</h2></div>
+    </header>
+    <div class="rel-grid" style="grid-template-columns:repeat(3,1fr)">
+      <article class="relc"><div class="relc__media"></div><div class="relc__body"><span class="relc__tag">Sklep internetowy</span><h3 class="relc__title">TCT Tools</h3><a href="#" class="relc__link">Zobacz projekt →</a></div></article>
+    </div>
+    <div class="tech__cta"><a href="#" class="btn-ghost-dark">Zobacz wszystkie realizacje →</a></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="svc-sec">
+  <div class="container">
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">FAQ</span><h2 class="usec-title usec-title--wrap">Pytania przed startem projektu</h2></div>
     </header>
     <div class="faq">
-      <div class="faq__item open"><button class="faq__q">Jak szybko dostanę odpowiedź?<span class="faq__ic"></span></button><div class="faq__a">Na zgłoszenia z&nbsp;formularza odpowiadamy zwykle w&nbsp;ciągu jednego dnia roboczego. Jeśli sprawa jest pilna, zadzwoń, chętnie porozmawiamy od&nbsp;razu.</div></div>
-      <div class="faq__item"><button class="faq__q">Czy przygotowanie wyceny jest płatne?<span class="faq__ic"></span></button><div class="faq__a">Nie. Pierwsza rozmowa, wstępne rekomendacje i&nbsp;wycena zakresu są bezpłatne i&nbsp;niezobowiązujące.</div></div>
-      <div class="faq__item"><button class="faq__q">Nie wiem jeszcze dokładnie, czego potrzebuję. Mogę napisać?<span class="faq__ic"></span></button><div class="faq__a">Jak najbardziej. Wystarczy, że opiszesz cel albo problem. Resztę, czyli zakres i&nbsp;drogę do celu, pomożemy Ci ułożyć.</div></div>
-      <div class="faq__item"><button class="faq__q">Czy pracujecie z&nbsp;klientami spoza regionu?<span class="faq__ic"></span></button><div class="faq__a">Tak. Pracujemy zdalnie z&nbsp;klientami z&nbsp;całej Polski, a&nbsp;spotkania prowadzimy online lub na miejscu, zależnie od potrzeb projektu.</div></div>
+      <div class="faq__item open"><button class="faq__q">Na jakiej platformie budujecie sklepy?<span class="faq__ic"></span></button><div class="faq__a">Platformę dobieramy do asortymentu, skali sprzedaży i&nbsp;planowanych integracji, nie odwrotnie. Na etapie wyceny porównujemy warianty razem z&nbsp;kosztami utrzymania, żebyś wiedział, za co płacisz w&nbsp;kolejnych latach, a&nbsp;nie tylko przy wdrożeniu.</div></div>
+      <div class="faq__item"><button class="faq__q">Czy migracja sklepu oznacza przerwę w&nbsp;sprzedaży?<span class="faq__ic"></span></button><div class="faq__a">Nie. Nowy sklep budujemy i&nbsp;testujemy równolegle, a&nbsp;obecny sprzedaje do momentu przełączenia. Samą zmianę planujemy poza godzinami szczytu, z&nbsp;możliwością szybkiego powrotu, gdyby coś poszło nie tak.</div></div>
+      <div class="faq__item"><button class="faq__q">Czy po migracji nie stracę pozycji w&nbsp;Google?<span class="faq__ic"></span></button><div class="faq__a">Przygotowujemy mapę przekierowań 301 dla wszystkich istotnych adresów, przenosimy treści i&nbsp;dane strukturalne, a&nbsp;po starcie monitorujemy indeksację. To standardowa część migracji, nie płatny dodatek.</div></div>
+      <div class="faq__item"><button class="faq__q">Czy sklep połączycie z&nbsp;moim programem magazynowym?<span class="faq__ic"></span></button><div class="faq__a">Najczęściej tak. Na etapie wyceny sprawdzamy, czy Twój system ma API lub gotowy integrator, i&nbsp;ustalamy zakres synchronizacji: stany, ceny, zamówienia, faktury. Jeśli pełna integracja jest nieopłacalna, proponujemy prostszy wariant przejściowy.</div></div>
+      <div class="faq__item"><button class="faq__q">Ile kosztuje sklep internetowy?<span class="faq__ic"></span></button><div class="faq__a">Cena zależy od liczby produktów, integracji i&nbsp;zakresu prac projektowych, dlatego nie podajemy jednej stawki. Po wypełnieniu konfiguratora otrzymasz wycenę z&nbsp;rozbiciem na etapy i&nbsp;jasną informacją, co można przesunąć na później.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="ctaband-wrap" id="kontakt">
+  <div class="container">
+    <div class="ctaband">
+      <div class="ctaband__txt">
+        <span class="ctaband__eyebrow">Rozpocznij projekt</span>
+        <h2 class="ctaband__title">Opowiedz nam o&nbsp;swoim sklepie.</h2>
+        <p class="ctaband__desc">W&nbsp;konfiguratorze zapytamy o&nbsp;asortyment, obecną platformę, integracje i&nbsp;termin startu. Wrócimy z&nbsp;rekomendacjami.</p>
+      </div>
+      <div class="ctaband__btns">
+        <a href="#" class="upanel__btn">Wyceń projekt</a>
+        <a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POWIĄZANE -->
+<section class="svc-sec">
+  <div class="container">
+    <header class="usec-head">
+      <div><span class="usec-eyebrow">Zobacz też</span><h2 class="usec-title usec-title--wrap">Powiązane usługi i&nbsp;wiedza</h2></div>
+    </header>
+    <div class="zt-grid">
+      <article class="zt"><span class="zt__kind">Usługa</span><h3 class="zt__title">Allegro Ads</h3><p class="zt__desc">Rozwiń sprzedaż tam, gdzie klienci już kupują.</p><a href="#" class="zt__link">Dowiedz się więcej →</a></article>
+      <article class="zt"><span class="zt__kind">Usługa</span><h3 class="zt__title">Opieka i&nbsp;rozwój</h3><p class="zt__desc">Utrzymanie, bezpieczeństwo i&nbsp;rozwój sklepu po starcie.</p><a href="#" class="zt__link">Dowiedz się więcej →</a></article>
+      <article class="zt"><span class="zt__kind">Wiedza</span><h3 class="zt__title">E-commerce</h3><p class="zt__desc">Artykuły o&nbsp;konwersji, integracjach i&nbsp;rozwoju sklepów.</p><a href="#" class="zt__link">Czytaj artykuły →</a></article>
     </div>
   </div>
 </section>
@@ -771,36 +709,32 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a href="index-nowy.html" class="footer__logo" aria-label="Code&amp;Pixel">
+        <a href="#" class="footer__logo" aria-label="Code&amp;Pixel">
           <img src="assets/nowy/logo-icon.svg" alt="" style="width:56px;height:34px" />
           <img src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" style="width:155px;height:22px" />
         </a>
         <p>Interactive agency. Łączymy technologię, projektowanie i&nbsp;marketing, aby dostarczać rozwiązania, które realnie wspierają biznes.</p>
-        <div class="footer__social">
-          <a href="#" aria-label="Facebook"></a>
-          <a href="#" aria-label="LinkedIn"></a>
-        </div>
       </div>
       <div>
         <h5>Oferta</h5>
         <ul>
-          <li><a href="strony-internetowe-nowa.html">Strony internetowe</a></li>
-          <li><a href="sklepy-internetowe-nowa.html">Sklepy internetowe</a></li>
-          <li><a href="crm-systemy-nowa.html">CRM dla firm</a></li>
-          <li><a href="aplikacje-webowe-nowa.html">Aplikacje</a></li>
-          <li><a href="google-ads-nowa.html">Google Ads</a></li>
-          <li><a href="allegro-ads-nowa.html">Allegro Ads</a></li>
-          <li><a href="opieka-rozwoj-nowa.html">Opieka i&nbsp;rozwój</a></li>
+          <li><a href="#">Strony internetowe</a></li>
+          <li><a href="#">Sklepy internetowe</a></li>
+          <li><a href="#">CRM dla firm</a></li>
+          <li><a href="#">Aplikacje</a></li>
+          <li><a href="#">Google Ads</a></li>
+          <li><a href="#">Allegro Ads</a></li>
+          <li><a href="#">Opieka i&nbsp;rozwój</a></li>
         </ul>
       </div>
       <div>
         <h5>O nas</h5>
         <ul>
-          <li><a href="o-nas-nowa.html">O firmie</a></li>
-          <li><a href="index-nowy.html#proces">Proces</a></li>
-          <li><a href="index-nowy.html#technologie">Technologie</a></li>
-          <li><a href="wiedza-nowa.html">Wiedza / Blog</a></li>
-          <li><a href="kontakt-nowa.html">Kontakt</a></li>
+          <li><a href="#">O firmie</a></li>
+          <li><a href="#">Proces</a></li>
+          <li><a href="#">Technologie</a></li>
+          <li><a href="#">Wiedza / Blog</a></li>
+          <li><a href="#">Kontakt</a></li>
         </ul>
       </div>
       <div class="footer__contact">
@@ -817,37 +751,10 @@
     </div>
   </div>
 </footer>
-
 <script>
-  /* FAQ accordion */
   document.querySelectorAll('.faq__q').forEach(function(q){
     q.addEventListener('click', function(){ q.parentElement.classList.toggle('open'); });
   });
-
-  /* Preselekcja usługi: kontakt-nowa.html?usluga=sklep */
-  (function(){
-    var params = new URLSearchParams(location.search);
-    var u = params.get('usluga');
-    if (u){
-      var sel = document.getElementById('f-service');
-      if (sel && [].slice.call(sel.options).some(function(o){ return o.value === u; })) sel.value = u;
-    }
-  })();
-
-  /* Formularz — tryb demo (bez backendu). Walidacja + potwierdzenie. */
-  (function(){
-    var form = document.getElementById('ctForm');
-    var ok = document.getElementById('ctOk');
-    if (!form) return;
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      if (!form.checkValidity()){ form.reportValidity(); return; }
-      ok.classList.add('show');
-      form.querySelectorAll('input,select,textarea,button').forEach(function(el){ el.disabled = true; });
-      ok.scrollIntoView({ behavior:'smooth', block:'center' });
-      /* TODO: podłączyć realny endpoint (Formspree/backend) przed produkcją. */
-    });
-  })();
 </script>
 
 </body>
