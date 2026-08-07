@@ -2,12 +2,33 @@
 
 Multi-page strona agencji interaktywnej **Code & Pixel** (klient PROUP).
 
-## Stan projektu (2026-07-13)
+## Stan projektu (2026-08-07) — proces /strona, etap 4
 
-**Redesign wg briefu ukończony i zweryfikowany.** Historia prac i otwarte
-punkty (wymagające klienta): [docs/PLAN-PRACY.md](docs/PLAN-PRACY.md).
-UWAGA: przy każdej zmianie css/style.css lub js/main.js podbij wersję
-`?v=` w linkach wszystkich HTML (cache-busting).
+Projekt prowadzi `/strona` (adopcja w miejscu, struktura folderów sprzed procesu).
+Notion: https://app.notion.com/p/7e8581ec73fb4d5f8af76cff72c8ec16
+
+**Wersja robocza = NOWA strona z Figmy** (jasne tło, niebieski gradient
+`#2c5fd8→#4d7cea`, Manrope+Inter, style inline w każdym pliku — bez css/style.css).
+Gotowe: index, 7 usług (płasko w korzeniu), o-nas, realizacje, wiedza, kontakt.
+Do zrobienia w etapie 4: case studies (`portfolio/`), artykuły (`wiedza/`),
+dziekujemy/404/polityka — wciąż w starym stylu.
+
+**Stara wersja (redesign wg briefu, Deep Navy/Magenta) = tag `redesign-brief`.**
+Podgląd starej obok nowej: `git worktree add /tmp/podglad-redesign-brief redesign-brief`
++ wpis w launch.json na wolny port; po obejrzeniu `git worktree remove ...`.
+Żadnych kopii folderów i żadnych sufiksów `-nowa`/`-v2` w nazwach plików.
+
+Etapy /strona: 0–3 odhaczone (brief ✓, struktura = docs/architecture.md ✓,
+kierunek = prototyp z Figmy ✓, visual-direction.md do uzupełnienia).
+Następne: 5 · styleguide (tokens.css), 6 · QA, 7 · feedback, 8 · delivery.
+Rytuał po każdym etapie: commit → odhacz w Notion → zaktualizuj „Następny krok".
+
+**UWAGA:** sekcje poniżej (konfigurator, analityka, komponenty CSS, cache-busting
+`?v=`) opisują wersję z taga `redesign-brief`. Dla stron w starym stylu nadal
+obowiązują; nowa wersja ma style inline i własne wzorce — aktualizuj ten plik,
+gdy nowa wersja przejmie kolejne podstrony.
+
+Historia prac i otwarte punkty (wymagające klienta): [docs/PLAN-PRACY.md](docs/PLAN-PRACY.md).
 
 ## Architektura
 
@@ -116,11 +137,11 @@ Snippet GA4/GTM: placeholder w `<head>` — ID dostarczy klient.
 ## Jak odpalić
 
 ```bash
-python3 -m http.server 8792 --directory "/Users/prouopstudio/Claude/01 - Projekty/code-and-pixel-strona"
-# → http://localhost:8792
+python3 -m http.server 8767 --directory "/Users/prouopstudio/Claude/01 - Projekty/code-and-pixel-strona"
+# → http://localhost:8767
 ```
 
-Albo przez preview launcher: nazwa **`code-and-pixel`** w launch.json (port 8792).
+Albo przez preview launcher: nazwa **`code-and-pixel`** w launch.json (port 8767).
 
 ## Co wymaga uzupełnienia
 
