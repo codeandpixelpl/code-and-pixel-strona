@@ -8,10 +8,12 @@ Projekt prowadzi `/strona` (adopcja w miejscu, struktura folderów sprzed proces
 Notion: https://app.notion.com/p/7e8581ec73fb4d5f8af76cff72c8ec16
 
 **Wersja robocza = NOWA strona z Figmy** (jasne tło, niebieski gradient
-`#2c5fd8→#4d7cea`, Manrope+Inter, style inline w każdym pliku — bez css/style.css).
-Gotowe: index, 7 usług (płasko w korzeniu), o-nas, realizacje, wiedza, kontakt.
-Do zrobienia w etapie 4: case studies (`portfolio/`), artykuły (`wiedza/`),
-dziekujemy/404/polityka — wciąż w starym stylu.
+`#2c5fd8→#4d7cea`, Manrope+Inter, style inline w każdym pliku — bez wspólnego CSS).
+**Etap 4 zamknięty 2026-08-07**: wszystkie podstrony w nowym stylu — index, 7 usług
+(płasko w korzeniu), o-nas, realizacje + 3 case studies (`portfolio/`), wiedza
++ artykuł (`wiedza/`), kontakt, dziekujemy, 404, polityka-prywatnosci.
+Strony zastąpione usunięte z drzewa (uslugi/, portfolio.html, css/, js/) — żyją
+w tagu `redesign-brief`. Obrazy to placeholdery (gradient „IMG"), do wygenerowania.
 
 **Stara wersja (redesign wg briefu, Deep Navy/Magenta) = tag `redesign-brief`.**
 Podgląd starej obok nowej: `git worktree add /tmp/podglad-redesign-brief redesign-brief`
