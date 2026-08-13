@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Apartamenty Klimaty Wola — case study | Code&Pixel</title>
+<title>[KONTENER] Apartamenty Klimaty Wola — case study | Code&Pixel</title>
 <meta name="description" content="Strona kameralnej inwestycji premium w Krakowie: pełnoekranowe menu, interaktywny plan osiedla, wybór spośród 10 lokali. Projekt i wdrożenie Code&Pixel." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -442,6 +442,55 @@
     .hero__title,.hero__lead,.meta div{opacity:1;transform:none;transition:none}
     .phone{transform:none}
   }
+
+  /* ==========================================================================
+     WARIANT EKSPERYMENTALNY: wszystkie sekcje w kontenerze, nie na pełnym ekranie.
+     Gałąź `eksperyment/klimaty-w-kontenerze`. Blok dopisany na końcu, żeby wygrywał
+     specyficznością kolejności — nic powyżej nie było ruszane, więc powrót do wersji
+     pełnoekranowej to usunięcie tego jednego bloku.
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+
+  /* wspólna rama dla wszystkiego, co wcześniej szło od krawędzi do krawędzi */
+  .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  /* replika hero */
+  .stagewrap{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+  .kwstage{--r:8px;border-radius:8px}
+
+  /* pasy zrzutów */
+  .marq{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding-left:var(--pad);padding-right:var(--pad)}
+  .marq::before,.marq::after{width:min(9vw,90px)}
+  .marq__row--a .marq__item{width:min(24vw,320px)}
+  .marq__row--b .marq__item{width:min(19vw,250px)}
+
+  /* ciemne pasmo z paletą */
+  .dark{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding:clamp(52px,8vh,96px) var(--pad) 0}
+  .dark .wide{padding-left:0;padding-right:0}
+  .swall{height:clamp(260px,42vh,420px);margin-top:clamp(40px,6vh,72px)}
+  .twall{margin-bottom:0}
+  .tw{min-height:clamp(160px,22vh,240px)}
+
+  /* demonstrator */
+  .dm__body{border-radius:6px}
+
+  /* telefony */
+  .mob{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .mob .wide{padding-left:var(--pad);padding-right:var(--pad)}
+
+  /* galeria */
+  .gal__grid{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+
+  @media (max-width:900px){
+    :root{ --pad:16px; }
+    .marq__row--a .marq__item{width:62vw}
+    .marq__row--b .marq__item{width:48vw}
+  }
+
 </style>
 </head>
 <body>
