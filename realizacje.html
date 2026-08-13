@@ -515,11 +515,13 @@
   .rlz-card{background:#f5f6fb;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease}
   .rlz-card:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(7,30,81,0.09)}
   .rlz-card[hidden]{display:none}
-  .rlz-card__media{aspect-ratio:16/11;background:linear-gradient(158deg,#e4ecf9 0%,#cdddf4 100%)}
+  .rlz-card__media{aspect-ratio:16/11;background:linear-gradient(158deg,#e4ecf9 0%,#cdddf4 100%);overflow:hidden}
+  .rlz-card__media img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s cubic-bezier(.22,.8,.3,1)}
+  .rlz-card:hover .rlz-card__media img{transform:scale(1.04)}
   .rlz-card__body{padding:22px 24px 26px}
   .rlz-card__tag{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
   .rlz-card__title{margin-top:8px;font-family:'Inter',var(--ff);font-weight:600;font-size:21px;color:#071e51}
-  .rlz-card__client{margin-top:6px;font-family:'Inter',var(--ff);font-size:12.5px;color:#071e51;opacity:.55}
+  .rlz-card__client{display:block;margin-top:6px;font-family:'Inter',var(--ff);font-size:12.5px;color:#071e51;opacity:.55}
   .rlz-card__link{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:'Inter',var(--ff);font-weight:600;font-size:13.5px;color:var(--accent)}
   @media (max-width:900px){.rlz-grid{grid-template-columns:1fr 1fr}}
   @media (max-width:600px){.rlz-grid{grid-template-columns:1fr}}
@@ -586,6 +588,26 @@
     </div>
 
     <div class="rlz-grid">
+      <a href="portfolio/akademia-okocimskiego.html" class="rlz-card" data-cat="sklep">
+        <div class="rlz-card__media"><img loading="lazy" src="assets/case-akademia/card.jpg" alt="Sklep Akademii Okocimskiego" /></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Sklep internetowy</span><h3 class="rlz-card__title">Akademia Okocimskiego</h3><span class="rlz-card__client">Klub piłkarski · 2026</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
+      <a href="portfolio/slf-transport.html" class="rlz-card" data-cat="strona">
+        <div class="rlz-card__media"><img loading="lazy" src="assets/case-slf/card.jpg" alt="Strona główna SLF Transport" /></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">SLF Transport</h3><span class="rlz-card__client">Transport i przeprowadzki · 2026</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
+      <a href="portfolio/monza.html" class="rlz-card" data-cat="strona">
+        <div class="rlz-card__media"><img loading="lazy" src="assets/case-monza/card.jpg" alt="Strona główna Monza Baseny" /></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Monza Baseny &amp; SPA</h3><span class="rlz-card__client">Baseny i SPA · 2026</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
+      <a href="portfolio/wild-campers.html" class="rlz-card" data-cat="strona">
+        <div class="rlz-card__media"><img loading="lazy" src="assets/case-wild-campers/card.jpg" alt="Strona główna Wild Campers" /></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Wild Campers</h3><span class="rlz-card__client">Wynajem kamperów · 2026</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
+      <a href="portfolio/klimaty-wola.html" class="rlz-card" data-cat="strona">
+        <div class="rlz-card__media"><img loading="lazy" src="assets/case-klimaty/card.jpg" alt="Strona główna Apartamenty Klimaty Wola" /></div>
+        <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Apartamenty Klimaty Wola</h3><span class="rlz-card__client">Deweloper premium · 2026</span><span class="rlz-card__link">Zobacz projekt →</span></div>
+      </a>
       <a href="portfolio/sufity-led.html" class="rlz-card" data-cat="strona">
         <div class="rlz-card__media"></div>
         <div class="rlz-card__body"><span class="rlz-card__tag">Strona internetowa</span><h3 class="rlz-card__title">Sufity LED</h3><span class="rlz-card__client">Branża wykończeniowa · 2025</span><span class="rlz-card__link">Zobacz projekt →</span></div>

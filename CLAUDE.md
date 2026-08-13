@@ -10,10 +10,164 @@ Notion: https://app.notion.com/p/7e8581ec73fb4d5f8af76cff72c8ec16
 **Wersja robocza = NOWA strona z Figmy** (jasne tło, niebieski gradient
 `#2c5fd8→#4d7cea`, Manrope+Inter, style inline w każdym pliku — bez wspólnego CSS).
 **Etap 4 zamknięty 2026-08-07**: wszystkie podstrony w nowym stylu — index, 7 usług
-(płasko w korzeniu), o-nas, realizacje + 3 case studies (`portfolio/`), wiedza
+(płasko w korzeniu), o-nas, realizacje + 8 case studies (`portfolio/`), wiedza
 + artykuł (`wiedza/`), kontakt, dziekujemy, 404, polityka-prywatnosci.
 Strony zastąpione usunięte z drzewa (uslugi/, portfolio.html, css/, js/) — żyją
 w tagu `redesign-brief`. Obrazy to placeholdery (gradient „IMG"), do wygenerowania.
+
+**2026-08-13 — case study `portfolio/akademia-okocimskiego.html`** (sklep klubowy).
+Źródło: `01 - Projekty AI/07c - Sklep Akademia Okocimskiego (dark green)` — **najdalej
+rozwinięta wersja** (6 commitów, własne repo `sklep-akademia-okocimskiego_02`), nie folder
+bez sufiksu ani `07b`. Pierwszy sklep w portfolio, więc karta ma `data-cat="sklep"`
+i wchodzi pod filtr E-commerce.
+
+Znowu inna kompozycja (krok 3a skilla):
+- **Żywa karta produktu** jako otwarcie: przełączanie pięciu produktów, wybór rozmiaru,
+  koszyk liczący sumę i próg darmowej dostawy. `PRODUKTY` i `PROG_DOSTAWY` przepisane
+  1:1 z `PRODUCTS` i `FREE_SHIP_THRESHOLD` w `index.html` sklepu.
+- **Filmstrip ścieżki zakupowej**: sekcja przypięta na 320vh, cztery ekrany
+  (strona główna → kategoria → produkt → checkout) jadą w bok, pasek postępu pod spodem.
+- **Arkusz komponentów** zamiast ściany kolorów: przycisk, cena z przeceną, rozmiar
+  niedostępny, paleta, kroje, próg dostawy, pasek zaufania — w naturalnej wielkości.
+- **Dwa telefony** zamiast trzech w rzędzie czy stosu.
+
+**Świadomie nie dorobiłem Omnibusa.** Sklep ma `oldPrice` przy produktach, ale nigdzie
+nie pokazuje „Najniższej ceny z 30 dni". Case pokazuje stan faktyczny; luka zgłoszona
+Grzegorzowi osobno (`/sklep compliance`).
+
+Kolejność prev/next: klimaty-wola → wild-campers → monza → slf-transport →
+akademia-okocimskiego → sufity-led → miasteczko-witkowice → tct-tools → klimaty-wola.
+
+**2026-08-13 — case study `portfolio/slf-transport.html`** (SLF Transport & Removals).
+Źródło: `01 - KLIENCI/SLF Transport i przeprowadzki/01 - Strona Internetowa`.
+
+**Pierwszy case złożony świadomie w innym układzie** — na prośbę Grzegorza, żeby case'y
+nie wyglądały jak sztanca. Reguła i tabela wariantów siedzą teraz w kroku 3a skilla.
+Ten case nie ma pasa jadącego w bok, ściany kolorów ani telefonów w rzędzie:
+- **pasmo wideo** z hasłem „We handle with care" zamiast repliki hero
+- **ściana kierunków**: 21 landingów kierunkowych, najechanie na kraj podmienia zrzut
+  jego podstrony (sticky podgląd obok listy). To wyróżnik projektu, więc dostał najwięcej miejsca
+- **dwie kolumny zrzutów z przesunięciem** zamiast pasa
+- **tokeny jako techniczna tabela** (nazwa / wartość / próbka / opis) zamiast ściany kolorów
+- **telefony w stosie** z obrotem zamiast w rzędzie
+
+Zrzuty: `zrzuty.py --glob "*.html,kierunki/*.html"` (nowa opcja, wchodzi w podfoldery)
+plus `--pomin` na strony wewnętrzne, których nie wdrażamy (`prototypy.html`, `prezentacja-ia.html`).
+Paleta i kroje z `css/style.css`: `--bg #0A0A0A`, `--accent #FEAF03`, Anton + Inter + JetBrains Mono.
+
+**Pułapka, która kosztowała podejście:** `.dirs` miało `overflow:hidden` i zabijało
+`position:sticky` na podglądzie kierunku. Tabela tokenów rozpychała stronę na 390 px,
+więc dostała własny kontener `overflow-x:auto`.
+
+Kolejność prev/next po dołożeniu: klimaty-wola → wild-campers → monza → slf-transport →
+sufity-led → miasteczko-witkowice → tct-tools → klimaty-wola.
+
+**2026-08-13 — case study `portfolio/monza.html`** (MONZA baseny & SPA).
+Źródło: `01 - Projekty/08 - Monza Baseny - v2 - COPY` — **mimo nazwy to wersja bieżąca**
+(najnowszy commit, 15 podstron, deploy na Pages). Live: https://codeandpixelpl.github.io/monza-baseny/
+
+- **Demonstrator pominięty świadomie**: to strona marketingowa, nie ma ścieżki wartej
+  klikania. W jego miejsce **żywa skala typograficzna** — sześć kroków skali projektu
+  złożonych Frauncesem, z prawdziwymi formułami `clamp()` obok. Projekt jest zbudowany
+  na skali, więc to jest jego mechanizm.
+- **Replika hero** z prawdziwym `hero.mp4`: pasek godzin showroomu, logo SVG wyciągnięte
+  z inline'a w `index.html`, nawigacja, telefon i nagłówek w Frauncesie.
+- Paleta i kroje z `:root` **w `index.html`, nie z `assets/style.css`** (ten drugi to
+  starszy arkusz z inną paletą). Fraunces + JetBrains Mono z Google Fonts, więc ten case
+  nie ma zależności od licencji Adobe.
+- Zrzuty wymusiły poprawkę w `zrzuty.py`: automat czekał za krótko i łapał hero w połowie
+  animacji `rise` oraz przed pierwszą klatką wideo. Skrypt czeka teraz na `loadeddata`
+  wideo i na `document.getAnimations()`.
+
+Kolejność prev/next po dołożeniu: klimaty-wola → wild-campers → monza → sufity-led →
+miasteczko-witkowice → tct-tools → klimaty-wola.
+
+**2026-08-13 — case study `portfolio/wild-campers.html`** (Wild Campers, wynajem kamperów).
+Pierwszy case złożony skillem `/case-study` z szablonu, nie ręcznie.
+Źródło: `01 - CodeandPixel/02 - WIld campers/02 - Strona internetowa/03 - Design`
+(17 podstron, wizard rezerwacji, panel obsługi). Assety: `assets/case-wild-campers/`.
+
+- **Zrzuty**: `zrzuty.py --ukryj ".wf-bar"` — prototyp ma wewnętrzny pasek podglądu
+  podstron, który nie ma prawa trafić do portfolio. Plus `--stan` na zakładki panelu
+  admina (kalendarz, flota).
+- **Materiał z dwóch dostaw klienta.** Poza stroną (`02 - Strona internetowa/03 - Design`)
+  case korzysta z prezentacji marki (`01 - Logo/www`): `assets/case-wild-campers/logo/`
+  ma prawdziwe `hero.mp4`, pięć wersji znaku w SVG, teksturę `topo.webp` i zdjęcia sekcji.
+- **Replika hero** (`.stage`) — hero brand boardu z prawdziwym wideo, nie zrzut.
+  Fallback na plakat przy `prefers-reduced-motion` i przy zablokowanym autoodtwarzaniu.
+- **Pas zrzutów: trzy rzędy po skosie** (`.marq__rot`, obrót -7°, kafel `min(40vw,600px)`).
+  Wersja z dwoma prostymi rzędami była za mała, żeby cokolwiek na zrzucie odczytać.
+  Wzorzec wrócił do `~/.claude/data/case-study/szablon.html`; **Klimaty Wola mają
+  jeszcze starą, prostą taśmę** — do wyrównania, gdy Grzegorz zdecyduje.
+- **Ściana znaków** (`.marks`) — odtworzony mechanizm z brand boardu: tło topo stoi,
+  poziomo jadą tylko karty ze znakiem, pasek postępu pod spodem. Napęd w tej samej
+  pętli rAF co reszta strony (`marksTravel`, progres sekcji sticky).
+- **Demonstrator: flota → pojazd → wycena.** `FLOTA`, `DODATKI`, `NOLIMIT_ZA_DOBE`,
+  `KAUCJA` i formuła `wycena()` przepisane 1:1 z `app.js` prototypu. Kalkulator liczy
+  realnie: suwak dni, wariant przebiegu, dodatki, zaliczka 30%, kaucja.
+  **Przy zmianie cennika u klienta trzeba zaktualizować dane również tutaj.**
+- Paleta i krój z `design.css` klienta: Pine `#213627`, Pine 900 `#101D14`,
+  Amber `#D28923`, Sand `#FBF9F5`, Line `#CEC5B3`, Mid `#5F6D62`;
+  nagłówki `poster-gothic-round-cond-atf` (Adobe Fonts, Web Project `ane1jru`).
+- Tło ciemnej sekcji to `#0a1310`, o ton ciemniej niż Pine 900, żeby pas tego koloru
+  nie zniknął w tle.
+
+Kolejność prev/next po dołożeniu: klimaty-wola → wild-campers → sufity-led →
+miasteczko-witkowice → tct-tools → klimaty-wola.
+
+**2026-08-13 — case study `portfolio/klimaty-wola.html`** (Apartamenty Klimaty Wola).
+Pierwszy case z prawdziwymi materiałami zamiast placeholderów, źródło:
+`01 - CodeandPixel/01 - Strona Apartamenty Klimaty Wola/02 - Design/`
+(zrzuty robione Playwrightem z serwera na porcie 8812). Assety: `assets/case-klimaty/`.
+
+Ten case **nie jest galerią zrzutów**, tylko dwoma działającymi replikami interfejsu
+klienta osadzonymi w stronie agencji:
+- **Replika hero** (`.kwstage`) — prawdziwe `hero.webm`/`hero.mp4` z projektu, warstwa
+  przyciemniająca, pasek nawigacji i sekwencja sterowana przewijaniem: pętla rAF ustawia
+  `--zoom` i `--reveal`, blok tytułowy podnosi się o zmierzoną wysokość `--lateH`,
+  dokładnie jak na oryginalnej stronie.
+- **Demonstrator wyboru lokalu** (`.dm`, krok 01 → 02 → 03) — klikalny plan osiedla
+  z hotspotami D1–D6, filtrowana lista 10 lokali, karta lokalu z galerią, rzutem SVG
+  i zestawieniem pomieszczeń. **Dane w `UNITS` / `BUILDINGS` / `D4A_ROOMS` są przepisane
+  1:1 z tabeli lokali i karty mieszkania D4A** — przy zmianie danych u klienta trzeba
+  je zaktualizować tutaj. Pełny rzut i pomieszczenia mamy tylko dla D4A (wzorzec),
+  pozostałe lokale dostają notkę o szablonie zamiast zmyślonych liczb.
+
+Układ strony (2026-08-13, po rundzie uwag Grzegorza): hero → replika hero →
+dwupasmowy marquee reagujący na prędkość scrolla → pełnoekranowa ściana palety
+i dwa kroje → demonstrator → telefony → galeria → prev/next → CTA. Nagłówki
+wjeżdżają liniami spod maski (`splitLines` przelicza łamanie przy resize).
+Wszystkie efekty wyłączone przy `prefers-reduced-motion`.
+
+**Reguły tej strony, ustalone przez Grzegorza — obowiązują też w kolejnych case'ach:**
+- **Zrzuty nigdy nie przycięte.** Żadnego `object-fit:cover` ani wymuszonego
+  `aspect-ratio` na kontenerze ze zrzutem: `width:100%;height:auto` i układ dopasowuje
+  się do obrazu, nie odwrotnie. Przycięty z boku i od dołu zrzut nie mówi, co przedstawia.
+- **Minimum tekstu.** Portfolio ma pokazywać projekty, nie opisywać je. Prozy nie
+  piszemy „na zapas": jedno zdanie leadu, etykiety sekcji, krótkie nagłówki. Nagłówki
+  rzeczowe, nie obrazowe („Układ na 390 px", nie „Ten sam spokój na 390 px").
+- **Sekcje na pełną szerokość**, od krawędzi do krawędzi (`.wide` / bez kontenera).
+- **Minimalna nawigacja**: przyciski z cienką ramką, bez pasków, plakietek i numerów.
+
+Usunięte w tej rundzie (nie przywracać bez prośby): sekcja „Projekt w liczbach",
+okno przeglądarki z długim zrzutem, sticky split z trzema akapitami o podejściu,
+pokaz zrzutów pod kątem (perspektywa), okruszki i plakietka „Strona internetowa"
+w hero, cytat zamykający.
+
+**Zależność zewnętrzna:** `<link>` do Adobe Fonts (`use.typekit.net/bhr3ncf.css`) dla
+kroju **spalla** użytego w obu replikach. Działa na localhost i GitHub Pages z licencji
+Adobe Grzegorza; przy handoffie do klienta trzeba to ustalić. Fallback: Georgia.
+
+Miniatury: `card.jpg` (karta na `realizacje.html`, zrzut strony) i `card-wide.jpg`
+(slider na `index.html`, czysty render bez tekstu, bo etykieta leży na obrazie).
+
+Kolejność prev/next: klimaty-wola → sufity-led → miasteczko-witkowice → tct-tools →
+klimaty-wola.
+
+**Bez zmyślonych KPI i bez cytatu klienta.** Sekcje „Projekt w liczbach" i „Pełna
+podstrona" (okno przeglądarki z długim zrzutem) zostały usunięte na życzenie
+Grzegorza 2026-08-13. Nagłówki mają być rzeczowe, nie obrazowe — patrz zasada
+o języku dokumentacji w globalnym CLAUDE.md.
 
 **Stara wersja (redesign wg briefu, Deep Navy/Magenta) = tag `redesign-brief`.**
 Podgląd starej obok nowej: `git worktree add /tmp/podglad-redesign-brief redesign-brief`
@@ -130,11 +284,13 @@ Snippet GA4/GTM: placeholder w `<head>` — ID dostarczy klient.
 
 ## Workflow dodawania nowego projektu (case study)
 
-1. Skopiuj `portfolio/sufity-led.html` jako `portfolio/<slug>.html`
-2. Wymień tytuł, breadcrumb, tag, meta sidebar, treści sekcji, cytat
-3. Dodaj kartę w `portfolio.html` (sekcja `.portfolio-grid`) z `data-category="strona|sklep|reklama|branding"`
-4. Zaktualizuj prev/next nav w innych case'ach jeśli zmienia się kolejność
-5. Wygeneruj hero i gallery images wg promptów w `docs/ASSETS.md`
+1. Skopiuj `portfolio/klimaty-wola.html` (bogaty szablon ze zrzutami) albo
+   `portfolio/sufity-led.html` (prosty) jako `portfolio/<slug>.html`
+2. Wymień tytuł, breadcrumb, tag, metryczkę i treści sekcji
+3. Zrzuty projektu do `assets/case-<slug>/`, JPG, desktop 1760 px szer. / q82,
+   długie zrzuty 1100 px / q76, mobile 640 px / q84
+4. Dodaj kartę w `realizacje.html` (sekcja `.rlz-grid`) z `data-cat="strona|sklep|crm|google-ads|allegro-ads"`
+5. Zaktualizuj prev/next nav w sąsiednich case'ach (pierścień, nie lista)
 
 ## Jak odpalić
 

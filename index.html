@@ -194,6 +194,18 @@
   .real-viewport::-webkit-scrollbar{display:none}
   .real-track{display:flex;gap:36.94px;padding-left:max(32px, calc(50% - 612px));padding-right:max(32px, calc(50% - 590px));width:max-content}
   .real-card{flex:0 0 667.26px;height:461.77px;background:#f5f6fb;border-radius:22.352px}
+  a.real-card{position:relative;overflow:hidden;display:block;text-decoration:none;
+    transition:transform .3s cubic-bezier(.22,.9,.24,1),box-shadow .3s ease}
+  a.real-card:hover{transform:translateY(-4px);box-shadow:0 26px 52px rgba(7,30,81,.16)}
+  a.real-card img{width:100%;height:100%;object-fit:cover;object-position:center top;
+    transition:transform .8s cubic-bezier(.22,.9,.24,1)}
+  a.real-card:hover img{transform:scale(1.04)}
+  .real-card__b{position:absolute;left:0;right:0;bottom:0;padding:120px 32px 30px;
+    background:linear-gradient(180deg,rgba(7,20,45,0) 0%,rgba(7,20,45,.42) 40%,rgba(7,20,45,.93) 100%)}
+  .real-card__tag{display:block;font-family:'Inter',var(--ff);font-size:11px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .real-card__t{display:block;margin-top:7px;font-family:'Inter',var(--ff);font-weight:600;font-size:24px;color:#fff}
+  .real-card__go{display:inline-block;margin-top:10px;font-family:'Inter',var(--ff);font-weight:600;font-size:13.5px;color:#9dc0ff}
   .real-viewport{cursor:grab}
   .real-viewport.is-dragging{cursor:grabbing;scroll-behavior:auto}
   .real-viewport.is-dragging .real-card{pointer-events:none}
@@ -745,9 +757,46 @@
 
   <div class="real-viewport" id="real-viewport">
     <div class="real-track">
-      <div class="real-card" aria-hidden="true"></div>
-      <div class="real-card" aria-hidden="true"></div>
-      <div class="real-card" aria-hidden="true"></div>
+      <a href="portfolio/akademia-okocimskiego.html" class="real-card">
+        <img src="assets/case-akademia/card-wide.jpg" alt="Sklep Akademii Okocimskiego" />
+        <span class="real-card__b">
+          <span class="real-card__tag">Sklep internetowy · Klub piłkarski</span>
+          <span class="real-card__t">Akademia Okocimskiego</span>
+          <span class="real-card__go">Zobacz case study →</span>
+        </span>
+      </a>
+      <a href="portfolio/slf-transport.html" class="real-card">
+        <img src="assets/case-slf/card-wide.jpg" alt="SLF Transport, transport i przeprowadzki" />
+        <span class="real-card__b">
+          <span class="real-card__tag">Strona internetowa · Transport</span>
+          <span class="real-card__t">SLF Transport</span>
+          <span class="real-card__go">Zobacz case study →</span>
+        </span>
+      </a>
+      <a href="portfolio/monza.html" class="real-card">
+        <img src="assets/case-monza/card-wide.jpg" alt="Monza Baseny i SPA" />
+        <span class="real-card__b">
+          <span class="real-card__tag">Strona internetowa · Baseny i SPA</span>
+          <span class="real-card__t">Monza Baseny &amp; SPA</span>
+          <span class="real-card__go">Zobacz case study →</span>
+        </span>
+      </a>
+      <a href="portfolio/wild-campers.html" class="real-card">
+        <img src="assets/case-wild-campers/card-wide.jpg" alt="Wild Campers, wynajem kamperów" />
+        <span class="real-card__b">
+          <span class="real-card__tag">Strona internetowa · Wynajem kamperów</span>
+          <span class="real-card__t">Wild Campers</span>
+          <span class="real-card__go">Zobacz case study →</span>
+        </span>
+      </a>
+      <a href="portfolio/klimaty-wola.html" class="real-card">
+        <img src="assets/case-klimaty/card-wide.jpg" alt="Strona inwestycji Apartamenty Klimaty Wola" />
+        <span class="real-card__b">
+          <span class="real-card__tag">Strona internetowa · Deweloper premium</span>
+          <span class="real-card__t">Apartamenty Klimaty Wola</span>
+          <span class="real-card__go">Zobacz case study →</span>
+        </span>
+      </a>
     </div>
   </div>
 
@@ -758,7 +807,7 @@
       </div>
     </div>
     <div class="real-cta">
-      <a href="#" class="upanel__btn">Zobacz wszystkie realizacje</a>
+      <a href="realizacje.html" class="upanel__btn">Zobacz wszystkie realizacje</a>
     </div>
   </div>
 </section>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code &amp; Pixel · Aktualizacje</title>
+<style>
+  :root{
+    --bg:#ececea; --ink:#0a0a0a; --ink-soft:#3c3c3c; --muted:#8a8a88;
+    --dot:#2f6bff; --dot-ring:rgba(47,107,255,.22); --card:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; padding:72px 24px 120px;
+  }
+  .wrap{max-width:980px;margin:0 auto}
+  h1{
+    text-align:center; font-size:clamp(40px,6vw,58px); font-weight:800;
+    letter-spacing:-.03em; margin-bottom:10px;
+  }
+  .subtitle{
+    text-align:center; color:var(--muted); font-size:17px; font-weight:500;
+    margin-bottom:96px;
+  }
+  .entry{
+    display:grid; grid-template-columns:300px 1fr; gap:48px;
+    padding:0 0 110px;
+  }
+  .meta{position:relative}
+  .meta .date{
+    display:flex; align-items:center; gap:10px;
+    color:var(--muted); font-size:14px; font-weight:500; margin-bottom:14px;
+  }
+  .meta .date::before{
+    content:""; width:9px; height:9px; border-radius:50%;
+    background:var(--dot); box-shadow:0 0 0 5px var(--dot-ring); flex:none;
+  }
+  .meta h2{
+    font-size:clamp(24px,3vw,30px); font-weight:800; letter-spacing:-.02em; line-height:1.12;
+  }
+  .meta .ver{
+    display:inline-block; margin-top:12px; font-size:12px; font-weight:700;
+    color:var(--muted); letter-spacing:.06em;
+  }
+  .body p{
+    color:var(--ink-soft); font-size:15.5px; line-height:1.6; margin-bottom:16px; max-width:560px;
+  }
+  .body p.lead{margin-bottom:20px}
+  .shot{
+    display:block; width:100%; max-width:560px; border-radius:16px;
+    box-shadow:0 24px 60px -22px rgba(15,20,40,.35),0 4px 14px rgba(15,20,40,.10);
+    margin-bottom:26px; border:1px solid rgba(0,0,0,.06);
+  }
+  .shot.tall{max-width:320px}
+  ul{list-style:none; max-width:560px}
+  ul li{
+    position:relative; padding-left:20px; color:var(--ink-soft);
+    font-size:15px; line-height:1.55; margin-bottom:9px;
+  }
+  ul li::before{
+    content:""; position:absolute; left:4px; top:.62em; width:5px; height:5px;
+    border-radius:50%; background:var(--ink-soft);
+  }
+  ul li strong{color:var(--ink); font-weight:650}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88em;
+    background:rgba(0,0,0,.06); padding:2px 6px; border-radius:6px;
+  }
+  .note{
+    max-width:560px; margin-top:18px; padding:12px 16px; border-radius:12px;
+    background:rgba(47,107,255,.08); color:#27478f; font-size:13.5px; line-height:1.5; font-weight:500;
+  }
+  .caption{color:var(--muted); font-size:12.5px; margin:-16px 0 24px; max-width:560px}
+  .empty{
+    text-align:center; color:var(--muted); font-size:15px; padding:40px 0 100px;
+  }
+  footer{
+    text-align:center; color:var(--muted); font-size:13px; margin-top:20px; line-height:1.6;
+  }
+  @media (max-width:760px){
+    body{padding:48px 18px 80px}
+    h1{margin-bottom:64px}
+    .entry{grid-template-columns:1fr; gap:22px; padding-bottom:76px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Code &amp; Pixel</h1>
+  <p class="subtitle">Historia aktualizacji strony</p>
+
+  <!-- ETAP 4 -->
+  <section class="entry">
+    <div class="meta">
+      <div class="date">7 sierpnia 2026</div>
+      <h2>Zamknięcie etapu 4: nowa wersja strony</h2>
+      <span class="ver">ETAP 4 · DESIGN</span>
+    </div>
+    <div class="body">
+      <p class="lead">Wszystkie podstrony przeniesione do nowego stylu z&nbsp;Figmy: jasne tło, niebieski gradient, Manrope&nbsp;+ Inter.</p>
+      <ul>
+        <li>Nowy styl: strona główna, 7&nbsp;podstron usług, o&nbsp;nas, realizacje z&nbsp;3&nbsp;case studies, wiedza z&nbsp;artykułem, kontakt, dziękujemy, 404, polityka prywatności</li>
+        <li>Zastąpione podstrony usunięte z&nbsp;drzewa projektu (<code>uslugi/</code>, <code>portfolio.html</code>, <code>css/</code>, <code>js/</code>); dostępne pod tagiem <code>redesign-brief</code></li>
+        <li>Obrazy na stronie to placeholdery (gradient z&nbsp;etykietą „IMG”), do&nbsp;wygenerowania w&nbsp;kolejnym etapie</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Code &amp; Pixel &middot; dziennik aktualizacji &middot; stan na 10 sierpnia 2026
+  </footer>
+</div>
+</body>
+</html>
