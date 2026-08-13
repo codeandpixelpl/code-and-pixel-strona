@@ -227,6 +227,17 @@
     .ctaband__btns{flex-direction:column;align-items:stretch;width:100%}
     .upanel__btn,.btn-outline-light{width:100%}
   }
+
+  /* ==========================================================================
+     SEKCJE W KONTENERZE (standard portfolio, 2026-08-14).
+     Treść tych starszych case'ów siedziała już w `.container`, więc pełnej
+     szerokości było u nich tylko przygaszone tło sekcji. Zamieniamy je na
+     zaokrąglone bloki, żeby rytm zgadzał się z nowszymi case'ami.
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+  .csec--tint{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .csec--tint .container{padding-left:var(--pad);padding-right:var(--pad)}
+
 </style>
 </head>
 <body>

@@ -20,6 +20,9 @@ w tagu `redesign-brief`. Obrazy to placeholdery (gradient „IMG"), do wygenerow
 pełnoekranowej. Każdy z pięciu case'ów ma na końcu CSS blok `SEKCJE W KONTENERZE`:
 sekcje z własnym tłem zwężone do 1180 px i zaokrąglone, sekcje na tle strony bez zmian.
 Blok jest wydzielony, więc powrót to jego usunięcie. To samo trafiło do szablonu skilla.
+Trzy starsze case'y (sufity-led, miasteczko-witkowice, tct-tools) miały treść już
+w `.container`, więc u nich blok zwęża tylko przygaszone tło sekcji (`.csec--tint`).
+**Wszystkie osiem case'ów jest teraz w jednym rytmie.**
 
 Dwie rzeczy, które ta zmiana odsłoniła i które trzeba sprawdzać przy nowych case'ach:
 - **`vw` nie wie o kontenerze.** Typografia zwężonych sekcji poszła na
