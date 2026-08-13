@@ -491,6 +491,20 @@
     .marq__row--b .marq__item{width:48vw}
   }
 
+
+  /* Skutek uboczny zwężenia: rozmiary liczone w `vw` nie wiedzą, że kontener
+     jest węższy od okna. Okazy krojów i nagłówek repliki przeliczamy na jednostki
+     kontenerowe (cqw), żeby skalowały się do bloku, a nie do szerokości ekranu. */
+  .tw{container-type:inline-size}
+  .tw__spec{font-size:clamp(34px,17cqw,110px)}
+  .kwstage{container-type:inline-size}
+  .kwstage__h{font-size:clamp(27px,9cqw,120px)}
+  .kwstage__eyebrow{font-size:clamp(10px,2.1cqw,28px)}
+  .kwstage__logo{height:clamp(22px,3.2cqw,46px)}
+  .kwstage__cta,.kwstage__menu{font-size:clamp(6.5px,.85cqw,11.5px)}
+  .kwstage__addr{font-size:clamp(6px,.8cqw,11.5px)}
+  .kwstage__b{font-size:clamp(6px,.82cqw,11.5px)}
+
 </style>
 </head>
 <body>
