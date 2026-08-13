@@ -327,6 +327,32 @@
     .hero__title,.hero__lead,.meta div{opacity:1;transform:none;transition:none}
     .phone{transform:none}
   }
+
+  /* ==========================================================================
+     SEKCJE W KONTENERZE (decyzja Grzegorza 2026-08-14, po teście na worktree).
+     Blok dopisany na końcu, żeby wygrywał kolejnością — nic powyżej nie ruszane,
+     więc powrót do wersji pełnoekranowej to usunięcie tego jednego bloku.
+     Uwaga: rozmiary liczone w `vw` nie wiedzą, że kontener jest węższy od okna,
+     więc typografia sekcji zwężanych idzie na jednostki kontenerowe (cqw).
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+  .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+
+  .pc{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;--r:8px}
+  .pc__in{padding-left:var(--pad);padding-right:var(--pad)}
+  .strip{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .strip__pin{border-radius:8px}
+  .strip__head{padding-left:var(--pad);padding-right:var(--pad)}
+  .strip__track{padding-left:var(--pad);padding-right:var(--pad)}
+  .strip__s{width:min(58vw,820px)}
+  .strip__bar{margin-left:var(--pad);margin-right:var(--pad)}
+  .kit{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .kit__head{padding-left:var(--pad);padding-right:var(--pad)}
+  /* margines, nie padding — tło siatki (linie między kaflami) wychodziło na padding */
+  .kit__grid{padding-left:0;padding-right:0;margin-left:var(--pad);margin-right:var(--pad)}
+  .duo{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+
 </style>
 </head>
 <body>
@@ -737,7 +763,8 @@
 
   function measure(){
     docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    if (stripTr) stripTravel = Math.max(0, stripTr.scrollWidth - window.innerWidth);
+    /* przesuw liczymy względem widocznej ramy (kontener), nie okna przeglądarki */
+    if (stripTr) stripTravel = Math.max(0, stripTr.scrollWidth - stripTr.parentElement.clientWidth);
   }
 
   if (!reduce){

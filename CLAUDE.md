@@ -15,6 +15,19 @@ Notion: https://app.notion.com/p/7e8581ec73fb4d5f8af76cff72c8ec16
 Strony zastąpione usunięte z drzewa (uslugi/, portfolio.html, css/, js/) — żyją
 w tagu `redesign-brief`. Obrazy to placeholdery (gradient „IMG"), do wygenerowania.
 
+**2026-08-14 — wszystkie case'y przeniesione do kontenera.** Po teście na worktree
+(`eksperyment/klimaty-w-kontenerze`) Grzegorz wybrał wersję w kontenerze zamiast
+pełnoekranowej. Każdy z pięciu case'ów ma na końcu CSS blok `SEKCJE W KONTENERZE`:
+sekcje z własnym tłem zwężone do 1180 px i zaokrąglone, sekcje na tle strony bez zmian.
+Blok jest wydzielony, więc powrót to jego usunięcie. To samo trafiło do szablonu skilla.
+
+Dwie rzeczy, które ta zmiana odsłoniła i które trzeba sprawdzać przy nowych case'ach:
+- **`vw` nie wie o kontenerze.** Typografia zwężonych sekcji poszła na
+  `container-type:inline-size` + `cqw`. Bez tego „Manrope" łamało się na dwie linie.
+- **Przypięte tory poziome** (ściana znaków w wild-campers, filmstrip w akademii)
+  liczyły przesuw względem `window.innerWidth`. Teraz `parentElement.clientWidth`,
+  inaczej ostatni kafel nie dojeżdżał. Sprawdzone: tor 3464 px, rama 1180, koniec −2284.
+
 **2026-08-13 — case study `portfolio/akademia-okocimskiego.html`** (sklep klubowy).
 Źródło: `01 - Projekty AI/07c - Sklep Akademia Okocimskiego (dark green)` — **najdalej
 rozwinięta wersja** (6 commitów, własne repo `sklep-akademia-okocimskiego_02`), nie folder

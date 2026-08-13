@@ -453,6 +453,41 @@
     .hero__title,.hero__lead,.meta div{opacity:1;transform:none;transition:none}
     .phone{transform:none}
   }
+
+  /* ==========================================================================
+     SEKCJE W KONTENERZE (decyzja Grzegorza 2026-08-14, po teście na worktree).
+     Blok dopisany na końcu, żeby wygrywał kolejnością — nic powyżej nie ruszane,
+     więc powrót do wersji pełnoekranowej to usunięcie tego jednego bloku.
+     Uwaga: rozmiary liczone w `vw` nie wiedzą, że kontener jest węższy od okna,
+     więc typografia sekcji zwężanych idzie na jednostki kontenerowe (cqw).
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+  .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+
+  .stage{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;--r:8px;
+    container-type:inline-size}
+  .stage__live{left:clamp(14px,2.4cqw,34px)}
+  .marks{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;overflow:hidden}
+  .marks__track{padding-left:var(--pad)}
+  .marks__lbl{left:var(--pad)}
+  .marks__bar{left:var(--pad);right:var(--pad)}
+  .markc{height:clamp(200px,40vh,400px)}
+  .marq{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding-left:0;padding-right:0}
+  .marq::before,.marq::after{width:min(8vw,80px)}
+  .marq__item{width:min(26vw,380px)}
+  .dark{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding:clamp(52px,8vh,96px) var(--pad) 0}
+  .dark .wide{padding-left:0;padding-right:0}
+  .swall{height:clamp(260px,42vh,420px);margin-top:clamp(40px,6vh,72px)}
+  .tw{min-height:clamp(160px,22vh,240px);container-type:inline-size}
+  .tw__spec{font-size:clamp(34px,17cqw,110px)}
+  .mob{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .gal__grid{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+  .dm__body{border-radius:6px}
+
 </style>
 </head>
 <body>
@@ -1019,7 +1054,8 @@
       rowW[i] = r.scrollWidth / 2;
     });
     docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    if (marksTr) marksTravel = Math.max(0, marksTr.scrollWidth - window.innerWidth);
+    /* przesuw liczymy względem widocznej ramy (kontener), nie okna przeglądarki */
+    if (marksTr) marksTravel = Math.max(0, marksTr.scrollWidth - marksTr.parentElement.clientWidth);
     if (typeof fitDemo === 'function') fitDemo();
   }
 
