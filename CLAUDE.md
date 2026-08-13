@@ -22,7 +22,12 @@ sekcje z własnym tłem zwężone do 1180 px i zaokrąglone, sekcje na tle stron
 Blok jest wydzielony, więc powrót to jego usunięcie. To samo trafiło do szablonu skilla.
 Trzy starsze case'y (sufity-led, miasteczko-witkowice, tct-tools) miały treść już
 w `.container`, więc u nich blok zwęża tylko przygaszone tło sekcji (`.csec--tint`).
-**Wszystkie osiem case'ów jest teraz w jednym rytmie.**
+**Wszystkie osiem case'ów jest teraz w jednym rytmie**, z jednym świadomym wyjątkiem:
+**SLF Transport ma tła pełnej szerokości, a w kontenerze tylko treść** (decyzja Grzegorza
+2026-08-14). Powód: ta marka jest plakatowa i ma mocne, kontrastowe pasy, które lepiej
+działają od krawędzi do krawędzi. Przy okazji `.dirs` dostało `--bg-2` (#141414) zamiast
+`--bg` (#0A0A0A), bo stykało się z `.band` w jeden nierozróżnialny ciemny pas.
+Sąsiadujące sekcje mają teraz naprzemienne tony plus cienką kreskę w kolorze akcentu.
 
 Dwie rzeczy, które ta zmiana odsłoniła i które trzeba sprawdzać przy nowych case'ach:
 - **`vw` nie wie o kontenerze.** Typografia zwężonych sekcji poszła na

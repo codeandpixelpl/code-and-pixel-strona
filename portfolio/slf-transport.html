@@ -333,34 +333,38 @@
   }
 
   /* ==========================================================================
-     SEKCJE W KONTENERZE (decyzja Grzegorza 2026-08-14, po teście na worktree).
-     Blok dopisany na końcu, żeby wygrywał kolejnością — nic powyżej nie ruszane,
-     więc powrót do wersji pełnoekranowej to usunięcie tego jednego bloku.
-     Uwaga: rozmiary liczone w `vw` nie wiedzą, że kontener jest węższy od okna,
-     więc typografia sekcji zwężanych idzie na jednostki kontenerowe (cqw).
+     TŁA NA PEŁNĄ SZEROKOŚĆ, TREŚĆ W KONTENERZE (SLF, 2026-08-14).
+     Inaczej niż w pozostałych case'ach: tutaj sekcje mają mocne, kontrastowe tła
+     i marka jest plakatowa, więc pasy idą od krawędzi do krawędzi, a w środku
+     treść trzyma się kontenera 1180 px.
+
+     ROZDZIELENIE SĄSIADÓW: `.band` i `.dirs` miały ten sam #0A0A0A i zlewały się
+     w jeden długi ciemny pas. `.dirs` dostaje --bg-2 (#141414) z palety projektu,
+     więc kolejne sekcje mają teraz naprzemienne tony:
+     band (czarny + wideo) → dirs (grafit) → cols (piaskowy) → tok (czarny) → stack (piaskowy).
      ========================================================================== */
   :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
   .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;
     padding-left:var(--pad);padding-right:var(--pad)}
+  /* wspólny sposób trzymania treści w kontenerze przy tle pełnej szerokości */
+  .band__copy,.band__logo,.dirs__head,.dirs__grid,.cols__grid,.tok .wide,.stack__row{
+    max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
 
-  .band{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;--r:8px;
-    container-type:inline-size}
-  .band__slogan{font-size:clamp(26px,7.4cqw,90px)}
-  .band__copy{left:var(--pad);right:var(--pad)}
-  .band__logo{left:var(--pad)}
-  .dirs{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
-    padding-left:0;padding-right:0}
-  .dirs__grid{padding-left:var(--pad);padding-right:var(--pad);gap:clamp(20px,3vw,48px)}
-  .dirs__head{padding-left:var(--pad);padding-right:var(--pad)}
+  .band{container-type:inline-size}
+  .band__slogan{font-size:clamp(26px,6.4cqw,104px)}
+  /* podpis leży absolutnie, więc kontener robimy odsunięciem od krawędzi okna */
+  .band__copy{left:0;right:0;margin-left:auto;margin-right:auto}
+  .band__logo{left:max(var(--pad),calc((100vw - var(--kontener)) / 2 + var(--pad)))}
+
+  .dirs{background:#141414}
+  .dirs__map{opacity:.12}
+  .dirs__grid{gap:clamp(20px,3vw,48px)}
   .dirs h2{font-size:clamp(26px,4.2vw,58px)}
   .dirs__i{font-size:clamp(15px,1.55vw,24px)}
-  /* .cols ma własne tło, więc zwężamy całą sekcję, nie tylko siatkę w środku */
-  .cols{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
-  .cols__grid{padding-left:var(--pad);padding-right:var(--pad)}
-  .tok{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
-    padding-left:0;padding-right:0}
-  .tok .wide{padding-left:var(--pad);padding-right:var(--pad)}
-  .stack{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+
+  /* wyraźniejsza granica między pasami: cienka kreska w kolorze akcentu */
+  .dirs,.cols,.tok,.stack{border-top:1px solid rgba(254,175,3,.22)}
 
 </style>
 </head>
