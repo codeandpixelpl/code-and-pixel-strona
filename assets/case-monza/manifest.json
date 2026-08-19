@@ -1,0 +1,277 @@
+{
+  "zrodlo": "/Users/prouopstudio/Claude/01 - Projekty/08 - Monza Baseny - v2 - COPY",
+  "pliki": [
+    {
+      "plik": "architekci-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 116,
+      "podstrona": "architekci",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "architekci-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 106,
+      "podstrona": "architekci",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "baseny-wewnetrzne-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 106,
+      "podstrona": "baseny-wewnetrzne",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "baseny-wewnetrzne-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 150,
+      "podstrona": "baseny-wewnetrzne",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "baseny-zewnetrzne-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 134,
+      "podstrona": "baseny-zewnetrzne",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "baseny-zewnetrzne-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 122,
+      "podstrona": "baseny-zewnetrzne",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "index-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 155,
+      "podstrona": "index",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 268,
+      "podstrona": "index",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "kontakt-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 123,
+      "podstrona": "kontakt",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kontakt-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 81,
+      "podstrona": "kontakt",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "laznie-parowe-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 100,
+      "podstrona": "laznie-parowe",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "laznie-parowe-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 150,
+      "podstrona": "laznie-parowe",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "o-nas-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 109,
+      "podstrona": "o-nas",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "o-nas-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 84,
+      "podstrona": "o-nas",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "partnerzy-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 104,
+      "podstrona": "partnerzy",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "partnerzy-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 99,
+      "podstrona": "partnerzy",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "realizacja-wroclaw-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 129,
+      "podstrona": "realizacja-wroclaw",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "realizacja-wroclaw-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 144,
+      "podstrona": "realizacja-wroclaw",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "realizacje-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 111,
+      "podstrona": "realizacje",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "realizacje-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 230,
+      "podstrona": "realizacje",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "sauny-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 125,
+      "podstrona": "sauny",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "sauny-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 117,
+      "podstrona": "sauny",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "showroom-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 111,
+      "podstrona": "showroom",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "showroom-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 90,
+      "podstrona": "showroom",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "strefa-wiedzy-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 87,
+      "podstrona": "strefa-wiedzy",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "strefa-wiedzy-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 106,
+      "podstrona": "strefa-wiedzy",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "strefy-spa-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 138,
+      "podstrona": "strefy-spa",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "strefy-spa-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 139,
+      "podstrona": "strefy-spa",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "wanny-spa-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 102,
+      "podstrona": "wanny-spa",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "wanny-spa-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 117,
+      "podstrona": "wanny-spa",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "index-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 93,
+      "podstrona": "index",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "realizacje-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 77,
+      "podstrona": "realizacje",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "realizacja-wroclaw-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 90,
+      "podstrona": "realizacja-wroclaw",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "kontakt-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 73,
+      "podstrona": "kontakt",
+      "ujecie": "390 px"
+    }
+  ]
+}

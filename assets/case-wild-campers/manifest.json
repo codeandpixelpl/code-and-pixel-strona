@@ -1,0 +1,285 @@
+{
+  "zrodlo": "/Users/prouopstudio/Claude/01 - CodeandPixel/02 - WIld campers/02 - Strona internetowa/03 - Design",
+  "pliki": [
+    {
+      "plik": "admin-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 71,
+      "podstrona": "admin",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "branding-pojazdow-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 238,
+      "podstrona": "branding-pojazdow",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "branding-pojazdow-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 146,
+      "podstrona": "branding-pojazdow",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "cennik-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 107,
+      "podstrona": "cennik",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "cennik-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 141,
+      "podstrona": "cennik",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "dodatki-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 107,
+      "podstrona": "dodatki",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "dodatki-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 101,
+      "podstrona": "dodatki",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "faq-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 108,
+      "podstrona": "faq",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "faq-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 102,
+      "podstrona": "faq",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "index-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 255,
+      "podstrona": "index",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 191,
+      "podstrona": "index",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "inspiracja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 229,
+      "podstrona": "inspiracja",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "inspiracja-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 147,
+      "podstrona": "inspiracja",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "inspiracje-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 212,
+      "podstrona": "inspiracje",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "inspiracje-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 207,
+      "podstrona": "inspiracje",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "jak-to-dziala-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 208,
+      "podstrona": "jak-to-dziala",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "jak-to-dziala-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 95,
+      "podstrona": "jak-to-dziala",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "kamper-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 227,
+      "podstrona": "kamper",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kamper-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 140,
+      "podstrona": "kamper",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "kampery-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 219,
+      "podstrona": "kampery",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kampery-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 112,
+      "podstrona": "kampery",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "kontakt-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 97,
+      "podstrona": "kontakt",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "konto-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 103,
+      "podstrona": "konto",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "logowanie-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 75,
+      "podstrona": "logowanie",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "o-nas-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 248,
+      "podstrona": "o-nas",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "o-nas-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 213,
+      "podstrona": "o-nas",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "porownaj-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 153,
+      "podstrona": "porownaj",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "porownaj-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 91,
+      "podstrona": "porownaj",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "rezerwacja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 133,
+      "podstrona": "rezerwacja",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "admin-kalendarz.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 91,
+      "podstrona": "admin",
+      "ujecie": "stan: admin-kalendarz"
+    },
+    {
+      "plik": "admin-flota.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 105,
+      "podstrona": "admin",
+      "ujecie": "stan: admin-flota"
+    },
+    {
+      "plik": "index-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 144,
+      "podstrona": "index",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "kampery-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 68,
+      "podstrona": "kampery",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "kamper-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 148,
+      "podstrona": "kamper",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "rezerwacja-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 73,
+      "podstrona": "rezerwacja",
+      "ujecie": "390 px"
+    }
+  ]
+}

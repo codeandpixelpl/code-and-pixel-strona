@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apartamenty Klimaty Wola — case study | Code&Pixel</title>
+<meta name="description" content="Strona kameralnej inwestycji premium w Krakowie: pełnoekranowe menu, interaktywny plan osiedla, wybór spośród 10 lokali. Projekt i wdrożenie Code&Pixel." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- spalla (Adobe Fonts) — serif ekspozycyjny projektu Klimaty Wola, użyty w replikach.
+     Fallback: Georgia, tak jak na oryginalnej stronie. -->
+<link rel="stylesheet" href="https://use.typekit.net/bhr3ncf.css" />
+<style>
+  :root{
+    --accent-1:#2c5fd8;
+    --accent-2:#4d7cea;
+    --accent:#3b6ae8;
+    --accent-glow:rgba(77,124,234,0.35);
+    --ink-1:#0b1b3a;
+    --ink-3:#66738c;
+    --white:#ffffff;
+    --ff:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --container:1180px;
+    --ease-out:cubic-bezier(.22,.9,.24,1);
+    --gut:clamp(16px,3.4vw,54px);        /* margines boczny pełnoekranowych sekcji */
+    --sec:clamp(90px,14vh,190px);        /* odstęp pionowy między sekcjami */
+    /* paleta projektu Klimaty Wola */
+    --kw-green:#263A2E;
+    --kw-green-deep:#1C2C22;
+    --kw-sage:#7C8A76;
+    --kw-ivory:#F3F0E8;
+    --kw-stone:#C9BFA7;
+    --kw-brass:#A1875B;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--ff);color:var(--ink-1);background:#fff;line-height:1.5;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  ul{list-style:none}
+  .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+  .wide{width:100%;padding:0 var(--gut)}       /* prawie pełna szerokość */
+  .full{width:100%}                             /* od krawędzi do krawędzi */
+
+  /* ============ PASEK POSTĘPU ============ */
+  .prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:90;pointer-events:none}
+  .prog__bar{height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-2) 60%,#8fb0ff)}
+
+  /* ============ WEJŚCIA ============ */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+  .rv.in{opacity:1;transform:none}
+  .rv--d1{transition-delay:.09s}
+  .rv--d2{transition-delay:.18s}
+  /* wariant bez transformu — dla elementów, które mają własny (obrót, pływanie) */
+  .fade{opacity:0;transition:opacity .95s var(--ease-out)}
+  .fade.in{opacity:1}
+  .fade--d1{transition-delay:.1s}
+  .fade--d2{transition-delay:.2s}
+  [data-lines].is-split .ln{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
+  [data-lines].is-split .ln__i{display:block;transform:translateY(116%);opacity:0;
+    transition:transform 1s var(--ease-out),opacity .75s ease}
+  [data-lines].is-split.in .ln__i{transform:none;opacity:1}
+  .lbl{display:inline-flex;align-items:center;gap:12px;opacity:0;transition:opacity .6s ease;
+    font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:.34em;text-transform:uppercase}
+  .lbl.in{opacity:1}
+  .lbl::before{content:"";width:0;height:1px;background:currentColor;transition:width .9s .08s var(--ease-out)}
+  .lbl.in::before{width:30px}
+  .clipin{clip-path:inset(7% 9% 7% 9% round var(--r,14px));transition:clip-path 1.25s var(--ease-out)}
+  .clipin.in{clip-path:inset(0% 0% 0% 0% round var(--r,14px))}
+
+  /* ============ HEADER + HERO ============ */
+  .top{position:relative;isolation:isolate;overflow:hidden;background:
+    radial-gradient(62% 60% at 20% 8%, rgba(77,124,234,0.42) 0%, transparent 60%),
+    radial-gradient(52% 55% at 85% 94%, rgba(67,115,229,0.22) 0%, transparent 60%),
+    linear-gradient(180deg, #0c2b66 0%, #08214f 52%, #061a45 100%)}
+  .top::before{content:"";position:absolute;top:-22%;left:8%;width:52vw;height:52vw;max-width:820px;max-height:820px;
+    border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,rgba(88,138,255,0.30) 0%,rgba(88,138,255,0) 68%);
+    filter:blur(14px);animation:drift 26s ease-in-out infinite alternate}
+  .top::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:var(--grain);opacity:.16;mix-blend-mode:overlay}
+  @keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(9vw,4vw,0) scale(1.12)}100%{transform:translate3d(-4vw,7vw,0) scale(1.04)}}
+
+  .header{position:relative;z-index:10;padding:16.5px 0}
+  .header__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:15px}
+  .logo__icon{width:66px;height:40.5px;flex:none}
+  .logo__lockup{position:relative;width:180.6px;height:43.3px;flex:none}
+  .logo__word{position:absolute;top:0;left:0;width:180.6px;height:25.64px}
+  .logo__tag{position:absolute;top:29.55px;left:49.8px;width:130.79px;height:13.72px}
+  .nav{display:flex;gap:30px;align-items:center}
+  .nav a{font-weight:600;font-size:15px;letter-spacing:0.6px;text-transform:uppercase;color:var(--white);transition:opacity .2s}
+  .nav > a:hover{opacity:.75}
+  .nav__item{position:relative}
+  .nav__toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+  .nav__toggle:hover{opacity:.75}
+  .nav__toggle svg{width:12px;height:12px;transition:transform .2s ease}
+  .nav__item:hover .nav__toggle svg,.nav__item:focus-within .nav__toggle svg{transform:rotate(180deg)}
+  .nav__item::after{content:"";position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+  .nav__drop{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+    min-width:248px;background:#fff;border:1px solid rgba(7,30,81,0.06);border-radius:16px;
+    box-shadow:0 24px 54px rgba(7,30,81,0.18);padding:8px;
+    opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30}
+  .nav__item:hover .nav__drop,.nav__item:focus-within .nav__drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav__drop a{display:block;padding:11px 15px;border-radius:10px;
+    font-family:'Inter',var(--ff);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;
+    color:#071e51;white-space:nowrap;transition:background .15s ease,color .15s ease}
+  .nav__drop a:hover{background:#f2f5fb;color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    font-family:var(--ff);font-weight:700;text-transform:uppercase;white-space:nowrap;border:none}
+  .btn--grad{color:var(--white);background:linear-gradient(168deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow:0 10px 17px var(--accent-glow)}
+  .header__cta{border-radius:999px;padding:17px 32.5px;font-size:13px;letter-spacing:0.77px;
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+  .btn--grad:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+
+  /* hero: tytuł, jedno zdanie, minimalna metryczka */
+  .hero{position:relative;z-index:1;padding:clamp(48px,9vh,110px) 0 clamp(70px,11vh,130px)}
+  .hero__title{max-width:1000px;font-size:clamp(42px,6.4vw,96px);font-weight:800;line-height:1.02;
+    letter-spacing:-0.042em;color:#fff}
+  .hero__lead{margin-top:26px;max-width:560px;font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:rgba(255,255,255,.6)}
+  .meta{display:flex;flex-wrap:wrap;gap:0 clamp(28px,4vw,64px);margin-top:clamp(40px,6vh,72px);
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+  .meta div{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+  body.ready .meta div{opacity:1;transform:none}
+  body.ready .meta div:nth-child(1){transition-delay:.55s}
+  body.ready .meta div:nth-child(2){transition-delay:.62s}
+  body.ready .meta div:nth-child(3){transition-delay:.69s}
+  body.ready .meta div:nth-child(4){transition-delay:.76s}
+  .meta dt{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(255,255,255,.4)}
+  .meta dd{margin-top:7px;font-family:'Inter',var(--ff);font-size:14.5px;font-weight:500;color:#fff}
+  .hero__title,.hero__lead{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+  body.ready .hero__title{opacity:1;transform:none;transition-delay:.1s}
+  body.ready .hero__lead{opacity:1;transform:none;transition-delay:.42s}
+  body.ready .hero__title[data-lines].is-split{opacity:1;transform:none}
+
+  /* ============ REPLIKA HERO KLIMATÓW ============ */
+  .stagewrap{position:relative;z-index:2;margin-top:calc(-1 * clamp(30px,5vh,70px))}
+  .kwstage{position:relative;aspect-ratio:16/9.4;overflow:hidden;background:#16211a;
+    box-shadow:0 46px 100px rgba(6,20,55,0.34);will-change:transform,clip-path;
+    font-family:'Manrope',var(--ff);--zoom:0;--reveal:0;--r:0px}
+  .kwstage__bg{position:absolute;inset:0}
+  .kwstage__bg video,.kwstage__bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transform:scale(calc(1 + .12 * var(--zoom)));transition:transform .12s linear}
+  .kwstage__bg img{display:none}
+  .kwstage.no-video .kwstage__bg video{display:none}
+  .kwstage.no-video .kwstage__bg img{display:block}
+  .kwstage__veil{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 85% at 50% 52%, rgba(20,32,25,.55), rgba(20,32,25,.18) 60%, transparent 78%),
+      linear-gradient(to bottom, rgba(20,32,25,.35), rgba(20,32,25,.5));
+    opacity:calc(.22 + .6 * var(--reveal));transition:opacity .18s linear}
+  .kwstage__head{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;
+    padding:clamp(12px,1.7vw,30px) clamp(14px,2.4vw,42px)}
+  .kwstage__logo{height:clamp(24px,3.1vw,54px);width:auto}
+  .kwstage__right{display:flex;align-items:center;gap:clamp(10px,1.8vw,30px)}
+  .kwstage__cta{border:1px solid rgba(246,241,230,.75);color:#F6F1E6;
+    padding:clamp(6px,.85vw,15px) clamp(10px,1.6vw,30px);
+    font-size:clamp(6.5px,.8vw,13px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .kwstage__menu{display:flex;align-items:center;gap:clamp(6px,.7vw,12px);color:#F6F1E6;
+    font-size:clamp(6.5px,.8vw,13px);font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+  .kwstage__burger{display:block;width:clamp(16px,2vw,34px)}
+  .kwstage__burger i{display:block;height:1px;background:#F6F1E6}
+  .kwstage__burger i + i{margin-top:clamp(3px,.35vw,6px)}
+  .kwstage__center{position:absolute;inset:0;z-index:2;color:#F6F1E6;text-align:center}
+  .kwstage__title{position:absolute;left:5%;right:5%;bottom:9%;
+    transform:translateY(calc(-1 * (var(--lateH,88px) + 18px) * var(--reveal)));transition:transform .2s linear}
+  .kwstage__eyebrow{font-family:"spalla",Georgia,serif;
+    font-size:clamp(10px,1.95vw,34px);line-height:1.1;letter-spacing:.3em;text-indent:.3em;color:#F6F1E6}
+  .kwstage__h{margin-top:.3em;font-family:"spalla",Georgia,serif;font-weight:400;
+    font-size:clamp(27px,8.6vw,140px);line-height:.96;letter-spacing:.01em;color:#F6F1E6}
+  .kwstage__late{position:absolute;left:5%;right:5%;bottom:9%;
+    opacity:var(--reveal);transform:translateY(calc(22px - 22px * var(--reveal)));transition:opacity .2s linear,transform .2s linear}
+  .kwstage__addr{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.3vw,22px);
+    font-size:clamp(6px,.76vw,13px);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,230,.9)}
+  .kwstage__addr::before,.kwstage__addr::after{content:"";height:1px;width:clamp(14px,3.6vw,70px);background:rgba(246,241,230,.45)}
+  .kwstage__btns{display:flex;justify-content:center;gap:clamp(8px,.9vw,16px);margin-top:clamp(10px,1.9vw,32px);flex-wrap:wrap}
+  .kwstage__b{padding:clamp(7px,1vw,18px) clamp(12px,2vw,34px);
+    font-size:clamp(6px,.78vw,13px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+  .kwstage__b--solid{background:#F6F1E6;color:#263A2E}
+  .kwstage__b--ghost{border:1px solid rgba(246,241,230,.6);color:#F6F1E6}
+  .kwstage__live{position:absolute;z-index:4;left:clamp(14px,2.4vw,42px);bottom:clamp(14px,2.4vw,42px);
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(20,32,25,.5);border:1px solid rgba(246,241,230,.24);border-radius:99px;
+    padding:7px 14px 7px 11px;backdrop-filter:blur(6px);
+    font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#F6F1E6}
+  .kwstage__live b{width:6px;height:6px;border-radius:50%;background:#8fd6a4;animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+
+  /* ============ PASY ZRZUTÓW ============ */
+  .marq{margin:var(--sec) 0;position:relative;overflow:hidden}
+  .marq::before,.marq::after{content:"";position:absolute;top:0;bottom:0;width:min(16vw,180px);z-index:3;pointer-events:none}
+  .marq::before{left:0;background:linear-gradient(90deg,#fff 10%,rgba(255,255,255,0) 100%)}
+  .marq::after{right:0;background:linear-gradient(270deg,#fff 10%,rgba(255,255,255,0) 100%)}
+  .marq__row{display:flex;gap:16px;width:max-content;will-change:transform}
+  .marq__row + .marq__row{margin-top:16px}
+  .marq__item{flex:none;border-radius:8px;overflow:hidden;border:1px solid rgba(7,30,81,.07);background:#eef1f7}
+  .marq__row--a .marq__item{width:min(30vw,420px)}
+  .marq__row--b .marq__item{width:min(23vw,320px);opacity:.85}
+  /* zrzuty zawsze w całości: bez object-fit i bez wymuszonych proporcji */
+  .marq__item img{width:100%;height:auto}
+
+  /* ============ CIEMNE PASMO: PALETA I KROJE ============ */
+  .dark{position:relative;isolation:isolate;background:var(--kw-green-deep);color:#fff;
+    padding:var(--sec) 0 0;overflow:hidden}
+  .dark::before{content:"";position:absolute;top:-16%;right:-6%;width:44vw;height:44vw;max-width:660px;max-height:660px;border-radius:50%;
+    background:radial-gradient(circle,rgba(161,135,91,0.24) 0%,rgba(161,135,91,0) 66%);filter:blur(10px);z-index:-1;
+    animation:drift 30s ease-in-out infinite alternate}
+  .dark::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.2;mix-blend-mode:overlay;pointer-events:none;z-index:-1}
+  .dark .lbl{color:var(--kw-stone)}
+  .dark h2{margin-top:20px;font-family:'Inter',var(--ff);font-weight:500;
+    font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-0.03em;color:var(--kw-ivory)}
+
+  .swall{display:flex;gap:2px;width:100%;height:clamp(320px,54vh,580px);margin-top:clamp(56px,9vh,120px)}
+  .swx{position:relative;flex:1 1 0;overflow:hidden;transform:scaleY(0);transform-origin:50% 100%;
+    transition:transform 1s var(--ease-out),flex-grow .7s var(--ease-out)}
+  .swx.in{transform:none}
+  .swall:hover .swx.in{flex-grow:.86}
+  .swall .swx.in:hover{flex-grow:2}
+  .swx__l{position:absolute;left:0;right:0;bottom:0;padding:24px 20px;display:block}
+  .swx__n{display:block;font-family:'Inter',var(--ff);font-weight:600;font-size:13px}
+  .swx__h{display:block;margin-top:5px;font-family:'Inter',var(--ff);font-size:11.5px;letter-spacing:.1em}
+  .swx--dark .swx__n{color:var(--kw-ivory)}
+  .swx--dark .swx__h{color:rgba(243,240,232,.6)}
+  .swx--light .swx__n{color:var(--kw-green)}
+  .swx--light .swx__h{color:rgba(38,58,46,.6)}
+
+  .twall{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+  .tw{padding:clamp(30px,4.2vw,76px) clamp(20px,3vw,54px);background:rgba(243,240,232,.055);
+    display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(200px,28vh,330px)}
+  .tw__spec{font-size:clamp(50px,8.6vw,160px);line-height:.84;color:var(--kw-ivory);word-break:break-word}
+  .tw__spec--serif{font-family:"spalla",Georgia,serif;font-weight:400;letter-spacing:.01em}
+  .tw__spec--sans{font-family:'Manrope',var(--ff);font-weight:700;letter-spacing:-0.045em}
+  .tw__r{margin-top:24px;font-family:'Inter',var(--ff);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--kw-stone)}
+
+  /* ============ DEMONSTRATOR: PLAN → LISTA → KARTA ============ */
+  .demo{padding:var(--sec) 0;background:#fff}
+  .demo__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    margin-bottom:clamp(34px,5vh,62px)}
+  .demo__head h2{margin-top:18px;font-family:'Inter',var(--ff);font-weight:500;
+    font-size:clamp(28px,3.6vw,52px);line-height:1.1;letter-spacing:-0.03em;color:#071e51}
+  .dm__steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .dm__step{cursor:pointer;background:transparent;border:1px solid rgba(7,30,81,.14);border-radius:2px;
+    padding:11px 20px;font-family:'Inter',var(--ff);font-weight:500;font-size:12.5px;letter-spacing:.05em;
+    color:rgba(7,30,81,.5);transition:border-color .3s ease,color .3s ease,background .3s ease}
+  .dm__step:hover:not(:disabled){border-color:rgba(7,30,81,.4);color:#071e51}
+  .dm__step.is-on{border-color:#071e51;color:#071e51;background:rgba(7,30,81,.04)}
+  .dm__step:disabled{opacity:.34;cursor:default}
+  .dm__step:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
+  .dm__reset{margin-left:auto;cursor:pointer;border:0;background:transparent;padding:11px 2px;
+    font-family:'Inter',var(--ff);font-size:12.5px;color:rgba(7,30,81,.4);transition:color .3s ease}
+  .dm__reset:hover{color:#071e51}
+  .dm__body{position:relative;background:var(--kw-ivory);border-radius:4px;overflow:hidden;
+    transition:height .5s var(--ease-out)}
+  .dm__view{position:absolute;top:0;left:0;width:100%;padding:clamp(18px,2.4vw,40px);
+    opacity:0;visibility:hidden;transform:translateY(14px);
+    transition:opacity .4s ease,transform .5s var(--ease-out),visibility .4s}
+  .dm__view.is-on{opacity:1;visibility:visible;transform:none;position:relative}
+  .dm__note{margin-top:14px;font-family:'Inter',var(--ff);font-size:12px;color:#4d5c50;opacity:.7}
+  .dm__foot{margin-top:16px;font-family:'Inter',var(--ff);font-size:12.5px;color:#071e51;opacity:.5}
+
+  .dm__plan{position:relative;overflow:hidden;border-radius:3px}
+  .dm__plan > img{width:100%;height:auto}
+  .dm__planveil{position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 55%,rgba(20,32,25,.14),rgba(20,32,25,.38))}
+  .dm__spot{position:absolute;transform:translate(-50%,-50%);cursor:pointer;border:0;background:transparent;padding:0;z-index:2}
+  .dm__spot i{display:flex;align-items:center;justify-content:center;
+    width:clamp(34px,3.4vw,50px);height:clamp(34px,3.4vw,50px);border-radius:50%;
+    font-family:'Inter',var(--ff);font-style:normal;font-weight:600;font-size:clamp(11px,1vw,14px);color:#F6F1E6;
+    background:rgba(28,44,34,.55);border:1px solid rgba(246,241,230,.65);backdrop-filter:blur(3px);
+    transition:transform .3s var(--ease-out),background .3s ease,border-color .3s ease,box-shadow .3s ease}
+  .dm__spot::before{content:"";position:absolute;left:50%;top:50%;width:clamp(34px,3.4vw,50px);height:clamp(34px,3.4vw,50px);
+    transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(246,241,230,.5);
+    animation:ping 2.8s cubic-bezier(.22,.9,.24,1) infinite}
+  @keyframes ping{0%{transform:translate(-50%,-50%) scale(1);opacity:.7}70%,100%{transform:translate(-50%,-50%) scale(2.1);opacity:0}}
+  .dm__spot:hover i,.dm__spot:focus-visible i{transform:scale(1.16);background:var(--kw-brass);border-color:var(--kw-brass);
+    box-shadow:0 10px 24px rgba(0,0,0,.35)}
+  .dm__spot:focus-visible{outline:none}
+  .dm__tip{position:absolute;z-index:3;pointer-events:none;opacity:0;transform:translate(-50%,-8px);
+    background:rgba(246,241,230,.96);border-radius:6px;padding:12px 15px;min-width:180px;
+    box-shadow:0 16px 34px rgba(0,0,0,.28);transition:opacity .25s ease,transform .25s var(--ease-out)}
+  .dm__tip.on{opacity:1}
+  .dm__tip b{display:block;font-family:"spalla",Georgia,serif;font-weight:400;font-size:18px;color:var(--kw-green)}
+  .dm__tip span{display:block;margin-top:3px;font-family:'Inter',var(--ff);font-size:11.5px;color:#4d5c50}
+  .dm__tip u{display:block;margin-top:7px;text-decoration:none;font-family:'Inter',var(--ff);font-size:10.5px;
+    font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kw-brass)}
+
+  .dm__filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .dm__chip{cursor:pointer;border:1px solid rgba(38,58,46,.2);background:transparent;border-radius:2px;
+    padding:8px 15px;font-family:'Inter',var(--ff);font-size:11.5px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--kw-green);transition:background .25s ease,color .25s ease,border-color .25s ease}
+  .dm__chip:hover{border-color:var(--kw-green)}
+  .dm__chip.is-on{background:var(--kw-green);border-color:var(--kw-green);color:var(--kw-ivory)}
+  .dm__tablewrap{overflow-x:auto}
+  .dm__table{width:100%;border-collapse:collapse;font-family:'Inter',var(--ff);font-size:13px;color:var(--kw-green);white-space:nowrap}
+  .dm__table th{text-align:left;padding:0 16px 12px 0;font-size:10.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:#6d7d70;border-bottom:1px solid rgba(38,58,46,.18)}
+  .dm__table td{padding:15px 16px 15px 0;border-bottom:1px solid rgba(38,58,46,.1)}
+  .dm__table tbody tr{cursor:pointer;transition:background .22s ease}
+  .dm__table tbody tr:hover{background:rgba(38,58,46,.055)}
+  .dm__sym{font-family:"spalla",Georgia,serif;font-size:20px;color:var(--kw-green)}
+  .dm__typ{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kw-brass)}
+  .dm__muted{color:#6d7d70}
+  .dm__st{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:#4d5c50}
+  .dm__st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--kw-sage)}
+  .dm__go{color:var(--kw-brass);transition:transform .25s var(--ease-out);display:inline-block}
+  .dm__table tbody tr:hover .dm__go{transform:translateX(5px)}
+  .dm__empty{padding:28px 0;font-family:'Inter',var(--ff);font-size:13.5px;color:#4d5c50}
+
+  .dm__back{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:0;background:transparent;padding:0;
+    font-family:'Inter',var(--ff);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--kw-brass)}
+  .dm__back:hover{text-decoration:underline}
+  .dm__uhead{margin-top:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap}
+  .dm__uover{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6d7d70}
+  .dm__uh{margin-top:10px;font-family:"spalla",Georgia,serif;font-weight:400;
+    font-size:clamp(26px,3.6vw,50px);line-height:1.04;color:var(--kw-green)}
+  .dm__chipst{border:1px solid rgba(38,58,46,.28);padding:8px 14px;
+    font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--kw-green)}
+  .dm__ubody{margin-top:26px;display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:start}
+  .dm__galmain{width:100%;height:auto;border-radius:4px}
+  .dm__thumbs{display:flex;gap:10px;margin-top:10px}
+  .dm__thumbs button{flex:1;cursor:pointer;border:0;padding:0;border-radius:4px;overflow:hidden;opacity:.55;transition:opacity .25s ease}
+  .dm__thumbs button.on,.dm__thumbs button:hover{opacity:1}
+  .dm__thumbs img{width:100%;height:auto;display:block}
+  .dm__plan2{margin-top:18px;background:#fff;border-radius:4px;padding:14px}
+  .dm__plan2 img{width:100%;height:auto}
+  .dm__cap{margin-top:9px;font-family:'Inter',var(--ff);font-size:11.5px;color:#6d7d70}
+  .dm__facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(38,58,46,.14);border-radius:4px;overflow:hidden}
+  .dm__facts div{background:var(--kw-ivory);padding:15px 16px}
+  .dm__facts dt{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6d7d70}
+  .dm__facts dd{margin-top:6px;font-family:"spalla",Georgia,serif;font-size:23px;color:var(--kw-green)}
+  .dm__desc{margin-top:20px;font-family:'Inter',var(--ff);font-size:14px;line-height:1.75;color:#4d5c50}
+  .dm__rooms{width:100%;margin-top:22px;border-collapse:collapse;font-family:'Inter',var(--ff);font-size:13px;color:var(--kw-green)}
+  .dm__rooms td{padding:9px 0;border-bottom:1px solid rgba(38,58,46,.1)}
+  .dm__rooms td:last-child{text-align:right;color:#4d5c50}
+  .dm__rooms tr.cat td{padding-top:18px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--kw-brass);border-bottom-color:rgba(38,58,46,.22)}
+  .dm__tmpl{margin-top:22px;border-left:2px solid var(--kw-brass);padding:2px 0 2px 16px;
+    font-family:'Inter',var(--ff);font-size:13px;line-height:1.7;color:#4d5c50}
+
+  /* ============ TELEFONY ============ */
+  .mob{padding:var(--sec) 0;background:#f5f6fb;overflow:hidden}
+  .phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(18px,3vw,54px);flex-wrap:wrap}
+  .phone{width:clamp(190px,20vw,300px);flex:none;border-radius:34px;padding:9px;background:#0f1b31;will-change:transform;
+    transform:translate3d(0,var(--fy,0px),0);box-shadow:0 30px 62px rgba(7,30,81,0.24)}
+  .phone img{border-radius:26px;width:100%;height:auto}
+
+  /* ============ GALERIA (zrzuty w całości) ============ */
+  .gal{padding:var(--sec) 0;background:#fff}
+  .gal__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,24px);padding:0 var(--gut)}
+  .gal__i{border-radius:8px;overflow:hidden;border:1px solid rgba(7,30,81,.07);background:#eef1f7}
+  .gal__i img{width:100%;height:auto;transition:transform .9s var(--ease-out)}
+  .gal__i:hover img{transform:scale(1.02)}
+  .gal__i--wide{grid-column:span 2}
+
+  /* ============ PREV / NEXT, CTA, STOPKA ============ */
+  .csec{padding:0 0 clamp(40px,6vh,80px)}
+  .cnav{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .cnav__link{background:#fff;border:1px solid rgba(7,30,81,0.08);border-radius:4px;padding:28px 30px;
+    display:flex;align-items:center;gap:18px;transition:transform .3s var(--ease-out),box-shadow .3s ease,border-color .3s ease}
+  .cnav__link:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(7,30,81,0.1);border-color:rgba(67,115,229,0.24)}
+  .cnav__link--next{justify-content:flex-end;text-align:right}
+  .cnav__ico{flex:none;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:var(--accent);background:#f2f5fb;transition:background .3s ease,color .3s ease,transform .3s var(--ease-out)}
+  .cnav__link:hover .cnav__ico{background:var(--accent);color:#fff;transform:translateX(-4px)}
+  .cnav__link--next:hover .cnav__ico{transform:translateX(4px)}
+  .cnav__label{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#071e51;opacity:.45}
+  .cnav__title{margin-top:6px;font-family:'Inter',var(--ff);font-weight:600;font-size:19px;color:#071e51}
+
+  .ctaband-wrap{padding:clamp(40px,6vh,70px) 0;background:#fff}
+  .ctaband{background:#071e51 url("../assets/nowy/cta-bg.png") right center / cover no-repeat;border-radius:4px;padding:60px 50px;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;overflow:hidden}
+  .ctaband__title{max-width:460px;font-family:'Inter',var(--ff);font-weight:500;font-size:clamp(28px,3vw,37px);
+    line-height:1.16;letter-spacing:-0.026em;color:#fff}
+  .ctaband__btns{display:flex;gap:14px;flex-shrink:0;position:relative;z-index:1}
+  .upanel__btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;border-radius:761px;color:#fff;white-space:nowrap;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.85px;letter-spacing:0.47px;text-transform:uppercase;
+    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+  .upanel__btn:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+  .btn-outline-light{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;border-radius:761px;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.85px;letter-spacing:0.47px;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,0.4);background:transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+  .btn-outline-light:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.7)}
+
+  .footer{background:#071e51;color:#fff;padding:60px 0 30px}
+  .footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+  .footer__logo{display:flex;align-items:center;gap:12px}
+  .footer__brand p{margin-top:16px;max-width:280px;font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.55)}
+  .footer h5{font-family:'Inter',var(--ff);font-weight:600;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px}
+  .footer ul li{margin-bottom:10px}
+  .footer ul a{font-family:'Inter',var(--ff);font-size:13px;color:rgba(255,255,255,0.7);transition:color .16s ease}
+  .footer ul a:hover{color:#fff}
+  .footer__contact p{font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:8px}
+  .footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:44px;padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.1);font-family:'Inter',var(--ff);font-size:12px;color:rgba(255,255,255,0.4)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    .dm__ubody{grid-template-columns:1fr;gap:26px}
+    .footer__grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:900px){
+    .nav{display:none}
+    .marq__row--a .marq__item{width:70vw}
+    .marq__row--b .marq__item{width:54vw}
+    .swall{height:auto;flex-wrap:wrap}
+    .swx{flex:1 1 33%;height:clamp(150px,22vh,220px)}
+    .swall:hover .swx.in,.swall .swx.in:hover{flex-grow:1}
+    .twall{grid-template-columns:1fr}
+    .gal__grid{grid-template-columns:1fr}
+    .gal__i--wide{grid-column:span 1}
+    .cnav{grid-template-columns:1fr}
+    .cnav__link--next{justify-content:flex-start;text-align:left;flex-direction:row-reverse}
+    .ctaband{flex-direction:column;align-items:flex-start}
+    .kwstage__btns{display:none}
+    .kwstage__live{font-size:9px;padding:5px 11px 5px 9px}
+    .stagewrap{margin-top:0}
+  }
+  @media (max-width:560px){
+    .meta{gap:22px 30px}
+    .swx{flex:1 1 50%}
+    .phone{width:66vw}
+    .footer__grid{grid-template-columns:1fr}
+    .ctaband{padding:36px 24px}
+    .ctaband__btns{flex-direction:column;align-items:stretch;width:100%}
+    .upanel__btn,.btn-outline-light{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv,.swx,.fade{opacity:1;transform:none;transition:none}
+    [data-lines].is-split .ln__i{transform:none;opacity:1;transition:none}
+    .lbl{opacity:1}
+    .lbl::before{width:30px;transition:none}
+    .clipin{clip-path:none;transition:none}
+    .top::before,.dark::before,.dm__spot::before,.kwstage__live b{animation:none}
+    .hero__title,.hero__lead,.meta div{opacity:1;transform:none;transition:none}
+    .phone{transform:none}
+  }
+
+  /* ==========================================================================
+     SEKCJE W KONTENERZE (decyzja Grzegorza 2026-08-14, po teście na worktree).
+     Blok dopisany na końcu, żeby wygrywał kolejnością — nic powyżej nie było ruszane,
+     więc powrót do wersji pełnoekranowej to usunięcie tego jednego bloku.
+     Ten sam wzorzec jest w pozostałych case'ach i w szablonie skilla.
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+
+  /* wspólna rama dla wszystkiego, co wcześniej szło od krawędzi do krawędzi */
+  .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  /* replika hero */
+  .stagewrap{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+  .kwstage{--r:8px;border-radius:8px}
+
+  /* pasy zrzutów */
+  .marq{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding-left:var(--pad);padding-right:var(--pad)}
+  .marq::before,.marq::after{width:min(9vw,90px)}
+  .marq__row--a .marq__item{width:min(24vw,320px)}
+  .marq__row--b .marq__item{width:min(19vw,250px)}
+
+  /* ciemne pasmo z paletą */
+  .dark{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding:clamp(52px,8vh,96px) var(--pad) 0}
+  .dark .wide{padding-left:0;padding-right:0}
+  .swall{height:clamp(260px,42vh,420px);margin-top:clamp(40px,6vh,72px)}
+  .twall{margin-bottom:0}
+  .tw{min-height:clamp(160px,22vh,240px)}
+
+  /* demonstrator */
+  .dm__body{border-radius:6px}
+
+  /* telefony */
+  .mob{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .mob .wide{padding-left:var(--pad);padding-right:var(--pad)}
+
+  /* galeria */
+  .gal__grid{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+
+  @media (max-width:900px){
+    :root{ --pad:16px; }
+    .marq__row--a .marq__item{width:62vw}
+    .marq__row--b .marq__item{width:48vw}
+  }
+
+
+  /* Skutek uboczny zwężenia: rozmiary liczone w `vw` nie wiedzą, że kontener
+     jest węższy od okna. Okazy krojów i nagłówek repliki przeliczamy na jednostki
+     kontenerowe (cqw), żeby skalowały się do bloku, a nie do szerokości ekranu. */
+  .tw{container-type:inline-size}
+  .tw__spec{font-size:clamp(34px,17cqw,110px)}
+  .kwstage{container-type:inline-size}
+  .kwstage__h{font-size:clamp(27px,9cqw,120px)}
+  .kwstage__eyebrow{font-size:clamp(10px,2.1cqw,28px)}
+  .kwstage__logo{height:clamp(22px,3.2cqw,46px)}
+  .kwstage__cta,.kwstage__menu{font-size:clamp(6.5px,.85cqw,11.5px)}
+  .kwstage__addr{font-size:clamp(6px,.8cqw,11.5px)}
+  .kwstage__b{font-size:clamp(6px,.82cqw,11.5px)}
+
+</style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"><div class="prog__bar" id="progBar"></div></div>
+
+<div class="top">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="logo" aria-label="Code&amp;Pixel">
+        <img class="logo__icon" src="../assets/nowy/logo-icon.svg" alt="" />
+        <span class="logo__lockup">
+          <img class="logo__word" src="../assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
+          <img class="logo__tag" src="../assets/nowy/logo-tag.svg" alt="" />
+        </span>
+      </a>
+      <nav class="nav">
+        <div class="nav__item">
+          <a href="#" class="nav__toggle" aria-haspopup="true" aria-expanded="false">Usługi
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav__drop" role="menu">
+            <a href="../strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="../sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="../crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="../aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="../google-ads.html" role="menuitem">Google Ads</a>
+            <a href="../allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="../opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+          </div>
+        </div>
+        <a href="../realizacje.html">Realizacje</a>
+        <a href="../o-nas.html">O nas</a>
+        <a href="../wiedza.html">Wiedza</a>
+      </nav>
+      <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
+    </div>
+  </header>
+
+  <section class="hero"><div class="wide">
+    <h1 class="hero__title" data-lines data-hero>Apartamenty Klimaty Wola</h1>
+    <p class="hero__lead">Kameralna inwestycja premium na&nbsp;Woli Justowskiej w&nbsp;Krakowie. Sześć budynków, dziesięć lokali.</p>
+    <dl class="meta">
+      <div><dt>Klient</dt><dd>Apartamenty Klimaty</dd></div>
+      <div><dt>Zakres</dt><dd>UX · Design · Wdrożenie</dd></div>
+      <div><dt>Rok</dt><dd>2026</dd></div>
+      <div><dt>Technologie</dt><dd>HTML · CSS · JS</dd></div>
+    </dl>
+  </div></section>
+</div>
+
+<!-- REPLIKA HERO: prawdziwe wideo z projektu, sekwencja sterowana przewijaniem -->
+<div class="stagewrap">
+  <div class="kwstage clipin" id="kwstage" data-parallax role="img"
+       aria-label="Odtworzone hero strony Apartamenty Klimaty Wola: wideo z wizualizacją osiedla, nagłówek „Rezydencje stworzone dla przestrzeni i spokoju”, pod nim adres i przyciski wchodzące na przewijaniu">
+    <div class="kwstage__bg">
+      <video id="kwvideo" poster="../assets/case-klimaty/hero-poster.jpg" autoplay muted loop playsinline preload="metadata">
+        <source src="../assets/case-klimaty/hero.webm" type="video/webm" />
+        <source src="../assets/case-klimaty/hero.mp4" type="video/mp4" />
+      </video>
+      <img src="../assets/case-klimaty/hero-poster.jpg" alt="" />
+    </div>
+    <div class="kwstage__veil"></div>
+    <div class="kwstage__head">
+      <img class="kwstage__logo" src="../assets/case-klimaty/logo.svg" alt="" />
+      <div class="kwstage__right">
+        <span class="kwstage__cta">Zapytaj o&nbsp;apartament</span>
+        <span class="kwstage__menu">Menu <span class="kwstage__burger"><i></i><i></i></span></span>
+      </div>
+    </div>
+    <div class="kwstage__center">
+      <div class="kwstage__title">
+        <p class="kwstage__eyebrow">Rezydencje stworzone</p>
+        <p class="kwstage__h">dla przestrzeni<br />i&nbsp;spokoju</p>
+      </div>
+      <div class="kwstage__late">
+        <p class="kwstage__addr">Kraków · Wola Justowska · ul. Poniedziałkowy Dół</p>
+        <div class="kwstage__btns">
+          <span class="kwstage__b kwstage__b--solid">Poznaj dostępne apartamenty →</span>
+          <span class="kwstage__b kwstage__b--ghost">Umów prezentację</span>
+        </div>
+      </div>
+    </div>
+    <span class="kwstage__live"><b></b> Żywy podgląd</span>
+  </div>
+</div>
+
+<!-- PASY ZRZUTÓW -->
+<div class="marq" id="marq" aria-hidden="true">
+  <div class="marq__row marq__row--a" data-marq="1">
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/o-inwestycji-top.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/apartamenty-top.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/standard-top.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/lokalizacja-top.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/deweloper-top.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/galeria-top.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/kontakt-top.jpg" alt="" /></div>
+  </div>
+  <div class="marq__row marq__row--b" data-marq="-1">
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/plan-osiedla.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/tabela.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/d4a-rzut.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/menu.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/standard-mid.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/lokalizacja-mid.jpg" alt="" /></div>
+    <div class="marq__item"><img loading="lazy" src="../assets/case-klimaty/deweloper-mid.jpg" alt="" /></div>
+  </div>
+</div>
+
+
+<!-- PALETA I KROJE -->
+<section class="dark">
+  <div class="wide">
+    <span class="lbl">Język wizualny</span>
+    <h2 data-lines>Sześć kolorów, dwa kroje</h2>
+  </div>
+  <div class="swall" aria-label="Paleta projektu">
+    <div class="swx swx--dark" style="background:#263A2E"><span class="swx__l"><span class="swx__n">Zieleń</span><span class="swx__h">#263A2E</span></span></div>
+    <div class="swx swx--dark" style="background:#7C8A76"><span class="swx__l"><span class="swx__n">Szałwia</span><span class="swx__h">#7C8A76</span></span></div>
+    <div class="swx swx--light" style="background:#F3F0E8"><span class="swx__l"><span class="swx__n">Kość słoniowa</span><span class="swx__h">#F3F0E8</span></span></div>
+    <div class="swx swx--light" style="background:#C9BFA7"><span class="swx__l"><span class="swx__n">Kamień</span><span class="swx__h">#C9BFA7</span></span></div>
+    <div class="swx swx--light" style="background:#A1875B"><span class="swx__l"><span class="swx__n">Mosiądz</span><span class="swx__h">#A1875B</span></span></div>
+    <div class="swx swx--dark" style="background:#202522"><span class="swx__l"><span class="swx__n">Grafit</span><span class="swx__h">#202522</span></span></div>
+  </div>
+  <div class="twall">
+    <div class="tw rv"><span class="tw__spec tw__spec--serif">Spalla</span><span class="tw__r">Nagłówki i&nbsp;liczby</span></div>
+    <div class="tw rv rv--d1"><span class="tw__spec tw__spec--sans">Manrope</span><span class="tw__r">Interfejs i&nbsp;treść</span></div>
+  </div>
+</section>
+
+<!-- DEMONSTRATOR -->
+<section class="demo"><div class="wide">
+  <div class="demo__head">
+    <div>
+      <span class="lbl">Mechanizm</span>
+      <h2 data-lines>Wybór lokalu</h2>
+    </div>
+  </div>
+
+  <div class="dm rv" id="dm">
+    <div class="dm__steps" role="tablist" aria-label="Kroki wyboru lokalu">
+      <button class="dm__step is-on" data-goto="1" role="tab" aria-selected="true">Plan osiedla</button>
+      <button class="dm__step" data-goto="2" role="tab" aria-selected="false">Lista lokali</button>
+      <button class="dm__step" data-goto="3" role="tab" aria-selected="false" disabled>Karta lokalu</button>
+      <button class="dm__reset" id="dmReset" type="button">Od początku</button>
+    </div>
+
+    <div class="dm__body" id="dmBody">
+      <div class="dm__view is-on" data-view="1">
+        <div class="dm__plan" id="dmPlan">
+          <img src="../assets/case-klimaty/demo/plan.jpg" alt="Widok z lotu ptaka na sześć budynków osiedla Klimaty Wola" />
+          <div class="dm__planveil"></div>
+          <button class="dm__spot" style="top:41%;left:31%" data-b="d1"><i>D1</i></button>
+          <button class="dm__spot" style="top:40%;left:45%" data-b="d2"><i>D2</i></button>
+          <button class="dm__spot" style="top:50%;left:38%" data-b="d3"><i>D3</i></button>
+          <button class="dm__spot" style="top:60%;left:55%" data-b="d4"><i>D4</i></button>
+          <button class="dm__spot" style="top:47%;left:61%" data-b="d5"><i>D5</i></button>
+          <button class="dm__spot" style="top:54%;left:79%" data-b="d6"><i>D6</i></button>
+          <div class="dm__tip" id="dmTip" aria-hidden="true"></div>
+        </div>
+        <p class="dm__note">Kliknij budynek. Rozmieszczenie poglądowe.</p>
+      </div>
+
+      <div class="dm__view" data-view="2">
+        <div class="dm__filters" id="dmFilters"></div>
+        <div class="dm__tablewrap"><table class="dm__table"><thead><tr>
+          <th>Lokal</th><th>Typ</th><th>Pow. netto</th><th>Pow. użytkowa</th><th>Przestrzeń zewnętrzna</th><th>Część podziemna</th><th>Status</th><th></th>
+        </tr></thead><tbody id="dmRows"></tbody></table></div>
+        <p class="dm__note">Kliknij wiersz.</p>
+      </div>
+
+      <div class="dm__view" data-view="3"><div id="dmUnit"></div></div>
+    </div>
+  </div>
+
+  <p class="dm__foot">Rzut i&nbsp;zestawienie pomieszczeń z&nbsp;karty D4A, wzorca dla pozostałych lokali.</p>
+</div></section>
+
+<!-- TELEFONY -->
+<section class="mob"><div class="wide">
+  <div class="phones">
+    <div class="phone fade" data-float="34"><img loading="lazy" src="../assets/case-klimaty/apartamenty-m.jpg" alt="Widok mobilny listy apartamentów" /></div>
+    <div class="phone fade fade--d1" data-float="-22"><img loading="lazy" src="../assets/case-klimaty/index-m.jpg" alt="Widok mobilny strony głównej" /></div>
+    <div class="phone fade fade--d2" data-float="34"><img loading="lazy" src="../assets/case-klimaty/apartament-d4a-m.jpg" alt="Widok mobilny karty apartamentu D4A" /></div>
+  </div>
+</div></section>
+
+<!-- GALERIA: zrzuty w całości -->
+<section class="gal">
+  <div class="gal__grid">
+    <div class="gal__i gal__i--wide rv"><img loading="lazy" src="../assets/case-klimaty/apartamenty-top.jpg" alt="Podstrona Apartamenty" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-klimaty/menu.jpg" alt="Pełnoekranowe menu" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-klimaty/galeria-top.jpg" alt="Podstrona Galeria" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-klimaty/deweloper-top.jpg" alt="Podstrona Deweloper" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-klimaty/kontakt-top.jpg" alt="Podstrona Kontakt" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-klimaty/standard-top.jpg" alt="Podstrona Standard wykończenia" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-klimaty/apartament-d4a-top.jpg" alt="Karta apartamentu D4A" /></div>
+  </div>
+</section>
+
+<!-- PREV / NEXT -->
+<section class="csec"><div class="container">
+  <div class="cnav">
+    <a href="tct-tools.html" class="cnav__link rv">
+      <span class="cnav__ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></span>
+      <span><span class="cnav__label">Poprzedni</span><span class="cnav__title" style="display:block">TCT Tools</span></span>
+    </a>
+    <a href="wild-campers.html" class="cnav__link cnav__link--next rv rv--d1">
+      <span><span class="cnav__label">Następny</span><span class="cnav__title" style="display:block">Wild Campers</span></span>
+      <span class="cnav__ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+    </a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband">
+  <h2 class="ctaband__title" data-lines>Lubisz to, co&nbsp;widzisz?</h2>
+  <div class="ctaband__btns"><a href="../kontakt.html" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div>
+</div></div></section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="../index.html" class="footer__logo" aria-label="Code&amp;Pixel">
+          <img src="../assets/nowy/logo-icon.svg" alt="" style="width:56px;height:34px" />
+          <img src="../assets/nowy/logo-word.svg" alt="Code&amp;Pixel" style="width:155px;height:22px" />
+        </a>
+        <p>Interactive agency. Łączymy technologię, projektowanie i&nbsp;marketing, aby dostarczać rozwiązania, które realnie wspierają biznes.</p>
+      </div>
+      <div>
+        <h5>Oferta</h5>
+        <ul>
+          <li><a href="../strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="../sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="../crm-systemy.html">CRM dla firm</a></li>
+          <li><a href="../aplikacje-webowe.html">Aplikacje</a></li>
+          <li><a href="../google-ads.html">Google Ads</a></li>
+          <li><a href="../allegro-ads.html">Allegro Ads</a></li>
+          <li><a href="../opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>O nas</h5>
+        <ul>
+          <li><a href="../o-nas.html">O firmie</a></li>
+          <li><a href="../realizacje.html">Realizacje</a></li>
+          <li><a href="../wiedza.html">Wiedza / Blog</a></li>
+          <li><a href="../kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h5>Kontakt</h5>
+        <p>Code&amp;Pixel Sp. z&nbsp;o.o.</p>
+        <p>ul. Przykładowa 1<br />32-800 Brzesko</p>
+        <p>+48 000 000 000</p>
+        <p>kontakt@codeandpixel.pl</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2010–2024 Code&amp;Pixel. Wszelkie prawa zastrzeżone.</span>
+      <span>Nadajemy cyfrowy kierunek Twojemu biznesowi.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v,a,b){ return v < a ? a : (v > b ? b : v); };
+
+  /* ================= 1. ŁAMANIE NAGŁÓWKÓW NA LINIE ================= */
+  var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+  function splitLines(el){
+    var src = el.getAttribute('data-text');
+    if (src === null){ src = el.textContent; el.setAttribute('data-text', src); }
+    /* dzielimy tylko na zwykłych spacjach — twarde spacje zostają w słowie */
+    var words = src.split(' ').filter(function(w){ return w.length; });
+    el.innerHTML = words.map(function(w){ return '<span class="w">' + esc(w) + '</span>'; }).join(' ');
+    var spans = el.querySelectorAll('.w'), lines = [], cur = null, top = null, i;
+    for (i = 0; i < spans.length; i++){
+      var t = spans[i].offsetTop;
+      if (top === null || Math.abs(t - top) > 3){ top = t; cur = []; lines.push(cur); }
+      cur.push(spans[i].textContent);
+    }
+    el.innerHTML = lines.map(function(l, idx){
+      return '<span class="ln"><span class="ln__i" style="transition-delay:' +
+             (idx * 0.075).toFixed(3) + 's">' + esc(l.join(' ')) + '</span></span>';
+    }).join('');
+    el.classList.add('is-split');
+  }
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('[data-lines]'));
+  if (!reduce) heads.forEach(splitLines);
+
+  var rsT;
+  window.addEventListener('resize', function(){
+    clearTimeout(rsT);
+    rsT = setTimeout(function(){
+      if (!reduce) heads.forEach(function(el){
+        var wasIn = el.classList.contains('in');
+        splitLines(el);
+        if (wasIn) el.classList.add('in');
+      });
+      measure();
+    }, 220);
+  });
+
+  /* ================= 2. WEJŚCIE ELEMENTÓW ================= */
+  var targets = document.querySelectorAll('.rv, .fade, .swx, .clipin, .lbl, [data-lines]');
+  if (reduce || !('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(targets, function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        /* pasy palety wstają jeden po drugim */
+        if (el.classList.contains('swx')){
+          var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+          el.style.transitionDelay = (i * 0.08) + 's';
+          setTimeout(function(){ el.style.transitionDelay = '0s'; }, 1400);
+        }
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    Array.prototype.forEach.call(targets, function(el){ io.observe(el); });
+  }
+
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      document.body.classList.add('ready');
+      var h = document.querySelector('[data-hero]');
+      if (h) h.classList.add('in');
+    });
+  });
+
+  /* ================= 3. DEMONSTRATOR: PLAN → LISTA → KARTA =================
+     Dane pochodzą 1:1 z tabeli lokali i karty mieszkania D4A z projektu
+     Apartamenty Klimaty Wola. Nic nie jest tu dopisane „na oko”. */
+  var BUILDINGS = {
+    d1: { name: 'Budynek D1', type: 'Rezydencja jednolokalowa', netto: '310,64 m²',      podz: '387,7 m²' },
+    d2: { name: 'Budynek D2', type: '2 apartamenty',            netto: '155,33–155,56 m²', podz: '170,4 m²' },
+    d3: { name: 'Budynek D3', type: '2 apartamenty',            netto: '155,33–155,56 m²', podz: '170,4 m²' },
+    d4: { name: 'Budynek D4', type: '2 apartamenty',            netto: '155,33–155,56 m²', podz: '224,4 m²' },
+    d5: { name: 'Budynek D5', type: '2 apartamenty',            netto: '155,33–155,56 m²', podz: '187,7 m²' },
+    d6: { name: 'Budynek D6', type: 'Rezydencja jednolokalowa', netto: '311,60 m²',      podz: '348,5 m²' }
+  };
+
+  var UNITS = [
+    { id:'D1',  b:'d1', typ:'rezydencja', netto:'310,64 m²', uzyt:'275,21 m²',  zewn:'do potwierdzenia', podz:'387,7 m²', poziom:'cały budynek' },
+    { id:'D2A', b:'d2', typ:'apartament', netto:'155,56 m²', uzyt:'126,36 m²*', zewn:'ogród',            podz:'170,4 m²', poziom:'parter' },
+    { id:'D2B', b:'d2', typ:'apartament', netto:'155,33 m²', uzyt:'131,64 m²*', zewn:'taras dachowy',    podz:'170,4 m²', poziom:'piętro' },
+    { id:'D3A', b:'d3', typ:'apartament', netto:'155,56 m²', uzyt:'126,36 m²*', zewn:'ogród',            podz:'170,4 m²', poziom:'parter' },
+    { id:'D3B', b:'d3', typ:'apartament', netto:'155,33 m²', uzyt:'131,64 m²*', zewn:'taras dachowy',    podz:'170,4 m²', poziom:'piętro' },
+    { id:'D4A', b:'d4', typ:'apartament', netto:'155,56 m²', uzyt:'126,36 m²*', zewn:'ogród',            podz:'224,4 m²', poziom:'parter' },
+    { id:'D4B', b:'d4', typ:'apartament', netto:'155,33 m²', uzyt:'131,64 m²*', zewn:'taras dachowy',    podz:'224,4 m²', poziom:'piętro' },
+    { id:'D5A', b:'d5', typ:'apartament', netto:'155,56 m²', uzyt:'126,36 m²*', zewn:'ogród',            podz:'187,7 m²', poziom:'parter' },
+    { id:'D5B', b:'d5', typ:'apartament', netto:'155,33 m²', uzyt:'131,64 m²*', zewn:'taras dachowy',    podz:'187,7 m²', poziom:'piętro' },
+    { id:'D6',  b:'d6', typ:'rezydencja', netto:'311,60 m²', uzyt:'278,80 m²',  zewn:'do potwierdzenia', podz:'348,5 m²', poziom:'cały budynek' }
+  ];
+
+  /* zestawienie pomieszczeń: karta mieszkania D4A */
+  var D4A_ROOMS = [
+    ['cat','Pomieszczenia','127,75 m²*'],
+    ['','Salon z jadalnią','45,12 m²'], ['','Kuchnia','11,31 m²'],
+    ['','Sypialnia 1','12,64 m²'], ['','Sypialnia 2','15,01 m²'], ['','Sypialnia 3','16,99 m²'],
+    ['','Łazienka 1','4,42 m²'], ['','Łazienka 2','3,68 m²'], ['','Łazienka 3','3,68 m²'],
+    ['','Hol wejściowy','7,59 m²'], ['','Hol przejściowy','2,14 m²'],
+    ['','Garderoba','2,55 m²'], ['','WC','2,62 m²'],
+    ['cat','Przynależności',''],
+    ['','Ogródek','552,63 m²'], ['','Klatka schodowa wspólna','7,72 m²'],
+    ['','Przedsionek','4,45 m²'], ['','Ścianki możliwe do demontażu','3,02 m²']
+  ];
+
+  var GAL = ['../assets/case-klimaty/demo/u1.jpg','../assets/case-klimaty/demo/u2.jpg','../assets/case-klimaty/demo/u3.jpg'];
+
+  var dm = document.getElementById('dm');
+  if (dm){
+    var dmBody   = document.getElementById('dmBody');
+    var dmViews  = Array.prototype.slice.call(dm.querySelectorAll('.dm__view'));
+    var dmSteps  = Array.prototype.slice.call(dm.querySelectorAll('.dm__step'));
+    var dmFilters= document.getElementById('dmFilters');
+    var dmRows   = document.getElementById('dmRows');
+    var dmUnit   = document.getElementById('dmUnit');
+    var dmTip    = document.getElementById('dmTip');
+    var dmPlan   = document.getElementById('dmPlan');
+    var filterB  = 'all';   /* aktywny budynek na liście */
+    var openUnit = null;    /* lokal otwarty w kroku 3 */
+
+    var e = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+    fitDemo = fitHeight;
+    function fitHeight(){
+      var on = dm.querySelector('.dm__view.is-on');
+      if (on) dmBody.style.height = on.offsetHeight + 'px';
+    }
+
+    function show(step){
+      dmViews.forEach(function(v){ v.classList.toggle('is-on', v.getAttribute('data-view') === String(step)); });
+      dmSteps.forEach(function(b){
+        var on = b.getAttribute('data-goto') === String(step);
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      dmSteps[2].disabled = !openUnit;
+      fitHeight();
+      /* po zmianie kroku pokaż górę widżetu, jeśli wyjechał poza ekran */
+      var r = dm.getBoundingClientRect();
+      if (r.top < 0) window.scrollTo({ top: window.pageYOffset + r.top - 90, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    /* --- krok 2: filtry i wiersze --- */
+    function renderFilters(){
+      var html = '<button class="dm__chip' + (filterB === 'all' ? ' is-on' : '') + '" data-f="all">Wszystkie · 10</button>';
+      Object.keys(BUILDINGS).forEach(function(k){
+        var n = UNITS.filter(function(u){ return u.b === k; }).length;
+        html += '<button class="dm__chip' + (filterB === k ? ' is-on' : '') + '" data-f="' + k + '">' +
+                e(BUILDINGS[k].name) + ' · ' + n + '</button>';
+      });
+      dmFilters.innerHTML = html;
+    }
+
+    function renderRows(){
+      var list = UNITS.filter(function(u){ return filterB === 'all' || u.b === filterB; });
+      if (!list.length){ dmRows.innerHTML = '<tr><td colspan="8" class="dm__empty">Brak lokali w tym filtrze.</td></tr>'; return; }
+      dmRows.innerHTML = list.map(function(u){
+        return '<tr data-u="' + u.id + '" tabindex="0">' +
+          '<td><span class="dm__sym">' + e(u.id) + '</span></td>' +
+          '<td><span class="dm__typ">' + e(u.typ) + '</span></td>' +
+          '<td>' + e(u.netto) + '</td>' +
+          '<td>' + e(u.uzyt) + '</td>' +
+          '<td class="dm__muted">' + e(u.zewn) + '</td>' +
+          '<td>' + e(u.podz) + '</td>' +
+          '<td><span class="dm__st">w przygotowaniu</span></td>' +
+          '<td><span class="dm__go">→</span></td></tr>';
+      }).join('');
+    }
+
+    /* --- krok 3: karta lokalu --- */
+    function renderUnit(u){
+      var bld = BUILDINGS[u.b];
+      var isTemplate = (u.id === 'D4A');
+      var title = u.typ === 'rezydencja'
+        ? 'Rezydencja ' + u.id + '.<br />Cały budynek<br />i ' + u.netto + ' przestrzeni.'
+        : 'Apartament ' + u.id + '.<br />' + (u.zewn === 'ogród' ? 'Prywatny ogród' : 'Taras dachowy') + '<br />i ' + u.netto + ' przestrzeni.';
+
+      var html =
+        '<button class="dm__back" type="button" id="dmBack">← Wróć do listy lokali</button>' +
+        '<div class="dm__uhead"><div>' +
+          '<p class="dm__uover">Apartamenty · ' + e(bld.name) + ' · ' + e(u.poziom) + '</p>' +
+          '<p class="dm__uh">' + title + '</p>' +
+        '</div><span class="dm__chipst">w przygotowaniu</span></div>' +
+        '<div class="dm__ubody">' +
+          '<div class="dm__gal">' +
+            '<img class="dm__galmain" id="dmGalMain" src="' + GAL[0] + '" alt="Wizualizacja budynku ' + e(bld.name) + '" />' +
+            '<div class="dm__thumbs" id="dmThumbs">' +
+              GAL.map(function(g, i){
+                return '<button type="button" class="' + (i === 0 ? 'on' : '') + '" data-g="' + g + '" aria-label="Zdjęcie ' + (i+1) + '"><img src="' + g + '" alt="" /></button>';
+              }).join('') +
+            '</div>' +
+            (isTemplate
+              ? '<div class="dm__plan2"><img src="../assets/case-klimaty/demo/d4a-rzut.svg" alt="Rzut apartamentu D4A: parter budynku D4 z podziałem na pomieszczenia" /></div>' +
+                '<p class="dm__cap">Rzut 2D · parter budynku D4 · wymiary w stanie surowym</p>'
+              : '') +
+          '</div>' +
+          '<div>' +
+            '<dl class="dm__facts">' +
+              '<div><dt>Powierzchnia netto</dt><dd>' + e(u.netto) + '</dd></div>' +
+              '<div><dt>Powierzchnia użytkowa</dt><dd>' + e(u.uzyt) + '</dd></div>' +
+              '<div><dt>Przestrzeń zewnętrzna</dt><dd>' + e(u.zewn) + '</dd></div>' +
+              '<div><dt>Część podziemna</dt><dd>' + e(u.podz) + '</dd></div>' +
+            '</dl>' +
+            (isTemplate
+              ? '<p class="dm__desc">Apartament zaprojektowany dla osób, które oczekują przestrzeni domu jednorodzinnego i wygody nowoczesnej rezydencji. Rozległa strefa dzienna otwiera się na zieleń, a część prywatna pozwala swobodnie wydzielić sypialnię główną, pokoje domowników, gabinet i zaplecze gospodarcze.</p>' +
+                '<table class="dm__rooms">' + D4A_ROOMS.map(function(r){
+                  return '<tr' + (r[0] === 'cat' ? ' class="cat"' : '') + '><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>';
+                }).join('') + '</table>' +
+                '<p class="dm__cap" style="margin-top:14px">*Powierzchnia liczona wg normy PN-ISO 9836:2022-07. Dane z karty mieszkania D4A.</p>'
+              : '<p class="dm__tmpl">Rzut i zestawienie pomieszczeń zbudowaliśmy na karcie D4A, która jest wzorcem dla wszystkich dziesięciu lokali. Pozostałe karty wypełnia ten sam szablon, gdy klient dostarczy komplet rzutów. Wybierz <b>D4A</b>, żeby zobaczyć kartę w całości.</p>') +
+          '</div>' +
+        '</div>';
+
+      dmUnit.innerHTML = html;
+      document.getElementById('dmBack').addEventListener('click', function(){ show(2); });
+      var thumbs = document.getElementById('dmThumbs'), main = document.getElementById('dmGalMain');
+      thumbs.addEventListener('click', function(ev){
+        var b = ev.target.closest('button'); if (!b) return;
+        main.src = b.getAttribute('data-g');
+        Array.prototype.forEach.call(thumbs.children, function(c){ c.classList.toggle('on', c === b); });
+      });
+    }
+
+    function goUnit(id){
+      openUnit = UNITS.filter(function(u){ return u.id === id; })[0];
+      if (!openUnit) return;
+      renderUnit(openUnit);
+      show(3);
+    }
+
+    /* --- zdarzenia --- */
+    dmPlan.addEventListener('click', function(ev){
+      var s = ev.target.closest('.dm__spot'); if (!s) return;
+      filterB = s.getAttribute('data-b');
+      renderFilters(); renderRows(); show(2);
+    });
+    dmPlan.addEventListener('mouseover', function(ev){
+      var s = ev.target.closest('.dm__spot'); if (!s) return;
+      var b = BUILDINGS[s.getAttribute('data-b')];
+      dmTip.innerHTML = '<b>' + e(b.name) + '</b><span>' + e(b.type) + '</span><span>Pow. netto ' + e(b.netto) + '</span><u>Zobacz lokale →</u>';
+      dmTip.style.left = s.style.left;
+      dmTip.style.top  = s.style.top;
+      dmTip.style.transform = 'translate(-50%,calc(-100% - 26px))';
+      dmTip.classList.add('on');
+    });
+    dmPlan.addEventListener('mouseout', function(ev){
+      if (ev.target.closest('.dm__spot')) dmTip.classList.remove('on');
+    });
+
+    dmFilters.addEventListener('click', function(ev){
+      var c = ev.target.closest('.dm__chip'); if (!c) return;
+      filterB = c.getAttribute('data-f');
+      renderFilters(); renderRows(); fitHeight();
+    });
+
+    dmRows.addEventListener('click', function(ev){
+      var tr = ev.target.closest('tr[data-u]'); if (tr) goUnit(tr.getAttribute('data-u'));
+    });
+    dmRows.addEventListener('keydown', function(ev){
+      if (ev.key !== 'Enter' && ev.key !== ' ') return;
+      var tr = ev.target.closest('tr[data-u]'); if (tr){ ev.preventDefault(); goUnit(tr.getAttribute('data-u')); }
+    });
+
+    dmSteps.forEach(function(b){
+      b.addEventListener('click', function(){
+        var step = parseInt(b.getAttribute('data-goto'), 10);
+        if (step === 3 && !openUnit) return;
+        show(step);
+      });
+    });
+    document.getElementById('dmReset').addEventListener('click', function(){
+      filterB = 'all'; openUnit = null;
+      renderFilters(); renderRows(); show(1);
+    });
+
+    renderFilters(); renderRows();
+    window.addEventListener('resize', fitHeight);
+    window.addEventListener('load', fitHeight);
+    fitHeight();
+    setTimeout(fitHeight, 400);
+  }
+
+  /* ================= 4. JEDNA PĘTLA DLA EFEKTÓW ZWIĄZANYCH ZE SCROLLEM ================= */
+  var fitDemo  = null;
+  var progBar  = document.getElementById('progBar');
+  var heroFrame= document.querySelector('[data-parallax]');
+  var marq     = document.getElementById('marq');
+  var rows     = marq ? Array.prototype.slice.call(marq.querySelectorAll('[data-marq]')) : [];
+  var floats   = Array.prototype.slice.call(document.querySelectorAll('[data-float]'));
+  var stage    = document.getElementById('kwstage');
+  var stageLate= stage ? stage.querySelector('.kwstage__late') : null;
+  var kwvideo  = document.getElementById('kwvideo');
+
+  /* wideo z projektu: przy oszczędzaniu ruchu albo braku autoodtwarzania zostaje plakat */
+  if (stage && kwvideo){
+    if (reduce){
+      stage.classList.add('no-video');
+      kwvideo.removeAttribute('autoplay');
+      try { kwvideo.pause(); } catch(err){}
+    } else {
+      var play = kwvideo.play();
+      if (play && play.catch) play.catch(function(){ stage.classList.add('no-video'); });
+      kwvideo.addEventListener('error', function(){ stage.classList.add('no-video'); });
+    }
+  }
+
+  var rowW = [], docH = 1;
+
+  function measure(){
+    if (stage && stageLate) stage.style.setProperty('--lateH', stageLate.offsetHeight + 'px');
+    rows.forEach(function(r, i){
+      /* każdy pas zawiera jeden komplet kafli — powielamy go raz, żeby pętla była bezszwowa */
+      if (!r.dataset.doubled){ r.innerHTML += r.innerHTML; r.dataset.doubled = '1'; }
+      rowW[i] = r.scrollWidth / 2;
+    });
+    docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    if (typeof fitDemo === 'function') fitDemo();
+  }
+
+  if (!reduce){
+    var x = [0, 0], lastY = window.pageYOffset, vel = 0, prevT = 0;
+
+    var loop = function(t){
+      requestAnimationFrame(loop);
+      if (document.hidden){ prevT = t; return; }
+      var dt = prevT ? Math.min(50, t - prevT) : 16;
+      prevT = t;
+
+      var y = window.pageYOffset;
+      var raw = (y - lastY) / dt;
+      lastY = y;
+      vel += (raw - vel) * 0.12;
+      vel = clamp(vel, -3, 3);
+
+      if (progBar) progBar.style.transform = 'scaleX(' + (y / docH).toFixed(4) + ')';
+
+      /* pasy zrzutów: stały dryf plus reakcja na prędkość przewijania */
+      for (var i = 0; i < rows.length; i++){
+        var dir = parseFloat(rows[i].getAttribute('data-marq'));
+        var speed = (0.042 + Math.abs(vel) * 0.16) * dir + vel * 0.55 * dir;
+        x[i] -= speed * dt;
+        var w = rowW[i] || 1;
+        if (x[i] <= -w) x[i] += w;
+        if (x[i] > 0) x[i] -= w;
+        rows[i].style.transform = 'translate3d(' + x[i].toFixed(2) + 'px,0,0)';
+      }
+
+      var vh = window.innerHeight;
+
+      /* replika hero: dryf plus sekwencja z oryginału */
+      if (heroFrame){
+        var hr = heroFrame.getBoundingClientRect();
+        var hp = clamp((hr.top + hr.height) / (vh + hr.height), 0, 1);
+        heroFrame.style.transform = 'translate3d(0,' + ((hp - 0.5) * 26).toFixed(1) + 'px,0)';
+        var seq = clamp((vh * 0.34 - hr.top) / (vh * 0.56), 0, 1);
+        heroFrame.style.setProperty('--reveal', seq.toFixed(3));
+        heroFrame.style.setProperty('--zoom', seq.toFixed(3));
+      }
+
+      /* elementy unoszące się względem sekcji — tylko zmienna --fy,
+         żeby nie nadpisać obrotu kafli pokazywanych pod kątem */
+      for (var f = 0; f < floats.length; f++){
+        var el = floats[f], fr = el.getBoundingClientRect();
+        var fp = clamp((fr.top + fr.height) / (vh + fr.height), 0, 1);
+        el.style.setProperty('--fy', ((fp - 0.5) * parseFloat(el.getAttribute('data-float'))).toFixed(1) + 'px');
+      }
+    };
+
+    if (document.readyState === 'complete') measure();
+    window.addEventListener('load', measure);
+    window.addEventListener('resize', measure);
+    measure();
+    requestAnimationFrame(loop);
+  } else {
+    if (progBar) progBar.style.transform = 'scaleX(1)';
+    if (stage){ stage.style.setProperty('--reveal', '1'); stage.style.setProperty('--zoom', '0'); }
+    measure();
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<!--
+  WILD CAMPERS — case study (Code&Pixel)
+  Złożone z ~/.claude/data/case-study/szablon.html skillem /case-study.
+  Źródło materiału: 01 - CodeandPixel/02 - WIld campers/02 - Strona internetowa/03 - Design
+  Zrzuty: zrzuty.py --ukryj ".wf-bar" (pasek podglądu podstron to narzędzie wewnętrzne)
+
+  Moduł repliki hero pominięty: hero projektu to statyczne zdjęcie, nie wideo,
+  więc żywa replika nie dałaby nic ponad zrzut. Zamiast niej pełnoekranowe otwarcie.
+  Dane demonstratora (FLOTA, DODATKI, formuła wyceny) przepisane 1:1 z app.js.
+-->
+
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wild Campers — case study | Code&Pixel</title>
+<meta name="description" content="Wynajem kamperów: znak i prezentacja marki oraz strona na 17 podstron, od wyszukiwarki dostępności po panel obsługi floty. Projekt Code&Pixel." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- spalla (Adobe Fonts) — krój nagłówkowy projektu Wild Campers (poster-gothic-round-cond-atf).
+     Fallback: Impact, tak jak na oryginalnej stronie. -->
+<!-- KRÓJ ADOBE — link do Web Projectu, jeśli projekt używa kroju z Adobe Fonts.
+     Działa na localhost i GitHub Pages z licencji Grzegorza; przy handoffie do klienta ustalić.
+     Ten sam Web Project co w projekcie klienta. Fallback: Impact. -->
+<link rel="stylesheet" href="https://use.typekit.net/ane1jru.css" />
+<style>
+  :root{
+    --accent-1:#2c5fd8;
+    --accent-2:#4d7cea;
+    --accent:#3b6ae8;
+    --accent-glow:rgba(77,124,234,0.35);
+    --ink-1:#0b1b3a;
+    --ink-3:#66738c;
+    --white:#ffffff;
+    --ff:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --container:1180px;
+    --ease-out:cubic-bezier(.22,.9,.24,1);
+    --gut:clamp(16px,3.4vw,54px);        /* margines boczny pełnoekranowych sekcji */
+    --sec:clamp(90px,14vh,190px);        /* odstęp pionowy między sekcjami */
+    /* paleta projektu Wild Campers (z design.css) */
+    --kw-green:#213627;
+    --kw-green-deep:#101d14;
+    --kw-sage:#5f6d62;
+    --kw-ivory:#fbf9f5;
+    --kw-stone:#cec5b3;
+    --kw-brass:#d28923;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--ff);color:var(--ink-1);background:#fff;line-height:1.5;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  ul{list-style:none}
+  .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+  .wide{width:100%;padding:0 var(--gut)}       /* prawie pełna szerokość */
+  .full{width:100%}                             /* od krawędzi do krawędzi */
+
+  /* ============ PASEK POSTĘPU ============ */
+  .prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:90;pointer-events:none}
+  .prog__bar{height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-2) 60%,#8fb0ff)}
+
+  /* ============ WEJŚCIA ============ */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+  .rv.in{opacity:1;transform:none}
+  .rv--d1{transition-delay:.09s}
+  .rv--d2{transition-delay:.18s}
+  /* wariant bez transformu — dla elementów, które mają własny (obrót, pływanie) */
+  .fade{opacity:0;transition:opacity .95s var(--ease-out)}
+  .fade.in{opacity:1}
+  .fade--d1{transition-delay:.1s}
+  .fade--d2{transition-delay:.2s}
+  [data-lines].is-split .ln{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
+  [data-lines].is-split .ln__i{display:block;transform:translateY(116%);opacity:0;
+    transition:transform 1s var(--ease-out),opacity .75s ease}
+  [data-lines].is-split.in .ln__i{transform:none;opacity:1}
+  .lbl{display:inline-flex;align-items:center;gap:12px;opacity:0;transition:opacity .6s ease;
+    font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:.34em;text-transform:uppercase}
+  .lbl.in{opacity:1}
+  .lbl::before{content:"";width:0;height:1px;background:currentColor;transition:width .9s .08s var(--ease-out)}
+  .lbl.in::before{width:30px}
+  .clipin{clip-path:inset(7% 9% 7% 9% round var(--r,14px));transition:clip-path 1.25s var(--ease-out)}
+  .clipin.in{clip-path:inset(0% 0% 0% 0% round var(--r,14px))}
+
+  /* ============ HEADER + HERO ============ */
+  .top{position:relative;isolation:isolate;overflow:hidden;background:
+    radial-gradient(62% 60% at 20% 8%, rgba(77,124,234,0.42) 0%, transparent 60%),
+    radial-gradient(52% 55% at 85% 94%, rgba(67,115,229,0.22) 0%, transparent 60%),
+    linear-gradient(180deg, #0c2b66 0%, #08214f 52%, #061a45 100%)}
+  .top::before{content:"";position:absolute;top:-22%;left:8%;width:52vw;height:52vw;max-width:820px;max-height:820px;
+    border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,rgba(88,138,255,0.30) 0%,rgba(88,138,255,0) 68%);
+    filter:blur(14px);animation:drift 26s ease-in-out infinite alternate}
+  .top::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:var(--grain);opacity:.16;mix-blend-mode:overlay}
+  @keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(9vw,4vw,0) scale(1.12)}100%{transform:translate3d(-4vw,7vw,0) scale(1.04)}}
+
+  .header{position:relative;z-index:10;padding:16.5px 0}
+  .header__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:15px}
+  .logo__icon{width:66px;height:40.5px;flex:none}
+  .logo__lockup{position:relative;width:180.6px;height:43.3px;flex:none}
+  .logo__word{position:absolute;top:0;left:0;width:180.6px;height:25.64px}
+  .logo__tag{position:absolute;top:29.55px;left:49.8px;width:130.79px;height:13.72px}
+  .nav{display:flex;gap:30px;align-items:center}
+  .nav a{font-weight:600;font-size:15px;letter-spacing:0.6px;text-transform:uppercase;color:var(--white);transition:opacity .2s}
+  .nav > a:hover{opacity:.75}
+  .nav__item{position:relative}
+  .nav__toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+  .nav__toggle:hover{opacity:.75}
+  .nav__toggle svg{width:12px;height:12px;transition:transform .2s ease}
+  .nav__item:hover .nav__toggle svg,.nav__item:focus-within .nav__toggle svg{transform:rotate(180deg)}
+  .nav__item::after{content:"";position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+  .nav__drop{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+    min-width:248px;background:#fff;border:1px solid rgba(7,30,81,0.06);border-radius:16px;
+    box-shadow:0 24px 54px rgba(7,30,81,0.18);padding:8px;
+    opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30}
+  .nav__item:hover .nav__drop,.nav__item:focus-within .nav__drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav__drop a{display:block;padding:11px 15px;border-radius:10px;
+    font-family:'Inter',var(--ff);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;
+    color:#071e51;white-space:nowrap;transition:background .15s ease,color .15s ease}
+  .nav__drop a:hover{background:#f2f5fb;color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    font-family:var(--ff);font-weight:700;text-transform:uppercase;white-space:nowrap;border:none}
+  .btn--grad{color:var(--white);background:linear-gradient(168deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow:0 10px 17px var(--accent-glow)}
+  .header__cta{border-radius:999px;padding:17px 32.5px;font-size:13px;letter-spacing:0.77px;
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+  .btn--grad:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+
+  /* hero: tytuł, jedno zdanie, minimalna metryczka */
+  .hero{position:relative;z-index:1;padding:clamp(48px,9vh,110px) 0 clamp(70px,11vh,130px)}
+  .hero__title{max-width:1000px;font-size:clamp(42px,6.4vw,96px);font-weight:800;line-height:1.02;
+    letter-spacing:-0.042em;color:#fff}
+  .hero__lead{margin-top:26px;max-width:560px;font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:rgba(255,255,255,.6)}
+  .meta{display:flex;flex-wrap:wrap;gap:0 clamp(28px,4vw,64px);margin-top:clamp(40px,6vh,72px);
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+  .meta div{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+  body.ready .meta div{opacity:1;transform:none}
+  body.ready .meta div:nth-child(1){transition-delay:.55s}
+  body.ready .meta div:nth-child(2){transition-delay:.62s}
+  body.ready .meta div:nth-child(3){transition-delay:.69s}
+  body.ready .meta div:nth-child(4){transition-delay:.76s}
+  .meta dt{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(255,255,255,.4)}
+  .meta dd{margin-top:7px;font-family:'Inter',var(--ff);font-size:14.5px;font-weight:500;color:#fff}
+  .hero__title,.hero__lead{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+  body.ready .hero__title{opacity:1;transform:none;transition-delay:.1s}
+  body.ready .hero__lead{opacity:1;transform:none;transition-delay:.42s}
+  body.ready .hero__title[data-lines].is-split{opacity:1;transform:none}
+
+  /* ============ REPLIKA HERO Z PREZENTACJI LOGO ============ */
+  /* Prawdziwe hero.mp4 z brand boardu, nie zrzut. */
+  .stage{position:relative;z-index:2;margin-top:calc(-1 * clamp(30px,5vh,70px));
+    height:min(78vh,760px);overflow:hidden;background:#101d14;--r:0px}
+  .stage video,.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .stage img{display:none}
+  .stage.no-video video{display:none}
+  .stage.no-video img{display:block}
+  .stage__veil{position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to bottom,rgba(16,29,20,.28),rgba(16,29,20,0) 38%,rgba(16,29,20,.42))}
+  .stage__scroll{position:absolute;left:50%;bottom:clamp(22px,4vh,52px);transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:12px;color:#fff;
+    font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+  .stage__scroll i{width:1px;height:clamp(28px,5vh,54px);background:rgba(255,255,255,.55);
+    transform-origin:50% 0;animation:pulls 2.4s ease-in-out infinite}
+  @keyframes pulls{0%,100%{transform:scaleY(.35);opacity:.4}50%{transform:scaleY(1);opacity:1}}
+  .stage__live{position:absolute;z-index:4;left:var(--gut);bottom:clamp(18px,3vh,40px);
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(16,29,20,.5);border:1px solid rgba(255,255,255,.22);border-radius:99px;
+    padding:7px 14px 7px 11px;backdrop-filter:blur(6px);
+    font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#fff}
+  .stage__live b{width:6px;height:6px;border-radius:50%;background:#8fd6a4;animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+
+  /* ============ ZNAKI: przesuwają się poziomo na przewijaniu ============ */
+  /* Mechanizm z brand boardu: tło topo stoi, jadą tylko karty ze znakiem. */
+  .marks{position:relative;height:240vh;background:#201b11}
+  .marks__sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+  .marks__topo{position:absolute;inset:0;z-index:0;background:#201b11 url("../assets/case-wild-campers/logo/topo.webp") center/cover no-repeat}
+  .marks__lbl{position:absolute;z-index:2;top:clamp(26px,5vh,58px);left:var(--gut);color:var(--kw-stone)}
+  .marks__track{position:relative;z-index:1;display:flex;align-items:center;height:100%;
+    gap:clamp(30px,4vw,90px);padding-left:var(--gut);will-change:transform}
+  .markc{flex:0 0 auto;height:clamp(240px,52vh,520px);aspect-ratio:468/454;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 30px 60px rgba(0,0,0,.4))}
+  .markc img{width:52%;height:auto}
+  .markc--paper{background:#fff}
+  .markc--carbon{background:#1e1e1e}
+  .markc--pine{background:#213627}
+  .markc--amber{background:#d28923}
+  .marks__pad{flex:0 0 auto;width:clamp(120px,20vw,420px)}
+  .marks__bar{position:absolute;z-index:2;left:var(--gut);right:var(--gut);bottom:clamp(26px,4vh,50px);
+    height:1px;background:rgba(255,255,255,.18)}
+  .marks__bar i{display:block;height:100%;background:var(--kw-brass);transform:scaleX(0);transform-origin:0 50%}
+
+
+  /* ============ PASY ZRZUTÓW: trzy rzędy po skosie ============ */
+  .marq{position:relative;overflow:hidden;margin:var(--sec) 0;
+    padding:clamp(30px,5vh,70px) 0}
+  .marq::before,.marq::after{content:"";position:absolute;top:0;bottom:0;width:min(14vw,170px);z-index:3;pointer-events:none}
+  .marq::before{left:0;background:linear-gradient(90deg,#fff 8%,rgba(255,255,255,0) 100%)}
+  .marq::after{right:0;background:linear-gradient(270deg,#fff 8%,rgba(255,255,255,0) 100%)}
+  /* obrót całej taśmy; rzędy są szersze niż ekran, żeby rogi nie świeciły pustką */
+  .marq__rot{transform:rotate(-7deg);transform-origin:50% 50%;width:128%;margin-left:-14%}
+  .marq__row{display:flex;gap:clamp(14px,1.5vw,26px);width:max-content;will-change:transform}
+  .marq__row + .marq__row{margin-top:clamp(14px,1.5vw,26px)}
+  .marq__item{flex:none;width:min(40vw,600px);border-radius:10px;overflow:hidden;
+    border:1px solid rgba(7,30,81,.07);background:#eef1f7;box-shadow:0 18px 40px rgba(7,30,81,.10)}
+  .marq__row--b .marq__item{opacity:.92}
+  /* zrzuty zawsze w całości: bez object-fit i bez wymuszonych proporcji */
+  .marq__item img{width:100%;height:auto}
+  /* zrzuty zawsze w całości: bez object-fit i bez wymuszonych proporcji */
+  .marq__item img{width:100%;height:auto}
+
+  /* ============ CIEMNE PASMO: PALETA I KROJE ============ */
+  /* tło o ton ciemniejsze niż Pine 900, żeby pas tego koloru nie zniknął w tle sekcji */
+  .dark{position:relative;isolation:isolate;background:#0a1310;color:#fff;
+    padding:var(--sec) 0 0;overflow:hidden}
+  .dark::before{content:"";position:absolute;top:-16%;right:-6%;width:44vw;height:44vw;max-width:660px;max-height:660px;border-radius:50%;
+    background:radial-gradient(circle,rgba(161,135,91,0.24) 0%,rgba(161,135,91,0) 66%);filter:blur(10px);z-index:-1;
+    animation:drift 30s ease-in-out infinite alternate}
+  .dark::after{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.2;mix-blend-mode:overlay;pointer-events:none;z-index:-1}
+  .dark .lbl{color:var(--kw-stone)}
+  .dark h2{margin-top:20px;font-family:'Inter',var(--ff);font-weight:500;
+    font-size:clamp(30px,4.4vw,64px);line-height:1.08;letter-spacing:-0.03em;color:var(--kw-ivory)}
+
+  .swall{display:flex;gap:2px;width:100%;height:clamp(320px,54vh,580px);margin-top:clamp(56px,9vh,120px)}
+  .swx{position:relative;flex:1 1 0;overflow:hidden;transform:scaleY(0);transform-origin:50% 100%;
+    transition:transform 1s var(--ease-out),flex-grow .7s var(--ease-out)}
+  .swx.in{transform:none}
+  .swall:hover .swx.in{flex-grow:.86}
+  .swall .swx.in:hover{flex-grow:2}
+  .swx__l{position:absolute;left:0;right:0;bottom:0;padding:24px 20px;display:block}
+  .swx__n{display:block;font-family:'Inter',var(--ff);font-weight:600;font-size:13px}
+  .swx__h{display:block;margin-top:5px;font-family:'Inter',var(--ff);font-size:11.5px;letter-spacing:.1em}
+  .swx--dark .swx__n{color:var(--kw-ivory)}
+  .swx--dark .swx__h{color:rgba(243,240,232,.6)}
+  .swx--light .swx__n{color:var(--kw-green)}
+  .swx--light .swx__h{color:rgba(38,58,46,.6)}
+
+  .twall{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
+  .tw{padding:clamp(30px,4.2vw,76px) clamp(20px,3vw,54px);background:rgba(243,240,232,.055);
+    display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(200px,28vh,330px)}
+  .tw__spec{font-size:clamp(50px,8.6vw,160px);line-height:.84;color:var(--kw-ivory);word-break:break-word}
+  .tw__spec--serif{font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-weight:400;letter-spacing:.01em}
+  .tw__spec--sans{font-family:'Manrope',var(--ff);font-weight:700;letter-spacing:-0.045em}
+  .tw__r{margin-top:24px;font-family:'Inter',var(--ff);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--kw-stone)}
+
+  /* ============ DEMONSTRATOR: FLOTA → POJAZD → WYCENA ============ */
+  /* Chrom widżetu w identyfikacji Code&Pixel, wnętrze w kolorach Wild Campers. */
+  .demo{padding:var(--sec) 0;background:#fff}
+  .demo__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    margin-bottom:clamp(34px,5vh,62px)}
+  .demo__head h2{margin-top:18px;font-family:'Inter',var(--ff);font-weight:500;
+    font-size:clamp(28px,3.6vw,52px);line-height:1.1;letter-spacing:-0.03em;color:#071e51}
+  .dm__steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  .dm__step{cursor:pointer;background:transparent;border:1px solid rgba(7,30,81,.14);border-radius:2px;
+    padding:11px 20px;font-family:'Inter',var(--ff);font-weight:500;font-size:12.5px;letter-spacing:.05em;
+    color:rgba(7,30,81,.5);transition:border-color .3s ease,color .3s ease,background .3s ease}
+  .dm__step:hover:not(:disabled){border-color:rgba(7,30,81,.4);color:#071e51}
+  .dm__step.is-on{border-color:#071e51;color:#071e51;background:rgba(7,30,81,.04)}
+  .dm__step:disabled{opacity:.34;cursor:default}
+  .dm__step:focus-visible{outline:1px solid var(--accent);outline-offset:2px}
+  .dm__reset{margin-left:auto;cursor:pointer;border:0;background:transparent;padding:11px 2px;
+    font-family:'Inter',var(--ff);font-size:12.5px;color:rgba(7,30,81,.4);transition:color .3s ease}
+  .dm__reset:hover{color:#071e51}
+  .dm__body{position:relative;background:var(--kw-ivory);border-radius:4px;overflow:hidden;
+    transition:height .5s var(--ease-out)}
+  .dm__view{position:absolute;top:0;left:0;width:100%;padding:clamp(18px,2.4vw,40px);
+    opacity:0;visibility:hidden;transform:translateY(14px);
+    transition:opacity .4s ease,transform .5s var(--ease-out),visibility .4s}
+  .dm__view.is-on{opacity:1;visibility:visible;transform:none;position:relative}
+  .dm__note{margin-top:14px;font-family:'Inter',var(--ff);font-size:12px;color:var(--kw-sage)}
+  .dm__foot{margin-top:16px;font-family:'Inter',var(--ff);font-size:12.5px;color:#071e51;opacity:.5}
+  .dm__back{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:0;background:transparent;padding:0;
+    font-family:'Inter',var(--ff);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--kw-brass)}
+  .dm__back:hover{text-decoration:underline}
+
+  /* filtry typu */
+  .dm__filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .dm__chip{cursor:pointer;border:1px solid rgba(33,54,39,.2);background:transparent;border-radius:2px;
+    padding:8px 15px;font-family:'Inter',var(--ff);font-size:11.5px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--kw-green);transition:background .25s ease,color .25s ease,border-color .25s ease}
+  .dm__chip:hover{border-color:var(--kw-green)}
+  .dm__chip.is-on{background:var(--kw-green);border-color:var(--kw-green);color:#fff}
+
+  /* krok 1 — flota */
+  .wcg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .wcc{display:block;cursor:pointer;text-align:left;border:1px solid rgba(33,54,39,.12);background:#fff;border-radius:6px;
+    overflow:hidden;padding:0;transition:transform .3s var(--ease-out),box-shadow .3s ease,border-color .3s ease}
+  .wcc:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(16,29,20,.13);border-color:rgba(33,54,39,.3)}
+  .wcc__img{display:block;aspect-ratio:16/10;overflow:hidden;background:#e9e4d8}
+  .wcc__img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease-out)}
+  .wcc:hover .wcc__img img{transform:scale(1.05)}
+  .wcc__b{display:block;padding:16px 18px 18px}
+  .wcc__t{display:inline-block;font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--kw-brass)}
+  .wcc__n{display:block;margin-top:8px;font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-weight:400;
+    font-size:26px;line-height:1;text-transform:uppercase;color:var(--kw-green)}
+  .wcc__m{margin-top:10px;display:flex;gap:14px;flex-wrap:wrap;
+    font-family:'Inter',var(--ff);font-size:12px;color:var(--kw-sage)}
+  .wcc__p{margin-top:14px;padding-top:12px;border-top:1px solid rgba(33,54,39,.1);
+    display:flex;align-items:baseline;justify-content:space-between}
+  .wcc__p b{display:inline-block;font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-weight:400;font-size:25px;color:var(--kw-green)}
+  .wcc__p span{font-family:'Inter',var(--ff);font-size:11.5px;color:var(--kw-sage)}
+  .wcc__nl{margin-left:8px;padding:3px 8px;border-radius:2px;background:var(--kw-green);color:#fff;
+    font-family:'Inter',var(--ff);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+
+  /* krok 2 — pojazd */
+  .wcv{margin-top:18px;display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:start}
+  .wcv__img{width:100%;height:auto;border-radius:6px}
+  .wcv__h{font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-weight:400;
+    font-size:clamp(30px,4vw,58px);line-height:.98;text-transform:uppercase;color:var(--kw-green)}
+  .wcv__par{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:2px;
+    background:rgba(33,54,39,.14);border-radius:4px;overflow:hidden}
+  .wcv__par div{background:var(--kw-ivory);padding:14px 16px}
+  .wcv__par dt{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--kw-sage)}
+  .wcv__par dd{margin-top:5px;font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-size:23px;color:var(--kw-green)}
+  .wcv__eq{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+  .wcv__eq span{border:1px solid rgba(33,54,39,.2);border-radius:2px;padding:7px 12px;
+    font-family:'Inter',var(--ff);font-size:12px;color:var(--kw-green)}
+  .wcbtn{margin-top:26px;cursor:pointer;border:0;border-radius:99px;padding:15px 28px;background:var(--kw-brass);color:#fff;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    transition:transform .25s var(--ease-out),filter .25s ease}
+  .wcbtn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+
+  /* krok 3 — wycena */
+  .wcx{margin-top:18px;display:grid;grid-template-columns:1fr .85fr;gap:34px;align-items:start}
+  .wcx__lab{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--kw-sage)}
+  .wcx__row{margin-bottom:26px}
+  .wcx__days{display:flex;align-items:baseline;gap:12px;margin-top:8px}
+  .wcx__days b{font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-weight:400;font-size:40px;color:var(--kw-green)}
+  .wcx input[type=range]{width:100%;margin-top:10px;accent-color:var(--kw-brass)}
+  .wcx__opts{margin-top:10px;display:flex;flex-direction:column;gap:8px}
+  .wcx__opt{display:flex;align-items:center;gap:10px;cursor:pointer;
+    font-family:'Inter',var(--ff);font-size:13.5px;color:var(--kw-green)}
+  .wcx__opt input{accent-color:var(--kw-brass);width:16px;height:16px}
+  .wcx__opt i{margin-left:auto;font-style:normal;color:var(--kw-sage);font-size:12.5px}
+  .wcx__sum{background:var(--kw-green);border-radius:6px;padding:26px 28px;color:#fff}
+  .wcx__sum h4{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .wcx__l{display:flex;justify-content:space-between;gap:16px;padding:11px 0;
+    border-bottom:1px solid rgba(255,255,255,.12);font-family:'Inter',var(--ff);font-size:13.5px;color:rgba(255,255,255,.85)}
+  .wcx__l--big{border-bottom:0;padding-top:18px}
+  .wcx__l--big span:first-child{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .wcx__l--big b{font-family:"poster-gothic-round-cond-atf",Impact,sans-serif;font-weight:400;font-size:38px;color:#fff}
+  .wcx__dep{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);
+    font-family:'Inter',var(--ff);font-size:12px;color:rgba(255,255,255,.55)}
+
+  /* ============ TELEFONY ============ */
+  .mob{padding:var(--sec) 0;background:#f5f6fb;overflow:hidden}
+  .phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(18px,3vw,54px);flex-wrap:wrap}
+  .phone{width:clamp(190px,20vw,300px);flex:none;border-radius:34px;padding:9px;background:#0f1b31;will-change:transform;
+    transform:translate3d(0,var(--fy,0px),0);box-shadow:0 30px 62px rgba(7,30,81,0.24)}
+  .phone img{border-radius:26px;width:100%;height:auto}
+
+  /* ============ GALERIA (zrzuty w całości) ============ */
+  .gal{padding:var(--sec) 0;background:#fff}
+  .gal__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.4vw,24px);padding:0 var(--gut)}
+  .gal__i{border-radius:8px;overflow:hidden;border:1px solid rgba(7,30,81,.07);background:#eef1f7}
+  .gal__i img{width:100%;height:auto;transition:transform .9s var(--ease-out)}
+  .gal__i:hover img{transform:scale(1.02)}
+  .gal__i--wide{grid-column:span 2}
+
+  /* ============ PREV / NEXT, CTA, STOPKA ============ */
+  .csec{padding:0 0 clamp(40px,6vh,80px)}
+  .cnav{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .cnav__link{background:#fff;border:1px solid rgba(7,30,81,0.08);border-radius:4px;padding:28px 30px;
+    display:flex;align-items:center;gap:18px;transition:transform .3s var(--ease-out),box-shadow .3s ease,border-color .3s ease}
+  .cnav__link:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(7,30,81,0.1);border-color:rgba(67,115,229,0.24)}
+  .cnav__link--next{justify-content:flex-end;text-align:right}
+  .cnav__ico{flex:none;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:var(--accent);background:#f2f5fb;transition:background .3s ease,color .3s ease,transform .3s var(--ease-out)}
+  .cnav__link:hover .cnav__ico{background:var(--accent);color:#fff;transform:translateX(-4px)}
+  .cnav__link--next:hover .cnav__ico{transform:translateX(4px)}
+  .cnav__label{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#071e51;opacity:.45}
+  .cnav__title{margin-top:6px;font-family:'Inter',var(--ff);font-weight:600;font-size:19px;color:#071e51}
+
+  .ctaband-wrap{padding:clamp(40px,6vh,70px) 0;background:#fff}
+  .ctaband{background:#071e51 url("../assets/nowy/cta-bg.png") right center / cover no-repeat;border-radius:4px;padding:60px 50px;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;overflow:hidden}
+  .ctaband__title{max-width:460px;font-family:'Inter',var(--ff);font-weight:500;font-size:clamp(28px,3vw,37px);
+    line-height:1.16;letter-spacing:-0.026em;color:#fff}
+  .ctaband__btns{display:flex;gap:14px;flex-shrink:0;position:relative;z-index:1}
+  .upanel__btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;border-radius:761px;color:#fff;white-space:nowrap;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.85px;letter-spacing:0.47px;text-transform:uppercase;
+    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+  .upanel__btn:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+  .btn-outline-light{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;border-radius:761px;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.85px;letter-spacing:0.47px;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,0.4);background:transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+  .btn-outline-light:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.7)}
+
+  .footer{background:#071e51;color:#fff;padding:60px 0 30px}
+  .footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+  .footer__logo{display:flex;align-items:center;gap:12px}
+  .footer__brand p{margin-top:16px;max-width:280px;font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.55)}
+  .footer h5{font-family:'Inter',var(--ff);font-weight:600;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px}
+  .footer ul li{margin-bottom:10px}
+  .footer ul a{font-family:'Inter',var(--ff);font-size:13px;color:rgba(255,255,255,0.7);transition:color .16s ease}
+  .footer ul a:hover{color:#fff}
+  .footer__contact p{font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:8px}
+  .footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:44px;padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.1);font-family:'Inter',var(--ff);font-size:12px;color:rgba(255,255,255,0.4)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    .dm__ubody{grid-template-columns:1fr;gap:26px}
+    .footer__grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:900px){
+    .nav{display:none}
+    .marq__item{width:76vw}
+    .marq__rot{transform:rotate(-5deg);width:150%;margin-left:-25%}
+    .swall{height:auto;flex-wrap:wrap}
+    .swx{flex:1 1 33%;height:clamp(150px,22vh,220px)}
+    .swall:hover .swx.in,.swall .swx.in:hover{flex-grow:1}
+    .twall{grid-template-columns:1fr}
+    .gal__grid{grid-template-columns:1fr}
+    .gal__i--wide{grid-column:span 1}
+    .cnav{grid-template-columns:1fr}
+    .cnav__link--next{justify-content:flex-start;text-align:left;flex-direction:row-reverse}
+    .ctaband{flex-direction:column;align-items:flex-start}
+    .stage{margin-top:0;height:56vh}
+    .marks{height:180vh}
+    .markc{height:clamp(200px,38vh,340px)}
+  }
+  @media (max-width:560px){
+    .meta{gap:22px 30px}
+    .swx{flex:1 1 50%}
+    .phone{width:66vw}
+    .footer__grid{grid-template-columns:1fr}
+    .ctaband{padding:36px 24px}
+    .ctaband__btns{flex-direction:column;align-items:stretch;width:100%}
+    .upanel__btn,.btn-outline-light{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv,.swx,.fade{opacity:1;transform:none;transition:none}
+    [data-lines].is-split .ln__i{transform:none;opacity:1;transition:none}
+    .lbl{opacity:1}
+    .lbl::before{width:30px;transition:none}
+    .clipin{clip-path:none;transition:none}
+    .top::before,.dark::before,.dm__spot::before{animation:none}
+    .hero__title,.hero__lead,.meta div{opacity:1;transform:none;transition:none}
+    .phone{transform:none}
+  }
+
+  /* ==========================================================================
+     SEKCJE W KONTENERZE (decyzja Grzegorza 2026-08-14, po teście na worktree).
+     Blok dopisany na końcu, żeby wygrywał kolejnością — nic powyżej nie ruszane,
+     więc powrót do wersji pełnoekranowej to usunięcie tego jednego bloku.
+     Uwaga: rozmiary liczone w `vw` nie wiedzą, że kontener jest węższy od okna,
+     więc typografia sekcji zwężanych idzie na jednostki kontenerowe (cqw).
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+  .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+
+  .stage{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;--r:8px;
+    container-type:inline-size}
+  .stage__live{left:clamp(14px,2.4cqw,34px)}
+  .marks{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;overflow:hidden}
+  .marks__track{padding-left:var(--pad)}
+  .marks__lbl{left:var(--pad)}
+  .marks__bar{left:var(--pad);right:var(--pad)}
+  .markc{height:clamp(200px,40vh,400px)}
+  .marq{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding-left:0;padding-right:0}
+  .marq::before,.marq::after{width:min(8vw,80px)}
+  .marq__item{width:min(26vw,380px)}
+  .dark{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;
+    padding:clamp(52px,8vh,96px) var(--pad) 0}
+  .dark .wide{padding-left:0;padding-right:0}
+  .swall{height:clamp(260px,42vh,420px);margin-top:clamp(40px,6vh,72px)}
+  .tw{min-height:clamp(160px,22vh,240px);container-type:inline-size}
+  .tw__spec{font-size:clamp(34px,17cqw,110px)}
+  .mob{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .gal__grid{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+  .dm__body{border-radius:6px}
+
+</style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"><div class="prog__bar" id="progBar"></div></div>
+
+<div class="top">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="logo" aria-label="Code&amp;Pixel">
+        <img class="logo__icon" src="../assets/nowy/logo-icon.svg" alt="" />
+        <span class="logo__lockup">
+          <img class="logo__word" src="../assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
+          <img class="logo__tag" src="../assets/nowy/logo-tag.svg" alt="" />
+        </span>
+      </a>
+      <nav class="nav">
+        <div class="nav__item">
+          <a href="#" class="nav__toggle" aria-haspopup="true" aria-expanded="false">Usługi
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav__drop" role="menu">
+            <a href="../strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="../sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="../crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="../aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="../google-ads.html" role="menuitem">Google Ads</a>
+            <a href="../allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="../opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+          </div>
+        </div>
+        <a href="../realizacje.html">Realizacje</a>
+        <a href="../o-nas.html">O nas</a>
+        <a href="../wiedza.html">Wiedza</a>
+      </nav>
+      <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
+    </div>
+  </header>
+
+  <section class="hero"><div class="wide">
+    <h1 class="hero__title" data-lines data-hero>Wild Campers</h1>
+    <p class="hero__lead">Wynajem kamperów: znak, prezentacja marki i&nbsp;strona na&nbsp;siedemnaście podstron.</p>
+    <dl class="meta">
+      <div><dt>Klient</dt><dd>Wild Campers</dd></div>
+      <div><dt>Zakres</dt><dd>Logo · UX · Design · Prototyp</dd></div>
+      <div><dt>Rok</dt><dd>2026</dd></div>
+      <div><dt>Technologie</dt><dd>HTML · CSS · JS</dd></div>
+    </dl>
+  </div></section>
+</div>
+
+<!-- REPLIKA HERO Z PREZENTACJI LOGO: prawdziwe wideo, nie zrzut -->
+<div class="stage clipin" id="stage">
+  <video id="wcvideo" poster="../assets/case-wild-campers/logo/hero-poster.jpg" autoplay muted loop playsinline preload="metadata"
+         aria-label="Hero prezentacji marki Wild Campers: kamper w górach">
+    <source src="../assets/case-wild-campers/logo/hero.mp4" type="video/mp4" />
+  </video>
+  <img src="../assets/case-wild-campers/logo/hero-poster.jpg" alt="Kamper Wild Campers w górach" />
+  <div class="stage__veil"></div>
+  <span class="stage__scroll">Przewiń <i></i></span>
+  <span class="stage__live"><b></b> Żywy podgląd</span>
+</div>
+
+<!-- ZNAKI: przesuwają się poziomo na przewijaniu -->
+<section class="marks" id="marks" aria-label="Wersje znaku Wild Campers">
+  <div class="marks__sticky">
+    <div class="marks__topo" aria-hidden="true"></div>
+    <span class="lbl marks__lbl">Wersje znaku</span>
+    <div class="marks__track" id="marksTrack">
+      <figure class="markc markc--paper"><img src="../assets/case-wild-campers/logo/mark-0.svg" alt="Znak Wild Campers, pełny kolor na jasnym tle" /></figure>
+      <figure class="markc markc--carbon"><img src="../assets/case-wild-campers/logo/mark-1.svg" alt="Znak Wild Campers, biały na grafitowym" /></figure>
+      <figure class="markc markc--pine"><img src="../assets/case-wild-campers/logo/mark-2.svg" alt="Znak Wild Campers, amber na zieleni" /></figure>
+      <figure class="markc markc--pine"><img src="../assets/case-wild-campers/logo/mark-3.svg" alt="Znak Wild Campers, biały na zieleni" /></figure>
+      <figure class="markc markc--amber"><img src="../assets/case-wild-campers/logo/mark-4.svg" alt="Znak Wild Campers, biały na amber" /></figure>
+      <span class="marks__pad" aria-hidden="true"></span>
+    </div>
+    <div class="marks__bar" aria-hidden="true"><i id="marksBar"></i></div>
+  </div>
+</section>
+
+<!-- PASY ZRZUTÓW -->
+<div class="marq" id="marq" aria-hidden="true">
+  <div class="marq__rot">
+    <div class="marq__row marq__row--a" data-marq="1">
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/index-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/kampery-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/kamper-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/rezerwacja-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/cennik-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/o-nas-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/faq-top.jpg" alt="" /></div>
+    </div>
+    <div class="marq__row marq__row--b" data-marq="-1">
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/admin-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/admin-kalendarz.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/admin-flota.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/porownaj-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/konto-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/logowanie-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/dodatki-top.jpg" alt="" /></div>
+    </div>
+    <div class="marq__row marq__row--c" data-marq="1">
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/branding-pojazdow-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-woman.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-collateral.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/inspiracja-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/inspiracje-top.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-lake.jpg" alt="" /></div>
+      <div class="marq__item"><img loading="lazy" src="../assets/case-wild-campers/jak-to-dziala-top.jpg" alt="" /></div>
+    </div>
+  </div>
+</div>
+
+<!-- PALETA I KROJE -->
+<section class="dark">
+  <div class="wide">
+    <span class="lbl">Język wizualny</span>
+    <h2 data-lines>Sześć kolorów, dwa kroje</h2>
+  </div>
+  <div class="swall" aria-label="Paleta projektu">
+    <div class="swx swx--dark" style="background:#213627"><span class="swx__l"><span class="swx__n">Pine</span><span class="swx__h">#213627</span></span></div>
+    <div class="swx swx--dark" style="background:#101D14"><span class="swx__l"><span class="swx__n">Pine 900</span><span class="swx__h">#101D14</span></span></div>
+    <div class="swx swx--light" style="background:#D28923"><span class="swx__l"><span class="swx__n">Amber</span><span class="swx__h">#D28923</span></span></div>
+    <div class="swx swx--light" style="background:#FBF9F5"><span class="swx__l"><span class="swx__n">Sand</span><span class="swx__h">#FBF9F5</span></span></div>
+    <div class="swx swx--light" style="background:#CEC5B3"><span class="swx__l"><span class="swx__n">Line</span><span class="swx__h">#CEC5B3</span></span></div>
+    <div class="swx swx--dark" style="background:#5F6D62"><span class="swx__l"><span class="swx__n">Mid</span><span class="swx__h">#5F6D62</span></span></div>
+  </div>
+  <div class="twall">
+    <div class="tw rv"><span class="tw__spec tw__spec--serif">Poster Gothic</span><span class="tw__r">Nagłówki, wersaliki</span></div>
+    <div class="tw rv rv--d1"><span class="tw__spec tw__spec--sans">System sans</span><span class="tw__r">Treść i interfejs</span></div>
+  </div>
+</section>
+
+<!-- DEMONSTRATOR -->
+<section class="demo"><div class="wide">
+  <div class="demo__head">
+    <div>
+      <span class="lbl">Mechanizm</span>
+      <h2 data-lines>Od floty do wyceny</h2>
+    </div>
+  </div>
+
+  <div class="dm rv" id="dm">
+    <div class="dm__steps" role="tablist" aria-label="Kroki wyboru kampera">
+      <button class="dm__step is-on" data-goto="1" role="tab" aria-selected="true">Flota</button>
+      <button class="dm__step" data-goto="2" role="tab" aria-selected="false" disabled>Pojazd</button>
+      <button class="dm__step" data-goto="3" role="tab" aria-selected="false" disabled>Wycena</button>
+      <button class="dm__reset" id="dmReset" type="button">Od początku</button>
+    </div>
+
+    <div class="dm__body" id="dmBody">
+      <div class="dm__view is-on" data-view="1">
+        <div class="dm__filters" id="dmFilters"></div>
+        <div class="wcg" id="wcGrid"></div>
+        <p class="dm__note">Kliknij pojazd.</p>
+      </div>
+      <div class="dm__view" data-view="2"><div id="wcCar"></div></div>
+      <div class="dm__view" data-view="3"><div id="wcCalc"></div></div>
+    </div>
+  </div>
+
+  <p class="dm__foot">Flota, ceny i dodatki przepisane 1:1 z prototypu. Wycena liczy tą samą formułą co projekt.</p>
+</div></section>
+
+<!-- TELEFONY -->
+<section class="mob"><div class="wide">
+  <div class="phones">
+    <div class="phone fade" data-float="34"><img loading="lazy" src="../assets/case-wild-campers/kampery-m.jpg" alt="Widok mobilny listy kamperów" /></div>
+    <div class="phone fade fade--d1" data-float="-22"><img loading="lazy" src="../assets/case-wild-campers/index-m.jpg" alt="Widok mobilny strony głównej" /></div>
+    <div class="phone fade fade--d2" data-float="34"><img loading="lazy" src="../assets/case-wild-campers/kamper-m.jpg" alt="Widok mobilny karty kampera" /></div>
+  </div>
+</div></section>
+
+<!-- GALERIA: zrzuty w całości -->
+<section class="gal">
+  <div class="gal__grid">
+    <div class="gal__i gal__i--wide rv"><img loading="lazy" src="../assets/case-wild-campers/admin-top.jpg" alt="Panel obsługi floty" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-man.jpg" alt="Kadr z prezentacji marki" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-lake.jpg" alt="Kamper nad jeziorem" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-collateral.jpg" alt="Znak na materiałach firmowych" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-wild-campers/logo/sec-water.jpg" alt="Kadr z prezentacji marki" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-wild-campers/kampery-top.jpg" alt="Lista kamperów" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-wild-campers/kamper-top.jpg" alt="Karta kampera" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-wild-campers/rezerwacja-top.jpg" alt="Wizard rezerwacji" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-wild-campers/porownaj-top.jpg" alt="Porównanie pojazdów" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-wild-campers/konto-top.jpg" alt="Konto klienta" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-wild-campers/branding-pojazdow-top.jpg" alt="Branding floty" /></div>
+    <div class="gal__i rv"><img loading="lazy" src="../assets/case-wild-campers/inspiracja-top.jpg" alt="Kierunek podróży" /></div>
+    <div class="gal__i rv rv--d1"><img loading="lazy" src="../assets/case-wild-campers/cennik-top.jpg" alt="Cennik i zasady" /></div>
+  </div>
+</section>
+
+<!-- PREV / NEXT -->
+<section class="csec"><div class="container">
+  <div class="cnav">
+    <a href="klimaty-wola.html" class="cnav__link rv">
+      <span class="cnav__ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></span>
+      <span><span class="cnav__label">Poprzedni</span><span class="cnav__title" style="display:block">Apartamenty Klimaty Wola</span></span>
+    </a>
+    <a href="monza.html" class="cnav__link cnav__link--next rv rv--d1">
+      <span><span class="cnav__label">Następny</span><span class="cnav__title" style="display:block">Monza Baseny</span></span>
+      <span class="cnav__ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+    </a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband">
+  <h2 class="ctaband__title" data-lines>Lubisz to, co&nbsp;widzisz?</h2>
+  <div class="ctaband__btns"><a href="../kontakt.html" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div>
+</div></div></section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="../index.html" class="footer__logo" aria-label="Code&amp;Pixel">
+          <img src="../assets/nowy/logo-icon.svg" alt="" style="width:56px;height:34px" />
+          <img src="../assets/nowy/logo-word.svg" alt="Code&amp;Pixel" style="width:155px;height:22px" />
+        </a>
+        <p>Interactive agency. Łączymy technologię, projektowanie i&nbsp;marketing, aby dostarczać rozwiązania, które realnie wspierają biznes.</p>
+      </div>
+      <div>
+        <h5>Oferta</h5>
+        <ul>
+          <li><a href="../strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="../sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="../crm-systemy.html">CRM dla firm</a></li>
+          <li><a href="../aplikacje-webowe.html">Aplikacje</a></li>
+          <li><a href="../google-ads.html">Google Ads</a></li>
+          <li><a href="../allegro-ads.html">Allegro Ads</a></li>
+          <li><a href="../opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>O nas</h5>
+        <ul>
+          <li><a href="../o-nas.html">O firmie</a></li>
+          <li><a href="../realizacje.html">Realizacje</a></li>
+          <li><a href="../wiedza.html">Wiedza / Blog</a></li>
+          <li><a href="../kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h5>Kontakt</h5>
+        <p>Code&amp;Pixel Sp. z&nbsp;o.o.</p>
+        <p>ul. Przykładowa 1<br />32-800 Brzesko</p>
+        <p>+48 000 000 000</p>
+        <p>kontakt@codeandpixel.pl</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2010–2024 Code&amp;Pixel. Wszelkie prawa zastrzeżone.</span>
+      <span>Nadajemy cyfrowy kierunek Twojemu biznesowi.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v,a,b){ return v < a ? a : (v > b ? b : v); };
+
+  /* ================= 1. ŁAMANIE NAGŁÓWKÓW NA LINIE ================= */
+  var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+  function splitLines(el){
+    var src = el.getAttribute('data-text');
+    if (src === null){ src = el.textContent; el.setAttribute('data-text', src); }
+    /* dzielimy tylko na zwykłych spacjach — twarde spacje zostają w słowie */
+    var words = src.split(' ').filter(function(w){ return w.length; });
+    el.innerHTML = words.map(function(w){ return '<span class="w">' + esc(w) + '</span>'; }).join(' ');
+    var spans = el.querySelectorAll('.w'), lines = [], cur = null, top = null, i;
+    for (i = 0; i < spans.length; i++){
+      var t = spans[i].offsetTop;
+      if (top === null || Math.abs(t - top) > 3){ top = t; cur = []; lines.push(cur); }
+      cur.push(spans[i].textContent);
+    }
+    el.innerHTML = lines.map(function(l, idx){
+      return '<span class="ln"><span class="ln__i" style="transition-delay:' +
+             (idx * 0.075).toFixed(3) + 's">' + esc(l.join(' ')) + '</span></span>';
+    }).join('');
+    el.classList.add('is-split');
+  }
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('[data-lines]'));
+  if (!reduce) heads.forEach(splitLines);
+
+  var rsT;
+  window.addEventListener('resize', function(){
+    clearTimeout(rsT);
+    rsT = setTimeout(function(){
+      if (!reduce) heads.forEach(function(el){
+        var wasIn = el.classList.contains('in');
+        splitLines(el);
+        if (wasIn) el.classList.add('in');
+      });
+      measure();
+    }, 220);
+  });
+
+  /* ================= 2. WEJŚCIE ELEMENTÓW ================= */
+  var targets = document.querySelectorAll('.rv, .fade, .swx, .clipin, .lbl, [data-lines]');
+  if (reduce || !('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(targets, function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        /* pasy palety wstają jeden po drugim */
+        if (el.classList.contains('swx')){
+          var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+          el.style.transitionDelay = (i * 0.08) + 's';
+          setTimeout(function(){ el.style.transitionDelay = '0s'; }, 1400);
+        }
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    Array.prototype.forEach.call(targets, function(el){ io.observe(el); });
+  }
+
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      document.body.classList.add('ready');
+      var h = document.querySelector('[data-hero]');
+      if (h) h.classList.add('in');
+    });
+  });
+
+  /* ================= 3. DEMONSTRATOR: FLOTA → POJAZD → WYCENA =================
+     FLOTA, DODATKI, NOLIMIT_ZA_DOBE, KAUCJA i formuła wyceny są przepisane 1:1
+     z `app.js` prototypu Wild Campers. Przy zmianie danych u klienta trzeba
+     zaktualizować je również tutaj. */
+  var FLOTA = [
+    { id:'p01', nazwa:'Pojazd 01', typ:'alkowa',     typLabel:'Alkowa',     jazda:4, spanie:4, skrzynia:'Automat',  dlugosc:'6,4 m', cena:590, nolimit:true,  udog:['klima','markiza','solar','rower'] },
+    { id:'p02', nazwa:'Pojazd 02', typ:'van',        typLabel:'Van',        jazda:4, spanie:2, skrzynia:'Manualna', dlugosc:'5,9 m', cena:450, nolimit:false, udog:['markiza','rower'] },
+    { id:'p03', nazwa:'Pojazd 03', typ:'integra',    typLabel:'Integra',    jazda:4, spanie:4, skrzynia:'Automat',  dlugosc:'7,0 m', cena:640, nolimit:true,  udog:['klima','markiza','solar','tv'] },
+    { id:'p04', nazwa:'Pojazd 04', typ:'alkowa',     typLabel:'Alkowa',     jazda:4, spanie:6, skrzynia:'Automat',  dlugosc:'7,4 m', cena:720, nolimit:true,  udog:['klima','markiza','solar','tv','rower'] },
+    { id:'p05', nazwa:'Pojazd 05', typ:'van',        typLabel:'Van',        jazda:2, spanie:2, skrzynia:'Manualna', dlugosc:'5,4 m', cena:480, nolimit:false, udog:['markiza'] },
+    { id:'p06', nazwa:'Pojazd 06', typ:'polintegra', typLabel:'Półintegra', jazda:4, spanie:5, skrzynia:'Automat',  dlugosc:'6,9 m', cena:660, nolimit:true,  udog:['klima','markiza','tv','rower'] }
+  ];
+  var UDOG = { klima:'Klimatyzacja postojowa', markiza:'Markiza', solar:'Panel solarny',
+               rower:'Uchwyt rowerowy', tv:'TV / internet' };
+  var DODATKI = [
+    { id:'posciel', label:'Pościel i ręczniki (komplet × 2)', cena:160 },
+    { id:'stolik',  label:'Stolik i krzesła kempingowe',      cena:60 },
+    { id:'kuchnia', label:'Zestaw kuchenny',                  cena:50 },
+    { id:'fotelik', label:'Fotelik dziecięcy',                cena:40 }
+  ];
+  var NOLIMIT_ZA_DOBE = 60, KAUCJA = 3000;
+  var TYPY = [['all','Wszystkie'],['alkowa','Alkowa'],['van','Van'],['integra','Integra'],['polintegra','Półintegra']];
+
+  /* formuła 1:1 z calc() w app.js */
+  function wycena(poj, wariant, dni, dodatkiSuma){
+    var najem = poj.cena * dni;
+    var nolimit = wariant === 'nolimit' ? NOLIMIT_ZA_DOBE * dni : 0;
+    var razem = najem + nolimit + dodatkiSuma;
+    var zaliczka = Math.round(razem * 0.3);
+    return { najem:najem, nolimit:nolimit, dodatki:dodatkiSuma, razem:razem,
+             zaliczka:zaliczka, reszta:razem - zaliczka, kaucja:KAUCJA };
+  }
+  /* „6 miejsca" boli — odmiana rzeczownika po liczbie */
+  function miejsc(n){ return n === 1 ? 'miejsce' : (n >= 2 && n <= 4 ? 'miejsca' : 'miejsc'); }
+  /* „6 miejsca" boli — odmiana rzeczownika po liczbie */
+  function miejsc(n){ return n === 1 ? 'miejsce' : (n >= 2 && n <= 4 ? 'miejsca' : 'miejsc'); }
+  /* zł ze spacją nierozdzielającą w tysiącach, jak zl() w projekcie */
+  function zl(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' zł'; }
+
+  var dm = document.getElementById('dm');
+  if (dm){
+    var dmBody  = document.getElementById('dmBody');
+    var dmViews = Array.prototype.slice.call(dm.querySelectorAll('.dm__view'));
+    var dmSteps = Array.prototype.slice.call(dm.querySelectorAll('.dm__step'));
+    var filtr = 'all', wybrany = null;
+    var stan = { dni: 8, wariant: 'basic', dodatki: [] };
+
+    var e = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+    fitDemo = fitHeight;
+    function fitHeight(){
+      var on = dm.querySelector('.dm__view.is-on');
+      if (on) dmBody.style.height = on.offsetHeight + 'px';
+    }
+
+    function show(step){
+      dmViews.forEach(function(v){ v.classList.toggle('is-on', v.getAttribute('data-view') === String(step)); });
+      dmSteps.forEach(function(b){
+        var on = b.getAttribute('data-goto') === String(step);
+        b.classList.toggle('is-on', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      dmSteps[1].disabled = !wybrany;
+      dmSteps[2].disabled = !wybrany;
+      fitHeight();
+      var r = dm.getBoundingClientRect();
+      if (r.top < 0) window.scrollTo({ top: window.pageYOffset + r.top - 90, behavior: reduce ? 'auto' : 'smooth' });
+    }
+
+    /* --- krok 1: flota --- */
+    function rysujFiltry(){
+      document.getElementById('dmFilters').innerHTML = TYPY.map(function(t){
+        var n = t[0] === 'all' ? FLOTA.length : FLOTA.filter(function(v){ return v.typ === t[0]; }).length;
+        return '<button class="dm__chip' + (filtr === t[0] ? ' is-on' : '') + '" data-f="' + t[0] + '">' +
+               e(t[1]) + ' · ' + n + '</button>';
+      }).join('');
+    }
+    function rysujFlote(){
+      var lista = FLOTA.filter(function(v){ return filtr === 'all' || v.typ === filtr; });
+      document.getElementById('wcGrid').innerHTML = lista.map(function(v){
+        return '<button class="wcc" data-v="' + v.id + '" type="button">' +
+          '<span class="wcc__img"><img loading="lazy" src="../assets/case-wild-campers/demo/' + v.id + '.jpg" alt="' + e(v.nazwa) + '" /></span>' +
+          '<span class="wcc__b">' +
+            '<span class="wcc__t">' + e(v.typLabel) + '</span>' +
+            '<span class="wcc__n">' + e(v.nazwa) + '</span>' +
+            '<span class="wcc__m"><span>' + v.spanie + ' ' + miejsc(v.spanie) + ' do spania</span><span>' + e(v.skrzynia) + '</span><span>' + e(v.dlugosc) + '</span></span>' +
+            '<span class="wcc__p"><b>' + zl(v.cena) + '</b><span>za dobę' +
+              (v.nolimit ? '<span class="wcc__nl">no limit</span>' : '') + '</span></span>' +
+          '</span></button>';
+      }).join('');
+    }
+
+    /* --- krok 2: pojazd --- */
+    function rysujPojazd(v){
+      document.getElementById('wcCar').innerHTML =
+        '<button class="dm__back" type="button" data-back="1">← Wróć do floty</button>' +
+        '<div class="wcv">' +
+          '<img class="wcv__img" src="../assets/case-wild-campers/demo/' + v.id + '.jpg" alt="' + e(v.nazwa) + '" />' +
+          '<div>' +
+            '<div class="wcc__t">' + e(v.typLabel) + '</div>' +
+            '<div class="wcv__h">' + e(v.nazwa) + '</div>' +
+            '<dl class="wcv__par">' +
+              '<div><dt>Miejsca do jazdy</dt><dd>' + v.jazda + '</dd></div>' +
+              '<div><dt>Miejsca do spania</dt><dd>' + v.spanie + '</dd></div>' +
+              '<div><dt>Skrzynia</dt><dd>' + e(v.skrzynia) + '</dd></div>' +
+              '<div><dt>Długość</dt><dd>' + e(v.dlugosc) + '</dd></div>' +
+            '</dl>' +
+            '<div class="wcv__eq">' + v.udog.map(function(u){ return '<span>' + e(UDOG[u]) + '</span>'; }).join('') + '</div>' +
+            '<button class="wcbtn" type="button" data-go3>Wyceń wynajem · ' + zl(v.cena) + ' / doba</button>' +
+          '</div>' +
+        '</div>';
+    }
+
+    /* --- krok 3: wycena --- */
+    function rysujWycene(){
+      var v = wybrany;
+      var sumaDodatkow = DODATKI.filter(function(d){ return stan.dodatki.indexOf(d.id) > -1; })
+                                .reduce(function(a, d){ return a + d.cena; }, 0);
+      var w = wycena(v, stan.wariant, stan.dni, sumaDodatkow);
+      document.getElementById('wcCalc').innerHTML =
+        '<button class="dm__back" type="button" data-back="2">← Wróć do pojazdu</button>' +
+        '<div class="wcx">' +
+          '<div>' +
+            '<div class="wcx__row"><span class="wcx__lab">Długość wynajmu</span>' +
+              '<div class="wcx__days"><b>' + stan.dni + '</b><span class="wcx__lab">dni</span></div>' +
+              '<input type="range" min="2" max="21" value="' + stan.dni + '" id="wcDni" aria-label="Liczba dni" /></div>' +
+            '<div class="wcx__row"><span class="wcx__lab">Wariant przebiegu</span>' +
+              '<div class="wcx__opts">' +
+                '<label class="wcx__opt"><input type="radio" name="wcw" value="basic"' + (stan.wariant === 'basic' ? ' checked' : '') + ' /> Basic, 500 km na dobę <i>w cenie</i></label>' +
+                (v.nolimit
+                  ? '<label class="wcx__opt"><input type="radio" name="wcw" value="nolimit"' + (stan.wariant === 'nolimit' ? ' checked' : '') + ' /> Bez limitu kilometrów <i>+' + zl(NOLIMIT_ZA_DOBE) + ' / doba</i></label>'
+                  : '<span class="wcx__opt" style="opacity:.45">Bez limitu kilometrów <i>niedostępny w tym pojeździe</i></span>') +
+              '</div></div>' +
+            '<div class="wcx__row" style="margin-bottom:0"><span class="wcx__lab">Dodatki</span>' +
+              '<div class="wcx__opts">' + DODATKI.map(function(d){
+                return '<label class="wcx__opt"><input type="checkbox" value="' + d.id + '"' +
+                  (stan.dodatki.indexOf(d.id) > -1 ? ' checked' : '') + ' /> ' + e(d.label) + ' <i>' + zl(d.cena) + '</i></label>';
+              }).join('') + '</div></div>' +
+          '</div>' +
+          '<div class="wcx__sum">' +
+            '<h4>' + e(v.nazwa) + ' · ' + stan.dni + ' dni</h4>' +
+            '<div class="wcx__l"><span>Najem, ' + zl(v.cena) + ' × ' + stan.dni + '</span><span>' + zl(w.najem) + '</span></div>' +
+            (w.nolimit ? '<div class="wcx__l"><span>Bez limitu km, ' + zl(NOLIMIT_ZA_DOBE) + ' × ' + stan.dni + '</span><span>' + zl(w.nolimit) + '</span></div>' : '') +
+            (w.dodatki ? '<div class="wcx__l"><span>Dodatki</span><span>' + zl(w.dodatki) + '</span></div>' : '') +
+            '<div class="wcx__l wcx__l--big"><span>Razem</span><b>' + zl(w.razem) + '</b></div>' +
+            '<div class="wcx__l"><span>Zaliczka 30%</span><span>' + zl(w.zaliczka) + '</span></div>' +
+            '<div class="wcx__l"><span>Do zapłaty przy odbiorze</span><span>' + zl(w.reszta) + '</span></div>' +
+            '<p class="wcx__dep">Kaucja zwrotna ' + zl(w.kaucja) + ', blokowana na karcie przy odbiorze.</p>' +
+          '</div>' +
+        '</div>';
+    }
+
+    /* --- zdarzenia --- */
+    dm.addEventListener('click', function(ev){
+      var chip = ev.target.closest('.dm__chip');
+      if (chip){ filtr = chip.getAttribute('data-f'); rysujFiltry(); rysujFlote(); fitHeight(); return; }
+
+      var karta = ev.target.closest('.wcc');
+      if (karta){
+        wybrany = FLOTA.filter(function(v){ return v.id === karta.getAttribute('data-v'); })[0];
+        stan.wariant = wybrany.nolimit ? stan.wariant : 'basic';
+        rysujPojazd(wybrany); show(2); return;
+      }
+
+      var back = ev.target.closest('[data-back]');
+      if (back){ show(parseInt(back.getAttribute('data-back'), 10)); return; }
+
+      if (ev.target.closest('[data-go3]')){ rysujWycene(); show(3); return; }
+
+      var krok = ev.target.closest('.dm__step');
+      if (krok && !krok.disabled){
+        var n = parseInt(krok.getAttribute('data-goto'), 10);
+        if (n === 3) rysujWycene();
+        show(n); return;
+      }
+      if (ev.target.id === 'dmReset'){
+        filtr = 'all'; wybrany = null; stan = { dni: 8, wariant: 'basic', dodatki: [] };
+        rysujFiltry(); rysujFlote(); show(1);
+      }
+    });
+
+    dm.addEventListener('input', function(ev){
+      if (ev.target.id === 'wcDni'){ stan.dni = parseInt(ev.target.value, 10); rysujWycene(); fitHeight(); }
+    });
+    dm.addEventListener('change', function(ev){
+      if (ev.target.name === 'wcw'){ stan.wariant = ev.target.value; rysujWycene(); fitHeight(); }
+      else if (ev.target.type === 'checkbox'){
+        var id = ev.target.value, i = stan.dodatki.indexOf(id);
+        if (ev.target.checked && i === -1) stan.dodatki.push(id);
+        else if (!ev.target.checked && i > -1) stan.dodatki.splice(i, 1);
+        rysujWycene(); fitHeight();
+      }
+    });
+
+    rysujFiltry(); rysujFlote();
+    window.addEventListener('resize', fitHeight);
+    window.addEventListener('load', fitHeight);
+    fitHeight();
+    setTimeout(fitHeight, 400);
+  }
+
+  /* ================= 4. JEDNA PĘTLA DLA EFEKTÓW ZWIĄZANYCH ZE SCROLLEM ================= */
+  var fitDemo  = null;
+  var progBar  = document.getElementById('progBar');
+  var heroFrame= document.querySelector('[data-parallax]');
+  var marq     = document.getElementById('marq');
+  var rows     = marq ? Array.prototype.slice.call(marq.querySelectorAll('[data-marq]')) : [];
+  var floats   = Array.prototype.slice.call(document.querySelectorAll('[data-float]'));
+  var stage    = document.getElementById('stage');
+  var wcvideo  = document.getElementById('wcvideo');
+  var marks    = document.getElementById('marks');
+  var marksTr  = document.getElementById('marksTrack');
+  var marksBar = document.getElementById('marksBar');
+
+  /* wideo z brand boardu: przy oszczędzaniu ruchu albo braku autoodtwarzania zostaje plakat */
+  if (stage && wcvideo){
+    if (reduce){
+      stage.classList.add('no-video');
+      wcvideo.removeAttribute('autoplay');
+      try { wcvideo.pause(); } catch(err){}
+    } else {
+      var play = wcvideo.play();
+      if (play && play.catch) play.catch(function(){ stage.classList.add('no-video'); });
+      wcvideo.addEventListener('error', function(){ stage.classList.add('no-video'); });
+    }
+  }
+
+  var rowW = [], docH = 1, marksTravel = 0;
+
+  function measure(){
+    rows.forEach(function(r, i){
+      /* każdy pas zawiera jeden komplet kafli — powielamy go raz, żeby pętla była bezszwowa */
+      if (!r.dataset.doubled){ r.innerHTML += r.innerHTML; r.dataset.doubled = '1'; }
+      rowW[i] = r.scrollWidth / 2;
+    });
+    docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    /* przesuw liczymy względem widocznej ramy (kontener), nie okna przeglądarki */
+    if (marksTr) marksTravel = Math.max(0, marksTr.scrollWidth - marksTr.parentElement.clientWidth);
+    if (typeof fitDemo === 'function') fitDemo();
+  }
+
+  if (!reduce){
+    var x = rows.map(function(){ return 0; }), lastY = window.pageYOffset, vel = 0, prevT = 0;
+
+    var loop = function(t){
+      requestAnimationFrame(loop);
+      if (document.hidden){ prevT = t; return; }
+      var dt = prevT ? Math.min(50, t - prevT) : 16;
+      prevT = t;
+
+      var y = window.pageYOffset;
+      var raw = (y - lastY) / dt;
+      lastY = y;
+      vel += (raw - vel) * 0.12;
+      vel = clamp(vel, -3, 3);
+
+      if (progBar) progBar.style.transform = 'scaleX(' + (y / docH).toFixed(4) + ')';
+
+      /* pasy zrzutów: stały dryf plus reakcja na prędkość przewijania */
+      for (var i = 0; i < rows.length; i++){
+        var dir = parseFloat(rows[i].getAttribute('data-marq'));
+        var speed = (0.040 + i * 0.006 + Math.abs(vel) * 0.16) * dir + vel * 0.55 * dir;
+        x[i] -= speed * dt;
+        var w = rowW[i] || 1;
+        if (x[i] <= -w) x[i] += w;
+        if (x[i] > 0) x[i] -= w;
+        rows[i].style.transform = 'translate3d(' + x[i].toFixed(2) + 'px,0,0)';
+      }
+
+      var vh = window.innerHeight;
+
+      /* replika hero: dryf plus sekwencja z oryginału */
+      if (heroFrame){
+        var hr = heroFrame.getBoundingClientRect();
+        var hp = clamp((hr.top + hr.height) / (vh + hr.height), 0, 1);
+        heroFrame.style.transform = 'translate3d(0,' + ((hp - 0.5) * 26).toFixed(1) + 'px,0)';
+      }
+
+      /* znaki jadą poziomo, tło topo stoi — mechanizm z brand boardu */
+      if (marks && marksTr && marksTravel > 0){
+        var mr = marks.getBoundingClientRect();
+        var scrollable = marks.offsetHeight - vh;
+        var mp = scrollable > 0 ? clamp(-mr.top / scrollable, 0, 1) : 0;
+        marksTr.style.transform = 'translate3d(' + (-marksTravel * mp).toFixed(1) + 'px,0,0)';
+        if (marksBar) marksBar.style.transform = 'scaleX(' + mp.toFixed(3) + ')';
+      }
+
+      /* elementy unoszące się względem sekcji — tylko zmienna --fy,
+         żeby nie nadpisać obrotu kafli pokazywanych pod kątem */
+      for (var f = 0; f < floats.length; f++){
+        var el = floats[f], fr = el.getBoundingClientRect();
+        var fp = clamp((fr.top + fr.height) / (vh + fr.height), 0, 1);
+        el.style.setProperty('--fy', ((fp - 0.5) * parseFloat(el.getAttribute('data-float'))).toFixed(1) + 'px');
+      }
+    };
+
+    if (document.readyState === 'complete') measure();
+    window.addEventListener('load', measure);
+    window.addEventListener('resize', measure);
+    measure();
+    requestAnimationFrame(loop);
+  } else {
+    if (progBar) progBar.style.transform = 'scaleX(1)';
+    measure();
+  }
+})();
+</script>
+</body>
+</html>
