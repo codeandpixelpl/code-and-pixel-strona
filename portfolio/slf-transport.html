@@ -429,46 +429,6 @@
   </div>
 </div>
 
-<!-- ŚCIANA KIERUNKÓW -->
-<section class="dirs" id="dirs">
-  <div class="dirs__map" aria-hidden="true"></div>
-  <div class="wide dirs__head">
-    <span class="lbl">Architektura SEO</span>
-    <h2 data-lines>Dwadzieścia jeden kierunków, jeden szablon</h2>
-  </div>
-  <div class="dirs__grid">
-    <div class="dirs__list" id="dirsList" role="tablist" aria-label="Kierunki przewozów">
-        <button class="dirs__i on" data-k="austria" data-n="Austria" type="button"><span>01</span>Austria</button>
-        <button class="dirs__i" data-k="belgia" data-n="Belgia" type="button"><span>02</span>Belgia</button>
-        <button class="dirs__i" data-k="chorwacja" data-n="Chorwacja" type="button"><span>03</span>Chorwacja</button>
-        <button class="dirs__i" data-k="czechy" data-n="Czechy" type="button"><span>04</span>Czechy</button>
-        <button class="dirs__i" data-k="dania" data-n="Dania" type="button"><span>05</span>Dania</button>
-        <button class="dirs__i" data-k="finlandia" data-n="Finlandia" type="button"><span>06</span>Finlandia</button>
-        <button class="dirs__i" data-k="francja" data-n="Francja" type="button"><span>07</span>Francja</button>
-        <button class="dirs__i" data-k="grecja" data-n="Grecja" type="button"><span>08</span>Grecja</button>
-        <button class="dirs__i" data-k="hiszpania" data-n="Hiszpania" type="button"><span>09</span>Hiszpania</button>
-        <button class="dirs__i" data-k="holandia" data-n="Holandia" type="button"><span>10</span>Holandia</button>
-        <button class="dirs__i" data-k="irlandia" data-n="Irlandia" type="button"><span>11</span>Irlandia</button>
-        <button class="dirs__i" data-k="niemcy" data-n="Niemcy" type="button"><span>12</span>Niemcy</button>
-        <button class="dirs__i" data-k="norwegia" data-n="Norwegia" type="button"><span>13</span>Norwegia</button>
-        <button class="dirs__i" data-k="polska" data-n="Polska" type="button"><span>14</span>Polska</button>
-        <button class="dirs__i" data-k="portugalia" data-n="Portugalia" type="button"><span>15</span>Portugalia</button>
-        <button class="dirs__i" data-k="slowacja" data-n="Słowacja" type="button"><span>16</span>Słowacja</button>
-        <button class="dirs__i" data-k="szwajcaria" data-n="Szwajcaria" type="button"><span>17</span>Szwajcaria</button>
-        <button class="dirs__i" data-k="szwecja" data-n="Szwecja" type="button"><span>18</span>Szwecja</button>
-        <button class="dirs__i" data-k="wegry" data-n="Węgry" type="button"><span>19</span>Węgry</button>
-        <button class="dirs__i" data-k="wielka-brytania" data-n="Wielka Brytania" type="button"><span>20</span>Wielka Brytania</button>
-        <button class="dirs__i" data-k="wlochy" data-n="Włochy" type="button"><span>21</span>Włochy</button>
-    </div>
-    <div class="dirs__view">
-      <div class="dirs__shot" id="dirsShot">
-        <img id="dirsImg" src="../assets/case-slf/kierunki-austria-top.jpg" alt="Landing kierunkowy: przeprowadzki do Austrii" />
-      </div>
-      <p class="dirs__cap"><span id="dirsCap">Przeprowadzki do Austrii</span><b id="dirsNum">01 / 21</b></p>
-    </div>
-  </div>
-</section>
-
 <!-- KOLUMNY Z PRZESUNIĘCIEM -->
 <section class="cols">
   <div class="cols__grid">
@@ -667,46 +627,6 @@
       if (play && play.catch) play.catch(function(){ band.classList.add('no-video'); });
       slfvideo.addEventListener('error', function(){ band.classList.add('no-video'); });
     }
-  }
-
-  /* ściana kierunków: najechanie albo klik podmienia zrzut landingu */
-  var dirsList = document.getElementById('dirsList');
-  if (dirsList){
-    var dirsShot = document.getElementById('dirsShot');
-    var dirsImg  = document.getElementById('dirsImg');
-    var dirsCap  = document.getElementById('dirsCap');
-    var dirsNum  = document.getElementById('dirsNum');
-    var przyciski = Array.prototype.slice.call(dirsList.querySelectorAll('.dirs__i'));
-
-    function pokazKierunek(btn){
-      if (btn.classList.contains('on')) return;
-      przyciski.forEach(function(b){ b.classList.toggle('on', b === btn); });
-      var i = przyciski.indexOf(btn) + 1;
-      var nowy = '../assets/case-slf/kierunki-' + btn.getAttribute('data-k') + '-top.jpg';
-      var nazwa = btn.getAttribute('data-n');
-      dirsCap.textContent = 'Przeprowadzki: ' + nazwa;
-      dirsNum.textContent = (i < 10 ? '0' : '') + i + ' / ' + przyciski.length;
-      if (reduce){ dirsImg.src = nowy; dirsImg.alt = 'Landing kierunkowy: ' + nazwa; return; }
-      dirsShot.classList.add('swap');
-      var wstepny = new Image();
-      wstepny.onload = wstepny.onerror = function(){
-        dirsImg.src = nowy;
-        dirsImg.alt = 'Landing kierunkowy: ' + nazwa;
-        requestAnimationFrame(function(){ dirsShot.classList.remove('swap'); });
-      };
-      wstepny.src = nowy;
-    }
-
-    dirsList.addEventListener('pointerenter', function(ev){
-      var b = ev.target.closest ? ev.target.closest('.dirs__i') : null;
-      if (b) pokazKierunek(b);
-    }, true);
-    dirsList.addEventListener('click', function(ev){
-      var b = ev.target.closest('.dirs__i'); if (b) pokazKierunek(b);
-    });
-    dirsList.addEventListener('focusin', function(ev){
-      var b = ev.target.closest('.dirs__i'); if (b) pokazKierunek(b);
-    });
   }
 
   var docH = 1;
