@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#071e51" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Strona w budowie | Code&amp;Pixel</title>
+<meta name="description" content="Pracujemy nad nową stroną Code&amp;Pixel. Wkrótce wracamy w nowej odsłonie." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --accent-1:#2c5fd8;
+    --accent-2:#4d7cea;
+    --navy:#071e51;
+    --navy-deep:#041536;
+    --white:#fff;
+    --ff:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  *{margin:0}
+  html{min-height:100%;background:var(--navy-deep)}
+  body{min-height:100vh;min-height:100svh;font-family:var(--ff);color:var(--white);background:var(--navy-deep);line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .page{position:relative;isolation:isolate;min-height:100vh;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;background:
+    radial-gradient(70% 80% at 9% 4%,rgba(77,124,234,.46) 0%,rgba(44,95,216,.14) 43%,transparent 72%),
+    radial-gradient(55% 75% at 94% 98%,rgba(58,111,232,.27) 0%,transparent 68%),
+    linear-gradient(153deg,#0b2b68 0%,#071e51 52%,#041536 100%)}
+
+  .page::before{content:"";position:absolute;z-index:-2;inset:0;opacity:.16;background-image:
+    linear-gradient(rgba(255,255,255,.14) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.14) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(110deg,#000 0%,transparent 76%)}
+
+  .page::after{content:"";position:absolute;z-index:-1;width:min(48vw,690px);aspect-ratio:1;border:1px solid rgba(255,255,255,.13);border-radius:50%;right:min(-15vw,-120px);top:50%;transform:translateY(-44%);box-shadow:
+    0 0 0 90px rgba(255,255,255,.025),
+    0 0 0 180px rgba(255,255,255,.018)}
+
+  .shell{width:min(100% - 64px,1180px);margin-inline:auto}
+  .header{padding:30px 0;animation:reveal .75s .05s both}
+  .header__inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .logo{display:flex;align-items:center;gap:15px}
+  .logo__icon{width:66px;height:41px;flex:none}
+  .logo__lockup{position:relative;width:181px;height:44px;flex:none}
+  .logo__word{position:absolute;top:0;left:0;width:181px;height:26px}
+  .logo__tag{position:absolute;top:30px;right:0;width:131px;height:14px}
+  .header__contact{font-family:'Inter',var(--ff);font-size:13px;font-weight:500;color:rgba(255,255,255,.64);transition:color .18s ease}
+  .header__contact:hover{color:#fff}
+
+  .main{display:flex;align-items:center;padding:32px 0}
+  .hero{position:relative;width:min(800px,100%);padding-left:clamp(0px,4vw,54px)}
+  .eyebrow{display:inline-flex;align-items:center;gap:13px;padding:10px 18px;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.8);animation:reveal .8s .16s both}
+  .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:#83a7ff;box-shadow:0 0 0 5px rgba(131,167,255,.12);animation:pulse 2.4s ease-in-out infinite}
+  .title{margin-top:30px;font-size:clamp(52px,7.4vw,104px);font-weight:800;line-height:.96;letter-spacing:-.065em;text-wrap:balance;animation:reveal .85s .25s both}
+  .title span{display:block;background:linear-gradient(110deg,#fff 8%,#9dbbff 58%,#6e97f4 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{margin-top:28px;max-width:610px;font-family:'Inter',var(--ff);font-size:clamp(16px,1.5vw,19px);line-height:1.7;color:rgba(255,255,255,.66);animation:reveal .85s .36s both}
+  .actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:38px;animation:reveal .85s .47s both}
+  .button{display:inline-flex;align-items:center;justify-content:center;gap:11px;min-height:54px;padding:0 27px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease}
+  .button--primary{background:linear-gradient(165deg,var(--accent-1),var(--accent-2));box-shadow:0 12px 28px rgba(77,124,234,.34)}
+  .button--primary:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(77,124,234,.48)}
+  .button--secondary{border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.05)}
+  .button--secondary:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.54);background:rgba(255,255,255,.1)}
+  .button svg{width:16px;height:16px;flex:none}
+  .button:focus-visible,.header__contact:focus-visible{outline:2px solid #9dbbff;outline-offset:4px}
+
+  .visual{position:absolute;z-index:-1;left:clamp(580px,67vw,900px);top:50%;width:clamp(320px,35vw,510px);aspect-ratio:1;transform:translateY(-50%);pointer-events:none;animation:visual-in 1.1s .3s both}
+  .visual__orb{position:absolute;inset:14%;border-radius:50%;background:
+    radial-gradient(circle at 35% 25%,rgba(255,255,255,.38),transparent 18%),
+    radial-gradient(circle at 65% 70%,rgba(90,139,250,.24),transparent 43%),
+    linear-gradient(145deg,rgba(255,255,255,.15),rgba(77,124,234,.04));border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 0 50px rgba(255,255,255,.06),0 30px 80px rgba(0,8,35,.28);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);animation:float 7s ease-in-out infinite}
+  .visual__ring{position:absolute;inset:4%;border:1px solid rgba(146,178,255,.25);border-radius:50%;animation:spin 22s linear infinite}
+  .visual__ring::before,.visual__ring::after{content:"";position:absolute;border-radius:50%;background:#8eb0ff;box-shadow:0 0 18px rgba(142,176,255,.8)}
+  .visual__ring::before{width:9px;height:9px;top:17%;right:12%}
+  .visual__ring::after{width:6px;height:6px;bottom:7%;left:30%}
+  .visual__code{position:absolute;right:2%;bottom:14%;font-family:'Inter',monospace;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.28);transform:rotate(-90deg);transform-origin:right bottom}
+
+  .footer{padding:24px 0 30px;animation:reveal .75s .58s both}
+  .footer__inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-family:'Inter',var(--ff);font-size:12px;color:rgba(255,255,255,.4)}
+  .footer__status{display:flex;align-items:center;gap:9px}
+  .footer__status::before{content:"";width:5px;height:5px;border-radius:50%;background:#7ba0f7}
+
+  @keyframes reveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes visual-in{from{opacity:0;transform:translateY(-46%) scale(.9)}to{opacity:1;transform:translateY(-50%) scale(1)}}
+  @keyframes float{0%,100%{transform:translate3d(0,-8px,0)}50%{transform:translate3d(8px,12px,0)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(131,167,255,.1)}50%{box-shadow:0 0 0 8px rgba(131,167,255,.03)}}
+
+  @media (max-width:900px){
+    .page::after{width:610px;right:-390px;top:56%}
+    .visual{left:auto;right:-200px;width:430px;opacity:.45}
+    .hero{padding-left:0}
+  }
+
+  @media (max-width:640px){
+    .shell{width:min(100% - 40px,1180px)}
+    .header{padding:22px 0}
+    .logo{gap:10px}
+    .logo__icon{width:50px;height:31px}
+    .logo__lockup{width:145px;height:35px}
+    .logo__word{width:145px;height:21px}
+    .logo__tag{top:24px;width:105px;height:11px}
+    .header__contact{display:none}
+    .main{padding:42px 0 60px}
+    .title{font-size:clamp(48px,16vw,68px);letter-spacing:-.06em}
+    .lead{font-size:16px}
+    .actions{align-items:stretch;flex-direction:column}
+    .button{width:100%}
+    .visual{right:-265px;width:420px;opacity:.32}
+    .footer__inner{align-items:flex-start;flex-direction:column;gap:10px}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="header">
+    <div class="shell header__inner">
+      <a href="index.html" class="logo" aria-label="Code&amp;Pixel — strona główna">
+        <img class="logo__icon" src="assets/nowy/logo-icon.svg" alt="" />
+        <span class="logo__lockup">
+          <img class="logo__word" src="assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
+          <img class="logo__tag" src="assets/nowy/logo-tag.svg" alt="" />
+        </span>
+      </a>
+      <a class="header__contact" href="mailto:biuro@codeandpixel.pl">biuro@codeandpixel.pl</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <span class="eyebrow">Pracujemy nad stroną</span>
+        <h1 class="title" id="page-title">Strona<br /><span>w budowie.</span></h1>
+        <p class="lead">Porządkujemy piksele, dopracowujemy kod i&nbsp;przygotowujemy nową odsłonę Code&amp;Pixel. Wróć za chwilę albo odezwij się do nas już teraz.</p>
+        <div class="actions">
+          <a class="button button--primary" href="mailto:biuro@codeandpixel.pl">
+            Napisz do nas
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="visual__ring"></div>
+      <div class="visual__orb"></div>
+      <span class="visual__code">BUILD / 2026</span>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__inner">
+      <span>© <span id="year">2026</span> Code&amp;Pixel</span>
+      <span class="footer__status">Strona w trakcie aktualizacji</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
