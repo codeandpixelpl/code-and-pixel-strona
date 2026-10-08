@@ -15,6 +15,51 @@ Notion: https://app.notion.com/p/7e8581ec73fb4d5f8af76cff72c8ec16
 Strony zastąpione usunięte z drzewa (uslugi/, portfolio.html, css/, js/) — żyją
 w tagu `redesign-brief`. Obrazy to placeholdery (gradient „IMG"), do wygenerowania.
 
+**2026-10-08 — case study `portfolio/makiforma.html`** (MakiForma, opakowania na sushi).
+Źródło: `~/KLIENCI/01 - Code&Pixel/29 - MakiForma/01 - MakiForma/06 - Delivery/makiforma-www`
+(17 podstron, projekt v0.1 przed wdrożeniem). Assety: `assets/case-makiforma/`,
+materiały z projektu w podfolderze `mat/`.
+
+Kompozycja znowu inna (krok 3a skilla), wszystko pod prefiksem `.mf-`:
+- **Otwarcie wideo z bonsai** (`hero-bonsai.mp4`) z blokiem tytułowym na szkle.
+- **Dowód na znaku**: ten sam plik logo na bieli i na nori, z policzonym kontrastem
+  1,0:1 i 15,4:1. To jest powód, dla którego nori jest kolorem nośnym marki.
+- **Paleta zmierzona na kadrach**, nie w próbniku: plakietki na zdjęciu plus tabela hex.
+  Kontrasty 6,42:1 / 6,22:1 / 5,30:1 policzone, nie przyjęte.
+- **Wymiana pudełka w jednej scenie** (cztery kadry pod chipami).
+- **Rzut podstawy w skali** — nowy element, prostokąty rysowane z `--cm` z prawdziwych
+  centymetrów (19×13, 22×9, 26×19). Wszedł, bo zdjęcia rozmiarów są w identycznym kadrze
+  700×467 i różnicy wielkości na nich nie widać; wcześniejszy nagłówek „w jednej skali"
+  był nieprawdą i został wymieniony.
+- **Sześć uszlachetnień w makro** (lista po lewej, detal po prawej).
+- **Wideo sterowane przewijaniem** (`moku-scroll.mp4`) z kodem mechanizmu obok.
+  **Wymaga nagłówka `Accept-Ranges` po stronie serwera** — bez niego Chrome nie przeskoczy
+  do klatki i zostaje pierwsza. `python -m http.server` tego nie ma; w razie podglądu
+  lokalnego użyj serwera z obsługą Range.
+- **Kreator wyceny**: progi i komunikat przepisane z `app.js` prototypu
+  (`'Nie realizujemy nakładów poniżej ' + min + ' szt.'`, min = 500).
+  **Przy zmianie progu u klienta trzeba zaktualizować go również tutaj.**
+- **Katalog dziewięciu kategorii** z miniaturą przy kursorze (na dotyku ukryta wraz
+  ze zdaniem o najeżdżaniu).
+- **Tor zrzutów przewijany w bok**, wychodzi do krawędzi okna i gaśnie, żeby obcięcie
+  czytało się jako ciąg dalszy. Każdy plik w swoich proporcjach, nic nie przycięte.
+
+**Zastrzeżenie o renderach jest na stronie, w sekcji „Etap i otwarte punkty".**
+Większość kadrów to rendery, nie fotografia z hali — projekt nie jest wdrożony, więc
+żadnych KPI ani cytatów klienta.
+
+**Opakowania pięciu marek z materiałów klienta (OI SUSHI, PITA BROS, ICON SUSHI,
+MANO THEM, Poke Go) nie wchodzą na stronę agencji** — klient zdjął je z projektu
+z powodu pośredników. Nie przywracać.
+
+Kolejność prev/next po dołożeniu: klimaty-wola → wild-campers → monza → slf-transport →
+akademia-okocimskiego → lunchee → **makiforma** → sufity-led → miasteczko-witkowice →
+tct-tools → klimaty-wola.
+
+**Do zrobienia poza tym case'em:** przycisk „Opowiedz nam o projekcie" w nagłówku
+wychodzi poza kadr na 390 px (header ma `scrollWidth` 562 przy oknie 390). Dotyczy
+wszystkich podstron jednakowo, więc to wspólny chrome, nie ten case.
+
 **2026-08-14 — wszystkie case'y przeniesione do kontenera.** Po teście na worktree
 (`eksperyment/klimaty-w-kontenerze`) Grzegorz wybrał wersję w kontenerze zamiast
 pełnoekranowej. Każdy z pięciu case'ów ma na końcu CSS blok `SEKCJE W KONTENERZE`:

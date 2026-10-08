@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<!--
+  AKADEMIA OKOCIMSKIEGO — case study (Code&Pixel)
+  Sklep internetowy klubu. Źródło: 01 - Projekty AI/07c - Sklep Akademia Okocimskiego (dark green)
+  — najdalej rozwinięta wersja (6 commitów, własne repo `_02`), nie folder bez sufiksu.
+
+  Kompozycja znowu inna niż poprzednie case'y (patrz krok 3a skilla):
+  - ŻYWA KARTA PRODUKTU jako otwarcie: przełączanie produktu, wybór rozmiaru,
+    koszyk z progiem darmowej dostawy. Dane 1:1 z PRODUCTS i FREE_SHIP_THRESHOLD.
+  - FILMSTRIP: sekcja przypięta, cztery ekrany ścieżki zakupowej jadą w bok na scrollu.
+  - ARKUSZ KOMPONENTÓW zamiast ściany kolorów: przycisk, cena z przeceną, rozmiar
+    niedostępny, paleta, kroje, próg dostawy — elementy w naturalnej wielkości.
+  - Dwa telefony zamiast trzech w rzędzie czy stosu.
+
+  UWAGA: sklep ma `oldPrice` przy produktach, ale NIE ma informacji „Najniższa cena
+  z 30 dni" (Omnibus). Świadomie nie dorabiam jej w case'ie — pokazujemy to, co jest.
+-->
+
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MakiForma, case study | Code&Pixel</title>
+<meta name="description" content="Opakowania kartonowe na sushi dla marki MakiForma: strona B2B, system wizualny i dokumentacja konstrukcji opakowania." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Kroje sklepu: Bebas Neue (nagłówki, ceny) i Barlow Condensed (interfejs), Google Fonts. -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --accent-1:#2c5fd8;
+    --accent-2:#4d7cea;
+    --accent:#3b6ae8;
+    --accent-glow:rgba(77,124,234,0.35);
+    --ink-1:#0b1b3a;
+    --ink-3:#66738c;
+    --white:#ffffff;
+    --ff:'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --container:1180px;
+    --ease-out:cubic-bezier(.22,.9,.24,1);
+    --gut:clamp(16px,3.4vw,54px);        /* margines boczny pełnoekranowych sekcji */
+    --sec:clamp(90px,14vh,190px);        /* odstęp pionowy między sekcjami */
+    /* paleta projektu Monza (z :root w index.html) */
+    --kw-green:#113258;
+    --kw-green-deep:#0A1D33;
+    --kw-sage:#6B685F;
+    --kw-ivory:#F4F2ED;
+    --kw-stone:#E2DFD7;
+    --kw-brass:#113258;
+    --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--ff);color:var(--ink-1);background:#fff;line-height:1.5;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  ul{list-style:none}
+  .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+  .wide{width:100%;padding:0 var(--gut)}       /* prawie pełna szerokość */
+  .full{width:100%}                             /* od krawędzi do krawędzi */
+
+  /* ============ PASEK POSTĘPU ============ */
+  .prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:90;pointer-events:none}
+  .prog__bar{height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
+    background:linear-gradient(90deg,var(--accent-1),var(--accent-2) 60%,#8fb0ff)}
+
+  /* ============ WEJŚCIA ============ */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out)}
+  .rv.in{opacity:1;transform:none}
+  .rv--d1{transition-delay:.09s}
+  .rv--d2{transition-delay:.18s}
+  /* wariant bez transformu — dla elementów, które mają własny (obrót, pływanie) */
+  .fade{opacity:0;transition:opacity .95s var(--ease-out)}
+  .fade.in{opacity:1}
+  .fade--d1{transition-delay:.1s}
+  .fade--d2{transition-delay:.2s}
+  [data-lines].is-split .ln{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
+  [data-lines].is-split .ln__i{display:block;transform:translateY(116%);opacity:0;
+    transition:transform 1s var(--ease-out),opacity .75s ease}
+  [data-lines].is-split.in .ln__i{transform:none;opacity:1}
+  .lbl{display:inline-flex;align-items:center;gap:12px;opacity:0;transition:opacity .6s ease;
+    font-family:var(--ff);font-weight:700;font-size:11px;letter-spacing:.34em;text-transform:uppercase}
+  .lbl.in{opacity:1}
+  .lbl::before{content:"";width:0;height:1px;background:currentColor;transition:width .9s .08s var(--ease-out)}
+  .lbl.in::before{width:30px}
+  .clipin{clip-path:inset(7% 9% 7% 9% round var(--r,14px));transition:clip-path 1.25s var(--ease-out)}
+  .clipin.in{clip-path:inset(0% 0% 0% 0% round var(--r,14px))}
+
+  /* ============ HEADER + HERO ============ */
+  .top{position:relative;isolation:isolate;overflow:hidden;background:
+    radial-gradient(62% 60% at 20% 8%, rgba(77,124,234,0.42) 0%, transparent 60%),
+    radial-gradient(52% 55% at 85% 94%, rgba(67,115,229,0.22) 0%, transparent 60%),
+    linear-gradient(180deg, #0c2b66 0%, #08214f 52%, #061a45 100%)}
+  .top::before{content:"";position:absolute;top:-22%;left:8%;width:52vw;height:52vw;max-width:820px;max-height:820px;
+    border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,rgba(88,138,255,0.30) 0%,rgba(88,138,255,0) 68%);
+    filter:blur(14px);animation:drift 26s ease-in-out infinite alternate}
+  .top::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:var(--grain);opacity:.16;mix-blend-mode:overlay}
+  @keyframes drift{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(9vw,4vw,0) scale(1.12)}100%{transform:translate3d(-4vw,7vw,0) scale(1.04)}}
+
+  .header{position:relative;z-index:10;padding:16.5px 0}
+  .header__inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:15px}
+  .logo__icon{width:66px;height:40.5px;flex:none}
+  .logo__lockup{position:relative;width:180.6px;height:43.3px;flex:none}
+  .logo__word{position:absolute;top:0;left:0;width:180.6px;height:25.64px}
+  .logo__tag{position:absolute;top:29.55px;left:49.8px;width:130.79px;height:13.72px}
+  .nav{display:flex;gap:30px;align-items:center}
+  .nav a{font-weight:600;font-size:15px;letter-spacing:0.6px;text-transform:uppercase;color:var(--white);transition:opacity .2s}
+  .nav > a:hover{opacity:.75}
+  .nav__item{position:relative}
+  .nav__toggle{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+  .nav__toggle:hover{opacity:.75}
+  .nav__toggle svg{width:12px;height:12px;transition:transform .2s ease}
+  .nav__item:hover .nav__toggle svg,.nav__item:focus-within .nav__toggle svg{transform:rotate(180deg)}
+  .nav__item::after{content:"";position:absolute;top:100%;left:-20px;right:-20px;height:18px}
+  .nav__drop{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(8px);
+    min-width:248px;background:#fff;border:1px solid rgba(7,30,81,0.06);border-radius:16px;
+    box-shadow:0 24px 54px rgba(7,30,81,0.18);padding:8px;
+    opacity:0;visibility:hidden;transition:opacity .18s ease,transform .18s ease;z-index:30}
+  .nav__item:hover .nav__drop,.nav__item:focus-within .nav__drop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+  .nav__drop a{display:block;padding:11px 15px;border-radius:10px;
+    font-family:'Inter',var(--ff);font-weight:600;font-size:14px;letter-spacing:0;text-transform:none;
+    color:#071e51;white-space:nowrap;transition:background .15s ease,color .15s ease}
+  .nav__drop a:hover{background:#f2f5fb;color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    font-family:var(--ff);font-weight:700;text-transform:uppercase;white-space:nowrap;border:none}
+  .btn--grad{color:var(--white);background:linear-gradient(168deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow:0 10px 17px var(--accent-glow)}
+  .header__cta{border-radius:999px;padding:17px 32.5px;font-size:13px;letter-spacing:0.77px;
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+  .btn--grad:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+
+  /* hero: tytuł, jedno zdanie, minimalna metryczka */
+  .hero{position:relative;z-index:1;padding:clamp(48px,9vh,110px) 0 clamp(70px,11vh,130px)}
+  .hero__title{max-width:1000px;font-size:clamp(42px,6.4vw,96px);font-weight:800;line-height:1.02;
+    letter-spacing:-0.042em;color:#fff}
+  .hero__lead{margin-top:26px;max-width:560px;font-size:clamp(16px,1.35vw,19px);line-height:1.6;color:rgba(255,255,255,.6)}
+  .meta{display:flex;flex-wrap:wrap;gap:0 clamp(28px,4vw,64px);margin-top:clamp(40px,6vh,72px);
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+  .meta div{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
+  body.ready .meta div{opacity:1;transform:none}
+  body.ready .meta div:nth-child(1){transition-delay:.55s}
+  body.ready .meta div:nth-child(2){transition-delay:.62s}
+  body.ready .meta div:nth-child(3){transition-delay:.69s}
+  body.ready .meta div:nth-child(4){transition-delay:.76s}
+  .meta dt{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(255,255,255,.4)}
+  .meta dd{margin-top:7px;font-family:'Inter',var(--ff);font-size:14.5px;font-weight:500;color:#fff}
+  .hero__title,.hero__lead{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+  body.ready .hero__title{opacity:1;transform:none;transition-delay:.1s}
+  body.ready .hero__lead{opacity:1;transform:none;transition-delay:.42s}
+  body.ready .hero__title[data-lines].is-split{opacity:1;transform:none}
+
+  /* ============ ŻYWA KARTA PRODUKTU ============ */
+  /* Odtworzony komponent ze sklepu: zdjęcie, cena, wybór rozmiaru, koszyk
+     z progiem darmowej dostawy. Dane 1:1 z obiektu PRODUCTS w index.html. */
+  .pc{position:relative;z-index:2;margin-top:calc(-1 * clamp(30px,5vh,70px));
+    background:#0D3218;color:#E8F2EA;padding:clamp(26px,4vw,64px) 0;--r:0px;
+    font-family:'Barlow Condensed','Inter',var(--ff)}
+  .pc__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.4vw,64px);
+    align-items:center;padding:0 var(--gut);max-width:1500px;margin:0 auto}
+  .pc__figure{position:relative;background:#0D3218;border:1px solid rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
+  .pc__figure img{width:100%;height:auto;transition:opacity .3s ease}
+  .pc__figure.swap img{opacity:0}
+  .pc__badge{position:absolute;top:16px;left:16px;background:#C9A84C;color:#0D3218;
+    font-family:'Bebas Neue',Impact,sans-serif;font-size:15px;letter-spacing:.06em;padding:6px 12px;border-radius:2px}
+  .pc__thumbs{display:flex;gap:10px;margin-top:12px}
+  .pc__thumbs button{flex:1;border:1px solid rgba(255,255,255,.12);border-radius:3px;overflow:hidden;
+    background:#0D3218;padding:0;cursor:pointer;opacity:.5;transition:opacity .25s ease,border-color .25s ease}
+  .pc__thumbs button.on,.pc__thumbs button:hover{opacity:1;border-color:#C9A84C}
+  .pc__thumbs img{width:100%;height:auto;display:block}
+  .pc__cat{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#C9A84C}
+  .pc__name{margin-top:12px;font-family:'Bebas Neue',Impact,sans-serif;
+    font-size:clamp(30px,4.4vw,64px);line-height:.98;letter-spacing:.01em;color:#fff;text-transform:uppercase}
+  .pc__price{margin-top:18px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .pc__now{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(30px,3.6vw,50px);color:#C9A84C;line-height:1}
+  .pc__old{font-size:17px;color:rgba(220,240,225,.5);text-decoration:line-through}
+  .pc__lab{margin-top:26px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(220,240,225,.6)}
+  .pc__sizes{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+  .pc__sz{min-width:46px;padding:10px 12px;cursor:pointer;background:transparent;color:#E8F2EA;
+    border:1px solid rgba(255,255,255,.22);border-radius:2px;
+    font-family:'Barlow Condensed','Inter',var(--ff);font-size:15px;font-weight:600;letter-spacing:.06em;
+    transition:background .2s ease,border-color .2s ease,color .2s ease}
+  .pc__sz:hover:not(:disabled){border-color:#C9A84C}
+  .pc__sz.on{background:#C9A84C;border-color:#C9A84C;color:#0D3218}
+  .pc__sz:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+  .pc__buy{margin-top:26px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .pc__btn{cursor:pointer;border:0;border-radius:2px;background:#C9A84C;color:#0D3218;
+    padding:16px 30px;font-family:'Bebas Neue',Impact,sans-serif;font-size:19px;letter-spacing:.08em;
+    transition:background .2s ease,transform .2s var(--ease-out)}
+  .pc__btn:hover{background:#F0D68A;transform:translateY(-2px)}
+  .pc__cart{display:inline-flex;align-items:center;gap:9px;font-size:14px;color:rgba(220,240,225,.75)}
+  .pc__cart b{min-width:26px;height:26px;padding:0 7px;border-radius:99px;background:#C9A84C;color:#0D3218;
+    display:inline-flex;align-items:center;justify-content:center;font-family:'Bebas Neue',Impact,sans-serif;font-size:15px}
+  .pc__ship{margin-top:16px;font-size:13.5px;color:rgba(220,240,225,.6)}
+  .pc__ship b{color:#C9A84C;font-weight:400}
+  .pc__note{margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);
+    font-family:'Inter',var(--ff);font-size:12px;line-height:1.6;color:rgba(220,240,225,.45)}
+
+  /* ============ FILMSTRIP ŚCIEŻKI ZAKUPOWEJ ============ */
+  /* Sekcja przypięta na czas przewijania; ekrany jadą w bok, krok po kroku. */
+  .strip{position:relative;height:320vh;background:#0A2413}
+  .strip__pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+  .strip__head{padding:0 var(--gut);color:#E8F2EA}
+  .strip__head .lbl{color:#C9A84C}
+  .strip__head h2{margin-top:16px;font-family:'Bebas Neue',Impact,sans-serif;text-transform:uppercase;
+    font-size:clamp(26px,4vw,58px);line-height:1;color:#fff}
+  .strip__track{display:flex;gap:clamp(16px,2.4vw,44px);padding:clamp(24px,4vh,54px) var(--gut) 0;
+    width:max-content;will-change:transform}
+  .strip__s{flex:none;width:min(72vw,1060px)}
+  .strip__n{display:flex;align-items:baseline;gap:12px;margin-bottom:12px;
+    font-family:'Barlow Condensed','Inter',var(--ff);color:rgba(232,242,234,.65);
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+  .strip__n b{font-family:'Bebas Neue',Impact,sans-serif;font-size:24px;color:#C9A84C;font-weight:400}
+  .strip__s img{width:100%;height:auto;border:1px solid rgba(255,255,255,.12);border-radius:4px}
+  .strip__bar{margin:clamp(18px,3vh,34px) var(--gut) 0;height:1px;background:rgba(255,255,255,.16)}
+  .strip__bar i{display:block;height:100%;background:#C9A84C;transform:scaleX(0);transform-origin:0 50%}
+
+  /* ============ ARKUSZ KOMPONENTÓW ============ */
+  /* Zamiast ściany kolorów: elementy interfejsu sklepu w naturalnej wielkości. */
+  .kit{padding:var(--sec) 0;background:#E8F2EA}
+  .kit__head{padding:0 var(--gut);color:#0D3218}
+  .kit__head .lbl{color:#0D3218}
+  .kit__head h2{margin-top:16px;font-family:'Bebas Neue',Impact,sans-serif;text-transform:uppercase;
+    font-size:clamp(26px,4vw,58px);line-height:1;color:#0D3218}
+  .kit__grid{margin-top:clamp(30px,5vh,60px);padding:0 var(--gut);
+    display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(13,50,24,.16)}
+  .kit__c{background:#fff;padding:clamp(20px,2.6vw,34px);display:flex;flex-direction:column;gap:16px;
+    min-height:190px;justify-content:space-between}
+  .kit__t{font-family:'Inter',var(--ff);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(13,50,24,.5)}
+  .kit__d{font-family:'Barlow Condensed','Inter',var(--ff)}
+  .kit__chips{display:flex;gap:6px;flex-wrap:wrap}
+  .kit__chip{width:44px;height:44px;border-radius:3px;border:1px solid rgba(13,50,24,.14)}
+  .kit__cap{font-family:'Inter',var(--ff);font-size:11px;color:rgba(13,50,24,.45);letter-spacing:.02em}
+
+  /* ============ DWA TELEFONY ============ */
+  .duo{padding:var(--sec) 0;background:#0D3218;overflow:hidden}
+  .duo__row{display:flex;justify-content:center;gap:clamp(20px,4vw,80px);padding:0 var(--gut);flex-wrap:wrap}
+  .duo__p{width:clamp(190px,22vw,320px);flex:none;border-radius:32px;padding:9px;background:#0A2413;
+    border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 60px rgba(0,0,0,.4);
+    transform:translate3d(0,var(--fy,0px),0)}
+  .duo__p img{border-radius:24px;width:100%;height:auto}
+  .duo__cap{margin-top:14px;text-align:center;font-family:'Inter',var(--ff);font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:rgba(232,242,234,.5)}
+
+  /* ============ PREV / NEXT, CTA, STOPKA ============ */
+  .csec{padding:0 0 clamp(40px,6vh,80px)}
+  .cnav{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .cnav__link{background:#fff;border:1px solid rgba(7,30,81,0.08);border-radius:4px;padding:28px 30px;
+    display:flex;align-items:center;gap:18px;transition:transform .3s var(--ease-out),box-shadow .3s ease,border-color .3s ease}
+  .cnav__link:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(7,30,81,0.1);border-color:rgba(67,115,229,0.24)}
+  .cnav__link--next{justify-content:flex-end;text-align:right}
+  .cnav__ico{flex:none;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:var(--accent);background:#f2f5fb;transition:background .3s ease,color .3s ease,transform .3s var(--ease-out)}
+  .cnav__link:hover .cnav__ico{background:var(--accent);color:#fff;transform:translateX(-4px)}
+  .cnav__link--next:hover .cnav__ico{transform:translateX(4px)}
+  .cnav__label{font-family:'Inter',var(--ff);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#071e51;opacity:.45}
+  .cnav__title{margin-top:6px;font-family:'Inter',var(--ff);font-weight:600;font-size:19px;color:#071e51}
+
+  .ctaband-wrap{padding:clamp(40px,6vh,70px) 0;background:#fff}
+  .ctaband{background:#071e51 url("../assets/nowy/cta-bg.png") right center / cover no-repeat;border-radius:4px;padding:60px 50px;
+    display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;overflow:hidden}
+  .ctaband__title{max-width:460px;font-family:'Inter',var(--ff);font-weight:500;font-size:clamp(28px,3vw,37px);
+    line-height:1.16;letter-spacing:-0.026em;color:#fff}
+  .ctaband__btns{display:flex;gap:14px;flex-shrink:0;position:relative;z-index:1}
+  .upanel__btn{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;border-radius:761px;color:#fff;white-space:nowrap;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.85px;letter-spacing:0.47px;text-transform:uppercase;
+    background:linear-gradient(165deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+  .upanel__btn:hover{transform:translateY(-2px);filter:brightness(1.07);box-shadow:0 16px 30px rgba(77,124,234,0.45)}
+  .btn-outline-light{display:inline-flex;align-items:center;justify-content:center;padding:17px 25px;border-radius:761px;
+    font-family:'Inter',var(--ff);font-weight:700;font-size:11.85px;letter-spacing:0.47px;text-transform:uppercase;color:#fff;
+    border:1px solid rgba(255,255,255,0.4);background:transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+  .btn-outline-light:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.7)}
+
+  .footer{background:#071e51;color:#fff;padding:60px 0 30px}
+  .footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+  .footer__logo{display:flex;align-items:center;gap:12px}
+  .footer__brand p{margin-top:16px;max-width:280px;font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.55)}
+  .footer h5{font-family:'Inter',var(--ff);font-weight:600;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:16px}
+  .footer ul li{margin-bottom:10px}
+  .footer ul a{font-family:'Inter',var(--ff);font-size:13px;color:rgba(255,255,255,0.7);transition:color .16s ease}
+  .footer ul a:hover{color:#fff}
+  .footer__contact p{font-family:'Inter',var(--ff);font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);margin-bottom:8px}
+  .footer__bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:44px;padding-top:24px;
+    border-top:1px solid rgba(255,255,255,0.1);font-family:'Inter',var(--ff);font-size:12px;color:rgba(255,255,255,0.4)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    .dm__ubody{grid-template-columns:1fr;gap:26px}
+    .footer__grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:900px){
+    .nav{display:none}
+    .pc__in{grid-template-columns:1fr;gap:24px}
+    .strip{height:260vh}
+    .strip__s{width:86vw}
+    .kit__grid{grid-template-columns:1fr 1fr}
+    .duo__row{gap:18px}
+    .duo__p{width:42vw}
+    .cnav{grid-template-columns:1fr}
+    .cnav__link--next{justify-content:flex-start;text-align:left;flex-direction:row-reverse}
+    .ctaband{flex-direction:column;align-items:flex-start}
+  }
+  @media (max-width:560px){
+    .meta{gap:22px 30px}
+    .phone{width:66vw}
+    .footer__grid{grid-template-columns:1fr}
+    .ctaband{padding:36px 24px}
+    .ctaband__btns{flex-direction:column;align-items:stretch;width:100%}
+    .upanel__btn,.btn-outline-light{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv,.fade{opacity:1;transform:none;transition:none}
+    [data-lines].is-split .ln__i{transform:none;opacity:1;transition:none}
+    .lbl{opacity:1}
+    .lbl::before{width:30px;transition:none}
+    .clipin{clip-path:none;transition:none}
+    .top::before{animation:none}
+    .kit__grid{grid-template-columns:1fr}
+    .hero__title,.hero__lead,.meta div{opacity:1;transform:none;transition:none}
+    .phone{transform:none}
+  }
+
+  /* ==========================================================================
+     SEKCJE W KONTENERZE (decyzja Grzegorza 2026-08-14, po teście na worktree).
+     Blok dopisany na końcu, żeby wygrywał kolejnością — nic powyżej nie ruszane,
+     więc powrót do wersji pełnoekranowej to usunięcie tego jednego bloku.
+     Uwaga: rozmiary liczone w `vw` nie wiedzą, że kontener jest węższy od okna,
+     więc typografia sekcji zwężanych idzie na jednostki kontenerowe (cqw).
+     ========================================================================== */
+  :root{ --kontener:1180px; --pad:clamp(20px,3vw,40px); }
+  .wide{max-width:var(--kontener);margin-left:auto;margin-right:auto;
+    padding-left:var(--pad);padding-right:var(--pad)}
+
+  .pc{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px;--r:8px}
+  .pc__in{padding-left:var(--pad);padding-right:var(--pad)}
+  .strip{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .strip__pin{border-radius:8px}
+  .strip__head{padding-left:var(--pad);padding-right:var(--pad)}
+  .strip__track{padding-left:var(--pad);padding-right:var(--pad)}
+  .strip__s{width:min(58vw,820px)}
+  .strip__bar{margin-left:var(--pad);margin-right:var(--pad)}
+  .kit{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+  .kit__head{padding-left:var(--pad);padding-right:var(--pad)}
+  /* margines, nie padding — tło siatki (linie między kaflami) wychodziło na padding */
+  .kit__grid{padding-left:0;padding-right:0;margin-left:var(--pad);margin-right:var(--pad)}
+  .duo{max-width:var(--kontener);margin-left:auto;margin-right:auto;border-radius:8px}
+
+</style>
+
+<style>
+/* =============================================================================
+   MakiForma · case study. Układ autorski, zbudowany na referencjach zapisanych
+   w Szufladzie (id elementów przy sekcjach). Celowo NIE korzysta z szablonu
+   case study: bez pasa po skosie, bez ściany kolorów, bez telefonów w rzędzie.
+   Wszystko w przestrzeni nazw .mf-, żeby nie zderzać się z chrome serwisu.
+   ============================================================================= */
+.mf{--krem:#f6f1e7;--krem-ciemny:#eee6d8;--nori:#1d2a24;--tusz:#14181b;--szary:#6c7276;
+    --linia:#e2dcd0;--akcent:#1f6f5c;--bialy:#fff;
+    --kont:1180px;--sek:clamp(72px,10vh,132px);
+    font-family:'Inter',system-ui,sans-serif;color:var(--tusz);background:var(--bialy)}
+.mf *{box-sizing:border-box}
+.mf__k{max-width:var(--kont);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+.mf h2{font-family:'Manrope',sans-serif;font-weight:700;letter-spacing:-.02em;
+    font-size:clamp(28px,3.4vw,40px);line-height:1.1;color:var(--tusz);margin:0}
+.mf h3{font-family:'Manrope',sans-serif;font-weight:600;font-size:19px;line-height:1.25;margin:0}
+.mf p{margin:0;line-height:1.6;color:var(--szary);font-size:16px}
+/* jeden system etykiet na cała stronę: [ 01 ] wersaliki 12 px, rozstrzelenie .12em */
+.mf__nr{display:inline-block;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--akcent)}
+.mf__nr::before{content:"[ "}.mf__nr::after{content:" ]"}
+.mf__sek{padding:var(--sek) 0}
+.mf__sek--krem{background:var(--krem)}
+.mf__sek--nori{background:var(--nori);color:#e8e3d8}
+.mf__sek--nori h2{color:#fff}.mf__sek--nori p{color:rgba(232,227,216,.75)}
+.mf__sek--nori .mf__nr{color:#9ec9b9}
+.mf__glowa{display:flex;flex-direction:column;gap:14px;max-width:62ch;margin-bottom:clamp(28px,4vw,48px)}
+
+/* 01 · hero: tekst w lewej tercji na pełnoekranowym kadrze (wzorzec 37pt7gqpgz42) */
+.mf-hero{position:relative;min-height:clamp(440px,76vh,760px);display:flex;align-items:flex-end;
+    overflow:hidden;background:var(--krem)}
+.mf-hero__tlo{position:absolute;inset:0}
+.mf-hero__tlo video,.mf-hero__tlo img{width:100%;height:100%;object-fit:cover;display:block}
+.mf-hero__w{position:relative;z-index:2;width:100%;padding-bottom:clamp(32px,6vh,72px)}
+.mf-hero__box{max-width:min(520px,44%);background:rgba(246,241,231,.92);backdrop-filter:blur(2px);
+    padding:clamp(22px,3vw,34px);border-radius:3px}
+.mf-hero h1{font-family:'Manrope',sans-serif;font-weight:700;letter-spacing:-.025em;
+    font-size:clamp(34px,4.6vw,60px);line-height:1.02;margin:10px 0 12px;color:var(--tusz)}
+@media(max-width:760px){.mf-hero__box{max-width:none}}
+
+/* 02 · metryczka jako włoskowe wiersze (wzorzec dmy93hne8lih) */
+.mf-meta{display:grid;gap:0}
+.mf-meta__w{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:18px;
+    padding:18px 0;border-top:1px solid var(--linia);align-items:baseline}
+.mf-meta__w:last-child{border-bottom:1px solid var(--linia)}
+.mf-meta__e{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--szary)}
+.mf-meta__v{font-family:'Manrope',sans-serif;font-size:clamp(17px,1.5vw,21px);font-weight:600;color:var(--tusz)}
+
+/* 03 · zadanie: etykieta po lewej, akapit po prawej (wzorzec 67qz5snus5q6) */
+.mf-zad{display:grid;grid-template-columns:minmax(150px,240px) 1fr;gap:clamp(20px,4vw,56px);align-items:start}
+.mf-zad p{font-size:clamp(17px,1.7vw,21px);line-height:1.55;color:var(--tusz)}
+.mf-zad p + p{margin-top:16px;color:var(--szary);font-size:16px}
+@media(max-width:760px){.mf-zad{grid-template-columns:1fr}}
+
+/* 04 · dowód na białe logo: pole dzielone w pionie (wzorzec uo1e1n849jwg) */
+.mf-logo{display:grid;grid-template-columns:1fr 1fr;border-radius:4px;overflow:hidden;
+    border:1px solid var(--linia)}
+.mf-logo__p{aspect-ratio:16/7;display:grid;place-items:center;padding:clamp(18px,3vw,40px)}
+.mf-logo__p--bial{background:#fff}
+.mf-logo__p--nori{background:var(--nori)}
+.mf-logo__p img{width:min(72%,260px);height:auto}
+.mf-logo__pod{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.mf-logo__pod span{padding:12px 16px;font-size:13px;color:var(--szary);border-top:1px solid var(--linia)}
+
+/* 05 · paleta zmierzona na zdjęciu: pinezki na kadrze (wzorzec ubnpl14j9ptw) */
+.mf-pal{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,34px);align-items:start}
+.mf-pal__kadr{position:relative;border-radius:4px;overflow:hidden}
+.mf-pal__kadr img{width:100%;height:auto;display:block}
+.mf-pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.94);border-radius:99px;padding:5px 11px 5px 6px;
+    font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--tusz);white-space:nowrap;
+    box-shadow:0 6px 18px rgba(20,24,27,.16)}
+.mf-pin i{width:16px;height:16px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.12)}
+.mf-pal__lista{display:grid;gap:0}
+.mf-pal__r{display:grid;grid-template-columns:28px 1fr auto;gap:14px;align-items:center;
+    padding:13px 0;border-top:1px solid var(--linia)}
+.mf-pal__r:last-child{border-bottom:1px solid var(--linia)}
+.mf-pal__pr{width:26px;height:26px;border-radius:4px;border:1px solid rgba(0,0,0,.1)}
+.mf-pal__hex{font-size:13px;color:var(--szary);font-variant-numeric:tabular-nums}
+@media(max-width:860px){.mf-pal{grid-template-columns:1fr}}
+@media(max-width:700px){.mf-pal__kadr{overflow:visible}
+  .mf-pin{transform:translateY(-50%);font-size:11px;padding:4px 9px 4px 5px}
+  .mf-pin--l{left:8px!important;transform:translateY(-50%)}
+  .mf-pin--p{left:auto!important;right:8px;transform:translateY(-50%)}}
+
+/* 06 · ten sam kadr, wymienne pudełko (wzorzec sgsxqxx7sc4l) */
+.mf-chipy{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.mf-chip{border:1px solid var(--linia);background:#fff;border-radius:99px;padding:8px 16px;
+    font:inherit;font-size:14px;color:var(--szary);cursor:pointer}
+.mf-chip[aria-pressed="true"]{background:var(--tusz);border-color:var(--tusz);color:#fff}
+.mf-zamiana{position:relative;border-radius:4px;overflow:hidden;background:var(--krem-ciemny)}
+.mf-zamiana img{width:100%;height:auto;display:block}
+.mf-zamiana img+img{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+.mf-zamiana img.on{opacity:1}
+
+/* 07 · konstrukcja: cztery kadry o nierównych szerokościach (wzorzec gp4y8dgox3o0) */
+.mf-konstr{display:grid;grid-template-columns:1.2fr .9fr 1fr 1.1fr;gap:12px;align-items:end}
+.mf-konstr figure{margin:0}
+.mf-konstr img{width:100%;height:auto;display:block;border-radius:3px;background:var(--krem-ciemny)}
+.mf-konstr figcaption{margin-top:10px;font-size:13px;color:var(--szary)}
+@media(max-width:860px){.mf-konstr{grid-template-columns:1fr 1fr}}
+
+/* 09 · trzy rozmiary na jednej linii podstawy */
+.mf-rozm{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,32px);align-items:end}
+.mf-rozm figure{margin:0}
+.mf-rozm img{width:100%;height:auto;display:block}
+.mf-rozm__d{margin-top:14px;padding-top:12px;border-top:1px solid var(--linia);display:grid;gap:4px}
+.mf-rozm__w{font-family:'Manrope',sans-serif;font-weight:600;font-size:17px;color:var(--tusz)}
+.mf-rozm__e{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--szary)}
+@media(max-width:700px){.mf-rozm{grid-template-columns:1fr}}
+/* Rzut podstawy liczony z centymetrów: 1 cm = 11 px na 1440, mniej na wąskich oknach. */
+.mf-rzut{--cm:clamp(5px,.85vw,11px);margin-top:clamp(34px,5vw,56px);padding-top:26px;
+    border-top:1px solid var(--linia);display:flex;align-items:flex-end;gap:clamp(18px,3vw,44px);flex-wrap:wrap}
+/* Podpisy rzutów wiszą poza układem, więc wiersz prostokątów rezerwuje na nie miejsce. */
+.mf-rzut__w{display:flex;align-items:flex-end;gap:clamp(14px,2.4vw,34px);padding-bottom:30px;flex-wrap:wrap}
+.mf-rzut__f{position:relative;background:rgba(31,111,92,.08);border:1px solid rgba(31,111,92,.42)}
+.mf-rzut__f::after{content:attr(data-w);position:absolute;left:0;top:calc(100% + 9px);
+    font-size:12px;letter-spacing:.06em;color:var(--szary);white-space:nowrap;font-variant-numeric:tabular-nums}
+.mf-rzut__f span{position:absolute;left:9px;top:8px;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--akcent);font-weight:600}
+.mf-rzut__p{flex:1 1 180px;min-width:170px;font-size:13px;line-height:1.65;color:var(--szary);
+    align-self:flex-end;padding-bottom:4px}
+@media(max-width:560px){.mf-rzut{--cm:4.6px}}
+
+/* 10 · uszlachetnienia: lista po lewej, makro po prawej (wzorzec ubnpl14j9ptw) */
+.mf-usz{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:clamp(20px,4vw,48px);align-items:start}
+.mf-usz__l{display:grid;gap:0}
+.mf-usz__b{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:15px 0;border-top:1px solid var(--linia);background:none;border-left:0;border-right:0;border-bottom:0;
+    font:inherit;font-size:17px;color:var(--szary);cursor:pointer;text-align:left;width:100%}
+.mf-usz__l button:last-child{border-bottom:1px solid var(--linia)}
+.mf-usz__b[aria-pressed="true"]{color:var(--tusz);font-weight:600}
+.mf-usz__b[aria-pressed="true"]::after{content:"";width:18px;height:1px;background:var(--tusz)}
+.mf-usz__p{position:relative;border-radius:4px;overflow:hidden;background:var(--nori);aspect-ratio:1/1}
+.mf-usz__p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s ease}
+.mf-usz__p img.on{opacity:1}
+@media(max-width:860px){.mf-usz{grid-template-columns:1fr}}
+
+/* 11 · sekcja techniczna na nori: wideo sterowane przewijaniem (wzorzec ci2hkpmz4fdo) */
+.mf-tech{display:grid;grid-template-columns:minmax(220px,38%) minmax(0,1fr);gap:clamp(22px,4vw,54px);align-items:center}
+.mf-tech__v{border-radius:4px;overflow:hidden;background:#000}
+.mf-tech__v video{width:100%;height:auto;display:block}
+.mf-tech__kod{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.12);border-radius:4px;
+    padding:18px 20px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.7;
+    color:#cfe6dc;overflow-x:auto}
+.mf-tech__kod .k{color:#9ec9b9}.mf-tech__kod .c{color:rgba(232,227,216,.45)}
+@media(max-width:700px){.mf-tech__kod{font-size:11px;padding:14px 15px}}
+@media(max-width:860px){.mf-tech{grid-template-columns:minmax(0,1fr)}}
+
+/* 12 · kreator wyceny: akordeon 1-2-3 obok panelu (wzorzec ueb2gcnykrtj) */
+.mf-wyc{display:grid;grid-template-columns:minmax(240px,40%) minmax(0,1fr);gap:clamp(22px,4vw,48px);align-items:start}
+.mf-wyc__kroki{display:grid;gap:0}
+.mf-wyc__krok{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0;
+    border-top:1px solid var(--linia);align-items:start}
+.mf-wyc__kroki > div:last-child{border-bottom:1px solid var(--linia)}
+.mf-wyc__n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+    background:var(--krem-ciemny);font-size:13px;font-weight:600;color:var(--tusz)}
+.mf-wyc__krok.on .mf-wyc__n{background:var(--akcent);color:#fff}
+.mf-wyc__p{border:1px solid var(--linia);border-radius:4px;padding:clamp(20px,3vw,30px);background:#fff;display:grid;gap:16px}
+.mf-wyc__pole{display:grid;gap:8px}
+.mf-wyc__pole label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--szary)}
+.mf-wyc__opcje{display:flex;flex-wrap:wrap;gap:8px}
+.mf-wyc__in{border:1px solid var(--linia);border-radius:4px;padding:11px 13px;font:inherit;font-size:15px;width:160px}
+.mf-wyc__kom{font-size:14px;padding:11px 14px;border-radius:4px;background:var(--krem);color:var(--tusz)}
+.mf-wyc__kom.zle{background:#fdeceb;color:#9c2b23}
+.mf-wyc__nav{display:flex;gap:10px}
+.mf-wyc__btn{border:1px solid var(--tusz);background:var(--tusz);color:#fff;border-radius:99px;
+    padding:10px 20px;font:inherit;font-size:14px;cursor:pointer}
+.mf-wyc__btn--g{background:none;color:var(--tusz)}
+@media(max-width:860px){.mf-wyc{grid-template-columns:minmax(0,1fr)}}
+
+/* 13 · katalog jako tabela wierszy z miniaturą przy kursorze (wzorzec 2797xxwy7z0k) */
+.mf-kat{position:relative}
+.mf-kat__w{display:grid;grid-template-columns:minmax(160px,1.1fr) 1.3fr .9fr auto;gap:16px;
+    padding:17px 0;border-top:1px solid var(--linia);align-items:baseline;transition:color .18s ease}
+.mf-kat__w:last-child{border-bottom:1px solid var(--linia)}
+.mf-kat__w:hover{color:var(--akcent)}
+.mf-kat__n{font-family:'Manrope',sans-serif;font-weight:600;font-size:18px;color:inherit}
+.mf-kat__o,.mf-kat__m{font-size:14px;color:var(--szary)}
+.mf-kat__nak{font-size:13px;color:var(--szary);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:760px){.mf-kat__w{grid-template-columns:1fr auto;gap:4px 14px;padding:15px 0}
+  .mf-kat__n{grid-column:1/-1}.mf-kat__m{grid-column:1}.mf-kat__o{grid-column:1/-1}
+  .mf-kat__nak{grid-column:2;grid-row:3;text-align:right}}
+.mf-kat__min{position:fixed;width:180px;height:180px;border-radius:4px;overflow:hidden;pointer-events:none;
+    opacity:0;transform:translate(-50%,-50%) scale(.94);transition:opacity .18s ease,transform .18s ease;z-index:40;
+    box-shadow:0 18px 40px rgba(20,24,27,.22)}
+.mf-kat__min.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.mf-kat__min img{width:100%;height:100%;object-fit:cover;display:block}
+@media(hover:none){.mf-kat__min{display:none}.mf-tylko-mysz{display:none}}
+
+/* 14 · tor zrzutów: proste, w swoich proporcjach, nic nie przycięte (wzorzec d478m00ruapa) */
+.mf-tor{display:flex;gap:clamp(14px,2vw,26px);overflow-x:auto;padding-bottom:14px;
+    scroll-snap-type:x mandatory;scrollbar-width:none}
+.mf-tor::-webkit-scrollbar{display:none}
+.mf-tor figure{margin:0;flex:0 0 auto;scroll-snap-align:start}
+.mf-tor img{height:min(60vh,560px);width:auto;display:block;border-radius:3px;background:#fff;
+    box-shadow:0 1px 0 var(--linia)}
+.mf-tor figcaption{margin-top:10px;font-size:13px;color:var(--szary)}
+.mf-tor__licz{display:inline-block;margin-top:16px;padding:6px 14px;border-radius:99px;
+    background:var(--krem-ciemny);font-size:13px;color:var(--szary);font-variant-numeric:tabular-nums}
+/* Tor wychodzi do krawędzi okna i gaśnie, żeby obcięcie czytało się jako ciąg dalszy,
+   a nie jako przycięty zrzut. */
+.mf-tor__o{position:relative;margin-right:calc(50% - 50vw)}
+.mf-tor{padding-right:max(24px,calc(50vw - 50% + 24px))}
+.mf-tor__o::after{content:"";position:absolute;inset:0 0 14px auto;width:clamp(40px,8vw,120px);
+    pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),var(--bialy))}
+.mf__sek--krem .mf-tor__o::after{background:linear-gradient(to right,rgba(246,241,231,0),var(--krem))}
+.mf-tor__stopka{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mf-tor__gest{font-size:13px;color:var(--szary)}
+.mf-tor__gest b{font-weight:600;color:var(--tusz)}
+@media(hover:none){.mf-tor__gest span{display:none}}
+
+/* 15 · status: włoskowe wiersze, bez ramek (wzorzec 37pt7gqpgz42) */
+.mf-st{display:grid;gap:0}
+.mf-st__w{display:grid;grid-template-columns:minmax(150px,230px) 1fr;gap:18px;padding:18px 0;
+    border-top:1px solid var(--linia);align-items:baseline}
+.mf-st__w:last-child{border-bottom:1px solid var(--linia)}
+.mf-st__e{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--akcent)}
+.mf-st__v{font-size:16px;color:var(--tusz);line-height:1.55}
+@media(max-width:700px){.mf-meta__w,.mf-st__w{grid-template-columns:1fr;gap:6px}}
+
+/* znak wodny logo w pasie zamykającym */
+.mf-znak{position:relative;overflow:hidden}
+.mf-znak__logo{position:absolute;right:-4%;bottom:-28%;width:min(46%,520px);opacity:.09;pointer-events:none}
+.mf-znak__w{position:relative;z-index:1}
+.mf-nota{margin-top:18px;font-size:13px;color:var(--szary)}
+</style>
+</head>
+<body>
+<div class="prog" aria-hidden="true"><div class="prog__bar" id="progBar"></div></div>
+
+<div class="top">
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="logo" aria-label="Code&amp;Pixel">
+        <img class="logo__icon" src="../assets/nowy/logo-icon.svg" alt="" />
+        <span class="logo__lockup">
+          <img class="logo__word" src="../assets/nowy/logo-word.svg" alt="Code&amp;Pixel" />
+          <img class="logo__tag" src="../assets/nowy/logo-tag.svg" alt="" />
+        </span>
+      </a>
+      <nav class="nav">
+        <div class="nav__item">
+          <a href="#" class="nav__toggle" aria-haspopup="true" aria-expanded="false">Usługi
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="nav__drop" role="menu">
+            <a href="../strony-internetowe.html" role="menuitem">Strony internetowe</a>
+            <a href="../sklepy-internetowe.html" role="menuitem">Sklepy internetowe</a>
+            <a href="../crm-systemy.html" role="menuitem">CRM i&nbsp;systemy dla firm</a>
+            <a href="../aplikacje-webowe.html" role="menuitem">Aplikacje webowe</a>
+            <a href="../google-ads.html" role="menuitem">Google Ads</a>
+            <a href="../allegro-ads.html" role="menuitem">Allegro Ads</a>
+            <a href="../opieka-rozwoj.html" role="menuitem">Opieka i&nbsp;rozwój</a>
+          </div>
+        </div>
+        <a href="../realizacje.html">Realizacje</a>
+        <a href="../o-nas.html">O nas</a>
+        <a href="../wiedza.html">Wiedza</a>
+      </nav>
+      <a href="#kontakt" class="btn btn--grad header__cta">Opowiedz nam o projekcie</a>
+    </div>
+  </header>
+
+<main class="mf">
+
+<!-- 01 · HERO. Wzorzec 37pt7gqpgz42: blok tekstu w jednej tercji na pełnoekranowym kadrze, zero centrowania. -->
+<section class="mf-hero">
+  <div class="mf-hero__tlo">
+    <video autoplay muted loop playsinline preload="metadata" poster="../assets/case-makiforma/mat/kadr-moku.webp">
+      <source src="../assets/case-makiforma/mat/hero-bonsai.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="mf-hero__w mf__k">
+    <div class="mf-hero__box">
+      <span class="mf__nr">01 · Case study</span>
+      <h1>MakiForma,<br />opakowania na sushi</h1>
+      <p>Marka opakowań kartonowych dla gastronomii. Strona B2B, która zbiera zapytania ofertowe, i dokumentacja konstrukcji pudełka.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · METRYCZKA. Wzorzec dmy93hne8lih: dane w mikro-kolumnach z etykietami, nie w kaflach. -->
+<section class="mf__sek">
+  <div class="mf__k">
+    <div class="mf-meta">
+      <div class="mf-meta__w"><span class="mf-meta__e">Klient</span><span class="mf-meta__v">MakiForma, zaplecze produkcyjne Forpa</span></div>
+      <div class="mf-meta__w"><span class="mf-meta__e">Rodzaj</span><span class="mf-meta__v">Strona B2B, zapytania ofertowe</span></div>
+      <div class="mf-meta__w"><span class="mf-meta__e">Zakres</span><span class="mf-meta__v">Struktura, projekt, prototyp, system wizualny, zdjęcia</span></div>
+      <div class="mf-meta__w"><span class="mf-meta__e">Podstrony</span><span class="mf-meta__v">17</span></div>
+      <div class="mf-meta__w"><span class="mf-meta__e">Etap</span><span class="mf-meta__v">Projekt v0.1, przed wdrożeniem</span></div>
+      <div class="mf-meta__w"><span class="mf-meta__e">Rok</span><span class="mf-meta__v">2026</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · ZADANIE. Wzorzec 67qz5snus5q6: krótka etykieta po lewej, długi akapit po prawej. -->
+<section class="mf__sek mf__sek--krem">
+  <div class="mf__k">
+    <div class="mf-zad">
+      <div><span class="mf__nr">02 · Zadanie</span><h2 style="margin-top:12px">Marka bez koloru i&nbsp;kroju</h2></div>
+      <div>
+        <p>Logo przyszło wyłącznie w&nbsp;bieli, w&nbsp;monochromie. Marka nie miała ani koloru firmowego, ani kroju. Paletę, typografię i&nbsp;cały język zdjęciowy trzeba było zaproponować od&nbsp;zera.</p>
+        <p>Drugie ograniczenie dotyczyło treści: strona nie sprzedaje, tylko zbiera zapytania ofertowe. Główne wezwanie brzmi „prześlij zdjęcie opakowania albo inspiracji, przygotujemy wycenę”, a&nbsp;klient we własnej propozycji struktury nie przewidział na&nbsp;to osobnej sekcji.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · DOWÓD NA BIAŁE LOGO. Wzorzec uo1e1n849jwg: pole dzielone w pionie, obiekt na styku. -->
+<section class="mf__sek">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">03 · Znak</span>
+      <h2>Logo działa tylko na&nbsp;ciemnym</h2>
+      <p>Ten sam plik położony na&nbsp;dwóch polach. Po lewej znika, po prawej jest czytelny. To wymusiło nori jako kolor nośny marki i&nbsp;przesądziło o&nbsp;stopce oraz pasach przerywnikowych.</p>
+    </div>
+    <div class="mf-logo">
+      <div class="mf-logo__p mf-logo__p--bial"><img src="../assets/case-makiforma/mat/logo-white.svg" alt="Logotyp MakiForma w bieli na białym tle, nieczytelny" /></div>
+      <div class="mf-logo__p mf-logo__p--nori"><img src="../assets/case-makiforma/mat/logo-white.svg" alt="Ten sam logotyp na ciemnym tle nori, czytelny" /></div>
+    </div>
+    <div class="mf-logo__pod"><span>Biel na&nbsp;bieli, kontrast 1,0:1</span><span>Biel na&nbsp;nori #16211D, kontrast 15,4:1</span></div>
+  </div>
+</section>
+
+<!-- 05 · PALETA ZMIERZONA NA ZDJĘCIU. Wzorzec ubnpl14j9ptw: pinezki z wartością wprost na kadrze. -->
+<section class="mf__sek mf__sek--krem">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">04 · Paleta</span>
+      <h2>Kolory zmierzone na&nbsp;zdjęciach</h2>
+      <p>Paleta nie powstała w&nbsp;próbniku. Dwa tła scen zostały zmierzone na&nbsp;gotowych kadrach i&nbsp;dopiero potem zapisane jako tokeny, żeby zdjęcia i&nbsp;interfejs nie rozjeżdżały się kolorystycznie.</p>
+    </div>
+    <div class="mf-pal">
+      <div class="mf-pal__kadr">
+        <img src="../assets/case-makiforma/mat/kadr-moku.webp" alt="Kadr z pudełkiem MOKU na gałęzi bonsai, seria krem" />
+        <span class="mf-pin mf-pin--l" style="left:14%;top:72%"><i style="background:#F3E2C8"></i>#F3E2C8 · tło sceny</span>
+        <span class="mf-pin mf-pin--p" style="left:56%;top:33%"><i style="background:#16211D"></i>#16211D · nori</span>
+      </div>
+      <div class="mf-pal__lista">
+        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#1E6B4F"></span><span>Akcent, przyciski i&nbsp;linki</span><span class="mf-pal__hex">#1E6B4F</span></div>
+        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#16211D"></span><span>Nori, stopka i&nbsp;pasy</span><span class="mf-pal__hex">#16211D</span></div>
+        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#F3E2C8"></span><span>Scena krem, kadry 21:10</span><span class="mf-pal__hex">#F3E2C8</span></div>
+        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#E8836B"></span><span>Łosoś, tylko na&nbsp;ciemnym</span><span class="mf-pal__hex">#E8836B</span></div>
+        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#B9885A"></span><span>Kraft, kreski na&nbsp;ciemnym</span><span class="mf-pal__hex">#B9885A</span></div>
+        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#FDFCFA"></span><span>Tło treści</span><span class="mf-pal__hex">#FDFCFA</span></div>
+      </div>
+    </div>
+    <p class="mf-nota">Biel na&nbsp;akcencie daje 6,42:1, łosoś na&nbsp;nori 6,22:1, kraft na&nbsp;nori 5,30:1. Każdy z&nbsp;tych współczynników policzyliśmy na&nbsp;gotowym widoku.</p>
+  </div>
+</section>
+
+<!-- 06 · TEN SAM KADR, WYMIENNE PUDEŁKO. Wzorzec sgsxqxx7sc4l: przełącznik podmienia zawartość pod spodem. -->
+<section class="mf__sek">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">05 · Scena</span>
+      <h2>Ten sam kadr, inne pudełko</h2>
+      <p>Jedna scena obsługuje cały katalog. Zmienia się wyłącznie opakowanie, światło i&nbsp;kompozycja zostają, więc zdjęcia układają się w&nbsp;serię zamiast w&nbsp;zbiór.</p>
+    </div>
+    <div class="mf-chipy" role="group" aria-label="Wybór pudełka w scenie">
+      <button class="mf-chip" type="button" data-kadr="0" aria-pressed="true">MOKU</button>
+      <button class="mf-chip" type="button" data-kadr="1" aria-pressed="false">Kraft z okienkiem</button>
+      <button class="mf-chip" type="button" data-kadr="2" aria-pressed="false">Sushi to go</button>
+      <button class="mf-chip" type="button" data-kadr="3" aria-pressed="false">MOKU otwarte</button>
+    </div>
+    <div class="mf-zamiana" id="mfScena">
+      <img src="../assets/case-makiforma/mat/kadr-moku.webp" class="on" alt="Pudełko MOKU na gałęzi bonsai" />
+      <img src="../assets/case-makiforma/mat/kadr-kraft.webp" alt="Pudełko kraft z okienkiem w tej samej scenie" />
+      <img src="../assets/case-makiforma/mat/kadr-sushi-to-go.webp" alt="Pudełko Sushi to go w tej samej scenie" />
+      <img src="../assets/case-makiforma/mat/kadr-moku-otwarte.webp" alt="Otwarte pudełko MOKU z sushi w tej samej scenie" />
+    </div>
+  </div>
+</section>
+
+<!-- 07 · KONSTRUKCJA. Wzorzec gp4y8dgox3o0: pudełko zamknięte i otwarte, podpis w kadrze. -->
+<section class="mf__sek mf__sek--krem">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">06 · Konstrukcja</span>
+      <h2>Od wykrojki do&nbsp;pełnego pudełka</h2>
+    </div>
+    <div class="mf-konstr">
+      <figure><img src="../assets/case-makiforma/mat/konstr-1-plasko.webp" alt="Kartony MOKU na płasko, przed złożeniem" /><figcaption>Wykrojka na&nbsp;płasko</figcaption></figure>
+      <figure><img src="../assets/case-makiforma/mat/konstr-2-zlozone.webp" alt="Złożone pudełko kraft z okienkiem" /><figcaption>Złożone</figcaption></figure>
+      <figure><img src="../assets/case-makiforma/mat/konstr-3-otwarte.webp" alt="Otwarte pudełko z czarną wkładką" /><figcaption>Otwarte, z&nbsp;wkładką</figcaption></figure>
+      <figure><img src="../assets/case-makiforma/mat/konstr-4-z-jedzeniem.webp" alt="Pudełko z wkładką i zapakowanym sushi" /><figcaption>Zapakowane</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · TRZY ROZMIARY. Wzorzec uaca8krb7oos + dmy93hne8lih: formaty obok siebie, dane w mikro-kolumnach. -->
+<section class="mf__sek">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">07 · Formaty</span>
+      <h2>Trzy rozmiary, jedna podstawa</h2>
+      <p>Ten sam model w&nbsp;trzech wymiarach. Zdjęcia pokazują wykończenie, a&nbsp;rzut pod&nbsp;nimi proporcje: prostokąty są narysowane w&nbsp;jednej skali z&nbsp;centymetrów podanych w&nbsp;katalogu.</p>
+    </div>
+    <div class="mf-rozm">
+      <figure><img src="../assets/case-makiforma/mat/rozmiar-19.webp" alt="Pudełko kraft z okienkiem, 19 na 13 na 5 cm" /><div class="mf-rozm__d"><span class="mf-rozm__e">Rozmiar S</span><span class="mf-rozm__w">19 × 13 × 5 cm</span></div></figure>
+      <figure><img src="../assets/case-makiforma/mat/rozmiar-22.webp" alt="Pudełko kraft z okienkiem, 22 na 9 na 5 cm" /><div class="mf-rozm__d"><span class="mf-rozm__e">Rozmiar wąski</span><span class="mf-rozm__w">22 × 9 × 5 cm</span></div></figure>
+      <figure><img src="../assets/case-makiforma/mat/rozmiar-26.webp" alt="Pudełko kraft z okienkiem, 26 na 19 na 5 cm" /><div class="mf-rozm__d"><span class="mf-rozm__e">Rozmiar L</span><span class="mf-rozm__w">26 × 19 × 5 cm</span></div></figure>
+    </div>
+    <div class="mf-rzut">
+      <div class="mf-rzut__w">
+      <div class="mf-rzut__f" style="width:calc(19 * var(--cm));height:calc(13 * var(--cm))" data-w="19 × 13 cm"><span>S</span></div>
+      <div class="mf-rzut__f" style="width:calc(22 * var(--cm));height:calc(9 * var(--cm))" data-w="22 × 9 cm"><span>Wąski</span></div>
+      <div class="mf-rzut__f" style="width:calc(26 * var(--cm));height:calc(19 * var(--cm))" data-w="26 × 19 cm"><span>L</span></div>
+      </div>
+      <p class="mf-rzut__p">Wysokość we&nbsp;wszystkich trzech jest ta&nbsp;sama, 5&nbsp;cm, więc różnicę widać wyłącznie w&nbsp;podstawie. Wąski nie jest mniejszy od&nbsp;S, tylko inaczej proporcjonalny, a&nbsp;tego na&nbsp;samych zdjęciach nie widać.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · USZLACHETNIENIA. Wzorzec ubnpl14j9ptw: lista kategorii po lewej, panel wyniku po prawej. -->
+<section class="mf__sek mf__sek--krem">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">08 · Uszlachetnienia</span>
+      <h2>Sześć wykończeń w&nbsp;makro</h2>
+      <p>Różnicę między lakierem a&nbsp;folią widać dopiero z&nbsp;bliska, więc każde wykończenie dostało własne ujęcie detalu na&nbsp;czarnym kartonie.</p>
+    </div>
+    <div class="mf-usz">
+      <div class="mf-usz__l" role="group" aria-label="Wybór uszlachetnienia">
+        <button class="mf-usz__b" type="button" data-usz="0" aria-pressed="true">Hot stamping</button>
+        <button class="mf-usz__b" type="button" data-usz="1" aria-pressed="false">Lakier UV</button>
+        <button class="mf-usz__b" type="button" data-usz="2" aria-pressed="false">Lakier UV wypukły</button>
+        <button class="mf-usz__b" type="button" data-usz="3" aria-pressed="false">Folia błyszcząca</button>
+        <button class="mf-usz__b" type="button" data-usz="4" aria-pressed="false">Folia matowa</button>
+        <button class="mf-usz__b" type="button" data-usz="5" aria-pressed="false">Folia soft touch</button>
+      </div>
+      <div class="mf-usz__p" id="mfUsz">
+        <img src="../assets/case-makiforma/mat/zdob-hot-stamping-detail-1x1.webp" class="on" alt="Makro hot stampingu na czarnym kartonie" />
+        <img src="../assets/case-makiforma/mat/zdob-lakier-uv-detail-1x1.webp" alt="Makro lakieru UV" />
+        <img src="../assets/case-makiforma/mat/zdob-lakier-uv-wypukly-detail-1x1.webp" alt="Makro lakieru UV wypukłego" />
+        <img src="../assets/case-makiforma/mat/zdob-folia-blyszczaca-detail-1x1.webp" alt="Makro folii błyszczącej" />
+        <img src="../assets/case-makiforma/mat/zdob-folia-matowa-detail-1x1.webp" alt="Makro folii matowej" />
+        <img src="../assets/case-makiforma/mat/zdob-folia-soft-touch-detail-1x1.webp" alt="Makro folii soft touch" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · SEKCJA TECHNICZNA NA NORI. Wzorzec ci2hkpmz4fdo: jedna ciemna sekcja dla tematu technicznego. -->
+<section class="mf__sek mf__sek--nori">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">09 · Mechanizm</span>
+      <h2>Wideo sterowane przewijaniem</h2>
+      <p>Pudełko obraca się w&nbsp;tempie przewijania strony, zamiast odtwarzać się własnym rytmem. Klatkę ustawia pozycja sekcji w&nbsp;oknie.</p>
+    </div>
+    <div class="mf-tech">
+      <div class="mf-tech__v"><video id="mfScroll" muted playsinline preload="auto"><source src="../assets/case-makiforma/mat/moku-scroll.mp4" type="video/mp4" /></video></div>
+      <div>
+        <pre class="mf-tech__kod"><span class="c">// klatka ustawiana pozycją sekcji w oknie</span>
+<span class="k">const</span> p = (okno.bottom - sekcja.top) / (okno.h + sekcja.h);
+wideo.currentTime = wideo.duration * clamp(p, 0, 1);
+
+<span class="c">// warunek działania: serwer musi oddawać Range,</span>
+<span class="c">// inaczej przeglądarka nie przeskoczy do klatki</span>
+<span class="k">Accept-Ranges</span>: bytes</pre>
+        <p style="margin-top:16px">Przy włączonym oszczędzaniu ruchu mechanizm się nie uruchamia i&nbsp;zostaje pierwsza klatka.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · KREATOR WYCENY. Wzorzec ueb2gcnykrtj: akordeon 1-2-3 obok działającego panelu. -->
+<section class="mf__sek">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">10 · Ścieżka</span>
+      <h2>Wycena w&nbsp;trzech krokach</h2>
+      <p>Formularz zbiera to, czego drukarnia potrzebuje do&nbsp;wyceny, i&nbsp;pilnuje minimalnego nakładu komunikatem zamiast cichej korekty pola.</p>
+    </div>
+    <div class="mf-wyc">
+      <div class="mf-wyc__kroki" id="mfKroki">
+        <div class="mf-wyc__krok on"><span class="mf-wyc__n">1</span><div><h3>Pokaż, o&nbsp;co chodzi</h3><p>Zdjęcie opakowania albo inspiracji. Bez tego wycena jest zgadywaniem.</p></div></div>
+        <div class="mf-wyc__krok"><span class="mf-wyc__n">2</span><div><h3>Parametry opakowania</h3><p>Rodzaj, format, nakład i&nbsp;uszlachetnienie.</p></div></div>
+        <div class="mf-wyc__krok"><span class="mf-wyc__n">3</span><div><h3>Gdzie odesłać wycenę</h3><p>Dane kontaktowe i&nbsp;termin, na&nbsp;kiedy jest potrzebna.</p></div></div>
+      </div>
+      <div class="mf-wyc__p">
+        <div class="mf-wyc__pole">
+          <label>Rodzaj opakowania</label>
+          <div class="mf-wyc__opcje">
+            <button class="mf-chip" type="button" data-rodzaj aria-pressed="true">Na zestawy</button>
+            <button class="mf-chip" type="button" data-rodzaj aria-pressed="false">Na rolki</button>
+            <button class="mf-chip" type="button" data-rodzaj aria-pressed="false">Premium</button>
+          </div>
+        </div>
+        <div class="mf-wyc__pole">
+          <label for="mfNaklad">Nakład</label>
+          <input class="mf-wyc__in" type="number" id="mfNaklad" value="1000" min="500" step="100" />
+        </div>
+        <p class="mf-wyc__kom" id="mfKom">Minimalny nakład to&nbsp;500&nbsp;szt.</p>
+        <div class="mf-wyc__nav">
+          <button class="mf-wyc__btn mf-wyc__btn--g" type="button" data-krok="-1">Wstecz</button>
+          <button class="mf-wyc__btn" type="button" data-krok="1">Dalej</button>
+        </div>
+      </div>
+    </div>
+    <p class="mf-nota">Odtworzenie panelu z&nbsp;prototypu. Próg 500&nbsp;szt. i&nbsp;treść komunikatu pochodzą z&nbsp;pliku <code>app.js</code> prototypu.</p>
+  </div>
+</section>
+
+<!-- 13 · KATALOG JAKO TABELA. Wzorzec 2797xxwy7z0k: wiersze z miniaturą przy kursorze, nie siatka kafli. -->
+<section class="mf__sek mf__sek--krem">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">11 · Katalog</span>
+      <h2>Dziewięć kategorii opakowań</h2>
+      <p>Każda kategoria ma własną podstronę z&nbsp;formularzem nakładu.<span class="mf-tylko-mysz"> Najedź na&nbsp;wiersz, żeby zobaczyć kadr.</span></p>
+    </div>
+    <div class="mf-kat" id="mfKat">
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-zestawy.webp"><span class="mf-kat__n">Na zestawy sushi</span><span class="mf-kat__o">Pudełka z przegrodkami</span><span class="mf-kat__m">Karton + wkładka</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-rolki.webp"><span class="mf-kat__n">Na rolki sushi</span><span class="mf-kat__o">Format wąski, podłużny</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-premium.webp"><span class="mf-kat__n">Premium</span><span class="mf-kat__o">Uszlachetnienia i magnes</span><span class="mf-kat__m">Karton powlekany</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-delivery.webp"><span class="mf-kat__n">Delivery i take away</span><span class="mf-kat__o">Transport i szczelność</span><span class="mf-kat__m">Karton + okienko</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-catering.webp"><span class="mf-kat__n">Cateringowe i eventowe</span><span class="mf-kat__o">Duże formaty</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-lunch.webp"><span class="mf-kat__n">Lunchowe i grab &amp; go</span><span class="mf-kat__o">Jedna ręka, jeden posiłek</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-banderole.webp"><span class="mf-kat__n">Banderole brandingowe</span><span class="mf-kat__o">Opaska na gotowe pudełko</span><span class="mf-kat__m">Papier</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-sezonowe.webp"><span class="mf-kat__n">Sezonowe i limitowane</span><span class="mf-kat__o">Krótkie serie</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
+      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-dodatki.webp"><span class="mf-kat__n">Dodatki brandingowe</span><span class="mf-kat__o">Naklejki, wkładki, taśmy</span><span class="mf-kat__m">Papier i folia</span><span class="mf-kat__nak">od 500 szt.</span></div>
+    </div>
+    <div class="mf-kat__min" id="mfMin"><img src="../assets/case-makiforma/mat/kat-premium.webp" alt="" /></div>
+  </div>
+</section>
+
+<!-- 14 · TOR ZRZUTÓW. Wzorzec d478m00ruapa: poziomy tor, różne proporcje w jednym rzędzie, nic nie przycięte. -->
+<section class="mf__sek">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">12 · Strona</span>
+      <h2>Prototyp na&nbsp;dwóch szerokościach</h2>
+      <p>Siedemnaście podstron, tu siedem widoków. Każdy plik w&nbsp;całości, w&nbsp;swoich proporcjach, desktop i&nbsp;390&nbsp;px w&nbsp;jednym rzędzie.</p>
+    </div>
+    <div class="mf-tor__o">
+      <div class="mf-tor">
+      <figure><img loading="lazy" src="../assets/case-makiforma/index-top.jpg" alt="Strona główna, góra" /><figcaption>Strona główna · 1440 px</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/case-makiforma/index-m.jpg" alt="Strona główna na 390 px" /><figcaption>Strona główna · 390 px</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/case-makiforma/opakowania-top.jpg" alt="Katalog opakowań" /><figcaption>Katalog · 1440 px</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/case-makiforma/opakowania-premium-top.jpg" alt="Opakowania premium" /><figcaption>Premium · 1440 px</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/case-makiforma/wycena-top.jpg" alt="Formularz wyceny" /><figcaption>Wycena · 1440 px</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/case-makiforma/wycena-m.jpg" alt="Formularz wyceny na 390 px" /><figcaption>Wycena · 390 px</figcaption></figure>
+      <figure><img loading="lazy" src="../assets/case-makiforma/personalizacja-top.jpg" alt="Personalizacja" /><figcaption>Personalizacja · 1440 px</figcaption></figure>
+      </div>
+    </div>
+    <div class="mf-tor__stopka">
+      <span class="mf-tor__licz">7 z&nbsp;17 podstron</span>
+      <span class="mf-tor__gest">Tor przewija się w&nbsp;bok<span>: <b>przeciągnij</b> albo przewiń z&nbsp;klawisza Shift</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · STATUS. Zamiast KPI, bo projekt nie jest wdrożony. -->
+<section class="mf__sek mf__sek--krem">
+  <div class="mf__k">
+    <div class="mf__glowa">
+      <span class="mf__nr">13 · Status</span>
+      <h2>Etap i&nbsp;otwarte punkty</h2>
+    </div>
+    <div class="mf-st">
+      <div class="mf-st__w"><span class="mf-st__e">Gdzie jesteśmy</span><span class="mf-st__v">Projekt v0.1 zbudowany, 17 podstron, przed wdrożeniem.</span></div>
+      <div class="mf-st__w"><span class="mf-st__e">Co jest gotowe</span><span class="mf-st__v">Struktura, system wizualny, prototyp wszystkich podstron, zdjęcia produktowe i&nbsp;sceny.</span></div>
+      <div class="mf-st__w"><span class="mf-st__e">Co czeka na&nbsp;klienta</span><span class="mf-st__v">Tłumaczenia na&nbsp;angielski i&nbsp;niemiecki, zdjęcia z&nbsp;produkcji, dane kontaktowe.</span></div>
+      <div class="mf-st__w"><span class="mf-st__e">Uczciwie</span><span class="mf-st__v">Większość kadrów to&nbsp;rendery, nie fotografia z&nbsp;hali. Powstały po&nbsp;to, żeby pokazać konstrukcję i&nbsp;skalę, zanim ruszy sesja.</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="csec"><div class="container">
+  <div class="cnav">
+    <a href="lunchee.html" class="cnav__link rv">
+      <span class="cnav__ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></span>
+      <span><span class="cnav__label">Poprzedni</span><span class="cnav__title" style="display:block">Lunchee</span></span>
+    </a>
+    <a href="sufity-led.html" class="cnav__link cnav__link--next rv rv--d1">
+      <span><span class="cnav__label">Następny</span><span class="cnav__title" style="display:block">Sufity LED</span></span>
+      <span class="cnav__ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+    </a>
+  </div>
+</div></section>
+
+<section class="ctaband-wrap" id="kontakt"><div class="container"><div class="ctaband">
+  <h2 class="ctaband__title" data-lines>Lubisz to, co&nbsp;widzisz?</h2>
+  <div class="ctaband__btns"><a href="../kontakt.html" class="upanel__btn">Wyceń projekt</a><a href="mailto:hello@codeandpixel.io" class="btn-outline-light">hello@codeandpixel.io</a></div>
+</div></div></section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="../index.html" class="footer__logo" aria-label="Code&amp;Pixel">
+          <img src="../assets/nowy/logo-icon.svg" alt="" style="width:56px;height:34px" />
+          <img src="../assets/nowy/logo-word.svg" alt="Code&amp;Pixel" style="width:155px;height:22px" />
+        </a>
+        <p>Interactive agency. Łączymy technologię, projektowanie i&nbsp;marketing, aby dostarczać rozwiązania, które realnie wspierają biznes.</p>
+      </div>
+      <div>
+        <h5>Oferta</h5>
+        <ul>
+          <li><a href="../strony-internetowe.html">Strony internetowe</a></li>
+          <li><a href="../sklepy-internetowe.html">Sklepy internetowe</a></li>
+          <li><a href="../crm-systemy.html">CRM dla firm</a></li>
+          <li><a href="../aplikacje-webowe.html">Aplikacje</a></li>
+          <li><a href="../google-ads.html">Google Ads</a></li>
+          <li><a href="../allegro-ads.html">Allegro Ads</a></li>
+          <li><a href="../opieka-rozwoj.html">Opieka i&nbsp;rozwój</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>O nas</h5>
+        <ul>
+          <li><a href="../o-nas.html">O firmie</a></li>
+          <li><a href="../realizacje.html">Realizacje</a></li>
+          <li><a href="../wiedza.html">Wiedza / Blog</a></li>
+          <li><a href="../kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h5>Kontakt</h5>
+        <p>Code&amp;Pixel Sp. z&nbsp;o.o.</p>
+        <p>ul. Przykładowa 1<br />32-800 Brzesko</p>
+        <p>+48 000 000 000</p>
+        <p>kontakt@codeandpixel.pl</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2010–2024 Code&amp;Pixel. Wszelkie prawa zastrzeżone.</span>
+      <span>Nadajemy cyfrowy kierunek Twojemu biznesowi.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp = function(v,a,b){ return v < a ? a : (v > b ? b : v); };
+
+  /* ================= 1. ŁAMANIE NAGŁÓWKÓW NA LINIE ================= */
+  var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+
+  function splitLines(el){
+    var src = el.getAttribute('data-text');
+    if (src === null){ src = el.textContent; el.setAttribute('data-text', src); }
+    /* dzielimy tylko na zwykłych spacjach — twarde spacje zostają w słowie */
+    var words = src.split(' ').filter(function(w){ return w.length; });
+    el.innerHTML = words.map(function(w){ return '<span class="w">' + esc(w) + '</span>'; }).join(' ');
+    var spans = el.querySelectorAll('.w'), lines = [], cur = null, top = null, i;
+    for (i = 0; i < spans.length; i++){
+      var t = spans[i].offsetTop;
+      if (top === null || Math.abs(t - top) > 3){ top = t; cur = []; lines.push(cur); }
+      cur.push(spans[i].textContent);
+    }
+    el.innerHTML = lines.map(function(l, idx){
+      return '<span class="ln"><span class="ln__i" style="transition-delay:' +
+             (idx * 0.075).toFixed(3) + 's">' + esc(l.join(' ')) + '</span></span>';
+    }).join('');
+    el.classList.add('is-split');
+  }
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('[data-lines]'));
+  if (!reduce) heads.forEach(splitLines);
+
+  var rsT;
+  window.addEventListener('resize', function(){
+    clearTimeout(rsT);
+    rsT = setTimeout(function(){
+      if (!reduce) heads.forEach(function(el){
+        var wasIn = el.classList.contains('in');
+        splitLines(el);
+        if (wasIn) el.classList.add('in');
+      });
+      measure();
+    }, 220);
+  });
+
+  /* ================= 2. WEJŚCIE ELEMENTÓW ================= */
+  var targets = document.querySelectorAll('.rv, .fade, .clipin, .lbl, [data-lines]');
+  if (reduce || !('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(targets, function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    Array.prototype.forEach.call(targets, function(el){ io.observe(el); });
+  }
+
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      document.body.classList.add('ready');
+      var h = document.querySelector('[data-hero]');
+      if (h) h.classList.add('in');
+    });
+  });
+
+  /* ================= 4. JEDNA PĘTLA DLA EFEKTÓW ZWIĄZANYCH ZE SCROLLEM ================= */
+  var progBar  = document.getElementById('progBar');
+  var heroFrame= document.querySelector('[data-parallax]');
+  var floats   = Array.prototype.slice.call(document.querySelectorAll('[data-float]'));
+  var strip    = document.getElementById('strip');
+  var stripTr  = document.getElementById('stripTrack');
+  var stripBar = document.getElementById('stripBar');
+  var stripTravel = 0;
+
+  var docH = 1;
+
+  function measure(){
+    docH = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    /* przesuw liczymy względem widocznej ramy (kontener), nie okna przeglądarki */
+    if (stripTr) stripTravel = Math.max(0, stripTr.scrollWidth - stripTr.parentElement.clientWidth);
+  }
+
+  if (!reduce){
+    var lastY = window.pageYOffset, vel = 0, prevT = 0;
+
+    var loop = function(t){
+      requestAnimationFrame(loop);
+      if (document.hidden){ prevT = t; return; }
+      var dt = prevT ? Math.min(50, t - prevT) : 16;
+      prevT = t;
+
+      var y = window.pageYOffset;
+      var raw = (y - lastY) / dt;
+      lastY = y;
+      vel += (raw - vel) * 0.12;
+      vel = clamp(vel, -3, 3);
+
+      if (progBar) progBar.style.transform = 'scaleX(' + (y / docH).toFixed(4) + ')';
+
+      var vh = window.innerHeight;
+
+      /* replika hero: dryf plus sekwencja z oryginału */
+      if (heroFrame){
+        var hr = heroFrame.getBoundingClientRect();
+        var hp = clamp((hr.top + hr.height) / (vh + hr.height), 0, 1);
+        heroFrame.style.transform = 'translate3d(0,' + ((hp - 0.5) * 26).toFixed(1) + 'px,0)';
+      }
+
+      /* ekrany ścieżki zakupowej jadą w bok, gdy sekcja jest przypięta */
+      if (strip && stripTr && stripTravel > 0){
+        var sr = strip.getBoundingClientRect();
+        var przewijalne = strip.offsetHeight - vh;
+        var sp = przewijalne > 0 ? clamp(-sr.top / przewijalne, 0, 1) : 0;
+        stripTr.style.transform = 'translate3d(' + (-stripTravel * sp).toFixed(1) + 'px,0,0)';
+        if (stripBar) stripBar.style.transform = 'scaleX(' + sp.toFixed(3) + ')';
+      }
+
+      /* elementy unoszące się względem sekcji — tylko zmienna --fy,
+         żeby nie nadpisać obrotu kafli pokazywanych pod kątem */
+      for (var f = 0; f < floats.length; f++){
+        var el = floats[f], fr = el.getBoundingClientRect();
+        var fp = clamp((fr.top + fr.height) / (vh + fr.height), 0, 1);
+        el.style.setProperty('--fy', ((fp - 0.5) * parseFloat(el.getAttribute('data-float'))).toFixed(1) + 'px');
+      }
+    };
+
+    if (document.readyState === 'complete') measure();
+    window.addEventListener('load', measure);
+    window.addEventListener('resize', measure);
+    measure();
+    requestAnimationFrame(loop);
+  } else {
+    if (progBar) progBar.style.transform = 'scaleX(1)';
+    measure();
+  }
+})();
+</script>
+
+<script>
+/* MakiForma · mechanizmy sekcji. Wszystko w jednym IIFE, bez zależności. */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 05 · ten sam kadr, wymienne pudełko */
+  var scena = document.getElementById('mfScena');
+  if (scena){
+    var kadry = scena.querySelectorAll('img');
+    document.querySelectorAll('[data-kadr]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-kadr');
+        kadry.forEach(function(k, n){ k.classList.toggle('on', n === i); });
+        document.querySelectorAll('[data-kadr]').forEach(function(x){
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+      });
+    });
+  }
+
+  /* 08 · uszlachetnienia */
+  var usz = document.getElementById('mfUsz');
+  if (usz){
+    var makra = usz.querySelectorAll('img');
+    document.querySelectorAll('[data-usz]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-usz');
+        makra.forEach(function(m, n){ m.classList.toggle('on', n === i); });
+        document.querySelectorAll('[data-usz]').forEach(function(x){
+          x.setAttribute('aria-pressed', String(x === b));
+        });
+      });
+    });
+  }
+
+  /* 09 · wideo sterowane przewijaniem. Wymaga nagłówka Range po stronie serwera. */
+  var v = document.getElementById('mfScroll');
+  if (v && !reduce){
+    /* loadedmetadata potrafi paść przed podpięciem obsługi, więc pytamy też o stan wprost */
+    var gotowe = v.readyState >= 1;
+    v.addEventListener('loadedmetadata', function(){ gotowe = true; });
+    var tick = false;
+    addEventListener('scroll', function(){
+      if (tick || !gotowe) return;
+      tick = true;
+      requestAnimationFrame(function(){
+        tick = false;
+        var r = v.closest('section').getBoundingClientRect();
+        var p = (innerHeight - r.top) / (innerHeight + r.height);
+        p = Math.max(0, Math.min(1, p));
+        if (isFinite(v.duration)) v.currentTime = v.duration * p;
+      });
+    }, {passive:true});
+  }
+
+  /* 10 · kreator wyceny: kroki i walidacja nakładu (minimum 500 szt. z kodu projektu) */
+  var pole = document.getElementById('mfNaklad'), kom = document.getElementById('mfKom');
+  if (pole && kom){
+    var MIN = 500, baza = kom.textContent;
+    pole.addEventListener('input', function(){
+      var zaMalo = pole.value !== '' && parseInt(pole.value, 10) < MIN;
+      kom.textContent = zaMalo ? 'Nie realizujemy nakładów poniżej ' + MIN + ' szt.' : baza;
+      kom.classList.toggle('zle', zaMalo);
+    });
+  }
+  document.querySelectorAll('[data-rodzaj]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-rodzaj]').forEach(function(x){
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+    });
+  });
+  var kroki = document.getElementById('mfKroki');
+  if (kroki){
+    var akt = 0, lista = kroki.querySelectorAll('.mf-wyc__krok');
+    document.querySelectorAll('[data-krok]').forEach(function(b){
+      b.addEventListener('click', function(){
+        akt = Math.max(0, Math.min(lista.length - 1, akt + (+b.getAttribute('data-krok'))));
+        lista.forEach(function(k, n){ k.classList.toggle('on', n === akt); });
+      });
+    });
+  }
+
+  /* 11 · katalog: miniatura przy kursorze */
+  var kat = document.getElementById('mfKat'), min = document.getElementById('mfMin');
+  if (kat && min && matchMedia('(hover: hover)').matches){
+    var obraz = min.querySelector('img');
+    kat.addEventListener('mousemove', function(e){
+      var w = e.target.closest('.mf-kat__w');
+      if (!w){ min.classList.remove('on'); return; }
+      var src = w.getAttribute('data-min');
+      if (!src){ min.classList.remove('on'); return; }
+      if (obraz.getAttribute('src') !== src){ obraz.src = src; obraz.alt = ''; }
+      min.style.left = e.clientX + 130 + 'px';
+      min.style.top  = e.clientY + 'px';
+      min.classList.add('on');
+    });
+    kat.addEventListener('mouseleave', function(){ min.classList.remove('on'); });
+  }
+})();
+</script>
+</body>
+</html>
