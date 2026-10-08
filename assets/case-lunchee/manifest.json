@@ -1,0 +1,173 @@
+{
+  "zrodlo": "/Users/prouopstudio/KLIENCI/01 - Code&Pixel/35 - Lunchee/01 - Sklep internetowy/06 - Delivery/lunchee-sklep",
+  "pliki": [
+    {
+      "plik": "index-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 184,
+      "podstrona": "index.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 148,
+      "podstrona": "index.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "lunch-boxy-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 124,
+      "podstrona": "lunch-boxy.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "lunch-boxy-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 74,
+      "podstrona": "lunch-boxy.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "produkt-lb745-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 141,
+      "podstrona": "produkt-lb745.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "produkt-lb745-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 123,
+      "podstrona": "produkt-lb745.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "koszyk-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 82,
+      "podstrona": "koszyk.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "zamowienie-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 77,
+      "podstrona": "zamowienie.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "zamowienie-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 111,
+      "podstrona": "zamowienie.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "dla-firm-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 212,
+      "podstrona": "dla-firm.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "dla-firm-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 128,
+      "podstrona": "dla-firm.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "akcesoria-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 119,
+      "podstrona": "akcesoria.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "akcesoria-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 122,
+      "podstrona": "akcesoria.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "o-nas-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 237,
+      "podstrona": "o-nas.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "o-nas-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 119,
+      "podstrona": "o-nas.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "galeria-zdjecie-5.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 136,
+      "podstrona": "produkt-lb745",
+      "ujecie": "stan: galeria-zdjecie-5"
+    },
+    {
+      "plik": "faq-otwarte.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 113,
+      "podstrona": "produkt-lb745",
+      "ujecie": "stan: faq-otwarte"
+    },
+    {
+      "plik": "faktura-vat.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 81,
+      "podstrona": "zamowienie",
+      "ujecie": "stan: faktura-vat"
+    },
+    {
+      "plik": "index-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 111,
+      "podstrona": "index",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "produkt-lb745-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 80,
+      "podstrona": "produkt-lb745",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "lunch-boxy-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 66,
+      "podstrona": "lunch-boxy",
+      "ujecie": "390 px"
+    }
+  ]
+}

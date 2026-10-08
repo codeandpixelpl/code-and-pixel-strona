@@ -60,7 +60,7 @@ Kolejność prev/next: klimaty-wola → wild-campers → monza → slf-transport
 akademia-okocimskiego → sufity-led → miasteczko-witkowice → tct-tools → klimaty-wola.
 
 **2026-08-13 — case study `portfolio/slf-transport.html`** (SLF Transport & Removals).
-Źródło: `01 - KLIENCI/SLF Transport i przeprowadzki/01 - Strona Internetowa`.
+Źródło: `~/Dropbox/01 - KLIENCI/SLF Transport/01 - Strona Internetowa`.
 
 **Pierwszy case złożony świadomie w innym układzie** — na prośbę Grzegorza, żeby case'y
 nie wyglądały jak sztanca. Reguła i tabela wariantów siedzą teraz w kroku 3a skilla.
