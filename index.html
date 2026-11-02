@@ -767,7 +767,7 @@
         </span>
       </a>
       <a href="portfolio/akademia-okocimskiego.html" class="real-card">
-        <img src="assets/case-akademia/card-wide.jpg" alt="Sklep Akademii Okocimskiego" />
+        <img src="assets/case-akademia/card-wide.jpg" alt="Strona główna sklepu Akademii Okocimskiego" />
         <span class="real-card__b">
           <span class="real-card__tag">Sklep internetowy · Klub piłkarski</span>
           <span class="real-card__t">Akademia Okocimskiego</span>
@@ -1028,14 +1028,17 @@
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       dragging = true; moved = false;
       startX = e.clientX; startLeft = vp.scrollLeft;
-      vp.classList.add('is-dragging');
-      try { vp.setPointerCapture(e.pointerId); } catch(_) {}
     });
     vp.addEventListener('pointermove', function(e){
       if (!dragging) return;
       var dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) moved = true;
-      vp.scrollLeft = startLeft - dx;
+      /* przechwycenie dopiero przy ruchu: wcześniejsze zabiera klik linkom kart */
+      if (!moved && Math.abs(dx) > 4) {
+        moved = true;
+        vp.classList.add('is-dragging');
+        try { vp.setPointerCapture(e.pointerId); } catch(_) {}
+      }
+      if (moved) vp.scrollLeft = startLeft - dx;
     });
     ['pointerup','pointercancel'].forEach(function(ev){
       vp.addEventListener(ev, function(){ dragging = false; vp.classList.remove('is-dragging'); });
