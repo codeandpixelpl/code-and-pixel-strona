@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <!--
-  AKADEMIA OKOCIMSKIEGO — case study (Code&Pixel)
-  Sklep internetowy klubu. Źródło: 01 - Projekty AI/07c - Sklep Akademia Okocimskiego (dark green)
-  — najdalej rozwinięta wersja (6 commitów, własne repo `_02`), nie folder bez sufiksu.
-
-  Kompozycja znowu inna niż poprzednie case'y (patrz krok 3a skilla):
-  - ŻYWA KARTA PRODUKTU jako otwarcie: przełączanie produktu, wybór rozmiaru,
-    koszyk z progiem darmowej dostawy. Dane 1:1 z PRODUCTS i FREE_SHIP_THRESHOLD.
-  - FILMSTRIP: sekcja przypięta, cztery ekrany ścieżki zakupowej jadą w bok na scrollu.
-  - ARKUSZ KOMPONENTÓW zamiast ściany kolorów: przycisk, cena z przeceną, rozmiar
-    niedostępny, paleta, kroje, próg dostawy — elementy w naturalnej wielkości.
-  - Dwa telefony zamiast trzech w rzędzie czy stosu.
-
-  UWAGA: sklep ma `oldPrice` przy produktach, ale NIE ma informacji „Najniższa cena
-  z 30 dni" (Omnibus). Świadomie nie dorabiam jej w case'ie — pokazujemy to, co jest.
+  MAKIFORMA — case study (Code&Pixel)
+  Obrazy 1:1 z Figmy Portfolio Code&Pixel, strona MakiForma, ramka „wersja 01” (11:180), eksport 2×.
+  Poprzednia, rozbudowana wersja strony jest w historii gita (da4cfc4).
 -->
 
 <html lang="pl">
@@ -619,314 +608,42 @@
     </div>
   </header>
 
-<main class="mf">
 
-<!-- 01 · HERO. Wzorzec 37pt7gqpgz42: blok tekstu w jednej tercji na pełnoekranowym kadrze, zero centrowania. -->
-<section class="mf-hero">
-  <div class="mf-hero__tlo">
-    <video autoplay muted loop playsinline preload="metadata" poster="../assets/case-makiforma/mat/kadr-moku.webp">
-      <source src="../assets/case-makiforma/mat/hero-bonsai.mp4" type="video/mp4" />
-    </video>
-  </div>
-  <div class="mf-hero__w mf__k">
-    <div class="mf-hero__box">
-      <span class="mf__nr">01 · Case study</span>
-      <h1>MakiForma,<br />opakowania na sushi</h1>
-      <p>Marka opakowań kartonowych dla gastronomii. Strona B2B, która zbiera zapytania ofertowe, i dokumentacja konstrukcji pudełka.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 02 · METRYCZKA. Wzorzec dmy93hne8lih: dane w mikro-kolumnach z etykietami, nie w kaflach. -->
-<section class="mf__sek">
-  <div class="mf__k">
-    <div class="mf-meta">
-      <div class="mf-meta__w"><span class="mf-meta__e">Klient</span><span class="mf-meta__v">MakiForma, zaplecze produkcyjne Forpa</span></div>
-      <div class="mf-meta__w"><span class="mf-meta__e">Rodzaj</span><span class="mf-meta__v">Strona B2B, zapytania ofertowe</span></div>
-      <div class="mf-meta__w"><span class="mf-meta__e">Zakres</span><span class="mf-meta__v">Struktura, projekt, prototyp, system wizualny, zdjęcia</span></div>
-      <div class="mf-meta__w"><span class="mf-meta__e">Podstrony</span><span class="mf-meta__v">17</span></div>
-      <div class="mf-meta__w"><span class="mf-meta__e">Etap</span><span class="mf-meta__v">Projekt v0.1, przed wdrożeniem</span></div>
-      <div class="mf-meta__w"><span class="mf-meta__e">Rok</span><span class="mf-meta__v">2026</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 03 · ZADANIE. Wzorzec 67qz5snus5q6: krótka etykieta po lewej, długi akapit po prawej. -->
-<section class="mf__sek mf__sek--krem">
-  <div class="mf__k">
-    <div class="mf-zad">
-      <div><span class="mf__nr">02 · Zadanie</span><h2 style="margin-top:12px">Marka bez koloru i&nbsp;kroju</h2></div>
-      <div>
-        <p>Logo przyszło wyłącznie w&nbsp;bieli, w&nbsp;monochromie. Marka nie miała ani koloru firmowego, ani kroju. Paletę, typografię i&nbsp;cały język zdjęciowy trzeba było zaproponować od&nbsp;zera.</p>
-        <p>Drugie ograniczenie dotyczyło treści: strona nie sprzedaje, tylko zbiera zapytania ofertowe. Główne wezwanie brzmi „prześlij zdjęcie opakowania albo inspiracji, przygotujemy wycenę”, a&nbsp;klient we własnej propozycji struktury nie przewidział na&nbsp;to osobnej sekcji.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 04 · DOWÓD NA BIAŁE LOGO. Wzorzec uo1e1n849jwg: pole dzielone w pionie, obiekt na styku. -->
-<section class="mf__sek">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">03 · Znak</span>
-      <h2>Logo działa tylko na&nbsp;ciemnym</h2>
-      <p>Ten sam plik położony na&nbsp;dwóch polach. Po lewej znika, po prawej jest czytelny. To wymusiło nori jako kolor nośny marki i&nbsp;przesądziło o&nbsp;stopce oraz pasach przerywnikowych.</p>
-    </div>
-    <div class="mf-logo">
-      <div class="mf-logo__p mf-logo__p--bial"><img src="../assets/case-makiforma/mat/logo-white.svg" alt="Logotyp MakiForma w bieli na białym tle, nieczytelny" /></div>
-      <div class="mf-logo__p mf-logo__p--nori"><img src="../assets/case-makiforma/mat/logo-white.svg" alt="Ten sam logotyp na ciemnym tle nori, czytelny" /></div>
-    </div>
-    <div class="mf-logo__pod"><span>Biel na&nbsp;bieli, kontrast 1,0:1</span><span>Biel na&nbsp;nori #16211D, kontrast 15,4:1</span></div>
-  </div>
-</section>
-
-<!-- 05 · PALETA ZMIERZONA NA ZDJĘCIU. Wzorzec ubnpl14j9ptw: pinezki z wartością wprost na kadrze. -->
-<section class="mf__sek mf__sek--krem">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">04 · Paleta</span>
-      <h2>Kolory zmierzone na&nbsp;zdjęciach</h2>
-      <p>Paleta nie powstała w&nbsp;próbniku. Dwa tła scen zostały zmierzone na&nbsp;gotowych kadrach i&nbsp;dopiero potem zapisane jako tokeny, żeby zdjęcia i&nbsp;interfejs nie rozjeżdżały się kolorystycznie.</p>
-    </div>
-    <div class="mf-pal">
-      <div class="mf-pal__kadr">
-        <img src="../assets/case-makiforma/mat/kadr-moku.webp" alt="Kadr z pudełkiem MOKU na gałęzi bonsai, seria krem" />
-        <span class="mf-pin mf-pin--l" style="left:14%;top:72%"><i style="background:#F3E2C8"></i>#F3E2C8 · tło sceny</span>
-        <span class="mf-pin mf-pin--p" style="left:56%;top:33%"><i style="background:#16211D"></i>#16211D · nori</span>
-      </div>
-      <div class="mf-pal__lista">
-        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#1E6B4F"></span><span>Akcent, przyciski i&nbsp;linki</span><span class="mf-pal__hex">#1E6B4F</span></div>
-        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#16211D"></span><span>Nori, stopka i&nbsp;pasy</span><span class="mf-pal__hex">#16211D</span></div>
-        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#F3E2C8"></span><span>Scena krem, kadry 21:10</span><span class="mf-pal__hex">#F3E2C8</span></div>
-        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#E8836B"></span><span>Łosoś, tylko na&nbsp;ciemnym</span><span class="mf-pal__hex">#E8836B</span></div>
-        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#B9885A"></span><span>Kraft, kreski na&nbsp;ciemnym</span><span class="mf-pal__hex">#B9885A</span></div>
-        <div class="mf-pal__r"><span class="mf-pal__pr" style="background:#FDFCFA"></span><span>Tło treści</span><span class="mf-pal__hex">#FDFCFA</span></div>
-      </div>
-    </div>
-    <p class="mf-nota">Biel na&nbsp;akcencie daje 6,42:1, łosoś na&nbsp;nori 6,22:1, kraft na&nbsp;nori 5,30:1. Każdy z&nbsp;tych współczynników policzyliśmy na&nbsp;gotowym widoku.</p>
-  </div>
-</section>
-
-<!-- 06 · TEN SAM KADR, WYMIENNE PUDEŁKO. Wzorzec sgsxqxx7sc4l: przełącznik podmienia zawartość pod spodem. -->
-<section class="mf__sek">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">05 · Scena</span>
-      <h2>Ten sam kadr, inne pudełko</h2>
-      <p>Jedna scena obsługuje cały katalog. Zmienia się wyłącznie opakowanie, światło i&nbsp;kompozycja zostają, więc zdjęcia układają się w&nbsp;serię zamiast w&nbsp;zbiór.</p>
-    </div>
-    <div class="mf-chipy" role="group" aria-label="Wybór pudełka w scenie">
-      <button class="mf-chip" type="button" data-kadr="0" aria-pressed="true">MOKU</button>
-      <button class="mf-chip" type="button" data-kadr="1" aria-pressed="false">Kraft z okienkiem</button>
-      <button class="mf-chip" type="button" data-kadr="2" aria-pressed="false">Sushi to go</button>
-      <button class="mf-chip" type="button" data-kadr="3" aria-pressed="false">MOKU otwarte</button>
-    </div>
-    <div class="mf-zamiana" id="mfScena">
-      <img src="../assets/case-makiforma/mat/kadr-moku.webp" class="on" alt="Pudełko MOKU na gałęzi bonsai" />
-      <img src="../assets/case-makiforma/mat/kadr-kraft.webp" alt="Pudełko kraft z okienkiem w tej samej scenie" />
-      <img src="../assets/case-makiforma/mat/kadr-sushi-to-go.webp" alt="Pudełko Sushi to go w tej samej scenie" />
-      <img src="../assets/case-makiforma/mat/kadr-moku-otwarte.webp" alt="Otwarte pudełko MOKU z sushi w tej samej scenie" />
-    </div>
-  </div>
-</section>
-
-<!-- 07 · KONSTRUKCJA. Wzorzec gp4y8dgox3o0: pudełko zamknięte i otwarte, podpis w kadrze. -->
-<section class="mf__sek mf__sek--krem">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">06 · Konstrukcja</span>
-      <h2>Od wykrojki do&nbsp;pełnego pudełka</h2>
-    </div>
-    <div class="mf-konstr">
-      <figure><img src="../assets/case-makiforma/mat/konstr-1-plasko.webp" alt="Kartony MOKU na płasko, przed złożeniem" /><figcaption>Wykrojka na&nbsp;płasko</figcaption></figure>
-      <figure><img src="../assets/case-makiforma/mat/konstr-2-zlozone.webp" alt="Złożone pudełko kraft z okienkiem" /><figcaption>Złożone</figcaption></figure>
-      <figure><img src="../assets/case-makiforma/mat/konstr-3-otwarte.webp" alt="Otwarte pudełko z czarną wkładką" /><figcaption>Otwarte, z&nbsp;wkładką</figcaption></figure>
-      <figure><img src="../assets/case-makiforma/mat/konstr-4-z-jedzeniem.webp" alt="Pudełko z wkładką i zapakowanym sushi" /><figcaption>Zapakowane</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<!-- 09 · TRZY ROZMIARY. Wzorzec uaca8krb7oos + dmy93hne8lih: formaty obok siebie, dane w mikro-kolumnach. -->
-<section class="mf__sek">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">07 · Formaty</span>
-      <h2>Trzy rozmiary, jedna podstawa</h2>
-      <p>Ten sam model w&nbsp;trzech wymiarach. Zdjęcia pokazują wykończenie, a&nbsp;rzut pod&nbsp;nimi proporcje: prostokąty są narysowane w&nbsp;jednej skali z&nbsp;centymetrów podanych w&nbsp;katalogu.</p>
-    </div>
-    <div class="mf-rozm">
-      <figure><img src="../assets/case-makiforma/mat/rozmiar-19.webp" alt="Pudełko kraft z okienkiem, 19 na 13 na 5 cm" /><div class="mf-rozm__d"><span class="mf-rozm__e">Rozmiar S</span><span class="mf-rozm__w">19 × 13 × 5 cm</span></div></figure>
-      <figure><img src="../assets/case-makiforma/mat/rozmiar-22.webp" alt="Pudełko kraft z okienkiem, 22 na 9 na 5 cm" /><div class="mf-rozm__d"><span class="mf-rozm__e">Rozmiar wąski</span><span class="mf-rozm__w">22 × 9 × 5 cm</span></div></figure>
-      <figure><img src="../assets/case-makiforma/mat/rozmiar-26.webp" alt="Pudełko kraft z okienkiem, 26 na 19 na 5 cm" /><div class="mf-rozm__d"><span class="mf-rozm__e">Rozmiar L</span><span class="mf-rozm__w">26 × 19 × 5 cm</span></div></figure>
-    </div>
-    <div class="mf-rzut">
-      <div class="mf-rzut__w">
-      <div class="mf-rzut__f" style="width:calc(19 * var(--cm));height:calc(13 * var(--cm))" data-w="19 × 13 cm"><span>S</span></div>
-      <div class="mf-rzut__f" style="width:calc(22 * var(--cm));height:calc(9 * var(--cm))" data-w="22 × 9 cm"><span>Wąski</span></div>
-      <div class="mf-rzut__f" style="width:calc(26 * var(--cm));height:calc(19 * var(--cm))" data-w="26 × 19 cm"><span>L</span></div>
-      </div>
-      <p class="mf-rzut__p">Wysokość we&nbsp;wszystkich trzech jest ta&nbsp;sama, 5&nbsp;cm, więc różnicę widać wyłącznie w&nbsp;podstawie. Wąski nie jest mniejszy od&nbsp;S, tylko inaczej proporcjonalny, a&nbsp;tego na&nbsp;samych zdjęciach nie widać.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 10 · USZLACHETNIENIA. Wzorzec ubnpl14j9ptw: lista kategorii po lewej, panel wyniku po prawej. -->
-<section class="mf__sek mf__sek--krem">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">08 · Uszlachetnienia</span>
-      <h2>Sześć wykończeń w&nbsp;makro</h2>
-      <p>Różnicę między lakierem a&nbsp;folią widać dopiero z&nbsp;bliska, więc każde wykończenie dostało własne ujęcie detalu na&nbsp;czarnym kartonie.</p>
-    </div>
-    <div class="mf-usz">
-      <div class="mf-usz__l" role="group" aria-label="Wybór uszlachetnienia">
-        <button class="mf-usz__b" type="button" data-usz="0" aria-pressed="true">Hot stamping</button>
-        <button class="mf-usz__b" type="button" data-usz="1" aria-pressed="false">Lakier UV</button>
-        <button class="mf-usz__b" type="button" data-usz="2" aria-pressed="false">Lakier UV wypukły</button>
-        <button class="mf-usz__b" type="button" data-usz="3" aria-pressed="false">Folia błyszcząca</button>
-        <button class="mf-usz__b" type="button" data-usz="4" aria-pressed="false">Folia matowa</button>
-        <button class="mf-usz__b" type="button" data-usz="5" aria-pressed="false">Folia soft touch</button>
-      </div>
-      <div class="mf-usz__p" id="mfUsz">
-        <img src="../assets/case-makiforma/mat/zdob-hot-stamping-detail-1x1.webp" class="on" alt="Makro hot stampingu na czarnym kartonie" />
-        <img src="../assets/case-makiforma/mat/zdob-lakier-uv-detail-1x1.webp" alt="Makro lakieru UV" />
-        <img src="../assets/case-makiforma/mat/zdob-lakier-uv-wypukly-detail-1x1.webp" alt="Makro lakieru UV wypukłego" />
-        <img src="../assets/case-makiforma/mat/zdob-folia-blyszczaca-detail-1x1.webp" alt="Makro folii błyszczącej" />
-        <img src="../assets/case-makiforma/mat/zdob-folia-matowa-detail-1x1.webp" alt="Makro folii matowej" />
-        <img src="../assets/case-makiforma/mat/zdob-folia-soft-touch-detail-1x1.webp" alt="Makro folii soft touch" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 11 · SEKCJA TECHNICZNA NA NORI. Wzorzec ci2hkpmz4fdo: jedna ciemna sekcja dla tematu technicznego. -->
-<section class="mf__sek mf__sek--nori">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">09 · Mechanizm</span>
-      <h2>Wideo sterowane przewijaniem</h2>
-      <p>Pudełko obraca się w&nbsp;tempie przewijania strony, zamiast odtwarzać się własnym rytmem. Klatkę ustawia pozycja sekcji w&nbsp;oknie.</p>
-    </div>
-    <div class="mf-tech">
-      <div class="mf-tech__v"><video id="mfScroll" muted playsinline preload="auto"><source src="../assets/case-makiforma/mat/moku-scroll.mp4" type="video/mp4" /></video></div>
-      <div>
-        <pre class="mf-tech__kod"><span class="c">// klatka ustawiana pozycją sekcji w oknie</span>
-<span class="k">const</span> p = (okno.bottom - sekcja.top) / (okno.h + sekcja.h);
-wideo.currentTime = wideo.duration * clamp(p, 0, 1);
-
-<span class="c">// warunek działania: serwer musi oddawać Range,</span>
-<span class="c">// inaczej przeglądarka nie przeskoczy do klatki</span>
-<span class="k">Accept-Ranges</span>: bytes</pre>
-        <p style="margin-top:16px">Przy włączonym oszczędzaniu ruchu mechanizm się nie uruchamia i&nbsp;zostaje pierwsza klatka.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 12 · KREATOR WYCENY. Wzorzec ueb2gcnykrtj: akordeon 1-2-3 obok działającego panelu. -->
-<section class="mf__sek">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">10 · Ścieżka</span>
-      <h2>Wycena w&nbsp;trzech krokach</h2>
-      <p>Formularz zbiera to, czego drukarnia potrzebuje do&nbsp;wyceny, i&nbsp;pilnuje minimalnego nakładu komunikatem zamiast cichej korekty pola.</p>
-    </div>
-    <div class="mf-wyc">
-      <div class="mf-wyc__kroki" id="mfKroki">
-        <div class="mf-wyc__krok on"><span class="mf-wyc__n">1</span><div><h3>Pokaż, o&nbsp;co chodzi</h3><p>Zdjęcie opakowania albo inspiracji. Bez tego wycena jest zgadywaniem.</p></div></div>
-        <div class="mf-wyc__krok"><span class="mf-wyc__n">2</span><div><h3>Parametry opakowania</h3><p>Rodzaj, format, nakład i&nbsp;uszlachetnienie.</p></div></div>
-        <div class="mf-wyc__krok"><span class="mf-wyc__n">3</span><div><h3>Gdzie odesłać wycenę</h3><p>Dane kontaktowe i&nbsp;termin, na&nbsp;kiedy jest potrzebna.</p></div></div>
-      </div>
-      <div class="mf-wyc__p">
-        <div class="mf-wyc__pole">
-          <label>Rodzaj opakowania</label>
-          <div class="mf-wyc__opcje">
-            <button class="mf-chip" type="button" data-rodzaj aria-pressed="true">Na zestawy</button>
-            <button class="mf-chip" type="button" data-rodzaj aria-pressed="false">Na rolki</button>
-            <button class="mf-chip" type="button" data-rodzaj aria-pressed="false">Premium</button>
-          </div>
-        </div>
-        <div class="mf-wyc__pole">
-          <label for="mfNaklad">Nakład</label>
-          <input class="mf-wyc__in" type="number" id="mfNaklad" value="1000" min="500" step="100" />
-        </div>
-        <p class="mf-wyc__kom" id="mfKom">Minimalny nakład to&nbsp;500&nbsp;szt.</p>
-        <div class="mf-wyc__nav">
-          <button class="mf-wyc__btn mf-wyc__btn--g" type="button" data-krok="-1">Wstecz</button>
-          <button class="mf-wyc__btn" type="button" data-krok="1">Dalej</button>
-        </div>
-      </div>
-    </div>
-    <p class="mf-nota">Odtworzenie panelu z&nbsp;prototypu. Próg 500&nbsp;szt. i&nbsp;treść komunikatu pochodzą z&nbsp;pliku <code>app.js</code> prototypu.</p>
-  </div>
-</section>
-
-<!-- 13 · KATALOG JAKO TABELA. Wzorzec 2797xxwy7z0k: wiersze z miniaturą przy kursorze, nie siatka kafli. -->
-<section class="mf__sek mf__sek--krem">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">11 · Katalog</span>
-      <h2>Dziewięć kategorii opakowań</h2>
-      <p>Każda kategoria ma własną podstronę z&nbsp;formularzem nakładu.<span class="mf-tylko-mysz"> Najedź na&nbsp;wiersz, żeby zobaczyć kadr.</span></p>
-    </div>
-    <div class="mf-kat" id="mfKat">
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-zestawy.webp"><span class="mf-kat__n">Na zestawy sushi</span><span class="mf-kat__o">Pudełka z przegrodkami</span><span class="mf-kat__m">Karton + wkładka</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-rolki.webp"><span class="mf-kat__n">Na rolki sushi</span><span class="mf-kat__o">Format wąski, podłużny</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-premium.webp"><span class="mf-kat__n">Premium</span><span class="mf-kat__o">Uszlachetnienia i magnes</span><span class="mf-kat__m">Karton powlekany</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-delivery.webp"><span class="mf-kat__n">Delivery i take away</span><span class="mf-kat__o">Transport i szczelność</span><span class="mf-kat__m">Karton + okienko</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-catering.webp"><span class="mf-kat__n">Cateringowe i eventowe</span><span class="mf-kat__o">Duże formaty</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-lunch.webp"><span class="mf-kat__n">Lunchowe i grab &amp; go</span><span class="mf-kat__o">Jedna ręka, jeden posiłek</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-banderole.webp"><span class="mf-kat__n">Banderole brandingowe</span><span class="mf-kat__o">Opaska na gotowe pudełko</span><span class="mf-kat__m">Papier</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-sezonowe.webp"><span class="mf-kat__n">Sezonowe i limitowane</span><span class="mf-kat__o">Krótkie serie</span><span class="mf-kat__m">Karton</span><span class="mf-kat__nak">od 500 szt.</span></div>
-      <div class="mf-kat__w" data-min="../assets/case-makiforma/mat/kat-dodatki.webp"><span class="mf-kat__n">Dodatki brandingowe</span><span class="mf-kat__o">Naklejki, wkładki, taśmy</span><span class="mf-kat__m">Papier i folia</span><span class="mf-kat__nak">od 500 szt.</span></div>
-    </div>
-    <div class="mf-kat__min" id="mfMin"><img src="../assets/case-makiforma/mat/kat-premium.webp" alt="" /></div>
-  </div>
-</section>
-
-<!-- 14 · TOR ZRZUTÓW. Wzorzec d478m00ruapa: poziomy tor, różne proporcje w jednym rzędzie, nic nie przycięte. -->
-<section class="mf__sek">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">12 · Strona</span>
-      <h2>Prototyp na&nbsp;dwóch szerokościach</h2>
-      <p>Siedemnaście podstron, tu siedem widoków. Każdy plik w&nbsp;całości, w&nbsp;swoich proporcjach, desktop i&nbsp;390&nbsp;px w&nbsp;jednym rzędzie.</p>
-    </div>
-    <div class="mf-tor__o">
-      <div class="mf-tor">
-      <figure><img loading="lazy" src="../assets/case-makiforma/index-top.jpg" alt="Strona główna, góra" /><figcaption>Strona główna · 1440 px</figcaption></figure>
-      <figure><img loading="lazy" src="../assets/case-makiforma/index-m.jpg" alt="Strona główna na 390 px" /><figcaption>Strona główna · 390 px</figcaption></figure>
-      <figure><img loading="lazy" src="../assets/case-makiforma/opakowania-top.jpg" alt="Katalog opakowań" /><figcaption>Katalog · 1440 px</figcaption></figure>
-      <figure><img loading="lazy" src="../assets/case-makiforma/opakowania-premium-top.jpg" alt="Opakowania premium" /><figcaption>Premium · 1440 px</figcaption></figure>
-      <figure><img loading="lazy" src="../assets/case-makiforma/wycena-top.jpg" alt="Formularz wyceny" /><figcaption>Wycena · 1440 px</figcaption></figure>
-      <figure><img loading="lazy" src="../assets/case-makiforma/wycena-m.jpg" alt="Formularz wyceny na 390 px" /><figcaption>Wycena · 390 px</figcaption></figure>
-      <figure><img loading="lazy" src="../assets/case-makiforma/personalizacja-top.jpg" alt="Personalizacja" /><figcaption>Personalizacja · 1440 px</figcaption></figure>
-      </div>
-    </div>
-    <div class="mf-tor__stopka">
-      <span class="mf-tor__licz">7 z&nbsp;17 podstron</span>
-      <span class="mf-tor__gest">Tor przewija się w&nbsp;bok<span>: <b>przeciągnij</b> albo przewiń z&nbsp;klawisza Shift</span></span>
-    </div>
-  </div>
-</section>
-
-<!-- 15 · STATUS. Zamiast KPI, bo projekt nie jest wdrożony. -->
-<section class="mf__sek mf__sek--krem">
-  <div class="mf__k">
-    <div class="mf__glowa">
-      <span class="mf__nr">13 · Status</span>
-      <h2>Etap i&nbsp;otwarte punkty</h2>
-    </div>
-    <div class="mf-st">
-      <div class="mf-st__w"><span class="mf-st__e">Gdzie jesteśmy</span><span class="mf-st__v">Projekt v0.1 zbudowany, 17 podstron, przed wdrożeniem.</span></div>
-      <div class="mf-st__w"><span class="mf-st__e">Co jest gotowe</span><span class="mf-st__v">Struktura, system wizualny, prototyp wszystkich podstron, zdjęcia produktowe i&nbsp;sceny.</span></div>
-      <div class="mf-st__w"><span class="mf-st__e">Co czeka na&nbsp;klienta</span><span class="mf-st__v">Tłumaczenia na&nbsp;angielski i&nbsp;niemiecki, zdjęcia z&nbsp;produkcji, dane kontaktowe.</span></div>
-      <div class="mf-st__w"><span class="mf-st__e">Uczciwie</span><span class="mf-st__v">Większość kadrów to&nbsp;rendery, nie fotografia z&nbsp;hali. Powstały po&nbsp;to, żeby pokazać konstrukcję i&nbsp;skalę, zanim ruszy sesja.</span></div>
-    </div>
-  </div>
-</section>
-
-</main>
+<style>
+.cv{background:var(--mz-tlo);padding:8px 0 clamp(60px,10vh,120px)}
+.mz{display:flex;flex-direction:column;gap:8px;padding:0 clamp(20px,6vw,104px);max-width:1600px;margin:0 auto}
+.mz-r{display:flex;gap:8px}
+.mz-k{flex-basis:0;flex-shrink:1;min-width:0;overflow:hidden;background:var(--mz-pusty)}
+.mz-k img,.mz-k video{display:block;width:100%;height:100%}
+@media(max-width:760px){
+  .mz,.mz-r{gap:6px}.mz{padding:0 16px}
+  .mz-r3{flex-wrap:wrap}.mz-r3>.mz-k:first-child{flex-basis:100%}
+  .mz-n4,.mz-n6{flex-wrap:wrap}
+  .mz-n4>.mz-k{flex-basis:calc(50% - 3px)}.mz-n6>.mz-k{flex-basis:calc(33.33% - 4px)}
+}
+:root{--mz-tlo:#F4F1EC;--mz-pusty:#F3E2C8}
+/* Układ 1:1 z ramki „MakiForma · wersja 01” w Figmie Portfolio Code&Pixel: 1180 px, odstęp 64 px, tło #F4F1EC. */
+.cv{padding-top:96px}
+.csec{padding-top:clamp(40px,6vh,80px)}
+.pf{display:flex;flex-direction:column;gap:64px;width:min(1180px,100% - 2*clamp(16px,6vw,130px));margin:0 auto}
+.pf img,.pf video{display:block;width:100%;height:auto}
+.pf video{border-radius:4px}
+@media(max-width:760px){.cv{padding-top:16px}.pf{gap:16px}}
+</style>
+<section class="hero"><div class="wide">
+  <h1 class="hero__title" data-lines data-hero>MakiForma</h1>
+  <p class="hero__lead">Strona marki opakowań na sushi, która zbiera zapytania ofertowe od lokali, sieci i&nbsp;cateringów.</p>
+  <dl class="meta"><div><dt>Klient</dt><dd>MakiForma</dd></div><div><dt>Zakres</dt><dd>Strona B2B: struktura, projekt, prototyp</dd></div><div><dt>Podstrony</dt><dd>17</dd></div><div><dt>Rok</dt><dd>2026</dd></div></dl>
+</div></section>
+</div>
+<main class="cv"><div class="pf">
+<img class="fade" src="../assets/case-makiforma/p/01.jpg" width="2360" height="1574" alt="Strona główna MakiForma na telefonie i tablecie, między kamieniem a gałązkami bonsai" />
+<img class="fade" loading="lazy" src="../assets/case-makiforma/p/02.jpg" width="2360" height="1475" alt="Karta produktu Opakowania lunchowe i grab &amp; go" />
+<video class="fade" autoplay muted loop playsinline preload="metadata" poster="../assets/case-makiforma/p/03.jpg" width="1920" height="1080" aria-label="Film: strona główna przewijana na ekranie ułożonym na zgrabionym piasku"><source src="../assets/case-makiforma/p/03-film.mp4" type="video/mp4" /></video>
+<img class="fade" loading="lazy" src="../assets/case-makiforma/p/04.jpg" width="2360" height="1329" alt="Strona główna na telefonie w dłoni, obok pałeczki z rolką sushi" />
+<img class="fade" loading="lazy" src="../assets/case-makiforma/p/05.jpg" width="2360" height="1329" alt="Cztery opakowania MakiForma na kremowych polach" />
+<img class="fade" loading="lazy" src="../assets/case-makiforma/p/06.jpg" width="2360" height="1329" alt="Trzy podstrony serwisu na beżowym tle" />
+</div></main>
 
 <section class="csec"><div class="container">
   <div class="cnav">

@@ -15,6 +15,8 @@ Notion: https://app.notion.com/p/7e8581ec73fb4d5f8af76cff72c8ec16
 Strony zastąpione usunięte z drzewa (uslugi/, portfolio.html, css/, js/) — żyją
 w tagu `redesign-brief`. Obrazy to placeholdery (gradient „IMG"), do wygenerowania.
 
+**2026-11-02 — `portfolio/makiforma.html` przepisana**: sześć obrazów i film (`assets/case-makiforma/p/`) 1:1 z ramki „wersja 01” w Figmie Portfolio Code&Pixel (node 11:180). Opis poniżej dotyczy poprzedniej wersji z commitu da4cfc4.
+
 **2026-10-08 — case study `portfolio/makiforma.html`** (MakiForma, opakowania na sushi).
 Źródło: `~/KLIENCI/01 - Code&Pixel/29 - MakiForma/01 - MakiForma/06 - Delivery/makiforma-www`
 (17 podstron, projekt v0.1 przed wdrożeniem). Assety: `assets/case-makiforma/`,
