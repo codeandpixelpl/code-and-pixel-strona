@@ -1,0 +1,261 @@
+{
+  "zrodlo": "/Users/prouopstudio/Claude/01 - KLIENCI/SLF Transport i przeprowadzki/01 - Strona Internetowa",
+  "pliki": [
+    {
+      "plik": "flota-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 178,
+      "podstrona": "flota.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 165,
+      "podstrona": "index.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "jak-to-dziala-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 235,
+      "podstrona": "jak-to-dziala.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kontakt-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 132,
+      "podstrona": "kontakt.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "o-nas-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 178,
+      "podstrona": "o-nas.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "odprawa-celna-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 94,
+      "podstrona": "odprawa-celna.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "uslugi-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 123,
+      "podstrona": "uslugi.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "wycena-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 109,
+      "podstrona": "wycena.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-austria-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 80,
+      "podstrona": "kierunki/austria.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-belgia-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 78,
+      "podstrona": "kierunki/belgia.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-chorwacja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 84,
+      "podstrona": "kierunki/chorwacja.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-czechy-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 79,
+      "podstrona": "kierunki/czechy.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-dania-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 77,
+      "podstrona": "kierunki/dania.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-finlandia-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 81,
+      "podstrona": "kierunki/finlandia.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-francja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 80,
+      "podstrona": "kierunki/francja.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-grecja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 79,
+      "podstrona": "kierunki/grecja.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-hiszpania-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 82,
+      "podstrona": "kierunki/hiszpania.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-holandia-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 81,
+      "podstrona": "kierunki/holandia.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-irlandia-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 80,
+      "podstrona": "kierunki/irlandia.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-niemcy-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 80,
+      "podstrona": "kierunki/niemcy.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-norwegia-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 82,
+      "podstrona": "kierunki/norwegia.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-polska-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 79,
+      "podstrona": "kierunki/polska.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-portugalia-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 83,
+      "podstrona": "kierunki/portugalia.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-slowacja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 82,
+      "podstrona": "kierunki/slowacja.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-szwajcaria-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 85,
+      "podstrona": "kierunki/szwajcaria.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-szwecja-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 81,
+      "podstrona": "kierunki/szwecja.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-wegry-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 80,
+      "podstrona": "kierunki/wegry.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-wielka-brytania-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 89,
+      "podstrona": "kierunki/wielka-brytania.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kierunki-wlochy-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 79,
+      "podstrona": "kierunki/wlochy.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 102,
+      "podstrona": "index",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "uslugi-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 103,
+      "podstrona": "uslugi",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "wycena-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 66,
+      "podstrona": "wycena",
+      "ujecie": "390 px"
+    }
+  ]
+}

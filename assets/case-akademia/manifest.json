@@ -1,0 +1,93 @@
+{
+  "zrodlo": "/Users/prouopstudio/Claude/01 - Projekty AI/07c - Sklep Akademia Okocimskiego (dark green)",
+  "pliki": [
+    {
+      "plik": "checkout-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 61,
+      "podstrona": "checkout.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 153,
+      "podstrona": "index.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "index-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 173,
+      "podstrona": "index.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "kategoria-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 132,
+      "podstrona": "kategoria.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "kategoria-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 127,
+      "podstrona": "kategoria.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "produkt-top.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 128,
+      "podstrona": "produkt.html",
+      "ujecie": "góra"
+    },
+    {
+      "plik": "produkt-mid.jpg",
+      "szer": 1760,
+      "wys": 1100,
+      "kb": 88,
+      "podstrona": "produkt.html",
+      "ujecie": "środek"
+    },
+    {
+      "plik": "index-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 90,
+      "podstrona": "index",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "kategoria-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 78,
+      "podstrona": "kategoria",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "produkt-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 74,
+      "podstrona": "produkt",
+      "ujecie": "390 px"
+    },
+    {
+      "plik": "checkout-m.jpg",
+      "szer": 640,
+      "wys": 1385,
+      "kb": 60,
+      "podstrona": "checkout",
+      "ujecie": "390 px"
+    }
+  ]
+}
