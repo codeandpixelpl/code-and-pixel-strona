@@ -17,6 +17,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <!-- Kroje sklepu: Bebas Neue (nagłówki, ceny) i Barlow Condensed (interfejs), Google Fonts. -->
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<!-- Krój nagłówków MakiForma (Outfit) do demonstratora wyceny, jak w styleguide/fonts.css prototypu. -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap&subset=latin-ext" rel="stylesheet" />
 <style>
   :root{
     --accent-1:#2c5fd8;
@@ -629,19 +631,226 @@
 .pf{display:flex;flex-direction:column;gap:64px;width:min(1180px,100% - 2*clamp(16px,6vw,130px));margin:0 auto}
 .pf img,.pf video{display:block;width:100%;height:auto}
 .pf video{border-radius:4px}
-@media(max-width:760px){.cv{padding-top:16px}.pf{gap:16px}}
+@media(max-width:760px){.pf{gap:16px}}
+
+/* Jedna kolumna treści na całej stronie: nagłówek, hero, obrazy, nawigacja, CTA i stopka
+   mają lewą i prawą krawędź w tym samym miejscu. */
+.container{width:min(var(--container),100% - 2*var(--gut));max-width:none;padding:0}
+.pf{width:min(var(--container),100% - 2*var(--gut))}
+
+/* Pierwsze zdjęcie wchodzi w granatowy pas hero o --nach. */
+:root{--nach:clamp(40px,11vw,160px)}
+.hero{padding-bottom:calc(clamp(56px,8vh,96px) + var(--nach))}
+.cv{display:flow-root;padding-top:0}
+.pf{position:relative;z-index:2;margin-top:calc(-1 * var(--nach))}
+
+/* metryczka: zakres jako tagi, przycisk do prototypu na końcu wiersza */
+.meta .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:5px}
+.tags span{padding:3px 12px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:13px;line-height:1.5;white-space:nowrap}
+.meta .meta__cta{margin-left:auto;align-self:center}
+.meta__cta .btn-outline-light{gap:10px}
+.meta__cta svg{width:14px;height:14px}
+
+/* nagłówek bloku w kolumnie obrazów */
+.blk{display:flex;flex-direction:column;gap:28px}
+.blk__head h2{font-family:var(--ff);font-weight:700;font-size:clamp(26px,2.8vw,40px);line-height:1.1;letter-spacing:-.03em;color:var(--ink-1)}
+.blk__head p{margin-top:10px;font-family:'Inter',var(--ff);font-size:16px;color:var(--ink-3)}
+
+/* ============ DEMONSTRATOR WYCENY ============ */
+/* Rama i lista kroków w stylu Code&Pixel, ekran w środku 1:1 z wycena.html prototypu MakiForma
+   (wartości z jego styleguide/tokens.css, klasy z przedrostkiem mfd-, żeby nie zderzyły się ze stroną). */
+.demo{display:grid;grid-template-columns:250px 1fr;gap:clamp(24px,4vw,56px);align-items:start;
+  background:#fff;border:1px solid rgba(7,30,81,.08);border-radius:4px;padding:clamp(16px,4vw,56px)}
+.demo__steps{display:flex;flex-direction:column;position:sticky;top:24px}
+.demo__step{display:flex;gap:14px;align-items:flex-start;width:100%;padding:16px 0 16px 18px;text-align:left;cursor:pointer;
+  background:none;border:none;border-left:2px solid rgba(7,30,81,.1);font:inherit;color:var(--ink-3);transition:color .2s,border-color .2s}
+.demo__step b{font-family:'Inter',var(--ff);font-size:11px;font-weight:700;letter-spacing:.14em;padding-top:4px;color:var(--accent);opacity:.55}
+.demo__step span{font-family:var(--ff);font-weight:600;font-size:16px;line-height:1.35}
+.demo__step:hover{color:var(--ink-1)}
+.demo__step.zrobiony{color:var(--ink-1)}
+.demo__step[aria-current="step"]{color:var(--ink-1);border-left-color:var(--accent)}
+.demo__step[aria-current="step"] b{opacity:1}
+
+.scr{border:1px solid #E3DDD0;border-radius:12px;overflow:hidden;background:#FDFCFA;box-shadow:0 30px 60px rgba(22,33,29,.10)}
+.scr__bar{height:40px;display:flex;align-items:center;gap:6px;padding:0 14px;background:#F1EDE4;border-bottom:1px solid #E3DDD0}
+.scr__bar i{width:10px;height:10px;border-radius:50%;background:#D9D3C4}
+.scr__url{margin-left:14px;padding:4px 14px;border-radius:999px;background:#FDFCFA;font-family:'Inter',sans-serif;font-size:11.5px;color:#5C6660}
+
+.mfd{--c-bg:#FDFCFA;--c-bg-alt:#F6F4EE;--c-text:#16211D;--c-soft:#5C6660;--c-line:#E3DDD0;--c-acc:#1E6B4F;--c-acc-h:#17533D;
+  display:grid;padding:clamp(18px,3.6vw,48px);background:var(--c-bg);color:var(--c-text);
+  font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;font-feature-settings:"ss01","cv05"}
+.mfd-ekran{grid-area:1/1;visibility:hidden;opacity:0;transform:translateY(10px);
+  transition:opacity .4s ease,transform .4s var(--ease-out),visibility 0s .4s}
+.mfd-ekran.on{visibility:visible;opacity:1;transform:none;transition:opacity .4s ease,transform .4s var(--ease-out),visibility 0s}
+.mfd-postep{display:flex;gap:8px;margin-bottom:28px}
+.mfd-postep span{flex:1;height:3px;border-radius:2px;background:var(--c-line);transition:background .4s}
+.mfd-postep span.on{background:var(--c-text)}
+.mfd-opis{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-soft);margin-bottom:18px}
+.mfd h3{font-family:'Outfit',sans-serif;font-weight:500;font-size:clamp(19px,1.6vw,23px);line-height:1.28;letter-spacing:-.02em}
+.mfd-mala{margin-top:10px;font-size:15px;line-height:1.5;color:var(--c-soft);max-width:52ch}
+.mfd-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:150px;margin-top:28px;padding:24px;
+  text-align:center;background:var(--c-bg);border:1px dashed #CFC6B3;border-radius:16px;cursor:pointer;transition:border-color .2s,background .2s}
+.mfd-drop:hover{border-color:var(--c-acc);background:#fff}
+.mfd-drop b{font-size:17px;font-weight:500}
+.mfd-drop span{font-size:14px;color:var(--c-soft);max-width:44ch}
+.mfd-pliki{display:flex;flex-wrap:wrap;gap:8px}
+.mfd-pliki:not(:empty){margin-top:12px}
+.mfd-plik{display:flex;align-items:center;gap:10px;padding:5px 12px 5px 5px;border:1px solid var(--c-line);border-radius:8px;background:#fff;
+  font-size:13px;color:var(--c-soft);animation:mfdWjazd .35s var(--ease-out)}
+.mfd-plik img{width:34px;height:34px;border-radius:5px;object-fit:cover}
+@keyframes mfdWjazd{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.mfd-pole{display:block;margin-top:20px}
+.mfd-pole > span{display:block;margin-bottom:8px;font-size:14px;font-weight:500}
+.mfd-in{width:100%;min-height:48px;padding:12px 16px;background:var(--c-bg);border:1px solid var(--c-line);border-radius:8px;
+  font:inherit;font-size:15px;color:var(--c-text);transition:border-color .2s}
+.mfd-in:focus{outline:none;border-color:var(--c-acc)}
+textarea.mfd-in{min-height:96px;resize:none}
+select.mfd-in{appearance:none;padding-right:40px;cursor:pointer;
+  background:var(--c-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235C6660' stroke-width='2.4'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") right 16px center no-repeat}
+.mfd-2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.mfd-zgoda{display:flex;gap:12px;align-items:flex-start;margin-top:22px;font-size:14px;color:var(--c-soft);cursor:pointer}
+.mfd-zgoda input{margin-top:4px;flex:none;width:18px;height:18px;accent-color:var(--c-acc)}
+.mfd-nav{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--c-line)}
+.mfd-btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border:1px solid var(--c-acc);border-radius:8px;
+  background:var(--c-acc);color:#fff;font:500 15.5px 'Inter',sans-serif;cursor:pointer;transition:background .15s,border-color .15s,opacity .15s}
+.mfd-btn:hover{background:var(--c-acc-h);border-color:var(--c-acc-h)}
+.mfd-btn[disabled]{opacity:.4;cursor:not-allowed}
+.mfd-btn--ghost{background:transparent;color:var(--c-text);border-color:var(--c-line)}
+.mfd-btn--ghost:hover{background:transparent;border-color:var(--c-text)}
+.mfd-ok{width:60px;height:60px;border-radius:50%;background:var(--c-acc);display:grid;place-items:center}
+.mfd-ok::after{content:"";width:22px;height:11px;border:3px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(2px,-2px)}
+.mfd-ekran[data-k="4"] h3{margin-top:24px;font-weight:300;font-size:clamp(27px,3vw,40px);line-height:1.08;letter-spacing:-.03em}
+.mfd-lead{margin-top:14px;font-size:17px;line-height:1.55;color:var(--c-soft);max-width:52ch}
+.mfd-fakty{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px;padding:24px;border-radius:16px;background:var(--c-bg-alt)}
+.mfd-fakty dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-soft)}
+.mfd-fakty dd{margin-top:6px;font-size:14.5px;line-height:1.5}
+
+/* ============ UKŁAD NA 390 PX ============ */
+.tel{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,28px)}
+.tel figure{margin:0}
+.tel img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid rgba(22,33,29,.08);box-shadow:0 18px 40px rgba(22,33,29,.08)}
+.tel figcaption{margin-top:14px;font-family:'Inter',var(--ff);font-size:13px;font-weight:600;color:var(--ink-3)}
+
+@media(max-width:900px){
+  .demo{grid-template-columns:1fr}
+  .demo__steps{position:static;flex-direction:row;gap:6px}
+  .demo__step{flex:1;flex-direction:column;gap:4px;padding:0 0 10px;border-left:0;border-bottom:2px solid rgba(7,30,81,.1)}
+  .demo__step[aria-current="step"]{border-bottom-color:var(--accent)}
+  .demo__step span{font-size:13px}
+}
+@media(max-width:760px){
+  .pf > .blk{margin:24px 0}
+  .blk{gap:16px}
+  .meta .meta__cta{margin-left:0;flex-basis:100%;margin-top:8px}
+  .demo__step span{display:none}
+  .mfd-2{grid-template-columns:1fr}
+  .mfd-fakty{grid-template-columns:1fr}
+  .tel{grid-template-columns:1fr 1fr}
+}
 </style>
-<section class="hero"><div class="wide">
+<section class="hero"><div class="container">
   <h1 class="hero__title" data-lines data-hero>MakiForma</h1>
   <p class="hero__lead">Strona marki opakowań na sushi, która zbiera zapytania ofertowe od lokali, sieci i&nbsp;cateringów.</p>
-  <dl class="meta"><div><dt>Klient</dt><dd>MakiForma</dd></div><div><dt>Zakres</dt><dd>Strona B2B: struktura, projekt, prototyp</dd></div><div><dt>Podstrony</dt><dd>17</dd></div><div><dt>Rok</dt><dd>2026</dd></div></dl>
+  <dl class="meta"><div><dt>Klient</dt><dd>MakiForma</dd></div><div><dt>Zakres</dt><dd class="tags"><span>Strona B2B</span><span>Struktura</span><span>Projekt</span><span>Prototyp</span></dd></div><div><dt>Rok</dt><dd>2026</dd></div>
+    <div class="meta__cta"><a href="https://codeandpixelpl.github.io/makiforma/" class="btn-outline-light" target="_blank" rel="noopener">Zobacz stronę <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="8 7 17 7 17 16"></polyline></svg></a></div></dl>
 </div></section>
 </div>
 <main class="cv"><div class="pf">
 <img class="fade" src="../assets/case-makiforma/p/01.jpg" width="2360" height="1574" alt="Strona główna MakiForma na telefonie i tablecie, między kamieniem a gałązkami bonsai" />
 <img class="fade" loading="lazy" src="../assets/case-makiforma/p/02.jpg" width="2360" height="1475" alt="Karta produktu Opakowania lunchowe i grab &amp; go" />
+
+<!-- Demonstrator: kroki, pola i teksty 1:1 z wycena.html prototypu MakiForma -->
+<section class="blk" aria-labelledby="demo-t">
+  <div class="blk__head rv">
+    <h2 id="demo-t">Wycena w&nbsp;trzech krokach</h2>
+    <p>Przejdź formularz tak, jak przechodzi go klient lokalu.</p>
+  </div>
+  <div class="demo rv" data-demo>
+    <nav class="demo__steps" aria-label="Kroki formularza">
+      <button class="demo__step" type="button" data-do="1" aria-current="step"><b>01</b><span>Pokaż, o&nbsp;co chodzi</span></button>
+      <button class="demo__step" type="button" data-do="2"><b>02</b><span>Parametry opakowania</span></button>
+      <button class="demo__step" type="button" data-do="3"><b>03</b><span>Gdzie odesłać wycenę</span></button>
+      <button class="demo__step" type="button" data-do="4"><b>04</b><span>Mamy Twoje zapytanie</span></button>
+    </nav>
+
+    <div class="scr">
+      <div class="scr__bar" aria-hidden="true"><i></i><i></i><i></i><span class="scr__url">makiforma.pl/wycena</span></div>
+      <div class="mfd">
+
+        <div class="mfd-ekran on" data-k="1">
+          <div class="mfd-postep"><span class="on"></span><span></span><span></span></div>
+          <p class="mfd-opis">Krok 1 z&nbsp;3 · Pokaż, o&nbsp;co chodzi</p>
+          <h3>Pokaż, o&nbsp;co chodzi</h3>
+          <p class="mfd-mala">Wystarczy jedna rzecz: zdjęcie, opis albo link. Resztę ustalimy w&nbsp;rozmowie.</p>
+          <div class="mfd-drop" role="button" tabindex="0" data-drop>
+            <b>Wybierz pliki</b>
+            <span>JPG, PNG, HEIC albo PDF, do 15 MB. Do pięciu plików. Na telefonie możesz zrobić zdjęcie od razu z&nbsp;aparatu.</span>
+          </div>
+          <div class="mfd-pliki" data-pliki></div>
+          <label class="mfd-pole"><span>Albo opisz, czego potrzebujesz</span><textarea class="mfd-in"></textarea></label>
+          <label class="mfd-pole"><span>Link do inspiracji</span><input class="mfd-in" type="url" placeholder="https://"></label>
+          <div class="mfd-nav"><button class="mfd-btn" type="button" data-do="2">Dalej: parametry</button></div>
+        </div>
+
+        <div class="mfd-ekran" data-k="2">
+          <div class="mfd-postep"><span class="on"></span><span class="on"></span><span></span></div>
+          <p class="mfd-opis">Krok 2 z&nbsp;3 · Parametry</p>
+          <h3>Parametry opakowania</h3>
+          <p class="mfd-mala">Nie musisz wiedzieć wszystkiego. Wypełnij to, co znasz.</p>
+          <label class="mfd-pole"><span>Rodzaj opakowania</span>
+            <select class="mfd-in"><option>Jeszcze nie wiem</option><option>Na zestawy sushi</option><option>Na rolki sushi</option><option>Premium</option><option>Delivery i&nbsp;take away</option><option>Cateringowe i&nbsp;eventowe</option><option>Lunchowe, grab &amp; go</option><option>Banderole brandingowe</option><option>Wkładki i&nbsp;elementy wewnętrzne</option><option>Sezonowe i&nbsp;limitowane</option><option>Dodatki brandingowe</option></select>
+          </label>
+          <div class="mfd-2">
+            <label class="mfd-pole"><span>Nakład</span><select class="mfd-in"><option>500 szt.</option><option>1000 szt.</option><option>2000 szt.</option><option>5000 szt.</option><option>Więcej</option><option>Nie wiem</option></select></label>
+            <label class="mfd-pole"><span>Przeznaczenie</span><select class="mfd-in"><option>Delivery</option><option>Na wynos</option><option>Premium</option><option>Catering</option></select></label>
+            <label class="mfd-pole"><span>Wymiary, jeśli znasz</span><input class="mfd-in" type="text"></label>
+            <label class="mfd-pole"><span>Na kiedy potrzebujesz opakowań</span><input class="mfd-in" type="text"></label>
+          </div>
+          <div class="mfd-nav"><button class="mfd-btn" type="button" data-do="3">Dalej: kontakt</button><button class="mfd-btn mfd-btn--ghost" type="button" data-do="1">Wstecz</button></div>
+        </div>
+
+        <div class="mfd-ekran" data-k="3">
+          <div class="mfd-postep"><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          <p class="mfd-opis">Krok 3 z&nbsp;3 · Kontakt</p>
+          <h3>Gdzie odesłać wycenę</h3>
+          <div class="mfd-2">
+            <label class="mfd-pole"><span>Imię i&nbsp;nazwisko (wymagane)</span><input class="mfd-in" type="text"></label>
+            <label class="mfd-pole"><span>Nazwa lokalu lub firmy</span><input class="mfd-in" type="text"></label>
+            <label class="mfd-pole"><span>E-mail (wymagane)</span><input class="mfd-in" type="email"></label>
+            <label class="mfd-pole"><span>Telefon</span><input class="mfd-in" type="tel"></label>
+          </div>
+          <label class="mfd-zgoda"><input type="checkbox" data-zgoda><span>Zgadzam się na przetwarzanie moich danych w&nbsp;celu przygotowania i&nbsp;przesłania oferty. (wymagane)</span></label>
+          <div class="mfd-nav"><button class="mfd-btn" type="button" data-do="4" data-wyslij disabled>Wyślij zapytanie</button><button class="mfd-btn mfd-btn--ghost" type="button" data-do="2">Wstecz</button></div>
+        </div>
+
+        <div class="mfd-ekran" data-k="4">
+          <div class="mfd-ok" aria-hidden="true"></div>
+          <h3>Mamy Twoje zapytanie</h3>
+          <p class="mfd-lead">Wstępną odpowiedź odsyłamy w&nbsp;ciągu 24 godzin roboczych. Jeśli przysłałeś zdjęcia, sprawdzimy najpierw możliwości produkcyjne i&nbsp;dopiero potem podamy cenę.</p>
+          <dl class="mfd-fakty">
+            <div><dt>Numer zgłoszenia</dt><dd>MF-2026-0001</dd></div>
+            <div><dt>Co dalej</dt><dd>Wstępna wycena w&nbsp;24 godziny, wizualizacja w&nbsp;2–5 dni roboczych od ustalenia szczegółów.</dd></div>
+            <div><dt>Sprawa pilna?</dt><dd>+48 123 456 789</dd></div>
+          </dl>
+          <div class="mfd-nav"><button class="mfd-btn mfd-btn--ghost" type="button" data-do="1" data-od-nowa>Przejdź jeszcze raz</button></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
 <video class="fade" autoplay muted loop playsinline preload="metadata" poster="../assets/case-makiforma/p/03.jpg" width="1920" height="1080" aria-label="Film: strona główna przewijana na ekranie ułożonym na zgrabionym piasku"><source src="../assets/case-makiforma/p/03-film.mp4" type="video/mp4" /></video>
 <img class="fade" loading="lazy" src="../assets/case-makiforma/p/04.jpg" width="2360" height="1329" alt="Strona główna na telefonie w dłoni, obok pałeczki z rolką sushi" />
+<section class="blk" aria-label="Strona na telefonie">
+  <div class="tel">
+    <figure class="rv"><img loading="lazy" src="../assets/case-makiforma/m/index-m.jpg" width="640" height="1385" alt="Strona główna MakiForma na telefonie" /><figcaption>Strona główna</figcaption></figure>
+    <figure class="rv rv--d1"><img loading="lazy" src="../assets/case-makiforma/m/katalog-m.jpg" width="640" height="1385" alt="Katalog dziesięciu kategorii opakowań na telefonie" /><figcaption>Katalog</figcaption></figure>
+    <figure class="rv rv--d2"><img loading="lazy" src="../assets/case-makiforma/m/opakowania-lunch-m.jpg" width="640" height="1385" alt="Karta produktu Opakowania lunchowe i grab &amp; go na telefonie" /><figcaption>Karta produktu</figcaption></figure>
+    <figure class="rv rv--d2"><img loading="lazy" src="../assets/case-makiforma/m/personalizacja-m.jpg" width="640" height="1385" alt="Uszlachetnienia na podstronie Personalizacja: hot-stamping, lakier UV, folia matowa" /><figcaption>Personalizacja</figcaption></figure>
+  </div>
+</section>
+
 <img class="fade" loading="lazy" src="../assets/case-makiforma/p/05.jpg" width="2360" height="1329" alt="Cztery opakowania MakiForma na kremowych polach" />
 <img class="fade" loading="lazy" src="../assets/case-makiforma/p/06.jpg" width="2360" height="1329" alt="Trzy podstrony serwisu na beżowym tle" />
 </div></main>
@@ -949,6 +1158,57 @@
     });
     kat.addEventListener('mouseleave', function(){ min.classList.remove('on'); });
   }
+})();
+</script>
+<script>
+/* Demonstrator wyceny MakiForma: przełączanie kroków, miniatury plików, zgoda odblokowuje wysyłkę. */
+(function(){
+  'use strict';
+  var demo = document.querySelector('[data-demo]');
+  if (!demo) return;
+  var kroki = demo.querySelectorAll('.demo__step');
+  var ekrany = demo.querySelectorAll('.mfd-ekran');
+  var wyslij = demo.querySelector('[data-wyslij]');
+  var zgoda = demo.querySelector('[data-zgoda]');
+  var pliki = demo.querySelector('[data-pliki]');
+  var zdjecia = ['packshot-moku-z-sushi-800.webp', 'packshot-kraft-okno-26x19x5-z-jedzeniem-800.webp'];
+  var ileP = 0;
+
+  function idz(n){
+    ekrany.forEach(function(e){ e.classList.toggle('on', e.dataset.k === String(n)); });
+    kroki.forEach(function(k){
+      var nr = Number(k.dataset.do);
+      if (nr === n) k.setAttribute('aria-current', 'step'); else k.removeAttribute('aria-current');
+      k.classList.toggle('zrobiony', nr < n);
+    });
+  }
+  function odNowa(){
+    pliki.innerHTML = ''; ileP = 0;
+    demo.querySelectorAll('input:not([type=checkbox]), textarea').forEach(function(p){ p.value = ''; });
+    demo.querySelectorAll('select').forEach(function(s){ s.selectedIndex = 0; });
+    zgoda.checked = false; wyslij.disabled = true;
+  }
+
+  demo.addEventListener('click', function(ev){
+    var t = ev.target.closest('[data-do]');
+    if (t && !t.disabled){
+      if (t.hasAttribute('data-od-nowa')) odNowa();
+      idz(Number(t.dataset.do));
+      return;
+    }
+    if (ev.target.closest('[data-drop]') && ileP < 5){
+      var nazwa = 'opakowanie-' + (ileP + 1) + '.jpg';
+      var p = document.createElement('span');
+      p.className = 'mfd-plik';
+      p.innerHTML = '<img src="../assets/case-makiforma/m/' + zdjecia[ileP % zdjecia.length] + '" alt="" />' + nazwa;
+      pliki.appendChild(p);
+      ileP++;
+    }
+  });
+  demo.addEventListener('keydown', function(ev){
+    if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.matches('[data-drop]')){ ev.preventDefault(); ev.target.click(); }
+  });
+  zgoda.addEventListener('change', function(){ wyslij.disabled = !zgoda.checked; });
 })();
 </script>
 </body>
